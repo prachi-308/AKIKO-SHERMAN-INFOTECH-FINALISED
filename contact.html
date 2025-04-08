@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Akiko Sherman Infotech</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            color: #001812;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        .contact-content .icon {
+            display: none;
+            cursor: pointer;
+            padding: 0 20px;
+            font-size: 1.5rem;
+        }
+        
+        .hero-section {
+            width: 100%;
+            height: clamp(40vh, 60vh, 60vh);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+        
+        .hero-content {
+            max-width: 90%;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #64ffda;
+        }
+        
+        .hero-content p {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #64ffda, #00bfa6);
+            color: #0a192f;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            width: 95%;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: clamp(20px, 5vw, 30px);
+            margin: 40px auto;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-header h1 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            color: #001812;
+            margin-bottom: 10px;
+        }
+        
+        .contact-header p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .contact-form,
+        .contact-content .contact-info {
+            flex: 1;
+            min-width: clamp(250px, 45%, 300px);
+        }
+        
+        .contact-form h2,
+        .contact-info h2 {
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #001812;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+        
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .contact-content .contact-btn {
+            background: linear-gradient(135deg, #64ffda, #00bfa6);
+            color: #0a192f;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-content .contact-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
+        }
+        
+        .contact-content .contact-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-content .contact-info p {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            color: rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px;
+        }
+        
+        .contact-content .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-content .contact-info ul li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-content .contact-info ul li i {
+            font-size: 1rem;
+            margin-right: 10px;
+            color: #64ffda;
+            min-width: 20px;
+        }
+        
+        .contact-content .contact-info ul li span {
+            color: #001812;
+        }
+        
+        .contact-content .contact-info ul li a {
+            color: #001812;
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+        }
+        
+        .map-container {
+            margin-top: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: clamp(200px, 50vw, 300px);
+            border: none;
+        }
+        
+        .contact-content .contact-info {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .dialog-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: clamp(15px, 3vw, 20px);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 1000;
+            width: clamp(250px, 80%, 400px);
+        }
+        
+        .dialog-box.show {
+            display: block;
+        }
+        
+        .dialog-box p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .dialog-box button {
+            background-color: #00bfa6;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: clamp(0.8rem, 2vw, 1rem);
+        }
+        
+        @media (max-width: 968px) {
+            .contact-content .icon {
+                display: block;
+                margin-left: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-content .icon {
+                padding: 0 15px;
+            }
+            .contact-content {
+                gap: 20px;
+            }
+            .contact-form,
+            .contact-content .contact-info {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="mainlogo">
+            <img src="assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <label for="btn" class="icon">
+            <span class="fa fa-bars"></span>
+        </label>
+        <ul>
+            <li><a href="company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="ecom.html">E-commerce</a></li>
+                    <li><a href="web.html">Web & Mobility</a></li>
+                    <li><a href="sales.html">Salesforce Implementation</a></li>
+                    <li><a href="staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="farm.html">Farm2Plate</a></li>
+                    <li><a href="infracon.html">Infracon</a></li>
+                    <li><a href="land.html">Land Acquisition</a></li>
+                    <li><a href="owc.html">OWC</a></li>
+                    <li><a href="tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="technology.html">Technologies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Innovate with Akiko Sherman Infotech</h1>
+            <p>With over 25 years of experience, delivering 800+ IT projects for government and enterprises.</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Reach out for inquiries or collaborations.</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-form">
+                <h2>Submit Query</h2>
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="Enter Name" required>
+                    <input type="email" name="email" placeholder="Enter Email Id" required>
+                    <input type="tel" name="phone" placeholder="Enter Mobile No." required>
+                    <input type="text" name="company" placeholder="Enter Company" required>
+                    <textarea name="message" placeholder="Enter Query" required></textarea>
+                    <button type="button" class="contact-btn" onclick="submitForm()">Send Query</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Akiko Sherman Infotech Pvt. Ltd. is an independent division under Sherman group of companies.</p>
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>DCM Building, 3rd Floor, 3L & 3M, Barakhamba Road, New Delhi - 110001</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+918851599751">8851599751, 9650337723, 9811383370</a>
+                    </li>
+
+
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+919990623323">+91-9990623323 (For Other Queries)</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.9986528174427!2d77.21961007535825!3d28.629802475666338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfdaaaf103c9d%3A0xfc248187afda0156!2sAkiko%20Sherman%20Infotech%20Pvt.%20Ltd!5e0!3m2!1sen!2sus!4v1743364583485!5m2!1sen!2sus"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="dialog-box" id="dialogBox">
+            <p>Form Submitted Successfully!</p>
+            <button onclick="closeDialog()">Close</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+    <script>
+        function submitForm() {
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            showDialog();
+            form.reset();
+        }
+
+        function showDialog() {
+            const dialog = document.getElementById('dialogBox');
+            dialog.classList.add('show');
+        }
+
+        function closeDialog() {
+            const dialog = document.getElementById('dialogBox');
+            dialog.classList.remove('show');
+        }
+
+        document.querySelector('.icon').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(e) {
+            const navUl = document.querySelector('nav ul');
+            const icon = document.querySelector('.icon');
+            if (!navUl.contains(e.target) && !icon.contains(e.target)) {
+                navUl.classList.remove('show');
+            }
+        });
+
+        const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+        dropdownArrows.forEach(arrow => {
+            arrow.parentElement.addEventListener('click', function(e) {
+                if (window.innerWidth <= 968) {
+                    e.preventDefault();
+                    const dropdown = this.nextElementSibling;
+                    const isVisible = dropdown.style.display === 'block';
+                    dropdown.style.display = isVisible ? 'none' : 'block';
+                    arrow.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

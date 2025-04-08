@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our E-Commerce Implementations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        /* E-Commerce Implementations Section */
+        
+        .ecommerce-section {
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            background: #fff;
+            overflow: hidden;
+        }
+        
+        .ecommerce-section h2 {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .ecommerce-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 0;
+            height: 4px;
+            background: #4a90e2;
+            transform: translateX(-50%);
+            animation: growLine 1s ease-out forwards 0.5s;
+        }
+        
+        .ecommerce-section p {
+            font-size: 1.2em;
+            font-weight: 300;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 0.8s;
+        }
+        
+        .ecommerce-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Fixed 3-column grid */
+            gap: 35px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ecommerce-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            opacity: 0;
+            transform: translateY(80px) scale(0.95);
+            width: 100%;
+            /* Increased width to fill the grid better */
+            max-width: 450px;
+            /* Increased max-width for better image visibility */
+            margin: 0 auto;
+            /* Center the card */
+        }
+        
+        .ecommerce-card.reveal {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        
+        .ecommerce-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .ecommerce-card img {
+            width: 100%;
+            height: 250px;
+            /* Increased height for better visibility */
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            background: #f0f7ff;
+        }
+        
+        .ecommerce-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .ecommerce-card-content {
+            padding: 20px;
+            text-align: left;
+        }
+        
+        .ecommerce-card h3 {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+        
+        .ecommerce-card p {
+            font-size: 0.95em;
+            font-weight: 400;
+            color: #777;
+            margin: 0;
+        }
+        
+        .ecommerce-card a {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #4a90e2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .ecommerce-card a:hover {
+            color: #357abd;
+        }
+        /* Background Decorative Elements */
+        
+        .bg-decor {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .tech-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(74, 144, 226, 0.1);
+            animation: pulse 5s infinite ease-in-out;
+        }
+        
+        .tech-circle:nth-child(1) {
+            width: 180px;
+            height: 180px;
+            top: 15%;
+            left: 10%;
+        }
+        
+        .tech-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 70%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+        
+        .tech-circle:nth-child(3) {
+            width: 90px;
+            height: 90px;
+            top: 40%;
+            left: 75%;
+            animation-delay: 3s;
+        }
+        /* Animations */
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes growLine {
+            to {
+                width: 120px;
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.4;
+            }
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 1200px) {
+            .ecommerce-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns on medium screens */
+            }
+            .ecommerce-card {
+                max-width: 350px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .ecommerce-section h2 {
+                font-size: 2.8em;
+            }
+            .ecommerce-section p {
+                font-size: 1.1em;
+                max-width: 90%;
+            }
+            .ecommerce-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns on smaller screens */
+            }
+            .ecommerce-card {
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .ecommerce-section {
+                padding: 60px 15px;
+            }
+            .ecommerce-section h2 {
+                font-size: 2.2em;
+            }
+            .ecommerce-section p {
+                font-size: 1em;
+            }
+            .ecommerce-grid {
+                grid-template-columns: 1fr;
+                /* 1 column on mobile */
+            }
+            .ecommerce-card {
+                max-width: 320px;
+            }
+            .ecommerce-card img {
+                height: 220px;
+            }
+            .tech-circle:nth-child(1) {
+                width: 120px;
+                height: 120px;
+            }
+            .tech-circle:nth-child(2) {
+                width: 100px;
+                height: 100px;
+            }
+            .tech-circle:nth-child(3) {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .ecommerce-section h2 {
+                font-size: 1.8em;
+            }
+            .ecommerce-card img {
+                height: 180px;
+            }
+            .ecommerce-card h3 {
+                font-size: 1.3em;
+            }
+            .ecommerce-card p {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="ecommerce-section">
+        <h2>Our E-Commerce Implementations</h2>
+        <p>Explore our portfolio of six uniquely crafted e-commerce solutions, each designed to enhance online shopping with innovative technology.</p>
+        <div class="ecommerce-grid">
+            <div class="ecommerce-card">
+                <img src="assets/our shoppee.png" alt="Our Shopee">
+                <div class="ecommerce-card-content">
+                    <h3>Our Shopee</h3>
+                    <p>Your go-to online destination for a diverse range of products, exceptional discounts, and a seamless shopping experience.</p>
+                    <a href="https://www.ourshopee.com" target="_blank">Learn More</a>
+                </div>
+            </div>
+            <div class="ecommerce-card">
+                <img src="assets/voylla.png" alt="Voylla">
+                <div class="ecommerce-card-content">
+                    <h3>Voylla</h3>
+                    <p>Ultimate destination for fashion-forward jewelry, where each piece tells a unique story of craftsmanship and trendsetting design.</p>
+                    <a href="https://www.voylla.com" target="_blank">Learn More</a>
+                </div>
+            </div>
+            <div class="ecommerce-card">
+                <img src="assets/apex spares.png" alt="Apex Spares">
+                <div class="ecommerce-card-content">
+                    <h3>Apex Spares</h3>
+                    <p>Custom-built e-commerce store which acts as a one-stop destination for quality auto parts and exceptional service.</p>
+                    <a href="https://www.apexspares.com" target="_blank">Learn More</a>
+                </div>
+            </div>
+            <div class="ecommerce-card">
+                <img src="assets/unis footwaer.png" alt="Unis Footwear">
+                <div class="ecommerce-card-content">
+                    <h3>Unis Footwear</h3>
+                    <p>UNIS Footwear has a fresh user experience with fusion of fashion and relaxation at every step.</p>
+                    <a href="https://www.unisfootwear.com" target="_blank">Learn More</a>
+                </div>
+            </div>
+            <div class="ecommerce-card">
+                <img src="https://via.placeholder.com/300x200" alt="Poshak Greens">
+                <div class="ecommerce-card-content">
+                    <h3>Poshak Greens</h3>
+                    <p>Poshak Greens is built as a medium that allows users to access quality vegetables and organic food products.</p>
+                    <a href="https://example.com/poshakgreens" target="_blank">Learn More</a>
+                </div>
+            </div>
+            <div class="ecommerce-card">
+                <img src="https://via.placeholder.com/300x200" alt="ScrolBuy">
+                <div class="ecommerce-card-content">
+                    <h3>ScrolBuy</h3>
+                    <p>An e-commerce store that enables users to shop curated finds and contemporary style products from where they are.</p>
+                    <a href="https://example.com/scrolbuy" target="_blank">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-decor">
+            <div class="tech-circle"></div>
+            <div class="tech-circle"></div>
+            <div class="tech-circle"></div>
+        </div>
+    </section>
+
+    <script>
+        // Reveal cards on scroll
+        function revealCards() {
+            const cards = document.querySelectorAll('.ecommerce-card');
+            const windowHeight = window.innerHeight;
+
+            cards.forEach((card, index) => {
+                const cardTop = card.getBoundingClientRect().top;
+                if (cardTop < windowHeight - 100) {
+                    setTimeout(() => {
+                        card.classList.add('reveal');
+                    }, index * 150); // Staggered reveal effect
+                }
+            });
+        }
+
+        // Mouse hover effect for subtle card tilt and glow
+        document.querySelectorAll('.ecommerce-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03) translateY(-10px)`;
+                card.style.boxShadow = `0 12px 30px rgba(74, 144, 226, 0.2)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+                card.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.1)';
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(revealCards);
+        });
+
+        window.addEventListener('load', () => {
+            revealCards();
+        });
+    </script>
+</body>
+
+</html>

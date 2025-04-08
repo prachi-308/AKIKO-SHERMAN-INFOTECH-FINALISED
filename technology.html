@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Responsive Drop-down Menu Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        /* Navigation Styles (Updated from Farm2Plate) */
+        
+        .technology-banner {
+            position: relative;
+            height: 95vh;
+            background-image: url('assets/Rectangle\ 3469825.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            z-index: 1;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .banner-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #fff;
+            animation: slideIn 1s ease-in-out;
+        }
+        
+        .banner-content p {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #e0e0e0;
+            animation: slideIn 1.5s ease-in-out;
+        }
+        
+        .banner-content .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            background: #007BFF;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        
+        .banner-content .btn:hover {
+            background: #0056b3;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 1500px) {
+            .banner-content h1 {
+                font-size: 87px;
+            }
+            .banner-content p {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 1400px) {
+            .banner-content h1 {
+                font-size: 80px;
+            }
+            .banner-content p {
+                font-size: 29px;
+            }
+        }
+        
+        @media (max-width: 1300px) {
+            .banner-content h1 {
+                font-size: 75px;
+            }
+            .banner-content p {
+                font-size: 27px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .technology-banner {
+                height: 90vh;
+            }
+            .banner-content h1 {
+                font-size: 70px;
+            }
+            .banner-content p {
+                font-size: 25px;
+            }
+            .banner-content .btn {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .technology-banner {
+                height: 90vh;
+                background-attachment: scroll;
+            }
+            .banner-content h1 {
+                font-size: 65px;
+            }
+            .banner-content p {
+                font-size: 23px;
+            }
+            .banner-content .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 620px) {
+            .technology-banner {
+                height: 90vh;
+                background-attachment: scroll;
+            }
+            .banner-content h1 {
+                font-size: 55px;
+            }
+            .banner-content p {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 520px) {
+            .technology-banner {
+                height: 90vh;
+                background-attachment: scroll;
+            }
+            .banner-content h1 {
+                font-size: 55px;
+            }
+            .banner-content p {
+                font-size: 22px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .technology-banner {
+                height: 86vh;
+            }
+            .banner-content h1 {
+                font-size: 42px;
+            }
+            .banner-content p {
+                font-size: 20px;
+            }
+            .banner-content .btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .technology-banner {
+                height: 85vh;
+            }
+            .banner-content h1 {
+                font-size: 38px;
+            }
+            .banner-content p {
+                font-size: 16px;
+            }
+        }
+        
+        .sec-2 {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 60px 20px;
+            overflow: hidden;
+        }
+        
+        .sec-2 h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .sec-2 h2 {
+            font-size: 24px;
+            color: #28a745;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+        }
+        
+        .sec-2 .tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+            align-items: stretch;
+        }
+        
+        .sec-2 .tech-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-grow: 0;
+            flex-shrink: 0;
+            text-align: center;
+            white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sec-2 .tech-card img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .sec-2 .tech-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            border: 2px solid #007BFF;
+            background: linear-gradient(135deg, #007BFF, #00BFFF);
+            color: white;
+        }
+        
+        .sec-2 .tech-card:hover img {
+            transform: rotate(15deg);
+            filter: brightness(0) invert(1);
+        }
+        
+        .sec-2 .tech-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .sec-2 .tech-card:hover::after {
+            opacity: 1;
+        }
+        
+        .sec-2.visible h1,
+        .sec-2.visible h2,
+        .sec-2.visible .tech-container {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .sec-2 h1 {
+                font-size: 28px;
+            }
+            .sec-2 h2 {
+                font-size: 20px;
+            }
+            .sec-2 .tech-card {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            .sec-2 .tech-card img {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sec-2 .tech-card {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+            .sec-2 .tech-card img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        /* Updated CSS for Section 3 with Light Blue Colors */
+        
+        .sec-3 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #4473d9 0%, #738dc1 100%);
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .sec-3::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(68, 115, 217, 0.15) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .main-heading {
+            width: 10%;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 20px 0 0;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(107, 156, 255, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main-heading.visible {
+            opacity: 1;
+            transform: translateY(0) rotate(-90deg);
+            /* Restored the rotation effect */
+        }
+        
+        .container {
+            display: flex;
+            width: 95%;
+            max-width: 1600px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            border: 1px solid rgba(107, 156, 255, 0.3);
+            overflow: hidden;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .left-panel {
+            width: 100%;
+            background: rgba(68, 115, 217, 0.1);
+            padding: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.5s ease;
+        }
+        
+        .left-panel.collapsed {
+            transform: translateX(-100%);
+            position: absolute;
+            width: 300px;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .toggle-btn {
+            display: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #6b9cff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 3;
+        }
+        
+        .sub-heading {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 15px 0;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .sub-heading.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .sub-heading:hover,
+        .sub-heading.active {
+            background: linear-gradient(90deg, #6b9cff, #a3c1ff);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(107, 156, 255, 0.5);
+        }
+        
+        .sub-heading::after {
+            content: "▼";
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .sub-heading.active::after {
+            transform: rotate(180deg);
+        }
+        
+        .options {
+            list-style-type: none;
+            padding: 0 10px;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        
+        .options li {
+            color: #ffffff;
+            padding: 12px 20px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .options li.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .options li:hover,
+        .options li.active {
+            background: #6b9cff;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(107, 156, 255, 0.3);
+        }
+        
+        .options li::after {
+            content: "→";
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .options li:hover::after,
+        .options li.active::after {
+            opacity: 1;
+        }
+        
+        .right-panel {
+            width: 100%;
+            padding: 40px;
+            background: rgba(45, 73, 133, 0.1);
+            color: #000000;
+        }
+        
+        .right-panel h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(107, 156, 255, 0.4);
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .right-panel h2.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .right-panel p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .right-panel p.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .icon-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 130px;
+            background: rgba(255, 255, 255, 0.948);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(107, 156, 255, 0.3);
+        }
+        
+        .icon-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .icon-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(107, 156, 255, 0.3);
+            background: rgba(107, 156, 255, 0.2);
+        }
+        
+        .icon-item img {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+        }
+        
+        .icon-item span {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #000000 !important;
+            /* Changed to black */
+            font-weight: 600;
+            text-shadow: none;
+            /* Removed text-shadow for better contrast */
+        }
+        /* Media Queries for Section 3 */
+        
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+            .left-panel {
+                width: 35%;
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: none;
+            }
+            .right-panel {
+                width: 65%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .sec-3 {
+                flex-direction: column;
+                padding: 40px 15px;
+                min-height: auto;
+            }
+            .main-heading {
+                width: 100%;
+                font-size: 2.5rem;
+                margin: 0 0 30px 0;
+            }
+            .main-heading.visible {
+                transform: translateY(0);
+                /* No rotation on smaller screens */
+            }
+            .container {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sec-3 {
+                flex-direction: column;
+            }
+            .toggle-btn {
+                display: block;
+            }
+            .main-heading {
+                font-size: 2rem;
+            }
+            .left-panel {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+            }
+            .left-panel.expanded {
+                max-height: 1000px;
+                transform: translateX(0);
+            }
+            .right-panel {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-heading {
+                font-size: 1.5rem;
+            }
+            .right-panel {
+                padding: 15px;
+            }
+            .right-panel h2 {
+                font-size: 2rem;
+            }
+            .right-panel p {
+                font-size: 1rem;
+            }
+            .icon-item {
+                width: 100px;
+            }
+            .icon-item img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+        /* Footer Styles (Updated from Farm2Plate) */
+    </style>
+</head>
+
+<body>
+    <!-- Navigation (Updated from Farm2Plate) -->
+    <nav>
+        <div class="mainlogo">
+            <img src="assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <label for="btn" class="icon">
+            <span class="fa fa-bars"></span>
+        </label>
+        <ul>
+            <li><a href="company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="ecom.html">E-commerce</a></li>
+                    <li><a href="web.html">Web & Mobility</a></li>
+                    <li><a href="sales.html">Salesforce Implementation</a></li>
+                    <li><a href="staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="farm.html">Farm2Plate</a></li>
+                    <li><a href="infracon.html">Infracon</a></li>
+                    <li><a href="land.html">Land Acquisition</a></li>
+                    <li><a href="owc.html">OWC</a></li>
+                    <li><a href="tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="technology.html">Technologies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="technology-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1>Technologies We Work With</h1>
+            <p>We specialize in delivering innovative solutions using the latest technologies to drive your business forward.</p>
+            <a href="#" class="btn">Explore Technologies</a>
+        </div>
+    </section>
+
+    <section class="sec-2">
+        <h1>Design. Develop. Maintain. Scale.</h1>
+        <h1>Your Full-Stack Development Partner</h1>
+        <h2>1000+ Team of Experts Skilled in 40+ Cutting-Edge Technologies</h2>
+        <div class="tech-container">
+            <div class="tech-card"><img width="50" height="50" src="https://img.icons8.com/ios/50/sheets.png" alt="sheets" /> Full-stack</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/color/48/web.png" alt="web" />Web</div>
+            <div class="tech-card"><img width="50" height="50" src="https://img.icons8.com/ios/50/cloud--v1.png" alt="cloud--v1" /> Cloud</div>
+            <div class="tech-card"><img width="40" height="40" src="https://img.icons8.com/officel/40/code.png" alt="code" /> Frontend</div>
+            <div class="tech-card"><img width="40" height="40" src="https://img.icons8.com/office/40/shake-phone.png" alt="shake-phone" /> Mobile</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/color/48/wordpress.png" alt="wordpress" /> WordPress</div>
+            <div class="tech-card"><img width="64" height="64" src="https://img.icons8.com/nolan/64/backend-development.png" alt="backend-development" /> Backend</div>
+            <div class="tech-card"><img width="64" height="64" src="https://img.icons8.com/dusk/64/power-bi.png" alt="power-bi" /> BI</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/color/48/java-coffee-cup-logo--v1.png" alt="java-coffee-cup-logo--v1" /> Java</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/fluency/48/net-framework.png" alt="net-framework" /> .NET</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/fluency/48/python.png" alt="python" />Python</div>
+            <div class="tech-card"><img width="64" height="64" src="https://img.icons8.com/pieces/64/machine-learning.png" alt="machine-learning" />AI/ML</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/(india)fluency/48/chatgpt--v2.png" alt="chatgpt--v2" /> Open AI</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/fluency/48/data-migration.png" alt="data-migration" /> Data Engineering</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/color/48/amazon-web-services.png" alt="amazon-web-services" /> AWS</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/color/48/flutter.png" alt="flutter" /> Flutter</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-hypertext-preprocessor-a-widely-used-open-source-general-purpose-scripting-language-logo-color-tal-revivo.png" alt="php" /> PHP</div>
+            <div class="tech-card"><img width="64" height="64" src="https://img.icons8.com/nolan/64/virtual-reality.png" alt="virtual-reality" /> AR/VR</div>
+            <div class="tech-card"><img width="48" height="48" src="https://img.icons8.com/fluency/48/blockchain.png" alt="blockchain" /> Blockchain</div>
+        </div>
+    </section>
+
+    <section class="sec-3">
+        <div class="main-heading">OUR TECHNOLOGIES</div>
+        <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+        <div class="container">
+            <div class="left-panel" id="leftPanel">
+                <div class="sub-heading active" onclick="toggleOptions('programming-Languages')">Programming Languages</div>
+                <ul class="options" id="programming-Languages-options">
+                    <li class="active" onclick="showContent('general-purpose')">General-purpose</li>
+                    <li onclick="showContent('data-science')">Data Science</li>
+                    <li onclick="showContent('mobile-app')">Mobile App</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('front-end')">Front-End</div>
+                <ul class="options" id="front-end-options">
+                    <li onclick="showContent('javascript')">JavaScript</li>
+                    <li onclick="showContent('ui-libraries')">UI Libraries</li>
+                    <li onclick="showContent('markup-essentials')">Markup Essentials</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('back-end')">Back-End</div>
+                <ul class="options" id="back-end-options">
+                    <li onclick="showContent('frameworks')">Frameworks</li>
+                    <li onclick="showContent('databases')">Databases</li>
+                    <li onclick="showContent('api-development')">API Development</li>
+                    <li onclick="showContent('microservices')">Microservices Architecture</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('ai')">AI, ML & GenAI</div>
+                <ul class="options" id="ai-options">
+                    <li onclick="showContent('ai-frameworks')">AI & ML Frameworks</li>
+                    <li onclick="showContent('natural-language-processing')">Natural Language Processing</li>
+                    <li onclick="showContent('genai')">Generative AI</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('cms-platform')">CMS & E-Commerce Platforms</div>
+                <ul class="options" id="cms-platform-options">
+                    <li onclick="showContent('cms')">Content Management Systems</li>
+                    <li onclick="showContent('ecom-soln')">E-Commerce Solutions</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('cloud-container')">Cloud & Containerization</div>
+                <ul class="options" id="cloud-container-options">
+                    <li onclick="showContent('public-cloud-service')">Public Cloud Services</li>
+                    <li onclick="showContent('containerization-tools')">Containerization Tools</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('web-3.0')">Web 3.0 Development</div>
+                <ul class="options" id="web-3.0-options">
+                    <li onclick="showContent('blockchain-platform')">Blockchain Platforms</li>
+                    <li onclick="showContent('smart-contract')">Smart Contract Development</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('digital-marketing')">Digital Marketing</div>
+                <ul class="options" id="digital-marketing-options">
+                    <li onclick="showContent('search-engine')">Search Engine Strategies</li>
+                    <li onclick="showContent('ad-promo')">Advertising & Promotion</li>
+                    <li onclick="showContent('content-engagement')">Content & Engagement</li>
+                </ul>
+            </div>
+            <div class="right-panel" id="contentArea">
+                <h2>General-Purpose Programming</h2>
+                <p>Languages powering a wide range of applications.</p>
+                <div class="icon-container">
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                        <span>Java</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        <span>Python</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                        <span>PHP</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node">
+                        <span>Node</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Updated from Farm2Plate) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script>
+        // Navigation Logic (Updated from Farm2Plate)
+        document.addEventListener("DOMContentLoaded", function() {
+            // Navigation Toggle for Mobile
+            document.querySelector('.icon').addEventListener('click', function(e) {
+                e.stopPropagation();
+                const navUl = document.querySelector('nav ul');
+                navUl.classList.toggle('show');
+            });
+
+            // Close Navigation on Outside Click
+            document.addEventListener('click', function(e) {
+                const navUl = document.querySelector('nav ul');
+                const icon = document.querySelector('.icon');
+                if (!navUl.contains(e.target) && !icon.contains(e.target) && navUl.classList.contains('show')) {
+                    navUl.classList.remove('show');
+                    document.querySelectorAll('.drop-menu').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                        arrow.style.transform = 'rotate(0deg)';
+                    });
+                }
+            });
+
+            // Dropdown Toggle for Mobile
+            const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+            dropdownArrows.forEach(arrow => {
+                arrow.parentElement.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 968) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdown = this.nextElementSibling;
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                        arrow.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Close Dropdown on Outside Click
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 968) {
+                    dropdownArrows.forEach(arrow => {
+                        const dropdown = arrow.parentElement.nextElementSibling;
+                        if (!arrow.parentElement.contains(e.target) && !dropdown.contains(e.target)) {
+                            dropdown.style.display = 'none';
+                            arrow.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                }
+            });
+
+            // Section 2 Animation
+            const section = document.querySelector('.sec-2');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+            observer.observe(section);
+
+            // Section 3 Animations
+            const observer1 = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            // Observe elements for animations
+            document.querySelectorAll('.main-heading, .sub-heading, .options li, .right-panel h2, .right-panel p, .icon-item').forEach((el) => {
+                observer1.observe(el);
+            });
+
+            // Toggle Options for Section 3
+            window.toggleOptions = function(section) {
+                const options = document.getElementById(`${section}-options`);
+                const heading = document.querySelector(`.sub-heading[onclick="toggleOptions('${section}')"]`);
+                if (options.style.maxHeight && options.style.maxHeight !== "0px") {
+                    options.style.maxHeight = "0px";
+                    heading.classList.remove("active");
+                } else {
+                    options.style.maxHeight = options.scrollHeight + "px";
+                    heading.classList.add("active");
+                }
+            };
+
+            // Toggle Sidebar for Section 3
+            window.toggleSidebar = function() {
+                const leftPanel = document.getElementById('leftPanel');
+                leftPanel.classList.toggle('expanded');
+                leftPanel.classList.toggle('collapsed');
+            };
+
+            // Show Content for Section 3
+            window.showContent = function(section) {
+                const contentArea = document.getElementById("contentArea");
+                let content = "";
+                switch (section) {
+                    case 'general-purpose':
+                        content = `
+                            <h2>General-Purpose Programming</h2>
+                            <p>Languages powering a wide range of applications.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                                    <span>Java</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                                    <span>Python</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                                    <span>PHP</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node">
+                                    <span>Node</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'data-science':
+                        content = `
+                            <h2>Data Science</h2>
+                            <p>Tools for data analysis and machine learning.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                                    <span>Python</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit Learn">
+                                    <span>Scikit Learn</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="Tensor Flow">
+                                    <span>Tensor Flow</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+                                    <span>PyTorch</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rapidminer/rapidminer-original.svg" alt="RapidMiner">
+                                    <span>RapidMiner</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg" alt="Tableau">
+                                    <span>Tableau</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg" alt="Power BI">
+                                    <span>Power BI</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spark/spark-original.svg" alt="Apache Spark">
+                                    <span>Apache Spark</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qlik/qlik-original.svg" alt="QlikView">
+                                    <span>QlikView</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/talend/talend-original.svg" alt="Talend">
+                                    <span>Talend</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'mobile-app':
+                        content = `
+                            <h2>Mobile App Development</h2>
+                            <p>Technologies for building mobile applications.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="iOS">
+                                    <span>iOS</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android">
+                                    <span>Android</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xamarin/xamarin-original.svg" alt="Xamarin">
+                                    <span>Xamarin</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
+                                    <span>Ionic</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native">
+                                    <span>React Native</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
+                                    <span>Flutter</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'javascript':
+                        content = `
+                            <h2>JavaScript</h2>
+                            <p>Technologies for dynamic web experiences.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular">
+                                    <span>Angular</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node">
+                                    <span>Node</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native">
+                                    <span>React Native</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'ui-libraries':
+                        content = `
+                            <h2>UI Libraries</h2>
+                            <p>Libraries for building responsive interfaces.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular">
+                                    <span>Angular</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg" alt="Ionic">
+                                    <span>Ionic</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native">
+                                    <span>React Native</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/silverlight/silverlight-original.svg" alt="Silver Light">
+                                    <span>Silver Light</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuforia/vuforia-original.svg" alt="Vuforia">
+                                    <span>Vuforia</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wikitude/wikitude-original.svg" alt="Wikitude">
+                                    <span>Wikitude</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google ARCore">
+                                    <span>Google ARCore</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity 3D">
+                                    <span>Unity 3D</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg" alt="Unreal Engine">
+                                    <span>Unreal Engine</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'markup-essentials':
+                        content = `
+                            <h2>Markup Essentials</h2>
+                            <p>Core technologies for web design.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                                    <span>HTML5</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                                    <span>CSS3</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'frameworks':
+                        content = `
+                            <h2>Frameworks</h2>
+                            <p>Back-end frameworks for scalable applications.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg" alt="ASP.net">
+                                    <span>ASP.net</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node">
+                                    <span>Node</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                                    <span>Java</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                                    <span>PHP</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-original.svg" alt="Visual Studio">
+                                    <span>Visual Studio</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'databases':
+                        content = `
+                            <h2>Databases</h2>
+                            <p>Reliable database solutions.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                                    <span>MySQL</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-original.svg" alt="SQL Server">
+                                    <span>SQL Server</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'api-development':
+                        content = `
+                            <h2>API Development</h2>
+                            <p>Technologies for seamless integrations.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node">
+                                    <span>Node</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg" alt="Apache">
+                                    <span>Apache</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'microservices':
+                        content = `
+                            <h2>Microservices Architecture</h2>
+                            <p>Tools for modular and scalable architecture.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pega/pega-original.svg" alt="Pega">
+                                    <span>Pega</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blueprism/blueprism-original.svg" alt="Blueprism">
+                                    <span>Blueprism</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/uipath/uipath-original.svg" alt="UIPath">
+                                    <span>UIPath</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/automationanywhere/automationanywhere-original.svg" alt="Automation Anywhere">
+                                    <span>Automation Anywhere</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'ai-frameworks':
+                        content = `
+                            <h2>AI & ML Frameworks</h2>
+                            <p>Frameworks for advanced AI/ML solutions.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit Learn">
+                                    <span>Scikit Learn</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="Tensor Flow">
+                                    <span>Tensor Flow</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch">
+                                    <span>PyTorch</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'natural-language-processing':
+                        content = `
+                            <h2>Natural Language Processing</h2>
+                            <p>Technologies for language understanding.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/speechrecognition/speechrecognition-original.svg" alt="Speech Recognition">
+                                    <span>Speech Recognition</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/virtualagents/virtualagents-original.svg" alt="Virtual Agents">
+                                    <span>Virtual Agents</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'genai':
+                        content = `
+                            <h2>Generative AI</h2>
+                            <p>Innovative AI solutions.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/virtualagents/virtualagents-original.svg" alt="Virtual Agents">
+                                    <span>Virtual Agents</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'cms':
+                        content = `
+                            <h2>Content Management Systems</h2>
+                            <p>Platforms for content management.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="Wordpress">
+                                    <span>Wordpress</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/drupal/drupal-original.svg" alt="Drupal">
+                                    <span>Drupal</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sharepoint/sharepoint-original.svg" alt="Share Point">
+                                    <span>Share Point</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'ecom-soln':
+                        content = `
+                            <h2>E-Commerce Solutions</h2>
+                            <p>Platforms for online commerce.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="assets" alt="Drupal">
+                                    <span>Drupal</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets" alt="Wordpress">
+                                    <span>Wordpress</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets/Dynamics-365-Emblem.png" alt="Dynamics CRM">
+                                    <span>Dynamics CRM</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'public-cloud-service':
+                        content = `
+                            <h2>Public Cloud Services</h2>
+                            <p>Scalable cloud solutions for IoT and more.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="assets/blue-particle-technology-line-globalization-background_1899368.jpg!bw340" alt="Particle">
+                                    <span>Particle</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspbian/raspbian-original.svg" alt="Raspbian">
+                                    <span>Raspbian</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blynkiot/blynkiot-original.svg" alt="BlynkIoT">
+                                    <span>BlynkIoT</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets" alt="Zetta">
+                                    <span>Zetta</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+
+                    case 'blockchain-platform':
+                        content = `
+                            <h2>Blockchain Platforms</h2>
+                            <p>Decentralized solutions.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ethereum/ethereum-original.svg" alt="Ethereum">
+                                    <span>Ethereum</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets/HL_ImageLibrary_Icons_Green_hyperledger.png" alt="Hyperledger Fabric">
+                                    <span>Hyperledger Fabric</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets/ripple.webp" alt="Ripple">
+                                    <span>Ripple</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets/Quorum_Icon_3D_112x112.png" alt="Quorum">
+                                    <span>Quorum</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets/corda.png" alt="Corda">
+                                    <span>Corda</span>
+                                </div>
+                                
+                            </div>
+                        `;
+                        break;
+                    case 'smart-contract':
+                        content = `
+                            <h2>Smart Contract Development</h2>
+                            <p>Secure contract solutions.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="assets" alt="Ethereum">
+                                    <span>Ethereum</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets/corda.png" alt="Corda">
+                                    <span>Corda</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'search-engine':
+                        content = `
+                            <h2>Search Engine Strategies</h2>
+                            <p>Enhance visibility.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="assets/seo.png" alt="SEO">
+                                    <span>SEO</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="assets/sem-logo.png" alt="SEM">
+                                    <span>SEM</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'ad-promo':
+                        content = `
+                            <h2>Advertising & Promotion</h2>
+                            <p>Boost reach.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ppc/ppc-original.svg" alt="PPC">
+                                    <span>PPC</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    case 'content-engagement':
+                        content = `
+                            <h2>Content & Engagement</h2>
+                            <p>Engage audiences.</p>
+                            <div class="icon-container">
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/smm/smm-original.svg" alt="SMM">
+                                    <span>SMM</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/contentmarketing/contentmarketing-original.svg" alt="Content Marketing">
+                                    <span>Content Marketing</span>
+                                </div>
+                                <div class="icon-item">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/emailmarketing/emailmarketing-original.svg" alt="Email Marketing">
+                                    <span>Email Marketing</span>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                    default:
+                        content = "<h2>Select a Category</h2><p>Choose an option from the left to explore our expertise.</p>";
+                }
+                contentArea.innerHTML = content;
+
+                // Re-observe new elements for animations
+                document.querySelectorAll('.right-panel h2, .right-panel p, .icon-item').forEach((el) => {
+                    observer1.observe(el);
+                });
+            };
+
+            // Initialize Section 3
+            toggleOptions('programming-Languages');
+            showContent('general-purpose');
+
+            // GSAP Animation for Footer
+            gsap.fromTo('footer', {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: '.sec-3',
+                    start: 'bottom 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

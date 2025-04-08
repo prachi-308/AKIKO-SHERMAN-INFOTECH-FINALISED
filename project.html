@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Section</title>
+    <style>
+        .section-4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .portfolio-section {
+            display: grid;
+            grid-template-columns: 0.8fr 1fr;
+            gap: 0;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+            padding-bottom: 90px;
+            position: relative;
+            height: auto;
+        }
+        
+        .portfolio-content {
+            padding: 10px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+        }
+        
+        .portfolio-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-content h2 {
+            font-size: 32px;
+            font-weight: 600;
+            color: rgba(62, 62, 62, 1);
+            margin-bottom: 20px;
+        }
+        
+        .portfolio-content p {
+            font-size: 24px;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: rgba(83, 83, 83, 1);
+        }
+        
+        .explore-btn {
+            background-color: black;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 5px;
+            max-width: fit-content;
+        }
+        
+        .explore-btn:hover {
+            background-color: #333;
+        }
+        
+        .portfolio-slider {
+            position: relative;
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            height: 400px;
+            /* Fallback height */
+        }
+        
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slider-item {
+            flex: 0 0 calc(100% / 1.5);
+            /* Original width */
+            position: relative;
+            overflow: hidden;
+            margin: 10px;
+            /* Consistent margin for gap */
+            height: 100%;
+        }
+        
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .slider-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .slider-item-content {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            padding: 10px;
+            z-index: 2;
+            border-radius: 5px;
+        }
+        
+        .slider-item-content h3 {
+            font-size: 48px;
+            /* Reduced from 64px */
+            font-weight: 550;
+            margin: 5px 0;
+        }
+        
+        .slider-item-content p {
+            font-size: 20px;
+            font-weight: 300;
+            margin: 0;
+        }
+        
+        .slider-item-content a {
+            font-size: 20px;
+            font-weight: 300;
+            color: rgba(255, 199, 0, 1);
+            text-decoration: none;
+        }
+        
+        .view-btn {
+            margin-top: 60px;
+            /* Gap between heading and button */
+            padding: 8px 20px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            position: absolute;
+            font-size: 20px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .view-btn:hover {
+            background: white;
+            color: black;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background: #007bff;
+            width: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: width 5s linear;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 90%;
+            transform: translateY(-50%);
+            color: rgb(4, 4, 4);
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 10;
+            background: transparent;
+            font-size: 2rem;
+        }
+        
+        .arrow.left {
+            left: 88%;
+        }
+        
+        .arrow.right {
+            right: 2%;
+        }
+        
+        .arrow:hover {
+            background: black;
+            color: white;
+        }
+        
+        .slider-item:hover .slider-item-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .slider-item:hover .view-btn {
+            display: block;
+        }
+        
+        .slider-item:hover .slider-item-content p,
+        .slider-item:hover .slider-item-content a {
+            display: none;
+        }
+        /* Adjust slider item width around 1190px */
+        
+        @media (max-width: 1190px) and (min-width: 901px) {
+            .slider-item {
+                flex: 0 0 calc(100% / 1.3);
+                /* Slightly wider than 1.5 */
+            }
+            .slider-item-content h3 {
+                font-size: 42px;
+            }
+        }
+        /* Medium Screens (900px and below) */
+        
+        @media (max-width: 900px) {
+            .portfolio-section {
+                display: flex;
+                flex-direction: column;
+            }
+            .slider-item {
+                flex: 0 0 80%;
+            }
+            .portfolio-content h1 {
+                font-size: 44px;
+            }
+            .portfolio-content h2 {
+                font-size: 30px;
+            }
+            .portfolio-content p {
+                font-size: 20px;
+            }
+            .slider-item-content h3 {
+                font-size: 40px;
+            }
+            .arrow {
+                top: 95%;
+            }
+            .arrow.left {
+                left: 8%;
+            }
+            .arrow.right {
+                right: 8%;
+            }
+        }
+        /* Small Screens (540px and below) */
+        
+        @media (max-width: 540px) {
+            .portfolio-slider {
+                height: auto;
+                /* Allow height to adjust for content below image */
+            }
+            .slider-item {
+                flex: 0 0 100%;
+                margin: 10px 5px;
+                /* Adjusted margin for consistent gap */
+                display: flex;
+                flex-direction: column;
+                height: auto;
+                /* Allow height to adjust */
+            }
+            .slider-item img {
+                height: auto;
+            }
+            .slider-item::before {
+                display: none;
+                /* Remove overlay */
+            }
+            .slider-item-content {
+                position: static;
+                /* Move below image */
+                padding: 15px;
+                background-color: #f9f9f9;
+                /* Light grey background */
+                color: #333;
+                text-align: center;
+                width: 100%;
+            }
+            .slider-item-content h3 {
+                font-size: 20px;
+            }
+            .slider-item-content p {
+                font-size: 14px;
+                color: #555;
+                margin: 5px 0;
+            }
+            .slider-item-content a {
+                font-size: 14px;
+                color: rgba(255, 199, 0, 1);
+                margin: 5px 0;
+            }
+            .view-btn {
+                display: block;
+                /* Always visible */
+                position: static;
+                /* Remove absolute positioning */
+                transform: none;
+                /* Remove transform */
+                border: 1px solid #333;
+                color: #333;
+                font-size: 14px;
+                padding: 6px 16px;
+                margin: 10px auto 0;
+                /* Center the button */
+            }
+            .view-btn:hover {
+                background: #333;
+                color: white;
+            }
+            .slider-item:hover .slider-item-content {
+                position: static;
+                /* Disable hover effect */
+                top: auto;
+                left: auto;
+                transform: none;
+                width: 100%;
+            }
+            .slider-item:hover .view-btn {
+                display: block;
+                /* Already visible, no change */
+            }
+            .slider-item:hover .slider-item-content p,
+            .slider-item:hover .slider-item-content a {
+                display: block;
+                /* Keep visible */
+            }
+            .portfolio-content h1 {
+                font-size: 36px;
+            }
+            .portfolio-content h2 {
+                font-size: 24px;
+            }
+            .portfolio-content p {
+                font-size: 16px;
+            }
+            .arrow {
+                top: 95%;
+            }
+            .arrow.left {
+                left: 5%;
+            }
+            .arrow.right {
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section-4">
+        <div class="portfolio-section scroll-animation">
+            <div class="portfolio-content">
+                <h1>OUR PORTFOLIO</h1>
+                <h2>Showcasing our successful projects and client success stories</h2>
+                <p>For over two decades, Akiko Sherman Infotech has pioneered government digital solutions, delivering best-in-class services to clients.</p>
+                <p>With 300+ successful EGovernance projects, we align with the digital India mission and prioritize client satisfaction.</p>
+                <button class="explore-btn">EXPLORE</button>
+            </div>
+            <div class="portfolio-slider">
+                <div class="slider-container">
+                    <div class="slider-item">
+                        <img src="assets/Rectangle 150.png" alt="Infracon">
+                        <div class="slider-item-content">
+                            <h3>INFRACON</h3>
+                            <p>Ministry of Road Transport & Highways</p>
+                            <a href="http://infracon.nic.in/">URL: http://infracon.nic.in/</a>
+                            <button class="view-btn" onclick="window.location.href='infracon.html'">VIEW</button>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="slider-item">
+                        <img src="assets/landacquistion (1).png" alt="Land Acquisition">
+                        <div class="slider-item-content">
+                            <h3>LAND AQUISATION</h3>
+                            <p>Ministry of Road Transport & Highways</p>
+                            <a href="http://bhoomirashi.gov.in/">URL: http://bhoomirashi.gov.in/</a>
+                            <button class="view-btn" onclick="window.location.href='landacquistion.html'">VIEW</button>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="slider-item">
+                        <img src="assets/EPACE.png" alt="Infracon">
+                        <div class="slider-item-content">
+                            <h3>OWC</h3>
+                            <p>Ministry of Road Transport & Highways</p>
+                            <a href="http://epace.nic.in/">URL: http://epace.nic.in/</a>
+                            <button class="view-btn" onclick="window.location.href='OWC.html'">VIEW</button>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                    <div class="slider-item">
+                        <img src="assets/TAMRA.png" alt="Land Acquisition">
+                        <div class="slider-item-content">
+                            <h3>TAMRA</h3>
+                            <p>Ministry of Road Transport & Highways</p>
+                            <a href="http://tamra.gov.in/mom.php">URL: http://tamra.gov.in/mom.php</a>
+                            <button class="view-btn">VIEW</button>
+                        </div>
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <button class="arrow left" onclick="prevSlide()">‹</button>
+            <button class="arrow right" onclick="nextSlide()">›</button>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".portfolio-content", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".portfolio-content",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".explore-btn", {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            delay: 0.5,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+                trigger: ".portfolio-content",
+                start: "top 80%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".portfolio-slider", {
+            opacity: 1,
+            x: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".portfolio-slider",
+                start: "top 90%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        gsap.to(".slider-item", {
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            stagger: 0.3,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".portfolio-slider",
+                start: "top 85%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        let currentIndex1 = 0;
+        let autoSlideInterval;
+
+        function updateSlider() {
+            const sliderContainer = document.querySelector('.slider-container');
+            const sliderItems = document.querySelectorAll('.slider-item');
+            const itemWidth = sliderItems[0].offsetWidth + 20; // Include margin
+            sliderContainer.style.transform = `translateX(-${currentIndex1 * itemWidth}px)`;
+            resetProgress();
+        }
+
+        function nextSlide() {
+            const totalSlides = document.querySelectorAll('.slider-item').length;
+            currentIndex1 = (currentIndex1 + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            const totalSlides = document.querySelectorAll('.slider-item').length;
+            currentIndex1 = (currentIndex1 - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function resetProgress() {
+            document.querySelectorAll('.progress-bar').forEach(bar => bar.style.width = '0');
+            setTimeout(() => document.querySelectorAll('.progress-bar')[currentIndex1].style.width = '100%', 50);
+        }
+
+        function startAutoSlide() {
+            if (window.innerWidth <= 540 && !autoSlideInterval) {
+                autoSlideInterval = setInterval(nextSlide, 3000); // Slide every 3 seconds
+            }
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+            }
+        }
+
+        function matchSliderHeight() {
+            const portfolioContent = document.querySelector('.portfolio-content');
+            const portfolioSlider = document.querySelector('.portfolio-slider');
+            if (window.innerWidth > 540) { // Only for large/medium screens
+                const contentHeight = portfolioContent.offsetHeight;
+                portfolioSlider.style.height = `${contentHeight}px`;
+            } else {
+                portfolioSlider.style.height = 'auto'; // Reset for small screens
+            }
+        }
+
+        // Initial setup
+        resetProgress();
+        matchSliderHeight(); // Set initial height
+        window.addEventListener('resize', () => {
+            updateSlider();
+            matchSliderHeight(); // Update height on resize
+            if (window.innerWidth <= 540) {
+                startAutoSlide();
+            } else {
+                stopAutoSlide();
+            }
+        });
+
+        // Start auto-slide on load if screen is small
+        if (window.innerWidth <= 540) {
+            startAutoSlide();
+        }
+    </script>
+</body>
+
+</html>

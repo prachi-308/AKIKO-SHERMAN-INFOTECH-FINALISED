@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKIKO Home Parallax Section</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .parallax-section {
+            height: 90vh;
+            background: url("assets/Group 1010110459.png") no-repeat center center/cover;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .overlay {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        
+        h1 {
+            font-size: 4em;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #ddd;
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+        
+        .showcase {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+            width: 95%;
+            max-width: 1500px;
+            flex-wrap: nowrap;
+            /* Single row on large screens */
+        }
+        
+        .website-img {
+            max-width: 350px;
+            width: 30%;
+            /* Dynamic width for responsiveness */
+            height: auto;
+            padding-top: 40px;
+            opacity: 0;
+            transition: all 0.6s ease;
+            position: relative;
+            z-index: 3;
+            transform: translateY(50px);
+        }
+        
+        .logo-img {
+            max-width: 220px;
+            width: 20%;
+            /* Smaller dynamic width for logo */
+            height: auto;
+            opacity: 0;
+            transition: all 0.6s ease;
+            position: relative;
+            z-index: 3;
+            transform: translateY(50px);
+        }
+        
+        .website-img.visible,
+        .logo-img.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .website-img:nth-child(1):hover,
+        .website-img:nth-child(3):hover {
+            transform: scale(1.15) translateY(0);
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+        
+        .website-img:nth-child(1)::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: #fff;
+        }
+        
+        .website-img:nth-child(1)::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 0;
+            width: 4px;
+            height: 70px;
+            background: #fff;
+        }
+        
+        .website-img:nth-child(3)::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 70px;
+            height: 4px;
+            background: #fff;
+        }
+        
+        .website-img:nth-child(3)::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 4px;
+            height: 70px;
+            background: #fff;
+        }
+        
+        .background {
+            position: absolute;
+            top: -20%;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+            opacity: 0.25;
+            z-index: 1;
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 1000px) {
+            .website-img {
+                width: 28%;
+                max-width: 300px;
+            }
+            .logo-img {
+                width: 18%;
+                max-width: 180px;
+            }
+            h1 {
+                font-size: 3.5em;
+            }
+            .showcase {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .website-img {
+                width: 27%;
+                max-width: 280px;
+            }
+            .logo-img {
+                width: 17%;
+                max-width: 160px;
+            }
+            .showcase {
+                gap: 15px;
+                padding: 0 10px;
+            }
+            h1 {
+                font-size: 3em;
+            }
+            p {
+                font-size: 1em;
+                max-width: 90%;
+            }
+        }
+        
+        @media (max-width: 700px) {
+            .parallax-section {
+                height: auto;
+                min-height: 90vh;
+                padding: 40px 0;
+            }
+            .showcase {
+                flex-direction: column;
+                /* Stack images below 700px */
+                gap: 30px;
+            }
+            .website-img {
+                width: 70%;
+                /* Larger percentage for stacked view */
+                max-width: 300px;
+                padding-top: 20px;
+            }
+            .logo-img {
+                width: 50%;
+                max-width: 200px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .website-img {
+                width: 80%;
+                max-width: 250px;
+            }
+            .logo-img {
+                width: 60%;
+                max-width: 160px;
+            }
+            .website-img:nth-child(1)::before,
+            .website-img:nth-child(3)::before {
+                width: 50px;
+            }
+            .website-img:nth-child(1)::after,
+            .website-img:nth-child(3)::after {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="parallax-section">
+        <div class="overlay">
+            <h1>AKIKO Home</h1>
+            <p>We have developed our very own E-Commerce portal to provide you tailor-made home furnishing products at your doorstep.</p>
+            <div class="showcase">
+                <img src="assets/Group 1010108486.png" class="website-img">
+                <img src="assets/akiko home.png" alt="Logo" class="logo-img">
+                <img src="assets/Group 1010108487.png" alt="Website 2" class="website-img">
+            </div>
+        </div>
+        <div class="background"></div>
+    </section>
+
+    <script>
+        function revealImages() {
+            const images = document.querySelectorAll('.website-img, .logo-img');
+            const windowHeight = window.innerHeight;
+
+            images.forEach((image, index) => {
+                const imageTop = image.getBoundingClientRect().top;
+                if (imageTop < windowHeight - 150) {
+                    setTimeout(() => {
+                        image.classList.add('visible');
+                    }, index * 300);
+                }
+            });
+        }
+
+        function parallax() {
+            const background = document.querySelector('.background');
+            const scrollPosition = window.pageYOffset;
+            background.style.transform = `translateY(${scrollPosition * 0.9}px)`;
+        }
+
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(() => {
+                revealImages();
+                parallax();
+            });
+        });
+
+        window.addEventListener('load', () => {
+            revealImages();
+            parallax();
+        });
+    </script>
+</body>
+
+</html>

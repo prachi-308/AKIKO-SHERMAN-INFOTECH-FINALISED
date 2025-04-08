@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infracon - Tender Management Process</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: #f4f7fa;
+            color: #1a2b49;
+            overflow-x: hidden;
+        }
+        /* Hero Section */
+        
+        .hero-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 40px;
+            background: linear-gradient(135deg, #1e40af, #14b8a6);
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: url('assets/infracon_backgroundimage (1).png') no-repeat center center/cover;
+            z-index: 0;
+            filter: brightness(0.7);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+            max-width: 800px;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        
+        .hero-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(2rem, 7vw, 4.5rem);
+            font-weight: 700;
+            background: linear-gradient(90deg, #93c5fd, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-content h3 {
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            font-weight: 500;
+            color: #e0f2fe;
+        }
+        
+        .hero-text {
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+            line-height: 1.7;
+            color: #dbeafe;
+            margin-bottom: 25px;
+        }
+        
+        .get-started {
+            padding: clamp(10px, 2vw, 14px) clamp(25px, 4vw, 40px);
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 600;
+            color: #1e293b;
+            background: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .get-started:hover {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+        }
+        /* Stats Section - Hexagonal Cards */
+        
+        .stats-section {
+            z-index: 2;
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 30px;
+            padding: 20px;
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            width: 200px;
+            height: 230px;
+            background: rgba(255, 255, 255, 0.1);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        
+        .stat-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .stat-icon {
+            font-size: 2.2rem;
+            color: #34d399;
+            margin-bottom: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .stat-title {
+            font-size: 0.9rem;
+            color: #dbeafe;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        /* Features Section */
+        
+        .features-section {
+            background: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .features-section h2 {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .features-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            color: white;
+            height: 4px;
+            background: linear-gradient(to right, #1e90ff, #0d6efd);
+            border-radius: 2px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-in-out;
+        }
+        
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #1e62ff, #0d6efd);
+            z-index: -1;
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+        
+        .feature-card:hover h3,
+        .feature-card:hover p {
+            color: #fff;
+        }
+        
+        .feature-card .icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(145deg, #e6f0ff, #d1e3ff);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            transition: transform 0.5s ease;
+        }
+        
+        .feature-card i {
+            font-size: 36px;
+            color: #1e90ff;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: #222;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        /* Header */
+        
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #1a2b49 0%, #2c5282 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+        /* Flowchart */
+        
+        .flowchart {
+            padding: 60px 20px;
+            width: 100%;
+            background: #f5faff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 600px;
+            position: relative;
+        }
+        
+        .row {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            position: relative;
+            margin-bottom: 60px;
+            max-width: 1400px;
+        }
+        
+        .row::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #1a2b49, #4299e1);
+            opacity: 0.2;
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+        
+        .step {
+            background: #ffffff;
+            border-radius: 12px;
+            width: 320px;
+            min-height: 340px;
+            padding: 30px;
+            margin: 0 40px;
+            position: relative;
+            text-align: left;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.6s ease-in-out;
+            z-index: 1;
+            border: 1px solid #e2e8f0;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .step::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 20%;
+            width: 30px;
+            height: 60%;
+            background: linear-gradient(145deg, #4299e1, #1a2b49);
+            border-radius: 8px 0 0 8px;
+            z-index: -1;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .step:not(:last-child)::after {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            font-size: 24px;
+            color: #4299e1;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            background: linear-gradient(145deg, #1a2b49, #4299e1);
+            color: white;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+        }
+        
+        .step h3 {
+            margin: 15px 0 12px;
+            color: #1a2b49;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .step p {
+            margin: 0;
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .step i {
+            font-size: 42px;
+            color: #4299e1;
+            margin-bottom: 20px;
+        }
+        
+        .vertical-bar {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, #1a2b49, #4299e1);
+            transform: translateX(-50%);
+            opacity: 0.4;
+            z-index: 0;
+        }
+        /* Accordion */
+        
+        .sec-4 {
+            padding: 0px 0;
+            background: #ffffff;
+            width: 100%;
+        }
+        
+        .accordion {
+            display: flex;
+            width: 100%;
+            margin: 0;
+            gap: 0;
+        }
+        
+        .accordion-item {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 75vh;
+            transition: flex 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .accordion-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .accordion-item:nth-child(1) {
+            background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+        }
+        
+        .accordion-item:nth-child(2) {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        
+        .accordion-item:nth-child(3) {
+            background: linear-gradient(135deg, #4a0e4e 0%, #7e22ce 100%);
+        }
+        
+        .accordion-item:nth-child(4) {
+            background: linear-gradient(135deg, #9a3412 0%, #ea580c 100%);
+        }
+        
+        .accordion-item.active {
+            flex: 15;
+            padding: 30px;
+        }
+        
+        .accordion-content {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            color: white;
+            width: 60%;
+            padding-left: 40px;
+        }
+        
+        .accordion-item.active .accordion-content {
+            padding-left: 80px;
+        }
+        
+        .accordion-item.active h2 {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+        
+        .accordion-item.active h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .accordion-item.active p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .accordion-item.active button {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-item.active button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .accordion-item:not(.active) h2 {
+            transform: rotate(90deg);
+            white-space: nowrap;
+            font-size: 24px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .accordion-item:not(.active) h3,
+        .accordion-item:not(.active) p,
+        .accordion-item:not(.active) button,
+        .accordion-item:not(.active) .accordion-image {
+            display: none;
+        }
+        
+        .accordion-image {
+            width: 30%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .accordion-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+        
+        .sec-7 {
+            padding: 40px 20px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sec-7 h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 70px;
+            color: #1a2b49;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 700;
+        }
+        
+        .sec-7 h1::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, #4299e1, #7e22ce);
+            transform: translateX(-50%);
+            border-radius: 5px;
+            transition: width 0.4s ease;
+        }
+        
+        .sec-7 h1:hover::after {
+            width: 150px;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .user {
+            display: flex;
+            /* Added to stack image and text vertically */
+            flex-direction: column;
+            /* Ensures vertical alignment */
+            justify-content: center;
+            /* Centers content vertically */
+            align-items: center;
+            /* Centers content horizontally */
+            text-align: center;
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.6s ease-in-out;
+            flex: 1 1 280px;
+            max-width: 280px;
+            background: #ffffff;
+            padding: 40px 25px;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(66, 153, 225, 0.1);
+        }
+        
+        .user.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .user:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border: 2px solid #4299e1;
+        }
+        
+        .user img {
+            width: 140px;
+            /* Fixed width for consistency */
+            height: 140px;
+            /* Fixed height for consistency */
+            object-fit: contain;
+            /* Ensures images scale properly */
+            margin-bottom: 30px;
+            transition: transform 0.5s ease;
+        }
+        
+        .user p {
+            margin: 0;
+            font-size: 1.3rem;
+            color: #1a2b49;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.4s ease;
+        }
+        
+        .user:hover p {
+            color: #7e22ce;
+        }
+        /* Animation Keyframes */
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsiveness */
+        
+        @media (max-width: 1024px) {
+            nav ul {
+                display: none;
+            }
+            .icon {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            .hero-section {
+                padding: 100px 15px 20px;
+            }
+            .stats-container {
+                gap: 15px;
+            }
+            .accordion {
+                flex-direction: column;
+                height: auto;
+                gap: 0;
+            }
+            .accordion-item {
+                width: 100%;
+                height: 15vh;
+                padding: 15px;
+                margin: 0;
+            }
+            .accordion-item.active {
+                height: auto;
+                min-height: 50vh;
+                padding: 20px;
+            }
+            .accordion-item.active .accordion-content {
+                padding-left: 20px;
+            }
+            .accordion-item.active h2 {
+                font-size: 36px;
+            }
+            .accordion-item.active h3 {
+                font-size: 20px;
+            }
+            .accordion-item.active p {
+                font-size: 16px;
+            }
+            .accordion-item:not(.active) h2 {
+                transform: none;
+                font-size: 20px;
+            }
+            .accordion-image {
+                justify-content: center;
+                width: 100%;
+            }
+            .accordion-content {
+                width: 100%;
+            }
+            .flowchart {
+                padding: 40px 20px;
+            }
+            .row {
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 0;
+            }
+            .row::after {
+                display: none;
+            }
+            .step {
+                width: 90%;
+                margin: 20px 0;
+                min-height: 300px;
+            }
+            .step::before {
+                left: -10px;
+                width: 20px;
+            }
+            .step:not(:last-child)::after {
+                content: '\f078';
+                top: calc(100% + 10px);
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+            .vertical-bar {
+                display: block;
+                height: calc(100% - 40px);
+                top: 20px;
+            }
+            .container {
+                gap: 30px;
+            }
+            .user {
+                flex: 1 1 220px;
+                max-width: 220px;
+                padding: 30px 20px;
+            }
+            .user img {
+                width: 120px;
+                /* Adjusted for smaller screens */
+                height: 120px;
+            }
+            .user p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 80px 10px 10px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .stat-item {
+                width: 150px;
+                height: 180px;
+            }
+            .accordion-item {
+                height: 12vh;
+            }
+            .accordion-item.active {
+                min-height: 45vh;
+            }
+            .accordion-item.active h2 {
+                font-size: 28px;
+            }
+            .accordion-item.active h3 {
+                font-size: 18px;
+            }
+            .accordion-item.active p {
+                font-size: 14px;
+            }
+            .accordion-item.active button {
+                font-size: 14px;
+            }
+            .step {
+                width: 95%;
+                min-height: 280px;
+                padding: 20px;
+            }
+            .step::before {
+                left: -8px;
+                width: 15px;
+            }
+            .sec-7 {
+                padding: 50px 15px;
+            }
+            .sec-7 h1 {
+                font-size: 2rem;
+                margin-bottom: 50px;
+            }
+            .sec-7 h1::after {
+                width: 80px;
+            }
+            .user {
+                flex: 1 1 180px;
+                max-width: 180px;
+                padding: 25px 15px;
+            }
+            .user img {
+                width: 100px;
+                /* Adjusted for smaller screens */
+                height: 100px;
+            }
+            .user p {
+                font-size: 1rem;
+            }
+            .features-section h2 {
+                font-size: 2rem;
+            }
+            .feature-card {
+                padding: 20px;
+            }
+            .feature-card h3 {
+                font-size: 1.3rem;
+            }
+            .feature-card p {
+                font-size: 0.9rem;
+            }
+            .feature-card .icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+            .feature-card i {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation from Farm2Plate -->
+    <nav>
+        <div class="mainlogo">
+            <img src="assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <label for="btn" class="icon">
+            <span class="fa fa-bars"></span>
+        </label>
+        <ul>
+            <li><a href="company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="ecom.html">E-commerce</a></li>
+                    <li><a href="web.html">Web & Mobility</a></li>
+                    <li><a href="sales.html">Salesforce Implementation</a></li>
+                    <li><a href="staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="farm.html">Farm2Plate</a></li>
+                    <li><a href="infracon.html">Infracon</a></li>
+                    <li><a href="land.html">Land Acquisition</a></li>
+                    <li><a href="owc.html">OWC</a></li>
+                    <li><a href="tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="technology.html">Technologies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1>INFRACON</h1>
+            <h3>Ministry of Road Transport & Highways</h3>
+            <p class="hero-text">
+                A cutting-edge national portal designed for seamless technical evaluation of infrastructure consultancy firms and key personnel, empowering stakeholders like the Ministry of Road Transport and Highways and state PWD departments.
+            </p>
+            <a href="https://infracon.nic.in/" class="get-started">Explore Now</a>
+        </div>
+        <div class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <i class="fas fa-building stat-icon"></i>
+                    <h4 class="stat-value" data-target="900">900+</h4>
+                    <p class="stat-title">Consultancy Firms</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-users stat-icon"></i>
+                    <h4 class="stat-value" data-target="15000">15000+</h4>
+                    <p class="stat-title">Consultants</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-file-alt stat-icon"></i>
+                    <h4 class="stat-value" data-target="1000">1000+</h4>
+                    <p class="stat-title">Tender Technical Bids Evaluated</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="features-section">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3>Register</h3>
+                <p>Online registration & profile update by key Personnel & Firms.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Interact & Associate</h3>
+                <p>Key Personnel, Consultancy Firms can interact and associate for projects.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrapper">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Technical Evaluation</h3>
+                <p>Evaluation of Consultancy firms for projects based on project parameters and data input.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>Infracon - Tender Management Process</h1>
+        <p>Streamlining Infrastructure Project Tendering</p>
+    </div>
+
+    <div class="flowchart">
+        <div class="vertical-bar"></div>
+        <div class="row">
+            <div class="step">
+                <div class="step-number">1</div>
+                <i class="fas fa-file-alt"></i>
+                <h3>Tender Details</h3>
+                <p>View tender info: INFRA-AI-2025-002 Sixth AI-Based Bridge Monitoring, by State Infra Corp, due April 20, 2025, cost INR 30 Cr.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <i class="fas fa-check-circle"></i>
+                <h3>Eligibility & Evaluation</h3>
+                <p>Need 5+ years in AI projects, 2 projects worth INR 5 Cr each, turnover INR 50 Cr. Scored 60% technical, 40% financial.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <i class="fas fa-users"></i>
+                <h3>View Tender & Create Team</h3>
+                <p>Access tender docs on Infracon. Form team: AI Engineer (7+ years), Structural Engineer (5+ years), Project Manager (10+ years).</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="step">
+                <div class="step-number">4</div>
+                <i class="fas fa-chart-bar"></i>
+                <h3>Self-Evaluation Score Bid</h3>
+                <p>Self-assess on Infracon (e.g., 80/100). Bid as sole firm or JV (e.g., 70:30 split). Submit technical and financial proposals.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <i class="fas fa-robot"></i>
+                <h3>Auto Technical Evaluation</h3>
+                <p>AI evaluates bids, scores technical proposal (e.g., 68/100). Scores above 55% proceed; results in 72 hours.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">6</div>
+                <i class="fas fa-trophy"></i>
+                <h3>Post Award & Key Person</h3>
+                <p>Sign contract in 7 days, submit work plan. Replace key person (e.g., AI Engineer) with approval in 5 days.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="sec-4">
+        <div class="accordion">
+            <div class="accordion-item active">
+                <div class="accordion-image"><img src="assets/ASXZ-removebg-preview 1.png" alt="Land Acquisition"></div>
+                <div class="accordion-content">
+                    <h2>Land Acquisition</h2>
+                    <h3>Ministry of Road Transport & Highways</h3>
+                    <p>National Portal to automate the land acquisition process developed for the Ministry of Road Transport and Highways, NHAI, and NHIDCL. Provision for compensation determination and online payment to landowners through GOI’s PFMS & banks.</p>
+                    <button onclick="window.location.href='land.html'">Read More</button>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-image"><img src="assets/ASXZ-removebg-preview 1.png" alt="OWC"></div>
+                <div class="accordion-content">
+                    <h2>OWC</h2>
+                    <h3>Ministry of Road Transport & Highways</h3>
+                    <p>A National Portal for online permission generation for transportation of overweight and over-dimensional cargos, online route selection via Google Maps, automatic distance & fee calculation, and a national database of bridges in distress.</p>
+                    <button onclick="window.location.href='owc.html'">Read More</button>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-image"><img src="assets/ASXZ-removebg-preview 1.png" alt="TAMRA"></div>
+                <div class="accordion-content">
+                    <h2>TAMRA</h2>
+                    <h3>Ministry of Mines</h3>
+                    <p>National Project for mining block allocation to the preferred bidder, with provisions to monitor various clearances required. Developed for the Ministry of Mines.</p>
+                    <button onclick="window.location.href='tamra.html'">Read More</button>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-image"><img src="assets/ASXZ-removebg-preview 1.png" alt="FARM2PLATE"></div>
+                <div class="accordion-content">
+                    <h2>FARM2PLATE</h2>
+                    <h3>Ministry of Road Transport & Highways</h3>
+                    <p>One-stop AgriTech solution solving critical supply chain challenges through digital transformation for the food and perishables sector.</p>
+                    <button onclick="window.location.href='farm.html'">Read More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-7">
+        <h1>USERS</h1>
+        <div class="container">
+            <div class="user"><img src="assets/morth-goi-removebg-preview.png" alt="MORTH">
+                <p>MORTH</p>
+            </div>
+            <div class="user"><img src="assets/NHAI-removebg-preview.png" alt="NHAI">
+                <p>NHAI</p>
+            </div>
+            <div class="user"><img src="assets/nhidcl-logo.webp" alt="NHIDCL">
+                <p>NHIDCL</p>
+            </div>
+            <div class="user"><img src="assets/stategovt-removebg-preview.png" alt="State Government">
+                <p>State Government</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer from Farm2Plate -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script>
+        // Accordion Logic
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        accordionItems.forEach(item => {
+            item.addEventListener('click', () => {
+                accordionItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+
+        // Scroll Animation Logic
+        const revealOnScroll = () => {
+            const sections = [{
+                elements: document.querySelectorAll('.stat-item'),
+                threshold: 0.85
+            }, {
+                elements: document.querySelectorAll('.feature-card'),
+                threshold: 0.85
+            }, {
+                elements: document.querySelectorAll('.step'),
+                threshold: 0.85
+            }, {
+                elements: document.querySelectorAll('.accordion-item'),
+                threshold: 0.85
+            }, {
+                elements: document.querySelectorAll('.user'),
+                threshold: 0.85
+            }];
+            const windowHeight = window.innerHeight;
+
+            sections.forEach(section => {
+                section.elements.forEach((el, index) => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= windowHeight * section.threshold && rect.bottom >= 0 && !el.classList.contains('visible')) {
+                        setTimeout(() => {
+                            el.classList.add('visible');
+                            if (el.classList.contains('stat-item')) {
+                                animateCounter(el.querySelector('.stat-value'));
+                            }
+                        }, index * 200);
+                    }
+                });
+            });
+        };
+
+        // Counter Animation
+        function animateCounter(counter) {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const increment = target / 50;
+            const update = () => {
+                if (count < target) {
+                    count += increment;
+                    counter.textContent = Math.floor(count) + '+';
+                    requestAnimationFrame(update);
+                } else {
+                    counter.textContent = target + '+';
+                }
+            };
+            update();
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+
+        // Navbar JavaScript from Farm2Plate (Refined)
+        document.querySelector('.icon').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(e) {
+            const navUl = document.querySelector('nav ul');
+            const icon = document.querySelector('.icon');
+            if (!navUl.contains(e.target) && !icon.contains(e.target) && navUl.classList.contains('show')) {
+                navUl.classList.remove('show');
+                document.querySelectorAll('.drop-menu').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+                document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                    arrow.style.transform = 'rotate(0deg)';
+                });
+            }
+        });
+
+        const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+        dropdownArrows.forEach(arrow => {
+            const parentLink = arrow.parentElement;
+            parentLink.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1160) { // Match CSS breakpoint from style.css
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = this.nextElementSibling;
+                    const isOpen = dropdown.style.display === 'block';
+                    document.querySelectorAll('.drop-menu').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.style.display = 'none';
+                        }
+                    });
+                    document.querySelectorAll('.dropdown-arrow').forEach(otherArrow => {
+                        if (otherArrow !== arrow) {
+                            otherArrow.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    dropdown.style.display = isOpen ? 'none' : 'block';
+                    arrow.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Footer Animation
+        gsap.fromTo('footer', {
+            opacity: 0,
+            y: 50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '.sec-7',
+                start: 'bottom 80%',
+                toggleActions: 'play none none none'
+            }
+        });
+    </script>
+</body>
+
+</html>

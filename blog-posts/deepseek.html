@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek R1: The AI That Thinks | Akiko Blogs</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+         :root {
+            --primary: #007BFF;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        /* Navigation styling */
+        
+        .hero-section {
+            height: 60vh;
+            background-image: url('../assets/deepeek2.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* Space for fixed nav */
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+            max-width: 900px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-content .blog-meta {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+        
+        .blog-post-container {
+            max-width: 900px;
+            margin: -50px auto 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 3;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .blog-post-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-header img {
+            display: none;
+            /* Hide since we're using it as hero bg */
+        }
+        
+        .blog-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        .blog-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+        
+        .blog-content ul,
+        .blog-content ol {
+            margin: 1rem 0 1.5rem 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-term {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            color: #e83e8c;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background: #f8f9fa;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+        /* Responsive table styles */
+        
+        @media (max-width: 400px) {
+            .comparison-table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+            }
+            .comparison-table thead {
+                display: none;
+            }
+            .comparison-table tr {
+                display: block;
+                margin-bottom: 1rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+            .comparison-table td {
+                display: flex;
+                justify-content: space-between;
+                padding: 0.5rem 1rem;
+                border-bottom: 1px solid #eee;
+            }
+            .comparison-table td:before {
+                content: attr(data-label);
+                font-weight: bold;
+                margin-right: 1rem;
+                color: var(--primary);
+            }
+            .comparison-table td:last-child {
+                border-bottom: none;
+            }
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .back-button:hover {
+            background: #0056b3;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .blog-post-container {
+                padding: 1.5rem;
+                margin: -30px auto 1rem;
+            }
+            .blog-title {
+                font-size: 2rem;
+            }
+            .blog-content h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="mainlogo">
+            <img src="../assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="../index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <label for="btn" class="icon">
+            <span class="fa fa-bars"></span>
+        </label>
+        <ul>
+            <li><a href="../company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="../ai.html">AI & ML</a></li>
+                    <li><a href="../egov.html">E-Governance</a></li>
+                    <li><a href="../ecom.html">E-commerce</a></li>
+                    <li><a href="../web.html">Web & Mobility</a></li>
+                    <li><a href="../sales.html">Salesforce Implementation</a></li>
+                    <li><a href="../staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="../farm.html">Farm2Plate</a></li>
+                    <li><a href="../infracon.html">Infracon</a></li>
+                    <li><a href="../land.html">Land Acquisition</a></li>
+                    <li><a href="../owc.html">OWC</a></li>
+                    <li><a href="../tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="../technology.html">Technologies</a></li>
+            <li><a href="../blog.html">Blog</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section with Blog Image as Background -->
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Is AI Finally Learning to Think? Meet DeepSeek R1</h1>
+            <div class="blog-meta">Published on June 10, 2024 | Category: Artificial Intelligence</div>
+        </div>
+    </div>
+
+    <!-- Blog Post Content -->
+    <div class="blog-post-container">
+        <div class="blog-content">
+            <p>Have you ever wished AI could actually explain how it arrived at an answer instead of just giving you a response? Imagine an AI that doesn't just provide solutions but walks you through its reasoning, step by step, much like a skilled teacher
+                guiding a student. One that doesn't just memorize data but <strong>learns from its mistakes, improves over time, and truly understands complex problems</strong>.</p>
+
+            <p>For years, AI models like ChatGPT have impressed us with their ability to generate human-like responses. But let's be honest—while they can sound convincing, they sometimes get things completely wrong. The issue? Traditional AI models focus
+                more on <strong>sounding right</strong> rather than <strong>thinking through problems logically</strong>.</p>
+
+            <h2>What Makes DeepSeek R1 So Different?</h2>
+            <p>Unlike most AI models that rely on <span class="tech-term">statistical probabilities</span> to generate text, DeepSeek R1 is designed to <strong>think more like a human</strong>. Four key innovations set it apart:</p>
+
+            <h3>✅ Chain of Thought (CoT) Reasoning</h3>
+            <p>Instead of jumping straight to an answer, DeepSeek R1 "thinks out loud," breaking problems into <strong>logical steps</strong>. This leads to greater accuracy and transparency in its responses.</p>
+
+            <h3>✅ Reinforcement Learning (RL) Optimization</h3>
+            <p>Traditional AI models rely on pre-set knowledge, but DeepSeek R1 <strong>evaluates its own answers</strong>, compares previous responses, and <strong>improves over time</strong>. It uses <span class="tech-term">Group Relative Policy Optimization (GRPO)</span>                to score its performance and refine its decision-making—just like humans do when learning from experience.</p>
+
+            <h3>✅ Model Distillation for Accessibility</h3>
+            <p>Running a 671-billion-parameter AI model takes enormous computing power. To make this technology more accessible, the DeepSeek R1 team has <strong>created smaller, distilled versions</strong> that require as little as <strong>48GB of RAM</strong>,
+                allowing advanced AI to run on personal devices.</p>
+
+            <h3>✅ Open-Sourcing of Reasoning Tokens</h3>
+            <p>Unlike proprietary models that keep their inner workings secret, DeepSeek R1 embraces <strong>transparency</strong>. By making its reasoning process <strong>publicly available</strong>, it invites developers to analyze, refine, and build upon
+                its capabilities.</p>
+
+            <h2>How Does DeepSeek R1 Compare to ChatGPT?</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>ChatGPT-4</th>
+                        <th>DeepSeek R1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Feature">Reasoning Quality</td>
+                        <td data-label="ChatGPT-4">High, but can sometimes guess</td>
+                        <td data-label="DeepSeek R1">Specifically optimized for deep reasoning</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Transparency</td>
+                        <td data-label="ChatGPT-4">Provides answers, but reasoning is often unclear</td>
+                        <td data-label="DeepSeek R1">Clearly explains its thought process</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Self-Improvement</td>
+                        <td data-label="ChatGPT-4">Pre-trained with fixed knowledge</td>
+                        <td data-label="DeepSeek R1">Learns from its own responses</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Computational Demand</td>
+                        <td data-label="ChatGPT-4">Optimized for speed and fluency</td>
+                        <td data-label="DeepSeek R1">Requires more processing but delivers stronger reasoning</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Feature">Open-Source Elements</td>
+                        <td data-label="ChatGPT-4">Limited</td>
+                        <td data-label="DeepSeek R1">Open-source reasoning tokens</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>Why Does This Matter?</h2>
+            <p>AI is already reshaping industries—from <strong>automating business processes to assisting in medical research</strong>. But to truly be trusted in critical applications, AI needs to be more than just convincing—it needs to be <strong>accurate, logical, and transparent</strong>.</p>
+
+            <p>DeepSeek R1's ability to <strong>explain its thought process</strong> makes it a potential game-changer in fields like:</p>
+
+            <ul>
+                <li><strong>Scientific Research</strong> — Assisting researchers with structured explanations and logical deductions.</li>
+                <li><strong>AI-Assisted Coding</strong> — Debugging complex problems and improving software development efficiency.</li>
+                <li><strong>Business Decision-Making</strong> — Generating data-backed insights that explain <strong>why</strong> rather than just providing results.</li>
+                <li><strong>Complex Agent Planning</strong> — Optimizing logistics and supply chain management with multi-step problem-solving.</li>
+            </ul>
+
+            <h2>The Future of AI: Smarter, More Transparent Models</h2>
+            <p>DeepSeek R1 marks the beginning of a new era—where AI is not just <strong>trained on vast amounts of data</strong> but can <strong>actively reason and improve</strong> over time. Instead of being limited to pre-existing knowledge, models like
+                DeepSeek R1 refine their understanding by analyzing their own responses and learning from experience.</p>
+
+            <p>This could set a new standard for AI—where <strong>clarity, logic, and adaptability</strong> are just as important as speed and fluency. As reasoning-focused models like DeepSeek R1 continue to evolve, we may be witnessing the next step in
+                <strong>AI's journey toward true problem-solving intelligence</strong>.</p>
+
+            <a href="../blog.html" class="back-button">← Back to All Blogs</a>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="../assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        gsap.fromTo('footer', {
+            opacity: 0,
+            y: 50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '.blog-post-container',
+                start: 'bottom 80%',
+                toggleActions: 'play none none none'
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            // Navigation Logic
+            document.querySelector('.icon').addEventListener('click', function(e) {
+                e.stopPropagation();
+                const navUl = document.querySelector('nav ul');
+                navUl.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(e) {
+                const navUl = document.querySelector('nav ul');
+                const icon = document.querySelector('.icon');
+                if (!navUl.contains(e.target) && !icon.contains(e.target) && navUl.classList.contains('show')) {
+                    navUl.classList.remove('show');
+                    document.querySelectorAll('.drop-menu').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                        arrow.style.transform = 'rotate(0deg)';
+                    });
+                }
+            });
+
+            // Scroll Animation for Blog Post
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.blog-post-container').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+
+</html>

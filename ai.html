@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>AI Features Section</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: #ffffff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        /* Hero Section Styles */
+        
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 70px;
+            perspective: 1000px;
+            z-index: 2;
+        }
+        
+        .parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/Rectangle\ 3470930.png') no-repeat center center/cover;
+            z-index: -1;
+            transform: scale(1.1);
+            animation: parallaxShift 15s infinite ease-in-out;
+        }
+        
+        @keyframes parallaxShift {
+            0%,
+            100% {
+                transform: scale(1.1) translate(0, 0);
+            }
+            50% {
+                transform: scale(1.15) translate(-2%, -2%);
+            }
+        }
+        
+        .orange-container {
+            width: 100%;
+            max-width: 1700px;
+            background: rgba(94, 32, 160, 0.5);
+            padding: 20px 40px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(-50px) rotateX(-30deg);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            gap: 60px;
+            margin-bottom: 40px;
+            min-height: 220px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform-style: preserve-3d;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+        
+        .orange-container .heading {
+            font-weight: bold;
+            color: white;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        
+        .orange-container .heading .big-e {
+            position: relative;
+            font-size: 250px;
+            color: rgba(255, 255, 255, 0.56);
+            font-weight: 400;
+            line-height: 1;
+            transform: translateZ(40px);
+            transition: transform 0.5s ease;
+            margin: 0 10px;
+        }
+        
+        .orange-container .heading span {
+            font-size: 100px;
+            color: white;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .orange-container .description {
+            font-size: 22px;
+            color: white;
+            opacity: 0;
+            max-width: 550px;
+            font-weight: 400;
+            border-left: 8px solid white;
+            padding-left: 30px;
+            text-align: left;
+            line-height: 1.4;
+        }
+        
+        .content-container {
+            width: 95%;
+            max-width: 1400px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(6px);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            margin: 0 auto 20px;
+            opacity: 0;
+            transform: translateY(50px) rotateX(30deg);
+            box-sizing: border-box;
+            transform-style: preserve-3d;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tab {
+            padding: 8px 20px;
+            border: none;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateZ(20px) rotateX(10deg);
+        }
+        
+        .tab.active {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateZ(30px);
+        }
+        
+        .services-heading {
+            font-size: 25px;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(5, 170px);
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-items: center;
+            justify-content: center;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 10px;
+            border: 2px solid white;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 160px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px) rotateX(-15deg);
+            transform-style: preserve-3d;
+            background: rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+            overflow: visible;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(0) scale(1.05);
+        }
+        
+        .stat-box i {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            background: green;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            transform: translateZ(10px);
+        }
+        
+        .stat-name {
+            font-size: 1rem;
+            color: white;
+            line-height: 1.1;
+            font-weight: 500;
+        }
+        
+        .content-description {
+            font-size: 1rem;
+            color: white;
+            margin-top: 0px;
+            opacity: 0;
+            transform: translateY(20px) translateZ(10px);
+            line-height: 1.6;
+            text-align: center;
+        }
+        /* Section 3 */
+        
+        .sec-3 {
+            font-family: "Montserrat", sans-serif;
+            background-color: #f4f4f4;
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .ai-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .ai-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            border-radius: 15px;
+            overflow: visible;
+            width: 100%;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0.1));
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            min-height: 300px;
+        }
+        
+        .ai-section.active {
+            display: flex;
+        }
+        
+        .ai-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+        
+        .ai-section:hover::before {
+            opacity: 0.5;
+        }
+        
+        .ai-section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .ai-section img {
+            width: 100%;
+            height: auto;
+            min-height: 150px;
+            max-height: 200px;
+            object-fit: cover;
+            opacity: 0;
+            border-radius: 15px 15px 0 0;
+            transform: translateY(-100%);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .ai-section.in-view img {
+            opacity: 0.5;
+            transform: translateY(0);
+            animation: fallIn 0.8s ease-out forwards;
+        }
+        
+        .ai-section:hover img {
+            opacity: 0.7;
+            transform: translateY(0) rotate(2deg);
+        }
+        
+        @keyframes fallIn {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            80% {
+                transform: translateY(10px);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+        }
+        
+        .ai-section-content {
+            padding: 1rem;
+            width: 100%;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .ai-section-content h2 {
+            font-size: clamp(1.2rem, 4vw, 2rem);
+            margin-bottom: 0.75rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        
+        .ai-section.in-view h2 {
+            opacity: 1;
+        }
+        
+        .ai-section-content h2::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transform: translateX(-100%);
+            transition: transform 0s;
+        }
+        
+        .ai-section.in-view h2::after {
+            animation: wipe 1s ease forwards 0.5s;
+        }
+        
+        @keyframes wipe {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .ai-section-content p {
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.8s ease 0.4s;
+        }
+        
+        .ai-section.in-view p {
+            opacity: 1;
+        }
+        
+        .ai-blue {
+            background-color: rgba(0, 96, 161, 0.9);
+        }
+        
+        .ai-dark-blue {
+            background-color: rgba(8, 59, 145, 0.9);
+        }
+        
+        .ai-teal {
+            background-color: rgba(0, 150, 161, 0.9);
+        }
+        
+        .ai-green {
+            background-color: rgba(13, 128, 0, 0.9);
+        }
+        
+        .ai-purple {
+            background-color: rgba(83, 0, 161, 0.9);
+        }
+        
+        .ai-dots {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0 2rem;
+        }
+        
+        .ai-dot {
+            width: 8px;
+            height: 8px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .ai-dot.active {
+            transform: scale(1.3);
+            background-color: #333;
+        }
+        /* Section 4 */
+        
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            60% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 1300px) {
+            .hero-section {
+                height: 112vh;
+            }
+            .orange-container .description {
+                font-size: 18px;
+            }
+            .orange-container .heading .big-e {
+                font-size: 220px;
+            }
+            .orange-container {
+                padding: 20px;
+                gap: 50px;
+                min-height: 200px;
+            }
+            .stats-container {
+                gap: 3px;
+            }
+            .stat-box {
+                max-width: 150px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .hero-section {
+                height: 110vh;
+                padding-top: 30px;
+            }
+            .orange-container {
+                gap: 30px;
+                min-height: 180px;
+            }
+            .orange-container .heading .big-e {
+                font-size: 180px;
+            }
+            .orange-container .heading span {
+                font-size: 70px;
+            }
+            .orange-container .description {
+                font-size: 18px;
+                max-width: 500px;
+                padding-left: 20px;
+            }
+            .content-container {
+                width: 90%;
+                padding: 15px;
+            }
+            .services-heading {
+                font-size: 24px;
+            }
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 3px;
+            }
+            .stat-box {
+                max-width: 140px;
+                padding: 8px;
+            }
+            .stat-name {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 1000px) {
+            .orange-container .description {
+                font-size: 16px;
+                max-width: 450px;
+                padding-left: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 130vh;
+                padding-top: 0px;
+            }
+            .orange-container {
+                flex-direction: column;
+                gap: 15px;
+                min-height: 220px;
+                padding: 20px;
+                align-items: center;
+                justify-content: center;
+            }
+            .orange-container .heading {
+                flex-direction: row;
+                align-items: center;
+            }
+            .orange-container .heading .big-e {
+                font-size: 140px;
+                margin: 0 5px;
+            }
+            .orange-container .heading span {
+                font-size: 50px;
+            }
+            .orange-container .description {
+                font-size: 16px;
+                border-left: none;
+                border-top: 4px solid white;
+                padding-left: 0;
+                padding-top: 10px;
+                text-align: center;
+                max-width: 100%;
+            }
+            .content-container {
+                width: 95%;
+                padding: 10px;
+            }
+            .services-heading {
+                font-size: 20px;
+            }
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 10px;
+            }
+            .stat-box {
+                max-width: 130px;
+                padding: 8px;
+            }
+            .stat-name {
+                font-size: 0.75rem;
+            }
+            .tab {
+                padding: 6px 15px;
+            }
+            .content-description {
+                font-size: 0.9rem;
+            }
+            .ai-section {
+                width: 90%;
+                margin: 0 auto;
+                padding: 0.5rem;
+            }
+            .ai-section img {
+                border-radius: 10px 10px 0 0;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .sec-3 {
+                padding: 2rem 0;
+            }
+            .ai-container {
+                gap: 1.5rem;
+                padding: 0;
+            }
+            .ai-section {
+                display: flex;
+                flex-direction: row;
+                height: 350px;
+                width: 98%;
+                max-width: 1400px;
+                margin: 0;
+                opacity: 0;
+            }
+            .ai-section:nth-child(odd) {
+                margin-left: 0;
+                margin-right: auto;
+                transform: translateX(-100px);
+                border-radius: 0 15px 15px 0;
+            }
+            .ai-section:nth-child(even) {
+                margin-right: 0;
+                margin-left: auto;
+                transform: translateX(100px);
+                flex-direction: row-reverse;
+                border-radius: 15px 0 0 15px;
+            }
+            .ai-section img {
+                width: 50%;
+                height: 100%;
+                max-height: none;
+                border-radius: 0;
+            }
+            .ai-section-content {
+                width: 50%;
+                padding: 2rem;
+            }
+            .ai-section-content h2,
+            .ai-section-content p {
+                text-align: left;
+            }
+            .ai-dots {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .ai-section img {
+                width: 40%;
+            }
+            .ai-section-content {
+                width: 60%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                height: 130vh;
+                padding-top: 20px;
+            }
+            .orange-container {
+                gap: 10px;
+                min-height: 200px;
+                padding: 15px;
+                margin-top: 35px;
+            }
+            .orange-container .heading {
+                flex-direction: column;
+                align-items: center;
+            }
+            .orange-container .heading .big-e {
+                font-size: 100px;
+                margin: 0;
+            }
+            .orange-container .heading span {
+                font-size: 36px;
+            }
+            .orange-container .description {
+                font-size: 14px;
+                padding-top: 8px;
+            }
+            .content-container {
+                width: 98%;
+                padding: 8px;
+            }
+            .services-heading {
+                font-size: 18px;
+            }
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 6px;
+            }
+            .stat-box {
+                max-width: 120px;
+                padding: 10px;
+            }
+            .stat-name {
+                font-size: 0.7rem;
+            }
+            .stat-box i {
+                width: 16px;
+                height: 16px;
+                font-size: 8px;
+            }
+            .tab {
+                padding: 5px 12px;
+            }
+            .content-description {
+                font-size: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .hero-section {
+                height: 150vh;
+                padding-top: 20px;
+            }
+            .orange-container .heading .big-e {
+                font-size: 90px;
+            }
+            .orange-container .heading span {
+                font-size: 32px;
+            }
+            .services-heading {
+                font-size: 16px;
+            }
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                gap: 5px;
+            }
+            .stat-box {
+                max-width: 100px;
+                padding: 5px;
+            }
+            .stat-name {
+                font-size: 0.6rem;
+            }
+        }
+        
+        .sec-4 {
+            padding: 4rem 1rem;
+            text-align: center;
+            background: white;
+        }
+        
+        .sec-4 h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #222;
+            position: relative;
+        }
+        
+        .sec-4 h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #5300a1, #0060a1);
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .service-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            opacity: 1;
+            /* Changed from 0 to 1 to ensure visibility */
+            transform: translateY(0);
+            /* Changed from 50px to 0 to ensure visibility */
+        }
+        /* Top Border Hover Effect */
+        
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #5300a1, #0060a1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-img-container {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .service-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="mainlogo">
+            <img src="assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <div class="icon">
+            <span class="fa fa-bars"></span>
+        </div>
+        <ul>
+            <li><a href="company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="ecom.html">E-commerce</a></li>
+                    <li><a href="web.html">Web & Mobility</a></li>
+                    <li><a href="sales.html">Salesforce Implementation</a></li>
+                    <li><a href="staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="farm.html">Farm2Plate</a></li>
+                    <li><a href="infracon.html">Infracon</a></li>
+                    <li><a href="land.html">Land Acquisition</a></li>
+                    <li><a href="owc.html">OWC</a></li>
+                    <li><a href="tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="technology.html">Technologies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Hero Section (First Section) -->
+    <section class="hero-section">
+        <div class="parallax"></div>
+        <div class="orange-container">
+            <div class="heading"><span>AI</span><span class="big-e">&</span><span>ML</span></div>
+            <div class="description">Providing Supply Chain automation platforms with innovative solutions for enhanced efficiency and optimization.</div>
+        </div>
+        <div class="content-container">
+            <div class="tabs"><button class="tab" onclick="switchTab(2)">Business Intelligence</button><button class="tab" onclick="switchTab(2)">Staffing & Support</button><button class="tab active" onclick="switchTab(1)">AI & ML</button><button class="tab" onclick="switchTab(2)">Web & Mobility</button>
+                <button class="tab" onclick="switchTab(2)">E-Governance</button>
+            </div>
+            <div class="services-heading">Services We Offer</div>
+            <div class="stats-container">
+                <div class="stat-box"><i class="fas fa-check"></i>
+                    <div class="stat-name">Einstein AI Implementation</div>
+                </div>
+                <div class="stat-box"><i class="fas fa-check"></i>
+                    <div class="stat-name">Machine Learning Models</div>
+                </div>
+                <div class="stat-box"><i class="fas fa-check"></i>
+                    <div class="stat-name">Chatbot</div>
+                </div>
+                <div class="stat-box"><i class="fas fa-check"></i>
+                    <div class="stat-name">Predictive Analysis</div>
+                </div>
+                <div class="stat-box"><i class="fas fa-check"></i>
+                    <div class="stat-name">Recommendation Engine</div>
+                </div>
+            </div>
+            <div class="content-description">
+                <p>By integrating these advanced predictive capabilities, Akiko Sherman Infotech helps your business not only understand current performance but also prepare for future challenges and opportunities, ensuring sustained growth and competitiveness.
+                    Let us help you unlock the full potential of your data and drive your business forward with confidence.</p>
+            </div>
+        </div>
+    </section>
+    <section class="sec-3">
+        <div class="ai-container">
+            <div class="ai-section ai-blue active">
+                <img src="assets/Einstein ai implementation.png" alt="Einstein AI">
+                <div class="ai-section-content">
+                    <h2>Einstein AI Implementation</h2>
+                    <p>We drive productivity and personalization with predictive and generative AI across the Customer 360 with Salesforce Einstein Implementation. We help our clients create and deploy assistive AI experiences natively in Salesforce, allowing
+                        our customers & employees to converse with Einstein to solve issues faster and work smarter.</p>
+                </div>
+            </div>
+            <div class="ai-section ai-dark-blue">
+                <img src="assets/machinelearningmodels.png" alt="Machine Learning">
+                <div class="ai-section-content">
+                    <h2>Machine Learning Models</h2>
+                    <p>Unlock your data's potential with Akiko Sherman Infotech's machine learning services. Our solutions transform raw data into insights, personalizing customer experiences, optimizing marketing, managing inventory, and boosting retention.
+                        Propel your business forward with our expert team and bespoke solutions.</p>
+                </div>
+            </div>
+            <div class="ai-section ai-teal">
+                <img src="assets/chatbot.png" alt="ChatBot">
+                <div class="ai-section-content">
+                    <h2>ChatBot</h2>
+                    <p>Ever wished for customer support that never sleeps? Say hello to Akiko Sherman Infotech's dynamic chatbot development services! Our chatbots are more than just assistants; they're your 24/7 solution for seamless interactions, streamlined
+                        service, and satisfied users. Let's revolutionize your customer engagement—let's chat!</p>
+                </div>
+            </div>
+            <div class="ai-section ai-green">
+                <img src="assets/predictive analysis.png" alt="Predictive Analysis">
+                <div class="ai-section-content">
+                    <h2>Predictive Analysis</h2>
+                    <p>Ready to predict your business's future? With Akiko Sherman Infotech, your data becomes a crystal ball! Our predictive analytics unveil hidden patterns, forecast trends, and empower strategic decisions. Say goodbye to guesswork—let's
+                        predict and prosper together!</p>
+                </div>
+            </div>
+            <div class="ai-section ai-purple">
+                <img src="assets/recommendation engine.png" alt="Recommendation Engine">
+                <div class="ai-section-content">
+                    <h2>Recommendation Engine</h2>
+                    <p>Upgrade your suggestions with Akiko Sherman Infotech's personalized recommendation engine! Say hello to a world where every recommendation feels tailor-made. Let's revolutionize how you discover—let's recommend and redefine together!</p>
+                </div>
+            </div>
+        </div>
+        <div class="ai-dots"></div>
+    </section>
+    <section class="sec-4">
+        <h2>Why Choose Our AI/ML Services?</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <img src="assets/smart decisiion making.png" alt="Smart Decision-Making">
+                <p>Smart Decision-Making</p>
+            </div>
+            <div class="service-item">
+                <img src="assets/data security.png" alt="Data Security">
+                <p>Data Security</p>
+            </div>
+            <div class="service-item">
+                <img src="assets/scalable solutions.png" alt="Scalable Solutions">
+                <p>Scalable Solutions</p>
+            </div>
+            <div class="service-item">
+                <img src="assets/innovation unleashed.png" alt="Innovation Unleashed">
+                <p>Innovation Unleashed</p>
+            </div>
+            <div class="service-item">
+                <img src="assets/tailored for u.png" alt="Tailored for You">
+                <p>Tailored for You</p>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll(".ai-section");
+            const dotsContainer = document.querySelector(".ai-dots");
+            let currentIndex = 0;
+            let interval;
+
+            // Preload images
+            const preloadImages = [
+                'assets/image 4.png', 'assets/Rectangle 3470164.jpg', 'assets/Einstein ai implementation.png',
+                'assets/machinelearningmodels.png', 'assets/chatbot.png', 'assets/predictive analysis.png',
+                'assets/recommendation engine.png', 'assets/smart decisiion making.png', 'assets/data security.png',
+                'assets/scalable solutions.png', 'assets/innovation unleashed.png', 'assets/tailored for u.png'
+            ];
+            preloadImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+
+            // Slideshow functionality for small screens
+            function showSlide(index) {
+                sections.forEach((section, i) => {
+                    section.classList.toggle("active", i === index);
+                    section.style.display = i === index ? "flex" : "none"; // Explicitly control display
+                });
+                dotsContainer.querySelectorAll(".ai-dot").forEach((dot, i) => {
+                    dot.classList.toggle("active", i === index);
+                });
+            }
+
+            function createDots() {
+                dotsContainer.innerHTML = "";
+                sections.forEach((_, index) => {
+                    const dot = document.createElement("div");
+                    dot.classList.add("ai-dot");
+                    if (index === 0) dot.classList.add("active");
+                    dot.addEventListener("click", () => {
+                        currentIndex = index;
+                        showSlide(index);
+                        clearInterval(interval); // Reset auto-slide on manual interaction
+                        startAutoSlide();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function startAutoSlide() {
+                clearInterval(interval);
+                interval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % sections.length;
+                    showSlide(currentIndex);
+                }, 3000);
+            }
+
+            // Handle resize and initial setup
+            function handleResize() {
+                if (window.innerWidth < 768) {
+                    createDots();
+                    showSlide(currentIndex);
+                    startAutoSlide();
+                } else {
+                    clearInterval(interval);
+                    dotsContainer.innerHTML = "";
+                    sections.forEach(section => {
+                        section.classList.add("active");
+                        section.style.display = "flex"; // Ensure all sections are visible
+                    });
+                }
+            }
+
+            // GSAP Animations
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Hero Section Animations
+            gsap.fromTo('.orange-container', {
+                opacity: 0,
+                y: 100,
+                rotateX: -60
+            }, {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 1.5,
+                ease: 'power3.out'
+            });
+
+            gsap.fromTo('.orange-container .description', {
+                opacity: 0,
+                y: 50,
+                rotateX: -30
+            }, {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 1,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+
+            gsap.fromTo('.content-container', {
+                opacity: 0,
+                y: 150,
+                rotateX: 60
+            }, {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 1.5,
+                ease: 'power3.out'
+            });
+
+            gsap.fromTo('.services-heading', {
+                opacity: 0,
+                y: 50,
+                rotateX: -20
+            }, {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 1,
+                delay: 0.3,
+                ease: 'power3.out'
+            });
+
+            gsap.utils.toArray('.stat-box').forEach((box, index) => {
+                gsap.fromTo(box, {
+                    opacity: 0,
+                    y: 50,
+                    rotateX: -45
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    rotateX: 0,
+                    duration: 1,
+                    delay: index * 0.2,
+                    ease: 'power3.out'
+                });
+            });
+
+            gsap.fromTo('.content-description', {
+                opacity: 0,
+                y: 50,
+                rotateX: -20
+            }, {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                duration: 1,
+                delay: 0.5,
+                ease: 'power3.out'
+            });
+
+            // Parallax Effect for .parallax
+            gsap.to('.parallax', {
+                y: '10%',
+                scale: 1.15,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero-section',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            // AI Section Animations
+            gsap.utils.toArray('.ai-section').forEach(section => {
+                gsap.fromTo(section, {
+                    opacity: 0,
+                    x: section.classList.contains('ai-section:nth-child(odd)') ? -100 : 100
+                }, {
+                    opacity: 1,
+                    x: 0,
+                    duration: 1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reset'
+                    }
+                });
+            });
+
+            // Sec-4 Animations
+            gsap.fromTo('.sec-4 h2', {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.sec-4',
+                    start: 'top 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            gsap.utils.toArray('.service-item').forEach((item, index) => {
+                gsap.fromTo(item, {
+                    opacity: 0,
+                    y: 50
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: index * 0.1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: '.sec-4',
+                        start: 'top 80%',
+                        toggleActions: 'play none none none'
+                    }
+                });
+            });
+
+            // Footer Animation
+            gsap.fromTo('footer', {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power4.out',
+                scrollTrigger: {
+                    trigger: '.sec-4',
+                    start: 'bottom 80%',
+                    toggleActions: 'play none none none'
+                }
+            });
+
+            // Initial setup and resize handling
+            handleResize();
+            window.addEventListener("resize", handleResize);
+
+            // Intersection Observer for additional animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                    }
+                });
+            }, {
+                threshold: 0.3
+            });
+
+            document.querySelectorAll(".ai-section, .sec-4 h2, .service-item, .footer-section, .footer-section1").forEach(el => {
+                observer.observe(el);
+            });
+
+            // Navigation JavaScript from Infracon
+            const icon = document.querySelector('.icon');
+            const navUl = document.querySelector('nav ul');
+
+            icon.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navUl.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!navUl.contains(e.target) && !icon.contains(e.target) && navUl.classList.contains('show')) {
+                    navUl.classList.remove('show');
+                    document.querySelectorAll('.drop-menu').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                        arrow.style.transform = 'rotate(0deg)';
+                    });
+                }
+            });
+
+            const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+            dropdownArrows.forEach(arrow => {
+                arrow.parentElement.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 1160) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdown = this.nextElementSibling;
+                        const isVisible = dropdown.style.display === 'block';
+                        dropdown.style.display = isVisible ? 'none' : 'block';
+                        arrow.style.transform = isVisible ? 'rotate(0deg)' : 'rotate(180deg)';
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 1160) {
+                    dropdownArrows.forEach(arrow => {
+                        const dropdown = arrow.parentElement.nextElementSibling;
+                        if (!arrow.parentElement.contains(e.target) && !dropdown.contains(e.target)) {
+                            dropdown.style.display = 'none';
+                            arrow.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

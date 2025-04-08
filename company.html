@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* [Previous CSS styles remain unchanged] */
+        
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background: #ffffff;
+            color: #333;
+        }
+        
+        .sec-5 {
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 90px;
+        }
+        
+        main {
+            width: 100%;
+            background-color: white;
+        }
+        /* Carousel Container */
+        
+        .sec-5 #carousel {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .sec-5 #carousel div {
+            position: absolute;
+            transition: transform 400ms, left 400ms, opacity 400ms, z-index 0s;
+            opacity: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sec-5 #carousel div img {
+            width: 400px;
+            transition: width 400ms;
+            -webkit-user-drag: none;
+            border-radius: 10px;
+        }
+        /* Carousel Item Positions */
+        
+        .sec-5 #carousel div.hideLeft {
+            left: -100%;
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+        
+        .sec-5 #carousel div.hideLeft img {
+            width: 200px;
+        }
+        
+        .sec-5 #carousel div.hideRight {
+            left: 100%;
+            opacity: 0;
+            transform: translateX(50%);
+        }
+        
+        .sec-5 #carousel div.hideRight img {
+            width: 200px;
+        }
+        
+        .sec-5 #carousel div.prev {
+            z-index: 5;
+            left: 30%;
+            transform: translateY(50px) translateX(-50%);
+        }
+        
+        .sec-5 #carousel div.prev img {
+            width: 300px;
+        }
+        
+        .sec-5 #carousel div.prevLeftSecond {
+            z-index: 4;
+            left: 15%;
+            transform: translateY(50%) translateX(-50%);
+            opacity: 0.7;
+        }
+        
+        .sec-5 #carousel div.prevLeftSecond img {
+            width: 200px;
+        }
+        
+        .sec-5 #carousel div.selected {
+            z-index: 10;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .sec-5 #carousel div.next {
+            z-index: 5;
+            left: 70%;
+            transform: translateY(50px) translateX(-50%);
+        }
+        
+        .sec-5 #carousel div.next img {
+            width: 300px;
+        }
+        
+        .sec-5 #carousel div.nextRightSecond {
+            z-index: 4;
+            left: 85%;
+            transform: translateY(50%) translateX(-50%);
+            opacity: 0.7;
+        }
+        
+        .sec-5 #carousel div.nextRightSecond img {
+            width: 200px;
+        }
+        /* Titles and Descriptions Section */
+        
+        .sec-5 #titles-descriptions {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .sec-5 .mainhead {
+            display: flex;
+            font-size: 64px;
+            justify-content: center;
+            align-items: center;
+            color: rgba(90, 90, 90, 1);
+            width: 100%;
+            margin-bottom: 40px;
+            background: white;
+        }
+        
+        .title-description {
+            display: none;
+        }
+        
+        .title-description.active {
+            display: block;
+            background-color: rgb(254, 254, 254);
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .title-description.active.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .title-description.active h1 {
+            font-size: 30px;
+            color: rgba(90, 90, 90, 1);
+            font-weight: lighter;
+        }
+        
+        .title-description.active h3 {
+            font-size: 25px;
+            font-weight: bolder;
+            margin-bottom: 20px;
+            color: rgb(34, 126, 225);
+        }
+        
+        .title-description.active p {
+            font-size: 20px;
+            color: rgb(23, 23, 23);
+        }
+        /* Dots Container */
+        
+        .dots-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .dot.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dot.active {
+            background-color: hsl(212, 100%, 47%);
+        }
+        /* Responsive Styles */
+        
+        @media (max-width: 768px) {
+            .sec-5 #carousel {
+                height: auto;
+                min-height: 300px;
+            }
+            .sec-5 #carousel div {
+                width: 100%;
+            }
+            .sec-5 #carousel div img {
+                width: 300px;
+                height: auto;
+            }
+            .sec-5 #carousel div.selected {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .sec-5 #carousel div.prev,
+            .sec-5 #carousel div.next,
+            .sec-5 #carousel div.prevLeftSecond,
+            .sec-5 #carousel div.nextRightSecond {
+                display: none;
+            }
+            .sec-5 .mainhead {
+                font-size: 48px;
+            }
+            .title-description.active h1 {
+                font-size: 24px;
+            }
+            .title-description.active h3 {
+                font-size: 20px;
+            }
+            .title-description.active p {
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sec-5 #carousel {
+                min-height: 200px;
+            }
+            .sec-5 #carousel div img {
+                width: 200px;
+            }
+            .sec-5 .mainhead {
+                font-size: 36px;
+            }
+            .title-description.active h1 {
+                font-size: 20px;
+            }
+            .title-description.active h3 {
+                font-size: 18px;
+            }
+            .title-description.active p {
+                font-size: 14px;
+            }
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary-color: #1b219a;
+            --secondary-color: #333;
+            --background-gradient: linear-gradient(135deg, #f5f5f5, #e0e0e6);
+            --spacing: 20px;
+            --border-radius: 10px;
+            --transition-speed: 0.3s;
+            --primary-color1: #1e90ff;
+            --secondary-color1: #333;
+            --gradient-blue: linear-gradient(135deg, #0a1f3d, #1c3b6a);
+            --spacing1: 20px;
+            --border-radius1: 10px;
+            --transition-speed1: 0.3s;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        /* Hero Section (Section 1) */
+        
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 15px;
+            perspective: 1000px;
+            z-index: 2;
+            width: 100vw;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+            background: url('assets/Rectangle 3471234.png') no-repeat center center/cover;
+            background-attachment: fixed;
+            z-index: -1;
+            transform: scale(1);
+            will-change: transform;
+        }
+        
+        .orange-container {
+            width: 100vw;
+            background: rgba(50, 106, 178, 0.5);
+            padding: 20px 40px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px) rotateX(-20deg);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 0 40px 0;
+            gap: 30px;
+            min-height: 180px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform-style: preserve-3d;
+            transition: all 0.5s ease-out;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .orange-container.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
+        
+        .orange-container .heading {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            line-height: 1.2;
+        }
+        
+        .orange-container .heading span:first-child {
+            font-size: 80px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        
+        .orange-container .heading span:last-child {
+            font-size: 90px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        
+        .orange-container .description {
+            font-size: 20px;
+            color: #ffffff;
+            max-width: 600px;
+            font-weight: 500;
+            border-left: 6px solid #ffffff;
+            padding-left: 30px;
+            text-align: left;
+            line-height: 1.5;
+            transform: translateZ(20px);
+        }
+        
+        .content-container {
+            width: 100%;
+            max-width: 1400px;
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto;
+            background: none;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0 10px;
+            min-height: 200px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background: #10101055;
+            width: 100%;
+            max-width: 200px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px) rotateX(-15deg);
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .stat.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
+        
+        .stat i {
+            color: #ffffff;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .stat .count {
+            font-size: 3rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        
+        .stat .count::after {
+            content: '+';
+            font-size: 1.8rem;
+            margin-left: 6px;
+            color: #ffffff;
+        }
+        
+        .stat p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+        
+        @media (max-width: 1200px) {
+            .orange-container .heading span:first-child {
+                font-size: 60px;
+            }
+            .orange-container .heading span:last-child {
+                font-size: 70px;
+            }
+            .orange-container .description {
+                font-size: 14px;
+                max-width: 400px;
+            }
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+            .orange-container {
+                padding: 15px 40px;
+                gap: 20px;
+            }
+            .stat .count {
+                font-size: 2.5rem;
+            }
+            .stat p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 130vh;
+                padding: 50px 10px;
+            }
+            .parallax {
+                height: 100%;
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            .orange-container {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+                width: 100%;
+                min-height: auto;
+            }
+            .orange-container .heading {
+                align-items: center;
+                text-align: center;
+            }
+            .orange-container .heading span:first-child {
+                font-size: 45px;
+            }
+            .orange-container .heading span:last-child {
+                font-size: 55px;
+            }
+            .orange-container .description {
+                font-size: 16px;
+                border-left: none;
+                border-top: 4px solid #ffffff;
+                padding-left: 0;
+                padding-top: 15px;
+                text-align: center;
+                max-width: 100%;
+            }
+            .content-container {
+                padding: 10px;
+            }
+            .stats-container {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 15px;
+                padding: 0 5px;
+            }
+            .stat {
+                padding: 15px;
+                max-width: 180px;
+            }
+            .stat .count {
+                font-size: 2rem;
+            }
+            .stat p {
+                font-size: 1rem;
+            }
+            .stat i {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 180vh;
+                padding: 30px 5px;
+            }
+            .orange-container {
+                padding: 10px;
+                gap: 10px;
+            }
+            .orange-container .heading span:first-child {
+                font-size: 35px;
+            }
+            .orange-container .heading span:last-child {
+                font-size: 45px;
+            }
+            .orange-container .description {
+                font-size: 14px;
+                padding-top: 10px;
+            }
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            .stat {
+                padding: 10px;
+                max-width: 100%;
+            }
+            .stat .count {
+                font-size: 1.8rem;
+            }
+            .stat p {
+                font-size: 0.9rem;
+            }
+            .stat i {
+                font-size: 1.6rem;
+            }
+        }
+        /* Software Innovation Section (Section 2) */
+        
+        .software-innovation {
+            margin: 0px auto;
+            padding: 100px 50px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-sizing: border-box;
+            border-radius: var(--border-radius);
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        
+        .content {
+            width: 50%;
+            padding-left: 20px;
+            box-sizing: border-box;
+            opacity: 0;
+        }
+        
+        .content h1 {
+            font-size: 2.8em;
+            color: var(--secondary-color);
+            margin: 0 0 20px;
+            line-height: 1.3;
+            font-weight: 900;
+        }
+        
+        .content h1 strong {
+            color: var(--primary-color);
+            font-weight: 900;
+            font-size: 1.1em;
+        }
+        
+        .content p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing);
+            width: 40%;
+            box-sizing: border-box;
+            opacity: 0;
+        }
+        
+        .grid-item {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            transition: transform var(--transition-speed) ease;
+        }
+        
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .grid-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.512);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity var(--transition-speed) ease;
+        }
+        
+        .grid-item .real-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 1;
+        }
+        
+        .grid-item:hover .overlay {
+            opacity: 0;
+        }
+        
+        .grid-item.mission {
+            transform: translateY(-20px);
+        }
+        
+        .grid-item.vision {
+            transform: translateY(20px);
+        }
+        
+        .grid-item.philosophy {
+            transform: translateY(-20px);
+        }
+        
+        .grid-item.strategy {
+            transform: translateY(20px);
+        }
+        
+        @media (max-width: 768px) {
+            .software-innovation {
+                flex-direction: column;
+                padding: 50px 20px;
+                align-items: flex-start;
+            }
+            .grid-item.mission,
+            .grid-item.vision,
+            .grid-item.philosophy,
+            .grid-item.strategy {
+                transform: translateY(0);
+            }
+            .content,
+            .grid {
+                width: 100%;
+                padding-left: 0;
+            }
+            .grid {
+                margin-top: var(--spacing);
+            }
+            .content h1 {
+                font-size: 2em;
+            }
+            .grid-item {
+                height: 120px;
+            }
+            .content p {
+                font-size: 0.8em;
+                color: #555;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+        }
+        /* Banner Section (Section 3) */
+        
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            background: var(--gradient-blue);
+            align-items: center;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .banner-parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/banner-bg.jpg') no-repeat center center/cover;
+            z-index: -1;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+        
+        .banner-left {
+            width: 40%;
+            padding: var(--spacing1);
+            box-sizing: border-box;
+            opacity: 0;
+        }
+        
+        .banner-left img {
+            width: 100%;
+            border-radius: var(--border-radius1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .banner-right {
+            width: 55%;
+            padding-left: var(--spacing1);
+            box-sizing: border-box;
+            opacity: 0;
+        }
+        
+        .banner-right h1 {
+            font-size: 2.5em;
+            margin: 0 0 20px;
+            line-height: 1.3;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .banner-right h1 strong {
+            color: #1e90ff;
+        }
+        
+        .banner-right p {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .solutions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing1);
+        }
+        
+        .solution-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: calc(25% - 15px);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius1);
+            transition: transform var(--transition-speed1) ease, background var(--transition-speed1) ease;
+            text-align: center;
+            opacity: 0;
+        }
+        
+        .solution-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .solution-item i {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #1e90ff;
+        }
+        
+        .solution-item span {
+            font-size: 1em;
+            color: white;
+        }
+        
+        .learn-more {
+            margin-top: var(--spacing1);
+            background: #1e90ff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: var(--border-radius1);
+            display: inline-block;
+            transition: background var(--transition-speed1) ease;
+        }
+        
+        .learn-more:hover {
+            background: #0047ab;
+        }
+        
+        @media (max-width: 1200px) {
+            .banner {
+                padding: 40px;
+            }
+            .banner-left {
+                width: 45%;
+            }
+            .banner-right {
+                width: 50%;
+            }
+            .solution-item {
+                width: calc(33.33% - 15px);
+            }
+            .banner-right h1 {
+                font-size: 2em;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .banner {
+                flex-direction: column;
+                padding: 20px;
+                min-height: 100vh;
+            }
+            .banner-left,
+            .banner-right {
+                width: 100%;
+                padding: 0;
+            }
+            .banner-left {
+                margin-bottom: var(--spacing1);
+            }
+            .banner-right h1 {
+                font-size: 1.8em;
+            }
+            .solution-item {
+                width: calc(50% - 10px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner {
+                padding: 15px;
+                min-height: 120vh;
+            }
+            .banner-right h1 {
+                font-size: 1.5em;
+            }
+            .solution-item {
+                width: 100%;
+            }
+            .banner-right p {
+                font-size: 0.9em;
+            }
+        }
+        
+        .mission-vision-values {
+            padding: 80px 20px;
+            background-color: #f6fbff;
+            overflow-x: hidden;
+            position: relative;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .mission-vision-values .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 20px 30px 20px;
+            width: 100%;
+            max-width: 1400px;
+            will-change: transform;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .mission-vision-values .card {
+            width: 100%;
+            max-width: 300px;
+            height: 280px;
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(135deg, #f9fafb, #ffffff);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+            flex-shrink: 0;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .mission-vision-values .card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border: 2px solid #0073e6;
+        }
+        
+        .mission-vision-values .icon1 {
+            font-size: 48px;
+            color: #0073e6;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .mission-vision-values .icon1 i {
+            font-weight: 900 !important;
+        }
+        
+        .mission-vision-values .card:hover .icon1 {
+            color: #005bb5;
+        }
+        
+        .mission-vision-values h3 {
+            font-size: 22px;
+            color: #0073e6;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .mission-vision-values p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        /* Tablet and smaller screens */
+        
+        @media (max-width: 768px) {
+            .mission-vision-values {
+                padding: 60px 15px;
+            }
+            .mission-vision-values .cards-container {
+                gap: 20px;
+                padding: 0 15px 20px 15px;
+                flex-direction: column;
+            }
+            .mission-vision-values .card {
+                max-width: 100%;
+                height: auto;
+                padding: 20px;
+            }
+            .mission-vision-values .icon1 {
+                font-size: 40px;
+                margin-bottom: 15px;
+            }
+            .mission-vision-values h3 {
+                font-size: 20px;
+            }
+            .mission-vision-values p {
+                font-size: 14px;
+            }
+        }
+        /* Mobile screens */
+        
+        @media (max-width: 480px) {
+            .mission-vision-values {
+                padding: 40px 10px;
+            }
+            .mission-vision-values .cards-container {
+                gap: 15px;
+                padding: 0 10px 15px 10px;
+            }
+            .mission-vision-values .card {
+                max-width: 100%;
+                height: auto;
+                padding: 15px;
+            }
+            .mission-vision-values .icon1 {
+                font-size: 36px;
+                margin-bottom: 12px;
+            }
+            .mission-vision-values h3 {
+                font-size: 18px;
+            }
+            .mission-vision-values p {
+                font-size: 13px;
+            }
+        }
+        
+        .sec-8 {
+            background-color: rgba(22, 120, 191, 1);
+            color: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .clients-section-title p {
+            font-size: 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-align: Center;
+            margin-bottom: 50px;
+            margin-top: 10px;
+        }
+        
+        .clients-section {
+            display: flex;
+            overflow: hidden;
+            /* Hide overflow content */
+            width: 100%;
+            /* Full width of the container */
+            position: relative;
+            margin-top: 20px;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .clients-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: max-content;
+            /* Ensures the row fits its content */
+            animation: scroll 80s linear infinite;
+            /* Smooth, continuous scroll */
+            will-change: transform;
+        }
+        
+        .client {
+            flex: 0 0 auto;
+            /* Prevents shrinking or stretching */
+            width: 150px;
+            /* Consistent width for each logo */
+            text-align: center;
+            margin-right: 40px;
+            /* Adjust spacing between items */
+        }
+        
+        .client img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+            object-fit: contain;
+            /* Ensures images fit properly */
+        }
+        
+        .client p {
+            font-size: 0.85rem;
+            margin: 0;
+            text-transform: capitalize;
+        }
+        /* Smooth scrolling animation */
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+                /* Move by half the width of the duplicated content */
+            }
+        }
+        /* Scroll Animation */
+        
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        
+        .scroll-animation.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Updated Navigation from Farm2Plate -->
+    <nav>
+        <div class="mainlogo">
+            <img src="assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <label for="btn" class="icon">
+            <span class="fa fa-bars"></span>
+        </label>
+        <ul>
+            <li><a href="company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="ecom.html">E-commerce</a></li>
+                    <li><a href="web.html">Web & Mobility</a></li>
+                    <li><a href="sales.html">Salesforce Implementation</a></li>
+                    <li><a href="staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="farm.html">Farm2Plate</a></li>
+                    <li><a href="infracon.html">Infracon</a></li>
+                    <li><a href="land.html">Land Acquisition</a></li>
+                    <li><a href="owc.html">OWC</a></li>
+                    <li><a href="tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="technology.html">Technologies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="parallax"></div>
+        <div class="orange-container">
+            <div class="heading">
+                <span>OUR</span>
+                <span>COMPANY</span>
+            </div>
+            <div class="description">
+                Founded in the year 1998 as an independent division of Sherman Group of Companies, Akiko Sherman Infotech Pvt. Ltd. has always been at the forefront of delivering best in class services to its clients with its sharp focus in the E-Governance space.
+            </div>
+        </div>
+        <div class="content-container">
+            <div class="stats-container">
+                <div class="stat">
+                    <i class="fas fa-building"></i>
+                    <span class="count" data-target="800">0</span>
+                    <p>Government Projects</p>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-users"></i>
+                    <span class="count" data-target="500">0</span>
+                    <p>Satisfied Clients</p>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span class="count" data-target="25">0</span>
+                    <p>Years Of Experience</p>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-user-tie"></i>
+                    <span class="count" data-target="1000">0</span>
+                    <p>IT Professionals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="software-innovation">
+        <div class="content" id="contentObserver">
+            <h1>Transforming Business Through <br> <strong>Technology Innovation</strong></h1>
+            <p>Founded in the year 1998 as an independent division of Sherman Group of Companies, Akiko Sherman Infotech Pvt. Ltd. has always been at the forefront of delivering best-in-class services to its clients with its sharp focus in the E-Governance
+                space.
+            </p>
+            <p>With extensive experience in IT Technology Solutions, Akiko Sherman Infotech has a rich portfolio of offerings for eGovernance and Enterprise sectors. In the e-Governance sector, the company has successfully delivered solutions for various
+                central & state government departments and PSUs. We have always been at the forefront of delivering best-in-class services and solutions through our consulting-driven approach, which we believe is the biggest precursor to solving business
+                problems of our clients and helping them grow.</p>
+        </div>
+        <div class="grid" id="gridObserver">
+            <div class="grid-item mission">
+                <div class="overlay">Our Mission</div>
+                <img src="assets/MISSIONIMAGE.avif" alt="Mission Image" class="real-image">
+            </div>
+            <div class="grid-item vision">
+                <div class="overlay">Our Vision</div>
+                <img src="assets/VISION.jpeg" alt="Vision Image" class="real-image">
+            </div>
+            <div class="grid-item philosophy">
+                <div class="overlay">Our Philosophy</div>
+                <img src="assets/Philosophy-of-Technology-Integration-in-Education.jpg" alt="Philosophy Image" class="real-image">
+            </div>
+            <div class="grid-item strategy">
+                <div class="overlay">Our Strategy</div>
+                <img src="assets/STRATEDGY.webp" alt="Strategy Image" class="real-image">
+            </div>
+        </div>
+    </section>
+
+    <section class="banner">
+        <div class="banner-parallax"></div>
+        <div class="banner-left" id="bannerLeftObserver">
+            <img src="assets/software_solution.jpeg" alt="Tech Image">
+        </div>
+        <div class="banner-right" id="bannerRightObserver">
+            <h1>Innovative Solutions for <br> <strong>Your Business</strong></h1>
+            <p>We provide cutting-edge software solutions to help businesses thrive in the digital age. Our expertise spans across various domains, ensuring seamless integration and exceptional performance.</p>
+            <div class="solutions">
+                <div class="solution-item" id="solutionItem1">
+                    <i class="fas fa-globe"></i>
+                    <span>Web & Mobility</span>
+                </div>
+                <div class="solution-item" id="solutionItem2">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Digital Marketing</span>
+                </div>
+                <div class="solution-item" id="solutionItem3">
+                    <i class="fas fa-database"></i>
+                    <span>Data Analytics</span>
+                </div>
+                <div class="solution-item" id="solutionItem4">
+                    <i class="fas fa-robot"></i>
+                    <span>Emerging Tech</span>
+                </div>
+                <div class="solution-item" id="solutionItem5">
+                    <i class="fas fa-users"></i>
+                    <span>Tech Staffing</span>
+                </div>
+                <div class="solution-item" id="solutionItem6">
+                    <i class="fas fa-headset"></i>
+                    <span>Support</span>
+                </div>
+            </div>
+            <a href="#" class="learn-more">LEARN MORE</a>
+        </div>
+    </section>
+
+    <section class="mission-vision-values">
+        <div class="cards-container">
+            <div class="card">
+                <div class="icon1">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p>To deliver innovative solutions that empower our clients and drive sustainable growth.</p>
+            </div>
+            <div class="card">
+                <div class="icon1">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>To be a global leader in creating a better future through technology and collaboration.</p>
+            </div>
+            <div class="card">
+                <div class="icon1">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3>Our Values</h3>
+                <p>Integrity, innovation, and excellence are at the core of everything we do.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="sec-5">
+        <h1 class="mainhead">LEADERSHIP</h1>
+        <main>
+            <!-- Carousel -->
+            <div id="carousel" class="carousel">
+                <div id='item_1' class="hideLeft">
+                    <img src="assets/suvidit.png" alt="Mr Kirti Sharma">
+                </div>
+                <div id='item_2' class="prevLeftSecond">
+                    <img src="assets/suvidit.png" alt="Mr Vagish Issar">
+                </div>
+                <div id='item_3' class="prev">
+                    <img src="assets/suvidit.png" alt="Mr Vikas Raj Sharma">
+                </div>
+                <div id='item_4' class="selected">
+                    <img src="assets/suvidit.png" alt="Mr Suvidit Sharma">
+                </div>
+                <div id='item_5' class="next">
+                    <img src="assets/suvidit.png" alt="Mr Sumudit Issar">
+                </div>
+                <div id='item_6' class="nextRightSecond">
+                    <img src="assets/suvidit.png" alt="Placeholder 1">
+                </div>
+                <div id='item_7' class="hideRight">
+                    <img src="assets/suvidit.png" alt="Placeholder 2">
+                </div>
+                <div id='item_8' class="hideRight">
+                    <img src="assets/suvidit.png" alt="Placeholder 3">
+                </div>
+            </div>
+
+            <!-- Titles and Descriptions -->
+            <div id="titles-descriptions">
+                <div id="title_1" class="title-description">
+                    <h1>MR KIRTI SHARMA</h1>
+                    <h3>CHAIRMAN</h3>
+                    <p>“Mr Kirti Sharma is the tallest leader of the organization and carries a plethora of experience in the IT and the Textile sector. Graduated from the prestigious Shri Ram College of Commerce, Delhi University, his valuable managerial
+                        and financial skills have helped the company scale to new heights.”</p>
+                </div>
+                <div id="title_2" class="title-description">
+                    <h1>MR VAGISH ISSAR</h1>
+                    <h3>MANAGING DIRECTOR</h3>
+                    <p>“Mr Vagish has been a constant pillar of support for the organization. He carries a strong network and has worked extensively in various sectors prior to heading the Information Technology and Solar businesses as well.”</p>
+                </div>
+                <div id="title_3" class="title-description">
+                    <h1>MR VIKAS RAJ SHARMA</h1>
+                    <h3>DIRECTOR</h3>
+                    <p>“Mr Vikas is one of the established names in the IT and the Real Estate sector. He has worked extensively in the United Kingdom for a decade in the IT sector. He carries with himself immense experience in marketing and sales.”</p>
+                </div>
+                <div id="title_4" class="title-description active">
+                    <h1>MR SUVIDIT SHARMA</h1>
+                    <h3>DIRECTOR</h3>
+                    <p>“Mr Suvidit, a software professional and a technology enthusiast, has worked extensively in the IT Sector for E-Governance, Corporate and Overseas Projects. Having completed his masters (MBA) in International Business from the Indian
+                        Institute of Foreign Trade (IIFT), he is currently the Director at Akiko Sherman Infotech Pvt. Ltd. and leads the IT team of the company”</p>
+                </div>
+                <div id="title_5" class="title-description">
+                    <h1>MR SUMUDIT ISSAR</h1>
+                    <h3>DIRECTOR</h3>
+                    <p>“Mr Sumudit is an aspiring young electrical engineer and has worked extensively in the energy sector both in India as well as overseas. He has worked in Japan to further improve the technologies involved in the solar industry and system
+                        efficiency can be improved. He has done his masters from Indian Institute of Foreign Trade (IIFT)”</p>
+                </div>
+            </div>
+
+            <!-- Dots Container -->
+            <div class="dots-container">
+                <span class="dot" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot active" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
+        </main>
+    </section>
+    <section class="sec-8">
+        <div class="clients-section-title scroll-animation">
+            <p>Clients That Trust Us</p>
+        </div>
+        <div class="full-width-container">
+
+        </div>
+        <div class="clients-section">
+            <div class="clients-row">
+                <!-- Client Logos -->
+                <div class="client">
+                    <img src="assets/indianair (1).png" alt="Client 1">
+                    <p>Indian Air Force</p>
+                </div>
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 2">
+                    <p>Ministry of Home Affairs</p>
+                </div>
+                <div class="client">
+                    <img src="assets/nic.png" alt="Client 3">
+                    <p>National Informatics Center Services INC.</p>
+                </div>
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 4">
+                    <p>Ministry of Defense</p>
+                </div>
+                <div class="client">
+                    <img src="assets/rajarammohun.png" alt="Client 5">
+                    <p>Raja RamMohan Roy National Agency</p>
+                </div>
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 6">
+                    <p>Ministry of Health & Family Welfare</p>
+                </div>
+                <div class="client">
+                    <img src="assets/coucilofarchitecture.png" alt="Client 7">
+                    <p>Council of Architecture</p>
+                </div>
+                <!-- Duplicate items for seamless scrolling -->
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 1">
+                    <p>Ministry of AYUSH</p>
+                </div>
+                <div class="client">
+                    <img src="assets/indian army.png" alt="Client 2">
+                    <p>Indian Army</p>
+                </div>
+                <div class="client">
+                    <img src="assets/sashtra seema bal.png" alt="Client 1">
+                    <p>Sashastra Seema Bal</p>
+                </div>
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 2">
+                    <p>Ministry of Road Transport & Highways</p>
+                </div>
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 3">
+                    <p>Ministry of Mines</p>
+                </div>
+                <div class="client">
+                    <img src="assets/border of roads.png" alt="Client 4">
+                    <p>Border Roads Organization</p>
+                </div>
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 5">
+                    <p>Ministry of Commerce & Industry</p>
+                </div>
+                <div class="client">
+                    <img src="assets/himachalpradeshstatedisaster.png" alt="Client 6">
+                    <p>Himachal Pradesh State Disaster Management</p>
+                </div>
+                <div class="client">
+                    <img src="assets/coucilofarchitecture.png" alt="Client 7">
+                    <p>Council of Architecture</p>
+                </div>
+                <!-- Duplicate items for seamless scrolling -->
+                <div class="client">
+                    <img src="assets/mod.png" alt="Client 1">
+                    <p>Union Public Service Commission</p>
+                </div>
+                <div class="client">
+                    <img src="assets/minofwomen.png" alt="Client 2">
+                    <p>Ministry of Woman & Child development</p>
+                </div>
+                <div class="client">
+                    <img src="assets/railindiatech.png" alt="Client 2">
+                    <p>Rail India Technical & Economic Services</p>
+                </div>
+                <div class="client">
+                    <img src="assets/himavhalpradeg.png" alt="Client 2">
+                    <p>Himachal Pradesh State Electronics</p>
+                </div>
+                <div class="client">
+                    <img src="assets/software technology parks of inia.png" alt="Client 2">
+                    <p>Software Technology Parks of India</p>
+                </div>
+                <div class="client">
+                    <img src="assets/punjabstate.png" alt="Client 2">
+                    <p>Punjab State E-Governance Society</p>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Updated Footer from Farm2Plate -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script>
+        // Carousel Logic
+        const items = document.querySelectorAll('#carousel div');
+        const titles = document.querySelectorAll('#titles-descriptions .title-description');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 3; // Start with item_4 (index 3)
+        let autoSlideInterval;
+
+        function updateCarousel() {
+            items.forEach((item, index) => {
+                item.className = ''; // Reset all classes
+                if (index === currentIndex) {
+                    item.classList.add('selected');
+                } else if (index === (currentIndex - 1 + items.length) % items.length) {
+                    item.classList.add('prev');
+                } else if (index === (currentIndex - 2 + items.length) % items.length) {
+                    item.classList.add('prevLeftSecond');
+                } else if (index === (currentIndex + 1) % items.length) {
+                    item.classList.add('next');
+                } else if (index === (currentIndex + 2) % items.length) {
+                    item.classList.add('nextRightSecond');
+                } else if (index < (currentIndex - 2 + items.length) % items.length) {
+                    item.classList.add('hideLeft');
+                } else {
+                    item.classList.add('hideRight');
+                }
+            });
+
+            titles.forEach((title, index) => {
+                const isActive = index === currentIndex % titles.length;
+                title.classList.toggle('active', isActive);
+                if (isActive) {
+                    checkScrollForElement(title);
+                }
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex % dots.length);
+            });
+            checkScrollForDots();
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.getAttribute('data-index'));
+                updateCarousel();
+                resetAutoSlide();
+            });
+        });
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                updateCarousel();
+            }, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        function checkScrollForElement(element) {
+            const windowHeight = window.innerHeight;
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
+                element.classList.add('visible');
+            } else {
+                element.classList.remove('visible');
+            }
+        }
+
+        function checkScrollForDots() {
+            const windowHeight = window.innerHeight;
+            const dotsContainer = document.querySelector('.dots-container');
+            const rect = dotsContainer.getBoundingClientRect();
+            if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
+                dots.forEach((dot, index) => {
+                    setTimeout(() => {
+                        dot.classList.add('visible');
+                    }, index * 100);
+                });
+            } else {
+                dots.forEach(dot => dot.classList.remove('visible'));
+            }
+        }
+
+        function checkScroll() {
+            const activeTitle = document.querySelector('.title-description.active');
+            if (activeTitle) checkScrollForElement(activeTitle);
+            checkScrollForDots();
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', () => {
+            setTimeout(checkScroll, 100);
+            startAutoSlide();
+        });
+
+        updateCarousel();
+
+        document.addEventListener("DOMContentLoaded", function() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.to('.parallax', {
+                y: '10%',
+                scale: 1.15,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.hero-section',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            gsap.fromTo('.orange-container', {
+                opacity: 0,
+                y: 100,
+                rotateX: -60,
+                scale: 0.95
+            }, {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                scale: 1,
+                duration: 1.5,
+                ease: 'power4.out'
+            });
+
+            gsap.fromTo('.orange-container .description', {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.5,
+                ease: 'power4.out'
+            });
+
+            const statObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        statObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.stat').forEach(stat => {
+                statObserver.observe(stat);
+            });
+
+            document.querySelectorAll('.count').forEach(count => {
+                gsap.fromTo(count, {
+                    textContent: 0
+                }, {
+                    textContent: count.getAttribute('data-target'),
+                    duration: 2,
+                    ease: 'power1.out',
+                    snap: {
+                        textContent: 1
+                    },
+                    scrollTrigger: {
+                        trigger: count,
+                        start: 'top 80%'
+                    }
+                });
+            });
+
+            gsap.fromTo('.software-innovation .content', {
+                opacity: 0,
+                y: 100
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.software-innovation',
+                    start: 'top 80%'
+                }
+            });
+
+            gsap.fromTo('.software-innovation .grid', {
+                opacity: 0,
+                x: 50
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.software-innovation',
+                    start: 'top 80%'
+                }
+            });
+
+            gsap.to('.banner-parallax', {
+                y: '15%',
+                scale: 1.1,
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.banner',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true
+                }
+            });
+
+            gsap.fromTo('.banner-left', {
+                opacity: 0,
+                x: -100
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.banner',
+                    start: 'top 80%'
+                }
+            });
+
+            gsap.fromTo('.banner-right', {
+                opacity: 0,
+                x: 100
+            }, {
+                opacity: 1,
+                x: 0,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.banner',
+                    start: 'top 80%'
+                }
+            });
+
+            gsap.fromTo('.solution-item', {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.solutions',
+                    start: 'top 80%'
+                }
+            });
+
+            gsap.fromTo('.mission-vision-values .card', {
+                opacity: 0,
+                y: 50,
+                scale: 0.95
+            }, {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1,
+                stagger: 0.3,
+                ease: 'elastic.out(1, 0.7)',
+                scrollTrigger: {
+                    trigger: '.mission-vision-values',
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+
+        // Updated Navigation JS from Farm2Plate
+        document.querySelector('.icon').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(e) {
+            const navUl = document.querySelector('nav ul');
+            const icon = document.querySelector('.icon');
+            if (!navUl.contains(e.target) && !icon.contains(e.target) && navUl.classList.contains('show')) {
+                navUl.classList.remove('show');
+                document.querySelectorAll('.drop-menu').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+                document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                    arrow.style.transform = 'rotate(0deg)';
+                });
+            }
+        });
+
+        const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+        dropdownArrows.forEach(arrow => {
+            arrow.parentElement.addEventListener('click', function(e) {
+                if (window.innerWidth <= 968) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = this.nextElementSibling;
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    arrow.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 968) {
+                dropdownArrows.forEach(arrow => {
+                    const dropdown = arrow.parentElement.nextElementSibling;
+                    if (!arrow.parentElement.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.style.display = 'none';
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
+        });
+
+        // Footer Animation (retained from original)
+        gsap.fromTo('footer', {
+            opacity: 0,
+            y: 50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '.sec-8',
+                start: 'bottom 80%',
+                toggleActions: 'play none none none'
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            const clientsRow = document.querySelector(".clients-row");
+            const clients = document.querySelectorAll(".client");
+
+            // Duplicate the clients for seamless scrolling
+            clientsRow.innerHTML += clientsRow.innerHTML;
+
+            // Scroll Animation
+            const scrollAnimations = document.querySelectorAll(".scroll-animation");
+
+            function checkScroll() {
+                scrollAnimations.forEach((element) => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementBottom = element.getBoundingClientRect().bottom;
+
+                    // Check if the element is in the viewport
+                    if (elementTop < window.innerHeight && elementBottom > 0) {
+                        element.classList.add("animate");
+                    } else {
+                        element.classList.remove("animate");
+                    }
+                });
+            }
+
+            // Trigger scroll animation on page load and scroll
+            window.addEventListener("scroll", checkScroll);
+            checkScroll(); // Initial check
+        });
+    </script>
+</body>
+
+</html>

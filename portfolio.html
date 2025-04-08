@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Akiko Sherman Infotech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSB7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+    /* Hero Section */
+    
+    .hero-section {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        padding: 90px 50px;
+        height: 100vh;
+        background-image: url('assets/Portfoliobg.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .left-content {
+        width: 50%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        animation: fadeInLeft 1.5s ease-in-out;
+    }
+    
+    .left-content h1 {
+        font-size: clamp(2.5rem, 8vw, 6.2rem);
+        margin-bottom: 40px;
+        color: #fff;
+        animation: slideInLeft 1s ease-in-out;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+    
+    .left-content p {
+        font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+        color: #fff;
+        animation: fadeIn 2s ease-in-out;
+        line-height: 1.5;
+        margin-bottom: 30px;
+        max-width: 600px;
+    }
+    
+    .right-content {
+        width: 40%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+        justify-content: center;
+        align-items: stretch;
+        animation: fadeInRight 1.5s ease-in-out;
+    }
+    
+    .color-section {
+        width: 20%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        opacity: 0.9;
+    }
+    
+    .color-section:hover {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    
+    .rotated-text {
+        transform: rotate(90deg);
+        font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+        font-weight: bold;
+        color: white;
+        white-space: nowrap;
+    }
+    /* Hero Section Responsive */
+    
+    @media (max-width: 1024px) {
+        .hero-section {
+            padding: 100px 30px;
+            height: 100vh;
+        }
+        .left-content {
+            width: 60%;
+        }
+        .right-content {
+            width: 35%;
+        }
+        .color-section {
+            height: 100%;
+        }
+    }
+    
+    @media (max-width: 900px) {
+        .hero-section {
+            padding: 100px 25px;
+            height: 100vh;
+        }
+        .left-content {
+            width: 55%;
+        }
+        .right-content {
+            width: 40%;
+        }
+        .color-section {
+            width: 20%;
+            height: 100%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .hero-section {
+            flex-direction: column;
+            padding: 80px 20px;
+            height: auto;
+            min-height: 100vh;
+            background-attachment: scroll;
+        }
+        .left-content {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .right-content {
+            width: 100%;
+            flex-direction: column;
+            height: auto;
+            gap: 10px;
+        }
+        .color-section {
+            width: 100%;
+            height: 120px;
+            margin: 5px 0;
+        }
+        .rotated-text {
+            transform: rotate(0deg);
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-section {
+            padding: 70px 15px;
+        }
+        .left-content {
+            padding: 10px;
+        }
+        .left-content h1 {
+            margin-bottom: 20px;
+        }
+        .left-content p {
+            margin-bottom: 20px;
+        }
+        .color-section {
+            height: 100px;
+        }
+        .rotated-text {
+            font-size: 0.9rem;
+        }
+    }
+    /* Animations */
+    
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+    
+    .left-content,
+    .right-content {
+        position: relative;
+        z-index: 1;
+    }
+    /* Divider */
+    
+    .divider {
+        background-color: white;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .divider.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .divider h1 {
+        color: rgb(82, 82, 82);
+        font-size: 4rem;
+    }
+    /* Cards Section */
+    
+     :root {
+        --card-height: 100vh;
+        --card-margin: 0;
+        --card-top-offset: 0;
+        --numcards: 5;
+    }
+    
+    #cards {
+        list-style: none;
+        padding: 0;
+        margin: 0px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--card-margin);
+        height: calc(var(--card-height) * var(--numcards));
+    }
+    
+    .card {
+        position: sticky;
+        top: var(--card-top-offset);
+        width: 100%;
+        height: var(--card-height);
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .card__content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 1.5em;
+        color: white;
+        background: inherit;
+    }
+    
+    .card__content>div:first-child {
+        width: 60%;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .card__content h1 {
+        font-size: 4em;
+        font-weight: bolder;
+        margin: 0 0 0.3em 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    
+    .card__content h1.OWC {
+        font-size: 3em;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+    
+    .card__content h1.OWC span {
+        font-size: 0.5em;
+        font-weight: normal;
+    }
+    
+    .card__content h3 {
+        font-size: 1.5em;
+        margin: 0 0 0.5em 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease 0.4s, transform 0.5s ease 0.4s;
+    }
+    
+    .card__content p {
+        font-size: 1.2em;
+        line-height: 1.4;
+        margin: 0 0 1em 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease 0.6s, transform 0.5s ease 0.6s;
+    }
+    
+    .card__content a {
+        color: #ffffff;
+        text-decoration: none;
+        padding: 0.75em 1.5em;
+        border-radius: 5px;
+        border: 2px solid white;
+        transition: background 0.3s ease, transform 0.3s ease;
+        font-size: 1em;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease 0.8s, transform 0.5s ease 0.8s;
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+        align-self: flex-start;
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    
+    .card__content a:hover {
+        background: #ffffff;
+        color: #2d2d2d;
+        transform: scale(1.1);
+    }
+    
+    .explore-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 20%;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.5em;
+        padding-right: 1em;
+    }
+    
+    .explore-text span {
+        display: block;
+        margin: 2px 0;
+        line-height: 1;
+    }
+    
+    .explore-text .arrow-icon {
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+    
+    .info-boxes {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        margin: 1em 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease 1s, transform 0.5s ease 1s;
+    }
+    
+    .info-box {
+        border: 2px solid white;
+        border-radius: 5px;
+        padding: 0.8em;
+        width: 140px;
+        font-size: 0.9em;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+    
+    .info-box:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
+    }
+    
+    .user-images {
+        display: flex;
+        gap: 10px;
+        margin: 1em 0;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease 1.2s, transform 0.5s ease 1.2s;
+    }
+    
+    .user-images img {
+        width: 80px;
+        height: auto;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+    
+    .user-images img:hover {
+        transform: scale(1.1);
+    }
+    
+    #card_1 {
+        background: url('assets/farm2platebg (3).png') center/cover;
+    }
+    
+    #card_2 {
+        background: url('assets/LANDACQUISTIONBG.png') center/cover;
+    }
+    
+    #card_3 {
+        background: url('assets/infraconBG (2).png') center/cover;
+    }
+    
+    #card_4 {
+        background: url('assets/OWC.png') center/cover;
+    }
+    
+    #card_5 {
+        background: url('assets/infraconbg22 (1).png') center/cover;
+    }
+    
+    .card.visible .card__content h1,
+    .card.visible .card__content h3,
+    .card.visible .card__content p,
+    .card.visible .card__content a,
+    .card.visible .info-boxes,
+    .card.visible .user-images {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    /* Responsive Design for Cards */
+    
+    @media (max-width: 1024px) {
+        .card__content {
+            padding: 1.2em;
+        }
+        .card__content>div:first-child {
+            width: 70%;
+        }
+        .card__content h1 {
+            font-size: 3.5em;
+        }
+        .card__content h1.OWC {
+            font-size: 2.5em;
+        }
+        .card__content h3 {
+            font-size: 1.3em;
+        }
+        .card__content p {
+            font-size: 1.1em;
+        }
+        .info-box {
+            width: 120px;
+            height: 70px;
+            font-size: 0.85em;
+        }
+        .user-images img {
+            width: 70px;
+        }
+        .explore-text {
+            width: 15%;
+            font-size: 1.3em;
+        }
+        .card__content a {
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .card__content {
+            flex-direction: column;
+            padding: 1em;
+            align-items: center;
+            text-align: center;
+        }
+        .card__content>div:first-child {
+            width: 100%;
+        }
+        .card__content h1 {
+            font-size: 3em;
+        }
+        .card__content h1.OWC {
+            font-size: 2em;
+        }
+        .card__content h3 {
+            font-size: 1.2em;
+        }
+        .card__content p {
+            font-size: 1em;
+        }
+        .info-boxes {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .info-box {
+            width: 45%;
+            height: 60px;
+            font-size: 0.8em;
+        }
+        .user-images {
+            justify-content: center;
+        }
+        .user-images img {
+            width: 60px;
+        }
+        .card__content a {
+            margin-top: 15px;
+            margin-left: 0;
+            align-self: center;
+        }
+        .explore-text {
+            width: 100%;
+            flex-direction: row;
+            font-size: 1.5em;
+            margin-top: 1em;
+        }
+        .explore-text span {
+            margin: 0 2px;
+        }
+        .explore-text .arrow-icon {
+            margin-left: 10px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .card__content {
+            padding: 0.8em;
+        }
+        .card__content h1 {
+            font-size: 2em;
+        }
+        .card__content h1.OWC {
+            font-size: 1.5em;
+        }
+        .card__content h3 {
+            font-size: 1em;
+        }
+        .card__content p {
+            font-size: 0.9em;
+        }
+        .info-boxes {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .info-box {
+            width: 100%;
+            height: auto;
+            padding: 0.6em;
+            font-size: 0.8em;
+        }
+        .user-images img {
+            width: 50px;
+        }
+        .card__content a {
+            width: 100%;
+            padding: 0.8em;
+            font-size: 1em;
+            margin-top: 10px;
+            margin-left: 0;
+        }
+        .explore-text {
+            font-size: 1.2em;
+            margin-top: 1em;
+        }
+        .divider h1 {
+            font-size: 2.5rem;
+        }
+    }
+    /* Case Study Section */
+    
+    .cs-case-study-section {
+        padding: 70px 20px;
+        background: #f8f9fa;
+    }
+    
+    .cs-section-heading {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    
+    .cs-section-heading h1 {
+        font-size: 2.5rem;
+        color: #222;
+        margin-bottom: 10px;
+    }
+    
+    .cs-section-heading p {
+        font-size: 1.2rem;
+        color: #555;
+        width: 80%;
+        margin: auto;
+    }
+    
+    .cs-carousel-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    
+    .cs-carousel {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .cs-case-study {
+        flex: 0 0 33.33%;
+        box-sizing: border-box;
+        padding: 20px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.5s ease;
+    }
+    
+    .cs-case-study.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .cs-case-study:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .cs-case-study-image-top {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+    }
+    
+    .cs-case-study:hover .cs-case-study-image-top {
+        transform: scale(1.03);
+    }
+    
+    .cs-case-study-content h3 {
+        font-size: 1.5rem;
+        color: #222;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+    
+    .cs-case-study-content p.cs-subtitle {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 5px;
+    }
+    
+    .cs-case-study-content a.cs-link {
+        font-size: 0.85rem;
+        color: #007BFF;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 15px;
+    }
+    
+    .cs-case-study-content a.cs-link:hover {
+        text-decoration: underline;
+    }
+    
+    .cs-case-study-content p.cs-description {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 20px;
+    }
+    
+    .cs-cta-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #007BFF;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .cs-cta-button span {
+        opacity: 0;
+        width: 0;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+    }
+    
+    .cs-cta-button i {
+        font-size: 1rem;
+        transition: margin-right 0.3s ease;
+    }
+    
+    .cs-cta-button:hover {
+        width: 150px;
+        background-color: #0569d5;
+        transform: scale(1.05);
+    }
+    
+    .cs-cta-button:hover span {
+        opacity: 1;
+        width: auto;
+        margin-right: 8px;
+    }
+    
+    .cs-cta-button:hover i {
+        margin-right: 0;
+    }
+    
+    .cs-dots-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .cs-dot {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        background-color: #bbb;
+        border-radius: 50%;
+        margin: 0 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .cs-dot.active {
+        background-color: #007BFF;
+        transform: scale(1.2);
+    }
+    
+    @media (max-width: 1024px) {
+        .cs-case-study {
+            flex: 0 0 50%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .cs-section-heading h1 {
+            font-size: 2em;
+        }
+        .cs-section-heading p {
+            font-size: 1em;
+            width: 90%;
+        }
+        .cs-case-study {
+            padding: 15px;
+        }
+        .cs-cta-button {
+            width: 36px;
+            height: 36px;
+        }
+        .cs-cta-button:hover {
+            width: 110px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .cs-case-study-section {
+            padding: 40px 10px;
+        }
+        .cs-case-study {
+            flex: 0 0 100%;
+        }
+        .cs-cta-button {
+            width: 32px;
+            height: 32px;
+            font-size: 0.9rem;
+        }
+        .cs-cta-button:hover {
+            width: 100px;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar (Copied from second code) -->
+    <nav>
+        <div class="mainlogo">
+            <img src="assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <label for="btn" class="icon">
+            <span class="fa fa-bars"></span>
+        </label>
+        <ul>
+            <li><a href="company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="ecom.html">E-commerce</a></li>
+                    <li><a href="web.html">Web & Mobility</a></li>
+                    <li><a href="sales.html">Salesforce Implementation</a></li>
+                    <li><a href="staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="farm.html">Farm2Plate</a></li>
+                    <li><a href="infracon.html">Infracon</a></li>
+                    <li><a href="land.html">Land Acquisition</a></li>
+                    <li><a href="owc.html">OWC</a></li>
+                    <li><a href="tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="technology.html">Technologies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-section">
+        <div class="left-content">
+            <h1>PORTFOLIO</h1>
+            <p>"Akiko Sherman Infotech's diverse portfolio showcases our expertise in delivering cutting-edge eGovernance and Enterprise solutions. From transforming public sector services to enhancing business operations, our projects highlight our commitment
+                to innovation and excellence."</p>
+        </div>
+        <div class="right-content">
+            <div class="color-section" style="background-color:rgba(0, 173, 32, 0.3)">
+                <span class="rotated-text">FARM2PLATE</span>
+            </div>
+            <div class="color-section" style="background-color: rgba(10, 144, 128, 0.3)">
+                <span class="rotated-text">LAND ACQUISTION</span>
+            </div>
+            <div class="color-section" style="background-color: rgba(12, 109, 148, 0.3)">
+                <span class="rotated-text">INFRACON</span>
+            </div>
+            <div class="color-section" style="background-color: rgba(178, 121, 13, 0.3)">
+                <span class="rotated-text">OWC</span>
+            </div>
+            <div class="color-section" style="background-color: rgba(138, 59, 84, 0.3)">
+                <span class="rotated-text">TAMRA</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider">
+        <h1>EXPLORE</h1>
+    </div>
+
+    <section class="sec-2">
+        <main>
+            <ul id="cards">
+                <li class="card" id="card_1">
+                    <div class="card__content">
+                        <div>
+                            <h1>FARM2PLATE</h1>
+                            <h3>Ministry of Road Transport & Highways</h3>
+                            <p>One stop AgriTech Solution solving critical supply chain challenges through Digital Transformation for Food and Perishables Sector</p>
+                            <div class="info-boxes">
+                                <div class="info-box">Demand Forecasting</div>
+                                <div class="info-box">Route Optimization</div>
+                                <div class="info-box">AI Chatbot Assistance</div>
+                                <div class="info-box">Traceability with Blockchain</div>
+                            </div>
+                            <div>
+                                <h4>USERS</h4>
+                                <div class="user-images">
+                                    <img src="assets/farm2plate1.png" alt="">
+                                    <img src="assets/farm2plate2.png" alt="">
+                                    <img src="assets/farm2plate3.png" alt="">
+                                    <img src="assets/farm2plate4.png" alt="">
+                                </div>
+                            </div>
+                            <p><a href="farm.html" class="btn btn--accent">EXPLORE</a></p>
+                        </div>
+                        <div class="explore-text">
+                            <span>E</span><span>X</span><span>P</span><span>L</span><span>O</span><span>R</span><span>E</span>
+                            <i class="fa-solid fa-caret-right arrow-icon"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="card" id="card_2">
+                    <div class="card__content">
+                        <div>
+                            <h1>LAND ACQUISITION</h1>
+                            <h3>Ministry of Road Transport & Highways</h3>
+                            <p>National Portal for one-click technical evaluation of infrastructure consultancy firms and key personnel for infrastructure projects.</p>
+                            <div class="info-boxes">
+                                <div class="info-box">1.3 lac Hectare Land</div>
+                                <div class="info-box">3000+ Projects</div>
+                                <div class="info-box">22000 Cr+ Transaction</div>
+                                <div class="info-box">8500+ Notifications</div>
+                            </div>
+                            <div>
+                                <h4>USERS</h4>
+                                <div class="user-images">
+                                    <img src="assets/farm2plate1.png" alt="">
+                                    <img src="assets/farm2plate2.png" alt="">
+                                    <img src="assets/farm2plate3.png" alt="">
+                                    <img src="assets/farm2plate4.png" alt="">
+                                </div>
+                            </div>
+                            <p><a href="land.html" class="btn btn--accent">EXPLORE</a></p>
+                        </div>
+                        <div class="explore-text">
+                            <span>E</span><span>X</span><span>P</span><span>L</span><span>O</span><span>R</span><span>E</span>
+                            <i class="fa-solid fa-caret-right arrow-icon"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="card" id="card_3">
+                    <div class="card__content">
+                        <div>
+                            <h1>INFRACON</h1>
+                            <h3>Ministry of Road Transport & Highways</h3>
+                            <p>National Portal for one-click technical evaluation of infrastructure consultancy firms and key personnel for infrastructure projects.</p>
+                            <div class="info-boxes">
+                                <div class="info-box">2300+ Consultancy Firms</div>
+                                <div class="info-box">15000+ Consultants</div>
+                                <div class="info-box">1000+ Technical Bids</div>
+                                <div class="info-box">900+ Firms</div>
+                            </div>
+                            <div>
+                                <h4>USERS</h4>
+                                <div class="user-images">
+                                    <img src="assets/farm2plate1.png" alt="">
+                                    <img src="assets/farm2plate2.png" alt="">
+                                    <img src="assets/farm2plate3.png" alt="">
+                                    <img src="assets/farm2plate4.png" alt="">
+                                </div>
+                            </div>
+                            <p><a href="infracon.html" class="btn btn--accent">EXPLORE</a></p>
+                        </div>
+                        <div class="explore-text">
+                            <span>E</span><span>X</span><span>P</span><span>L</span><span>O</span><span>R</span><span>E</span>
+                            <i class="fa-solid fa-caret-right arrow-icon"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="card" id="card_4">
+                    <div class="card__content">
+                        <div>
+                            <h1 class="OWC">OWC <span>Over- Dimensional / Over- Weight Cargos</span></h1>
+                            <h3>Ministry of Road Transport & Highways</h3>
+                            <p>A National Portal for online permission generation for transportation of over-weight and over-dimensional cargos.</p>
+                            <div class="info-boxes">
+                                <div class="info-box">2000+ Transporters</div>
+                                <div class="info-box">150+ Cr Revenue</div>
+                                <div class="info-box">80000+ Applications</div>
+                                <div class="info-box">75000+ Approved</div>
+                            </div>
+                            <div>
+                                <h4>USERS</h4>
+                                <div class="user-images">
+                                    <img src="assets/farm2plate1.png" alt="">
+                                    <img src="assets/farm2plate2.png" alt="">
+                                    <img src="assets/farm2plate3.png" alt="">
+                                    <img src="assets/farm2plate4.png" alt="">
+                                </div>
+                            </div>
+                            <p><a href="owc.html" class="btn btn--accent">EXPLORE</a></p>
+                        </div>
+                        <div class="explore-text">
+                            <span>E</span><span>X</span><span>P</span><span>L</span><span>O</span><span>R</span><span>E</span>
+                            <i class="fa-solid fa-caret-right arrow-icon"></i>
+                        </div>
+                    </div>
+                </li>
+                <li class="card" id="card_5">
+                    <div class="card__content">
+                        <div>
+                            <h1>TAMRA</h1>
+                            <h3>Ministry of Mines</h3>
+                            <p>National Project for mining block allocation to the preferred bidder and further contains provision to monitor various clearances.</p>
+                            <div class="info-boxes">
+                                <div class="info-box">800000 Resources</div>
+                                <div class="info-box">800000+ Revenue</div>
+                                <div class="info-box">700000 Auction</div>
+                                <div class="info-box">Transparency</div>
+                            </div>
+                            <div>
+                                <h4>USERS</h4>
+                                <div class="user-images">
+                                    <img src="assets/farm2plate1.png" alt="">
+                                    <img src="assets/farm2plate2.png" alt="">
+                                    <img src="assets/farm2plate3.png" alt="">
+                                    <img src="assets/farm2plate4.png" alt="">
+                                </div>
+                            </div>
+                            <p><a href="tamra.html" class="btn btn--accent">EXPLORE</a></p>
+                        </div>
+                        <div class="explore-text">
+                            <span>E</span><span>X</span><span>P</span><span>L</span><span>O</span><span>R</span><span>E</span>
+                            <i class="fa-solid fa-caret-right arrow-icon"></i>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </main>
+    </section>
+
+    <section class="cs-case-study-section">
+        <div class="cs-section-heading">
+            <h1>CASE STUDIES</h1>
+            <p>"Uncover the transformative journeys of our clients with our pioneering IT solutions."</p>
+        </div>
+        <div class="cs-carousel-container">
+            <div class="cs-carousel">
+                <div class="cs-case-study">
+                    <img src="assets/Case_Study1.png" alt="Case Study 1" class="cs-case-study-image-top">
+                    <div class="cs-case-study-content">
+                        <h3>INFRACON</h3>
+                        <p class="cs-subtitle">Ministry of Road Transport & Highways</p>
+                        <a class="cs-link" href="http://infracon.nic.in/" target="_blank">URL: http://infracon.nic.in/</a>
+                        <p class="cs-description">National Portal for one-click technical evaluation of infrastructure consultancy firms.</p>
+                        <a href="#" class="cs-cta-button">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="cs-case-study">
+                    <img src="assets/Case_study2.png" alt="Case Study 2" class="cs-case-study-image-top">
+                    <div class="cs-case-study-content">
+                        <h3>OWC</h3>
+                        <p class="cs-subtitle">Ministry of Road Transport & Highways</p>
+                        <a class="cs-link" href="https://morth-owc.nic.in" target="_blank">URL: https://morth-owc.nic.in</a>
+                        <p class="cs-description">A National Portal for online permission generation for transportation of over-weight cargos.</p>
+                        <a href="#" class="cs-cta-button">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="cs-case-study">
+                    <img src="assets/Case_study3.png" alt="Case Study 3" class="cs-case-study-image-top">
+                    <div class="cs-case-study-content">
+                        <h3>TAMRA</h3>
+                        <p class="cs-subtitle">Ministry of Mines</p>
+                        <a class="cs-link" href="http://tamra.gov.in/mom.php">URL: http://tamra.gov.in/mom.php</a>
+                        <p class="cs-description">National Project for mining block allocation to the preferred bidder.</p>
+                        <a href="#" class="cs-cta-button">
+                            <span>Read More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="cs-dots-container">
+                <span class="cs-dot active" data-index="0"></span>
+                <span class="cs-dot" data-index="1"></span>
+                <span class="cs-dot" data-index="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Copied from second code) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script>
+        // Card and Divider Animations
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+        cards.forEach((card) => observer.observe(card));
+
+        const divider = document.querySelector('.divider');
+        const dividerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, {
+            threshold: 0.1
+        });
+        dividerObserver.observe(divider);
+
+        // Navbar JavaScript (Copied from second code)
+        document.querySelector('.icon').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(e) {
+            const navUl = document.querySelector('nav ul');
+            const icon = document.querySelector('.icon');
+            if (!navUl.contains(e.target) && !icon.contains(e.target) && navUl.classList.contains('show')) {
+                navUl.classList.remove('show');
+                document.querySelectorAll('.drop-menu').forEach(dropdown => {
+                    dropdown.style.display = 'none';
+                });
+                document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                    arrow.style.transform = 'rotate(0deg)';
+                });
+            }
+        });
+
+        const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+        dropdownArrows.forEach(arrow => {
+            arrow.parentElement.addEventListener('click', function(e) {
+                if (window.innerWidth <= 968) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const dropdown = this.nextElementSibling;
+                    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                    arrow.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 968) {
+                dropdownArrows.forEach(arrow => {
+                    const dropdown = arrow.parentElement.nextElementSibling;
+                    if (!arrow.parentElement.contains(e.target) && !dropdown.contains(e.target)) {
+                        dropdown.style.display = 'none';
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
+        });
+
+        // Footer Animation (Copied from second code)
+        gsap.fromTo('footer', {
+            opacity: 0,
+            y: 50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '.cs-case-study-section',
+                start: 'bottom 80%',
+                toggleActions: 'play none none none'
+            }
+        });
+
+        // Case Study Animations
+        const csCaseStudies = document.querySelectorAll('.cs-case-study');
+
+        function animateCaseStudies() {
+            gsap.fromTo('.cs-case-study', {
+                opacity: 0,
+                y: 50
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.cs-case-study-section',
+                    start: 'top 80%'
+                }
+            });
+        }
+
+        const csObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    animateCaseStudies();
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const csSectionHeading = document.querySelector('.cs-section-heading');
+        csObserver.observe(csSectionHeading);
+        csCaseStudies.forEach((caseStudy) => csObserver.observe(caseStudy));
+    </script>
+</body>
+
+</html>

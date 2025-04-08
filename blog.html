@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Akiko Blogs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            overflow-x: hidden;
+        }
+        /* Category Section */
+        
+        .category-section {
+            text-align: center;
+            padding: 20px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #ddd;
+            z-index: 1;
+        }
+        
+        .category-section h3 {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            margin: 0 0 15px;
+            color: #333;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .category-section h3:hover {
+            color: #007BFF;
+        }
+        
+        .category-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .category-section ul li {
+            background: #007BFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .category-section ul li.active-category {
+            background: #005bb5;
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-section ul li.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .category-section ul li:hover {
+            background: #005bb5;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        /* Banner Section */
+        
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .carousel-item:nth-child(1) {
+            background-image: linear-gradient(to right, rgba(0, 12, 24, 0.7), rgba(2, 54, 72, 0.7)), url('assets/twin\ bg.jpg');
+        }
+        
+        .carousel-item:nth-child(2) {
+            background-image: linear-gradient(to right, rgba(1, 12, 23, 0.7), rgba(2, 24, 31, 0.7)), url('assets/Group\ 1010110446.png');
+        }
+        
+        .carousel-item:nth-child(3) {
+            background-image: linear-gradient(to right, rgba(1, 11, 22, 0.7), rgba(1, 14, 18, 0.7)), url('assets/deepeek2.jpg');
+        }
+        
+        .carousel-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 1200px;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            animation: fadeInUp 1s ease-out;
+            text-align: center;
+        }
+        
+        .carousel-content h1 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            margin: 0 0 15px;
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        .carousel-content h2 {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            margin: 0 0 10px;
+            animation: slideInRight 1s ease-out;
+        }
+        
+        .carousel-content p {
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            margin: 0 0 15px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .carousel-content button {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 8px 16px;
+            font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        .carousel-content button:hover {
+            background: #ffffff;
+            color: black;
+        }
+        
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            z-index: 2;
+        }
+        
+        .carousel-controls button {
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .carousel-controls button.active {
+            background: white;
+        }
+        /* Main Content Layout */
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 20px;
+            box-sizing: border-box;
+            flex-wrap: nowrap;
+        }
+        
+        .left-container {
+            flex: 3;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .left-image {
+            flex: 1;
+            position: relative;
+            height: auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .left-image.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .left-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .left-image .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+        }
+        
+        .left-image .overlay h2 {
+            font-size: 1.5rem;
+            margin: 0 0 10px;
+        }
+        
+        .left-image .overlay button {
+            background: #FF4757;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .left-image .overlay button:hover {
+            background: #FF6B81;
+        }
+        
+        .right-posts {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .right-posts.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-card {
+            background: white;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .blog-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .blog-card-content {
+            padding: 10px;
+        }
+        
+        .blog-card h2 {
+            font-size: 1rem;
+            margin: 0 0 10px;
+        }
+        
+        .blog-card p {
+            font-size: 0.8rem;
+            color: #555;
+            margin: 0 0 15px;
+        }
+        
+        .blog-card a {
+            display: inline-block;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .blog-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 250px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .sidebar.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .sidebar-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        .sidebar-section h3 {
+            font-size: 1.2rem;
+            margin: 0 0 15px;
+        }
+        
+        .sidebar-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-section ul li a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        
+        .sidebar-section ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .newsletter input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .newsletter button {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .newsletter button:hover {
+            background: #005bb5;
+        }
+        /* Additional Blog Posts */
+        
+        .additional-blog-posts {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .additional-blog-posts h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .blog-grid .blog-card:hover {
+            transform: translateY(-5px);
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        /* Responsive Design (Updated for Carousel on Small Screens) */
+        
+        @media (max-width: 1024px) {
+            .banner {
+                height: 60vh;
+            }
+            .carousel-content {
+                padding: 15px;
+            }
+            .carousel-content h1 {
+                font-size: clamp(1.2rem, 3vw, 2.5rem);
+            }
+            .carousel-content h2 {
+                font-size: clamp(0.9rem, 2vw, 1.2rem);
+            }
+            .carousel-content p {
+                font-size: clamp(0.8rem, 1.5vw, 1rem);
+            }
+            .carousel-content button {
+                padding: 6px 12px;
+                font-size: clamp(0.7rem, 1vw, 0.8rem);
+            }
+            .carousel-controls {
+                bottom: 15px;
+            }
+            .container {
+                flex-direction: column;
+            }
+            .left-container {
+                flex-direction: column;
+            }
+            .right-posts {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                width: 100%;
+                min-width: auto;
+                margin-top: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .banner {
+                height: 60vh;
+            }
+            .carousel-content {
+                padding: 10px;
+            }
+            .carousel-content h1 {
+                font-size: clamp(1rem, 2.5vw, 2rem);
+            }
+            .carousel-content h2 {
+                font-size: clamp(0.8rem, 1.8vw, 1rem);
+            }
+            .carousel-content p {
+                font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+            }
+            .carousel-content button {
+                padding: 5px 10px;
+                font-size: clamp(0.6rem, 0.9vw, 0.7rem);
+            }
+            .carousel-controls {
+                bottom: 10px;
+                gap: 8px;
+            }
+            .carousel-controls button {
+                width: 8px;
+                height: 8px;
+            }
+            .category-section ul {
+                flex-direction: row;
+                gap: 8px;
+            }
+            .category-section ul li {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            .container {
+                flex-direction: column;
+            }
+            .left-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .banner {
+                height: 60vh;
+            }
+            .carousel-content {
+                padding: 8px;
+            }
+            .carousel-content h1 {
+                font-size: clamp(0.9rem, 2vw, 1.5rem);
+            }
+            .carousel-content h2 {
+                font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            }
+            .carousel-content p {
+                font-size: clamp(0.6rem, 1vw, 0.8rem);
+            }
+            .carousel-content button {
+                padding: 4px 8px;
+                font-size: clamp(0.5rem, 0.8vw, 0.6rem);
+            }
+            .carousel-controls {
+                bottom: 8px;
+                gap: 6px;
+            }
+            .carousel-controls button {
+                width: 6px;
+                height: 6px;
+            }
+            .category-section {
+                padding: 10px;
+            }
+            .category-section ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .category-section ul li {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+            .left-image .overlay h2 {
+                font-size: 1.2rem;
+            }
+            .blog-card h2 {
+                font-size: 0.9rem;
+            }
+            .blog-card p {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation (Updated from Farm2Plate) -->
+    <nav>
+        <div class="mainlogo">
+            <img src="assets/image 4.png" alt="AKIKO SHERMAN INFOTECH Logo" onclick="window.location.href='index.html'">
+            <a href="index.html" class="logo">AKIKO SHERMAN INFOTECH</a>
+        </div>
+        <label for="btn" class="icon">
+            <span class="fa fa-bars"></span>
+        </label>
+        <ul>
+            <li><a href="company.html">The Company</a></li>
+            <li>
+                <a href="#">Services <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="ai.html">AI & ML</a></li>
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="ecom.html">E-commerce</a></li>
+                    <li><a href="web.html">Web & Mobility</a></li>
+                    <li><a href="sales.html">Salesforce Implementation</a></li>
+                    <li><a href="staff.html">Staffing & Support</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Solutions <i class="fas fa-chevron-down dropdown-arrow"></i></a>
+                <ul class="drop-menu">
+                    <li><a href="farm.html">Farm2Plate</a></li>
+                    <li><a href="infracon.html">Infracon</a></li>
+                    <li><a href="land.html">Land Acquisition</a></li>
+                    <li><a href="owc.html">OWC</a></li>
+                    <li><a href="tamra.html">Tamra</a></li>
+                </ul>
+            </li>
+            <li><a href="technology.html">Technologies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Banner Section -->
+    <div class="banner">
+        <div class="carousel">
+            <div class="carousel-item">
+                <div class="carousel-content">
+                    <h1>DIVE INTO AKIKO BLOGS</h1>
+                    <h2>Unlocking the Future: The Bricolage of Digital Twins and Generative AI</h2>
+                    <p>Imagine a world where you can predict a machine's failure before it happens, understand a city's traffic patterns with uncanny precision, or even simulate entire ecosystems to save endangered species.</p>
+                    <button onclick="window.location.href='./blog-posts/twin.html'">Read More</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-content">
+                    <h1>DIVE INTO AKIKO BLOGS</h1>
+                    <h2>Finding Calm Amidst the Chaos: Why Meditation Reveals Hidden Stress and How It Heal</h2>
+                    <p>In the relentless pace of modern work life, it's easy to overlook the cumulative stress and fatigue we carry. Daily responsibilities and pressures keep our minds occupied, masking the underlying burden we bear. </p>
+                    <button onclick="window.location.href='./blog-posts/stress.html'">Read More</button>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-content">
+                    <h1>DIVE INTO AKIKO BLOGS</h1>
+                    <h2>Is AI Finally Learning to Think? Meet DeepSeek R1</h2>
+                    <p>Discover how DeepSeek R1 is revolutionizing AI with logical reasoning and self-improvement.</p>
+                    <button onclick="window.location.href='./blog-posts/deepseek.html'">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="active" onclick="goToSlide(0)"></button>
+            <button onclick="goToSlide(1)"></button>
+            <button onclick="goToSlide(2)"></button>
+        </div>
+    </div>
+    <div class="category-section">
+        <h3 onclick="filterPosts('all')">Explore Categories</h3>
+        <ul>
+            <li onclick="filterPosts('Technology')">Technology</li>
+            <li onclick="filterPosts('AI')">AI</li>
+            <li onclick="filterPosts('Cloud Computing')">Cloud Computing</li>
+            <li onclick="filterPosts('Cybersecurity')">Cybersecurity</li>
+            <li onclick="filterPosts('Software Development')">Software Development</li>
+            <li onclick="filterPosts('LifeStyle')">LifeStyle</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="left-container">
+            <div class="left-image">
+                <img src="assets/secret 2.png" alt="Left Image">
+                <div class="overlay" onclick="window.location.href='./blog-posts/secret.html'">
+                    <h2>"The Hidden Secret to Social Media Success: It's Not About Selling"</h2>
+                    <button onclick="window.location.href='./blog-posts/secret.html'">Read</button>
+                </div>
+            </div>
+            <div class="right-posts">
+                <div class="blog-card" data-category="AI">
+                    <img src="assets/twin blog.jpg" alt="Blog Image 1">
+                    <div class="blog-card-content">
+                        <h2>Unlocking the Future: The Bricolage of Digital Twins and Generative AI</h2>
+                        <p>Imagine a world where you can predict a machine's failure before it happens, understand a city's traffic patterns with uncanny precision, or even simulate entire ecosystems to save endangered species. </p>
+                        <a href="./blog-posts/deepseek.html">Read More</a>
+                    </div>
+                </div>
+                <div class="blog-card" data-category="AI">
+                    <img src="assets/Deepseek Img.png" alt="DeepSeek R1 AI Model">
+                    <div class="blog-card-content">
+                        <h2>Is AI Finally Learning to Think? Meet DeepSeek R1</h2>
+                        <p>Discover how DeepSeek R1 is revolutionizing AI with logical reasoning and self-improvement.</p>
+                        <a href="./blog-posts/deepseek.html">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h3>Popular Posts</h3>
+                <ul>
+                    <li><a href="#">Is the Future of Software Development Already Here?</a></li>
+                    <li><a href="#">Democratizing Intelligence: The True Power of AI Unleashed</a></li>
+                    <li><a href="#">Is Your Business Really Ready for the Cloud?</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#" onclick="filterPosts('AI')">Artificial Intelligence</a></li>
+                    <li><a href="#" onclick="filterPosts('Cloud Computing')">Cloud Computing</a></li>
+                    <li><a href="#" onclick="filterPosts('Cybersecurity')">Cybersecurity</a></li>
+                    <li><a href="#" onclick="filterPosts('Software Development')">Software Development</a></li>
+                    <li><a href="#" onclick="filterPosts('LifeStyle')">Lifestyle</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section newsletter">
+                <h3>Subscribe to Our Newsletter</h3>
+                <input type="email" placeholder="Enter your email">
+                <button>Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="additional-blog-posts">
+        <h2>More Blog Posts</h2>
+        <div class="blog-grid">
+            <div class="blog-card" data-category="Software Development">
+                <img src="assets/softdev blog.png" alt="Blog Image 3">
+                <div class="blog-card-content">
+                    <h2>Is the Future of Software Development Already Here?</h2>
+                    <p>The tech world is buzzing with a question that seems to be on everyone's mind: Is the future of software development already here? The landscape is rapidly evolving, and it's not just about writing lines of code anymore.</p>
+                    <a href="./blog-posts/softdev.html">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card" data-category="LifeStyle">
+                <img src="assets/stress blog.png" alt="Blog Image 4">
+                <div class="blog-card-content">
+                    <h2>Finding Calm Amidst the Chaos: Why Meditation Reveals Hidden Stress and How It Heals</h2>
+                    <p>In the relentless pace of modern work life, it's easy to overlook the cumulative stress and fatigue we carry. Daily responsibilities and pressures keep our minds occupied, masking the underlying burden we bear. </p>
+                    <a href="./blog-posts/stress.html">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card" data-category="AI">
+                <img src="assets/Democartizing.jpg" alt="Blog Image 5">
+                <div class="blog-card-content">
+                    <h2>Democratizing Intelligence: The True Power of AI Unleashed</h2>
+                    <p>In a recent interview, Elon Musk posed a thought-provoking question: "Have we truly democratized AI?" As we look around, it seems the answer might be yes. </p>
+                    <a href="./blog-posts/demo.html">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card" data-category="Cloud Computing">
+                <img src="assets/clous blog.png" alt="Blog Image 6">
+                <div class="blog-card-content">
+                    <h2>Is Your Business Really Ready for the Cloud?</h2>
+                    <p>Understand the benefits and challenges of adopting a cloud approach.</p>
+                    <a href="./blog-posts/cloud.html">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Updated from Farm2Plate) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="assets/image 4.png" alt="Akiko Sherman Infotech" class="footer-logo">
+                <div class="footer-about">
+                    <h2 class="footer-title">About Us</h2>
+                    <p>Akiko Sherman Infotech is an independent division under Sherman group of companies. With more than 25 years of experience, the company has successfully delivered over 800+ IT Projects for various Central and State Govt. Depts, PSUs
+                        and other enterprises.</p>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="company.html">Company</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="technology.html">Technologies</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Services</h3>
+                <ul class="footer-links">
+                    <li><a href="egov.html">E-Governance</a></li>
+                    <li><a href="web.html">Web Solutions</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Data Analytics</a></li>
+                    <li><a href="staff.html">Staffing</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3 class="footer-title">Connect</h3>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <h3 class="footer-title">Contact Us</h3>
+                <div class="contact-info">
+                    <div class="phone-numbers">
+                        +91-11-41416847<br> +91-11-49849707
+                    </div>
+                    <a href="mailto:info@shermanindia.com">info@shermanindia.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2025 Akiko Sherman Infotech. All Rights Reserved.
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript (Updated from Farm2Plate) -->
+    <script>
+        // Footer Animation
+        gsap.fromTo('footer', {
+            opacity: 0,
+            y: 50
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '.additional-blog-posts',
+                start: 'bottom 80%',
+                toggleActions: 'play none none none'
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Navigation Logic
+            document.querySelector('.icon').addEventListener('click', function(e) {
+                e.stopPropagation();
+                const navUl = document.querySelector('nav ul');
+                navUl.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(e) {
+                const navUl = document.querySelector('nav ul');
+                const icon = document.querySelector('.icon');
+                if (!navUl.contains(e.target) && !icon.contains(e.target) && navUl.classList.contains('show')) {
+                    navUl.classList.remove('show');
+                    document.querySelectorAll('.drop-menu').forEach(dropdown => {
+                        dropdown.style.display = 'none';
+                    });
+                    document.querySelectorAll('.dropdown-arrow').forEach(arrow => {
+                        arrow.style.transform = 'rotate(0deg)';
+                    });
+                }
+            });
+
+            const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+            dropdownArrows.forEach(arrow => {
+                arrow.parentElement.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 968) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const dropdown = this.nextElementSibling;
+                        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                        arrow.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Carousel Functionality
+            let currentSlide = 0;
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel-item');
+            const controls = document.querySelectorAll('.carousel-controls button');
+
+            function goToSlide(index) {
+                currentSlide = index;
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                updateControls();
+            }
+
+            function updateControls() {
+                controls.forEach((control, index) => {
+                    control.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                goToSlide(currentSlide);
+            }, 5000);
+
+            // Category Filtering - Fixed Version
+            function filterPosts(category) {
+                const blogCards = document.querySelectorAll('.blog-card');
+                const categoryItems = document.querySelectorAll('.category-section ul li');
+                const categoryTitle = document.querySelector('.category-section h3');
+
+                // Reset all category buttons
+                categoryItems.forEach(item => {
+                    item.classList.remove('active-category');
+                });
+
+                // Highlight selected category or "All" if category is 'all'
+                if (category === 'all') {
+                    categoryTitle.classList.add('active-category');
+                } else {
+                    categoryTitle.classList.remove('active-category');
+                    categoryItems.forEach(item => {
+                        if (item.textContent.trim() === category) {
+                            item.classList.add('active-category');
+                        }
+                    });
+                }
+
+                // Filter blog cards
+                blogCards.forEach(card => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+
+            // Initialize with all posts showing
+            filterPosts('all');
+
+            // Scroll Animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.category-section ul li, .blog-card, .left-image, .right-posts, .sidebar').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+
+</html>
