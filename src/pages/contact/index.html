@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Akiko Sherman Infotech</title>
+    <!-- Load styles via Webpack -->
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/components.css">
+    <link rel="stylesheet" href="./style.css">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Preload assets -->
+    <link rel="preload" href="/src/assets/contact-page-bg.avif" as="image">
+</head>
+
+<body>
+    <div data-include="navigation"></div>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Innovate with Akiko Sherman Infotech</h1>
+            <p>With over 25 years of experience, delivering 800+ IT projects for government and enterprises.</p>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </section>
+
+    <div class="contact-container">
+        <!-- Rest of your contact content remains unchanged -->
+        <div class="contact-header">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Reach out for inquiries or collaborations.</p>
+        </div>
+
+        <div class="contact-content">
+            <div class="contact-form">
+                <h2>Submit Query</h2>
+                <form id="contactForm" onsubmit="submitForm(event); return false;" aria-labelledby="form-heading">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter Name" required autocomplete="name">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter Email Id" required autocomplete="email">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter Mobile No." required autocomplete="tel">
+                    <label for="company">Company/Organization Name</label>
+                    <input type="text" id="company" name="company" placeholder="Enter Company" required autocomplete="organization">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Enter Query" required></textarea>
+                    <button type="submit" class="contact-btn" aria-label="Submit Query">Send Query</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p>Akiko Sherman Infotech Pvt. Ltd. is an independent division under Sherman group of companies.</p>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i><span>DCM Building, 3rd Floor, 3L & 3M, Barakhamba Road, New Delhi - 110001</span></li>
+                    <li><i class="fas fa-phone"></i><a href="tel:+918851599751">8851599751, 9650337723, 9811383370</a></li>
+                    <li><i class="fas fa-phone"></i><a href="tel:+919990623323">+91-9990623323 (For Other Queries)</a></li>
+                    <li><i class="fas fa-envelope"></i><a href="mailto:info@shermanindia.com">info@shermanindia.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.9986528174427!2d77.21961007535825!3d28.629802475666338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfdaaaf103c9d%3A0xfc248187afda0156!2sAkiko%20Sherman%20Infotech%20Pvt.%20Ltd!5e0!3m2!1sen!2sus!4v1743364583485!5m2!1sen!2sus"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="dialog-box" id="dialogBox">
+            <p>Form Submitted Successfully!</p>
+            <button onclick="closeDialog()">Close</button>
+        </div>
+    </div>
+
+    <div data-include="footer"></div>
+
+    <script src="/contact.bundle.js"></script>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            const form = document.getElementById('contactForm');
+            if (!form) {
+                alert('Form not found!');
+                return;
+            }
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            fetch('http://localhost:5000/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        form.reset();
+                        showDialog();
+                    } else {
+                        alert('Error submitting form: ' + result.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        }
+
+        function showDialog() {
+            const dialog = document.getElementById('dialogBox');
+            if (dialog) {
+                dialog.classList.add('show');
+                dialog.setAttribute('aria-hidden', 'false');
+                // Focus the close button
+                const closeButton = dialog.querySelector('button');
+                if (closeButton) closeButton.focus();
+            }
+        }
+
+        function closeDialog() {
+            const dialog = document.getElementById('dialogBox');
+            if (dialog) {
+                dialog.classList.remove('show');
+                dialog.setAttribute('aria-hidden', 'true');
+                // Return focus to the form
+                const form = document.getElementById('contactForm');
+                if (form) form.querySelector('button').focus();
+            }
+        }
+
+        // Add Esc key support
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeDialog();
+            }
+        });
+    </script>
+</body>
+
+</html>

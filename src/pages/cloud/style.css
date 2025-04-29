@@ -1,0 +1,200 @@
+:root {
+    --primary: #007BFF;
+    --dark: #2c3e50;
+    --light: #f8f9fa;
+    --gray: #6c757d;
+}
+
+.hero-section {
+    height: 70vh;
+    background-image: url('/src/assets/cloud-page-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-overlay {}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content .blog-meta {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.blog-post-container {
+    max-width: 1400px;
+    margin: -50px auto 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    line-height: 1.6;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.blog-post-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blog-content h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+    font-weight: 600;
+    color: var(--primary);
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.blog-content h3 {
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    font-weight: 600;
+    color: var(--dark);
+    margin: 1.5rem 0 0.5rem;
+}
+
+.blog-content p {
+    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+    color: #555;
+}
+
+.blog-content ul,
+.blog-content ol {
+    margin: 1rem 0 1.5rem 2rem;
+    font-size: clamp(1.3rem, 2vw, 2rem);
+}
+
+.blog-content li {
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+}
+
+.tech-term {
+    font-family: 'Courier New', monospace;
+    background: #f8f9fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    color: #e83e8c !important;
+    font-size: clamp(0.9rem, 1.5vw, 1.25rem);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.comparison-table th {
+    background: #f8f9fa;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.comparison-table tr:hover {
+    background: #f5f5f5;
+}
+
+.key-takeaway {
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--primary);
+    padding: 1rem;
+    margin: 1.5rem 0;
+}
+
+.key-takeaway h4 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+.back-button {}
+
+.back-button:hover {}
+
+@media (max-width: 400px) {
+    .comparison-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    .comparison-table thead {
+        display: none;
+    }
+    .comparison-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    .comparison-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid #eee;
+    }
+    .comparison-table td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 1rem;
+        color: var(--primary);
+    }
+    .comparison-table td:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 50vh;
+    }
+    .hero-content {
+        padding: 15px;
+    }
+    .hero-content h1 {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+    .hero-content .blog-meta {
+        font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+    }
+    .blog-post-container {
+        padding: 1.5rem;
+        margin: -30px auto 1rem;
+    }
+    .blog-content h2 {
+        font-size: clamp(1.2rem, 2vw, 1.5rem);
+    }
+}

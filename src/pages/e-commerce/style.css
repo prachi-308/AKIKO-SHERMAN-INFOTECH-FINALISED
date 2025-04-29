@@ -1,0 +1,907 @@
+/* Hero Section Styles */
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 70px;
+    perspective: 1000px;
+    z-index: 2;
+}
+
+.parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/src/assets/ecom-page-bg.png') no-repeat center center/cover;
+    z-index: -1;
+    transform: scale(1.1);
+}
+
+.orange-container {
+    background: rgba(7, 115, 204, 0.5);
+    padding: 60px 40px 0px 40px;
+    transform: translateY(-50px) rotateX(-30deg);
+    align-items: last baseline;
+    margin: 0 auto;
+    gap: 100px;
+    margin-bottom: 40px;
+    height: 200px;
+    margin-top: 50px;
+    box-sizing: border-box;
+}
+
+.orange-container .heading {
+    align-items: last baseline;
+    white-space: nowrap;
+}
+
+.orange-container .heading .big-e {}
+
+.orange-container:hover .big-e {
+    transform: translateZ(60px) rotateY(15deg);
+}
+
+.orange-container .heading span {
+    font-size: 100px;
+    color: white;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.orange-container .description {
+    font-size: 25px;
+    max-width: 600px;
+    padding-left: 30px;
+}
+
+.content-container {}
+
+.tabs {}
+
+.tab {}
+
+.tab:hover {}
+
+.tab.active {}
+
+.content-description {
+    font-size: 1.4rem;
+    width: 80%;
+}
+
+.tech-wrapper {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.tech-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tech-heading {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    position: relative;
+}
+
+.tech-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: #0773cc;
+}
+
+.tech-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.tech-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(5px);
+}
+
+.tech-item i {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+
+/* Features Section */
+
+.features-section {
+    padding: 60px 10px;
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.features-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.features-wrapper {
+    display: flex;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 40px 0px;
+}
+
+.feature-card {
+    flex: 0 0 33.333%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+    will-change: transform, opacity;
+}
+
+.card-content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.card-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #6b48ff, #00d4ff);
+    border-radius: 15px 15px 0 0;
+}
+
+.feature-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #2a1a5e;
+    transition: all 0.3s ease;
+}
+
+.feature-card p {
+    color: #4a3b8c;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+}
+
+.scroll-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: linear-gradient(to right, #6b48ff, #00d4ff);
+    transform: scale(1.3);
+}
+
+.feature-card:hover .card-content {
+    transform: translateY(-10px) perspective(1000px) rotateX(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card:hover img {
+    transform: scale(1.03);
+}
+
+.feature-card:hover h2 {
+    color: #6b48ff;
+}
+
+
+/* Parallax Section */
+
+.parallax-section {
+    height: 80vh;
+    background: url('/src/assets/ecom-sec3-bg.png') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.parallax-section .overlay {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.parallax-section h1 {
+    font-size: 5em;
+    margin-bottom: 15px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.parallax-section p {
+    font-size: 1.4em;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    color: #ddd;
+}
+
+.parallax-section .showcase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+    z-index: 2;
+    width: 95%;
+    max-width: 1500px;
+    flex-wrap: nowrap;
+}
+
+.website-img,
+.logo-img {
+    max-width: 350px;
+    width: 40%;
+    height: auto;
+    padding-top: 40px;
+    opacity: 0;
+    transition: all 0.6s ease;
+    position: relative;
+    z-index: 3;
+    transform: translateY(50px);
+}
+
+.logo-img {
+    max-width: 220px;
+    width: 30%;
+}
+
+.website-img.visible,
+.logo-img.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.website-img:nth-child(1):hover,
+.website-img:nth-child(3):hover {
+    transform: scale(1.15) translateY(0);
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.website-img:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 70px;
+    height: 4px;
+    background: #fff;
+}
+
+.website-img:nth-child(1)::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 4px;
+    height: 70px;
+    background: #fff;
+}
+
+.website-img:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    width: 70px;
+    height: 4px;
+    background: #fff;
+}
+
+.website-img:nth-child(3)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    right: 0;
+    width: 4px;
+    height: 70px;
+    background: #fff;
+}
+
+.parallax-section .background {
+    position: absolute;
+    top: -20%;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    opacity: 0.25;
+    z-index: 1;
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+
+
+/* E-Commerce Implementations Section */
+
+.ecommerce-section {
+    padding: 80px 40px;
+    text-align: center;
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+
+.ecommerce-section h2 {
+    font-size: 3.7em;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.ecommerce-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 4px;
+    background: #4a90e2;
+    transform: translateX(-50%);
+}
+
+.ecommerce-section p {
+    font-size: 1.4em;
+    font-weight: 300;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 60px;
+    opacity: 0;
+    /* This might affect the section description, not the cards */
+}
+
+.ecommerce-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1.3fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.ecommerce-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    opacity: 0;
+    transform: translateY(80px) scale(0.95);
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.ecommerce-card.reveal {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.ecommerce-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.ecommerce-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    background: #f0f7ff;
+}
+
+.ecommerce-card:hover img {
+    transform: scale(1.1);
+}
+
+.ecommerce-card-content {
+    padding: 20px;
+    text-align: left;
+    min-height: 120px;
+    /* Ensure enough space for text */
+}
+
+.ecommerce-card h3 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #4a90e2;
+    margin-bottom: 10px;
+}
+
+.ecommerce-card p {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #777;
+    margin: 0 0 15px 0;
+    /* Add bottom margin for spacing */
+    visibility: visible;
+    opacity: 1;
+    /* Explicitly set opacity */
+}
+
+.ecommerce-card a {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.ecommerce-card a:hover {
+    color: #357abd;
+}
+
+
+/* Fallback to ensure visibility */
+
+.ecommerce-card-content p {
+    display: block !important;
+    /* Override any hidden state */
+    opacity: 1 !important;
+    /* Override any animation opacity */
+    color: #777 !important;
+    /* Ensure text color is visible */
+}
+
+
+/* Background Decorative Elements */
+
+.bg-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tech-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(74, 144, 226, 0.1);
+    animation: pulse 5s infinite ease-in-out;
+}
+
+.tech-circle:nth-child(1) {
+    width: 180px;
+    height: 180px;
+    top: 15%;
+    left: 10%;
+}
+
+.tech-circle:nth-child(2) {
+    width: 120px;
+    height: 120px;
+    top: 70%;
+    right: 15%;
+    animation-delay: 1.5s;
+}
+
+.tech-circle:nth-child(3) {
+    width: 90px;
+    height: 90px;
+    top: 40%;
+    left: 75%;
+    animation-delay: 3s;
+}
+
+
+/* Animation Classes */
+
+.animate-hero {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-hero.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Animations */
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.4;
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1300px) {
+    .hero-section {
+        height: 112vh;
+    }
+    .orange-container .description {
+        font-size: 18px;
+    }
+    .orange-container .heading .big-e {
+        font-size: 200px;
+    }
+    .orange-container {
+        padding: 0px 20px 0px 20px;
+        gap: 100px;
+        margin-top: 90px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .hero-section {
+        height: 110vh;
+        padding-top: 30px;
+    }
+    .orange-container {
+        gap: 30px;
+        height: 160px;
+        padding: 0px 5px 0px 0px;
+    }
+    .orange-container .heading .big-e {
+        font-size: 180px;
+    }
+    .orange-container .heading span {
+        font-size: 60px;
+    }
+    .orange-container .description {
+        font-size: 18px;
+        max-width: 500px;
+        padding-left: 10px;
+    }
+    .content-container {
+        width: 90%;
+        padding: 15px;
+    }
+    .ecommerce-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ecommerce-card {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .orange-container .description {
+        font-size: 14px;
+        max-width: 500px;
+        padding-left: 10px;
+    }
+    .parallax-section .website-img {
+        width: 28%;
+        max-width: 300px;
+    }
+    .parallax-section .logo-img {
+        width: 18%;
+        max-width: 180px;
+    }
+    .parallax-section h1 {
+        font-size: 3.5em;
+    }
+    .parallax-section .showcase {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-section {
+        height: 110vh;
+    }
+    .orange-container {
+        gap: 30px;
+        height: 160px;
+        padding: 0px 5px 0px 0px;
+    }
+    .orange-container .heading .big-e {
+        font-size: 180px;
+    }
+    .orange-container .heading span {
+        font-size: 60px;
+    }
+    .orange-container .description {
+        font-size: 18px;
+        max-width: 500px;
+        padding-left: 10px;
+    }
+    .content-container {
+        width: 90%;
+        padding: 15px;
+    }
+    .ecommerce-section h2 {
+        font-size: 2.8em;
+    }
+    .ecommerce-section p {
+        font-size: 1.1em;
+        max-width: 90%;
+    }
+    .ecommerce-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ecommerce-card {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        height: 130vh;
+        padding-top: 0px;
+    }
+    .orange-container {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        min-height: 200px;
+        padding: 20px;
+    }
+    .orange-container .heading .big-e {
+        font-size: 120px;
+    }
+    .orange-container .heading span {
+        font-size: 40px;
+    }
+    .orange-container .description {
+        font-size: 16px;
+        border-left: none;
+        border-top: 4px solid white;
+        padding-left: 0;
+        padding-top: 10px;
+        text-align: center;
+        max-width: 100%;
+    }
+    .content-container {
+        width: 95%;
+        padding: 10px;
+    }
+    .tech-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    .feature-card {
+        flex: 0 0 100%;
+        padding: 0 10px;
+    }
+    .card-content {
+        padding: 25px;
+    }
+    .feature-card img {
+        height: 160px;
+    }
+    .ecommerce-grid {
+        grid-template-columns: 1fr;
+    }
+    .ecommerce-card {
+        max-width: 320px;
+    }
+    .ecommerce-card img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 700px) {
+    .parallax-section {
+        height: auto;
+        min-height: 90vh;
+        padding: 40px 0;
+    }
+    .parallax-section .showcase {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .parallax-section .website-img {
+        width: 70%;
+        max-width: 300px;
+        padding-top: 20px;
+    }
+    .parallax-section .logo-img {
+        width: 50%;
+        max-width: 200px;
+    }
+    .parallax-section h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 600px) {
+    .ecommerce-section {
+        padding: 60px 15px;
+    }
+    .ecommerce-section h2 {
+        font-size: 2.2em;
+    }
+    .ecommerce-section p {
+        font-size: 1em;
+    }
+    .ecommerce-grid {
+        grid-template-columns: 1fr;
+    }
+    .ecommerce-card {
+        max-width: 320px;
+    }
+    .ecommerce-card img {
+        height: 220px;
+    }
+    .tech-circle:nth-child(1) {
+        width: 120px;
+        height: 120px;
+    }
+    .tech-circle:nth-child(2) {
+        width: 100px;
+        height: 100px;
+    }
+    .tech-circle:nth-child(3) {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .parallax-section h1 {
+        font-size: 2em;
+    }
+    .parallax-section p {
+        font-size: 0.9em;
+    }
+    .parallax-section .website-img {
+        width: 80%;
+        max-width: 250px;
+    }
+    .parallax-section .logo-img {
+        width: 60%;
+        max-width: 160px;
+    }
+    .website-img:nth-child(1)::before,
+    .website-img:nth-child(3)::before {
+        width: 50px;
+    }
+    .website-img:nth-child(1)::after,
+    .website-img:nth-child(3)::after {
+        height: 50px;
+    }
+    .ecommerce-section h2 {
+        font-size: 1.8em;
+    }
+    .ecommerce-card img {
+        height: 180px;
+    }
+    .ecommerce-card h3 {
+        font-size: 1.3em;
+    }
+    .ecommerce-card p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-section {
+        height: 150vh;
+        padding-top: 20px;
+    }
+}

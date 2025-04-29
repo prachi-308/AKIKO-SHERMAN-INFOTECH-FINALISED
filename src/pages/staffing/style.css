@@ -1,0 +1,297 @@
+/* Hero Section */
+
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0px 20px;
+    perspective: 1000px;
+    z-index: 2;
+}
+
+.parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/src/assets/staffing-page-bg.png') no-repeat center center/cover;
+    z-index: -1;
+    transform: scale(1.1);
+}
+
+.orange-container {
+    background: rgba(0, 91, 14, 0.47);
+    padding: 20px;
+    transform: translateY(-50px) rotateX(-30deg);
+    gap: 40px;
+    margin: 0 auto 40px;
+    min-height: 200px;
+}
+
+.orange-container .heading {
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.orange-container .heading .big-e {
+    font-size: clamp(50px, 10vw, 170px);
+    color: rgba(255, 255, 255, 0.56);
+    font-weight: 400;
+    line-height: 1;
+    transform: translateZ(40px);
+    transition: transform 0.5s ease;
+    margin: 0 10px;
+}
+
+.orange-container .heading span {
+    font-size: clamp(24px, 5vw, 80px);
+    color: white;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.orange-container .description {}
+
+.content-container {}
+
+.tabs {}
+
+.tab {}
+
+.tab:hover {}
+
+.tab.active {}
+
+.content-description {}
+
+
+/* Quote Section */
+
+.quote {
+    width: 100%;
+    text-align: center;
+    margin: 50px 0;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(245, 247, 250, 0.9), rgba(255, 255, 255, 0.95));
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+}
+
+.quote p {
+    color: #1a2b49;
+    font-size: clamp(1em, 2.5vw, 1.5em);
+    font-weight: 500;
+    width: 80%;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.quote hr {
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #0d6efd, #1e90ff);
+    border: none;
+    margin: 0 auto;
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+
+/* Technical Profiles Section */
+
+.container2 {
+    width: 100%;
+    background: url('/src/assets/staffing-sec2-bg.webp') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+.top-section,
+.bottom-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 50px 20px;
+    color: white;
+    font-size: clamp(12px, 2.2vw, 60px);
+    width: 100%;
+}
+
+.middle-section {
+    width: 100%;
+    background: rgba(29, 118, 43, 0.66);
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.middle-border {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    padding: 10px 20px;
+    display: inline-block;
+    width: 70%;
+}
+
+.middle-border h2 {
+    color: white;
+    font-size: clamp(28px, 10vw, 90px);
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.profile img {
+    width: auto;
+    height: clamp(35px, 5vw, 70px);
+}
+
+.profile p {
+    margin-top: 10px;
+    font-size: clamp(10px, 1.5vw, 16px);
+}
+
+.profile:hover {
+    transform: scale(1.1);
+}
+
+
+/* Key Offerings Section */
+
+.key-offerings {
+    background-color: #f3f4f6;
+    padding: 60px 20px;
+    width: 100%;
+}
+
+.key-offerings .container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: clamp(28px, 5vw, 47px);
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #1a2b49;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.offerings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.offering-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.offering-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.offering-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.offering-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 15px 20px 10px;
+    color: #1a2b49;
+}
+
+.offering-card p {
+    color: #4b5563;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 20px 20px;
+}
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 768px) {
+    .offerings-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .offering-image {
+        height: 150px;
+    }
+    .hero-section {
+        padding: 50px 0px 15px;
+    }
+    .orange-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    .orange-container .heading {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .middle-border h2 {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .offerings-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-section {
+        padding: 40px 0px 10px;
+    }
+    .orange-container {
+        padding: 15px;
+        margin-top: 50px;
+    }
+}
