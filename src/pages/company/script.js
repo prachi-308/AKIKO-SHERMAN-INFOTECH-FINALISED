@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.fromTo(count, { textContent: 0 }, { textContent: count.getAttribute('data-target'), duration: 2, ease: 'power1.out', snap: { textContent: 1 }, scrollTrigger: { trigger: count, start: 'top 80%' } });
     });
 
-    gsap.fromTo('.software-innovation .content', { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.software-innovation', start: 'top 80%' } });
+    gsap.fromTo('.software-innovation .content', { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.software-innovation', start: 'top 95%' } });
     gsap.fromTo('.software-innovation .grid', { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.software-innovation', start: 'top 80%' } });
     gsap.to('.banner-parallax', { y: '15%', scale: 1.1, ease: 'none', scrollTrigger: { trigger: '.banner', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.fromTo('.banner-left', { opacity: 0, x: -100 }, { opacity: 1, x: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.banner', start: 'top 80%' } });

@@ -298,7 +298,7 @@
                         <div class="slider-item-content">
                             <h3>INFRACON</h3>
                             <p>Ministry of Road Transport & Highways</p>
-                            <a href="http://infracon.nic.in/" target="_blank">URL: http://infracon.nic.in/</a>
+
                             <button class="view-btn" onclick="window.location.href='infracon.html'">VIEW</button>
                         </div>
                         <div class="progress-bar"></div>
@@ -308,7 +308,7 @@
                         <div class="slider-item-content">
                             <h3>LAND ACQUISITION</h3>
                             <p>Ministry of Road Transport & Highways</p>
-                            <a href="http://bhoomirashi.gov.in/" target="_blank">URL: http://bhoomirashi.gov.in/</a>
+
                             <button class="view-btn" onclick="window.location.href='land.html'">VIEW</button>
                         </div>
                         <div class="progress-bar"></div>
@@ -318,7 +318,7 @@
                         <div class="slider-item-content">
                             <h3>OWC</h3>
                             <p>Ministry of Road Transport & Highways</p>
-                            <a href="http://epace.nic.in/" target="_blank">URL: http://epace.nic.in/</a>
+
                             <button class="view-btn" onclick="window.location.href='owc.html'">VIEW</button>
                         </div>
                         <div class="progress-bar"></div>
@@ -328,7 +328,7 @@
                         <div class="slider-item-content">
                             <h3>TAMRA</h3>
                             <p>Ministry of Road Transport & Highways</p>
-                            <a href="http://tamra.gov.in/mom.php" target="_blank">URL: http://tamra.gov.in/mom.php</a>
+
                             <button class="view-btn" onclick="window.location.href='tamra.html'">VIEW</button>
                         </div>
                         <div class="progress-bar"></div>
@@ -397,7 +397,7 @@
             <div class="contact-left scroll-animation">
                 <h2>LET'S CONNECT</h2>
                 <p>HAVE A UNIQUE IDEA?<br>WANT TO REVAMP YOUR DIGITAL PRODUCT?<br>LET US KNOW!</p>
-                <button class="contact-btn" onclick="submitForm()">SEND MESSAGE</button>
+                <button class="contact-btn" onclick="window.location.href='contact.html'">Contact Us</button>
             </div>
             <div class="contact-right scroll-animation">
                 <form id="contactForm">
@@ -412,6 +412,7 @@
                     <label>Your Message</label>
                     <textarea name="message" required></textarea>
                 </form>
+                <button class="contact-btn2" onclick="submitForm()">Send Message</button>
             </div>
         </div>
     </section>
@@ -433,7 +434,7 @@
             const formData = new FormData(form); // This will fail with a <div>
             const data = Object.fromEntries(formData);
 
-            fetch('http://localhost:5000/submit', {
+            fetch('https://akiko-sherman-backend.onrender.com/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

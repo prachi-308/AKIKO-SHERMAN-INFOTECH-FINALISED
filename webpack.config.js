@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         home: './src/pages/home/script.js',
         egov: './src/pages/e-governance/script.js',
@@ -27,6 +27,7 @@ module.exports = {
         stress: './src/pages/stress/script.js',
         deepseek: './src/pages/deepseek/script.js',
         twin: './src/pages/twin/script.js',
+        development: './src/pages/development/script.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -191,6 +192,13 @@ module.exports = {
             chunks: ['twin'],
             inject: true,
         }),
+        new HtmlWebpackPlugin({
+            template: './src/pages/development/index.html',
+            filename: 'development.html',
+            chunks: ['development'],
+            inject: true,
+        }),
+
 
         new MiniCssExtractPlugin({
             filename: '[name].bundle.css',
@@ -239,6 +247,7 @@ module.exports = {
                 { from: /^\/stress.html$/, to: '/stress.html' },
                 { from: /^\/deepseek.html$/, to: '/deepseek.html' },
                 { from: /^\/twin.html$/, to: '/twin.html' },
+                { from: /^\/development.html$/, to: '/development.html' },
             ],
         },
     },

@@ -28,9 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     new ImageOptimizer();
 
-    // Remove redundant navigation logic since components.js handles it
-    // Keep only custom page-specific animations and logic
-
     // Hero Section Animations
     gsap.fromTo('.orange-container', { opacity: 0, y: 100, rotateX: -60 }, { opacity: 1, y: 0, rotateX: 0, duration: 1.5, ease: 'power3.out' });
     gsap.fromTo('.orange-container .description', { opacity: 0, y: 50, rotateX: -30 }, { opacity: 1, y: 0, rotateX: 0, duration: 1, delay: 0.5, ease: 'power3.out' });
@@ -46,7 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const carouselIndicators = document.querySelector('#carousel-indicators');
     const carouselElement = document.querySelector('#carouselExampleControls');
     const items = Array.from(carouselInner.children);
-    let carouselInstance = new bootstrap.Carousel(carouselElement, { interval: 5000, ride: 'carousel' });
+    let carouselInstance = new bootstrap.Carousel(carouselElement, {
+        interval: 5000,
+        ride: 'carousel',
+        pause: false // Ensure carousel doesn't pause on hover
+    });
     let currentSlideIndex = 0;
 
     function updateCarousel() {
@@ -111,7 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             requestAnimationFrame(() => {
-                carouselInstance = new bootstrap.Carousel(carouselElement, { interval: 5000, ride: 'carousel' });
+                carouselInstance = new bootstrap.Carousel(carouselElement, {
+                    interval: 5000,
+                    ride: 'carousel',
+                    pause: false // Reinitialize with same options
+                });
                 ScrollTrigger.refresh();
                 animateCards();
             });
@@ -138,15 +143,43 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTrigger: { trigger: '.carousel-section', start: 'top 80%', end: 'top 20%', scrub: 0.5 }
     });
 
-    gsap.fromTo('.carousel-heading', { opacity: 0, y: 20, rotateX: -20, scale: 0.9 }, {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: 'power4.out',
-        scrollTrigger: { trigger: '.carousel-section', start: 'top 80%' }
-    });
+    // Key Projects Heading Animation
+    const carouselHeading = document.querySelector('.carousel-heading');
+    const isInViewport = () => {
+        const rect = carouselHeading.getBoundingClientRect();
+        return rect.top >= -rect.height && rect.bottom <= window.innerHeight + rect.height;
+    };
+
+    // Ensure animation runs only once
+    let hasAnimated = false;
+    const animateHeading = () => {
+        if (!hasAnimated) {
+            gsap.fromTo(carouselHeading, { opacity: 0, y: 20, rotateX: -20, scale: 0.9 }, { opacity: 1, y: 0, rotateX: 0, scale: 1, duration: 0.6, ease: 'power4.out' });
+            hasAnimated = true;
+        }
+    };
+
+    // Check if heading is in viewport on load
+    if (isInViewport()) {
+        animateHeading();
+    } else {
+        // Animate when it enters viewport, only once
+        gsap.fromTo(carouselHeading, { opacity: 0, y: 20, rotateX: -20, scale: 0.9 }, {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power4.out',
+            scrollTrigger: {
+                trigger: '.carousel-heading',
+                start: 'top 100%',
+                toggleActions: 'play none none none',
+                once: true,
+                onEnter: () => animateHeading()
+            }
+        });
+    }
 
     function animateCards() {
         const cards = document.querySelectorAll('.carousel-item .card');

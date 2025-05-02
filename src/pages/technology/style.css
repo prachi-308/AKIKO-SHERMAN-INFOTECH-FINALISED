@@ -2,8 +2,8 @@
 
 .technology-banner {
     position: relative;
-    height: 95vh;
-    background: url('/assets/Rectangle 3469825.png') no-repeat center center/cover;
+    height: 85vh;
+    background: url('/src/assets/technology-page-bg.png') no-repeat center center/cover;
     background-attachment: fixed;
     display: flex;
     align-items: center;
@@ -70,7 +70,7 @@
 .sec-2 {
     text-align: center;
     background-color: #f8f9fa;
-    padding: 60px 20px;
+    padding: 40px 20px 80px 20px;
     overflow: hidden;
 }
 

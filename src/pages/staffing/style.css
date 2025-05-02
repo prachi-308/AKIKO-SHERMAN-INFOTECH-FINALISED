@@ -2,7 +2,7 @@
 
 .hero-section {
     position: relative;
-    min-height: 100vh;
+    min-height: 85vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
 
 .orange-container {
     background: rgba(0, 91, 14, 0.47);
-    padding: 20px;
+    padding: 0px 30px;
     transform: translateY(-50px) rotateX(-30deg);
     gap: 40px;
     margin: 0 auto 40px;
@@ -44,7 +44,7 @@
 }
 
 .orange-container .heading .big-e {
-    font-size: clamp(50px, 10vw, 170px);
+    font-size: clamp(50px, 10vw, 150px);
     color: rgba(255, 255, 255, 0.56);
     font-weight: 400;
     line-height: 1;
@@ -54,14 +54,16 @@
 }
 
 .orange-container .heading span {
-    font-size: clamp(24px, 5vw, 80px);
+    font-size: clamp(24px, 5vw, 90px);
     color: white;
     line-height: 1;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-.orange-container .description {}
+.orange-container .description {
+    font-size: 20px;
+}
 
 .content-container {}
 
@@ -73,7 +75,11 @@
 
 .tab.active {}
 
-.content-description {}
+.content-description {
+    font-size: 1.2rem;
+    text-align: center;
+    width: 80%;
+}
 
 
 /* Quote Section */
@@ -81,8 +87,8 @@
 .quote {
     width: 100%;
     text-align: center;
-    margin: 50px 0;
-    padding: 40px 20px;
+    margin: 20px 0;
+    padding: 20px 20px;
     background: linear-gradient(135deg, rgba(245, 247, 250, 0.9), rgba(255, 255, 255, 0.95));
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     border-radius: 15px;
@@ -90,7 +96,7 @@
 
 .quote p {
     color: #1a2b49;
-    font-size: clamp(1em, 2.5vw, 1.5em);
+    font-size: clamp(1em, 2.5vw, 1.3em);
     font-weight: 500;
     width: 80%;
     margin: 0 auto 20px;
@@ -117,8 +123,19 @@
     background: url('/src/assets/staffing-sec2-bg.webp') no-repeat center center/cover;
     position: relative;
     overflow: hidden;
-    padding: 0;
+    padding: 40px 0;
     margin: 0;
+}
+
+.container2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
 }
 
 .content {
@@ -126,45 +143,58 @@
     z-index: 1;
 }
 
-.top-section,
-.bottom-section {
+.profiles-row {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 50px 20px;
-    color: white;
-    font-size: clamp(12px, 2.2vw, 60px);
+    flex-wrap: nowrap;
     width: 100%;
+    padding: 20px 0;
+    animation: scroll 30s linear infinite;
+}
+
+.profiles-row.paused {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .middle-section {
     width: 100%;
-    background: rgba(29, 118, 43, 0.66);
-    padding: 40px 0;
+    background: linear-gradient(135deg, rgba(29, 118, 43, 0.8), rgba(0, 91, 14, 0.6));
+    padding: 30px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    margin-bottom: 20px;
 }
 
 .middle-border {
-    border-left: 2px solid white;
-    border-right: 2px solid white;
-    padding: 10px 20px;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    padding: 10px 30px;
     display: inline-block;
-    width: 70%;
+    width: 80%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
 }
 
 .middle-border h2 {
     color: white;
-    font-size: clamp(28px, 10vw, 90px);
-    font-weight: bold;
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 700;
     margin: 0;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
 .profile {
@@ -172,24 +202,38 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 10px;
+    padding: 15px;
+    min-width: 120px;
+    /* Reduced to fit more profiles */
+    background: rgba(0, 0, 0, 0.288);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    margin: 0 8px;
+    /* Reduced for spacing */
     opacity: 0;
     transform: translateY(50px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
 }
 
 .profile img {
     width: auto;
-    height: clamp(35px, 5vw, 70px);
+    height: clamp(30px, 4vw, 50px);
+    /* Adjusted for smaller profiles */
+    margin-bottom: 8px;
 }
 
 .profile p {
-    margin-top: 10px;
-    font-size: clamp(10px, 1.5vw, 16px);
+    margin: 0;
+    font-size: clamp(8px, 1.2vw, 12px);
+    /* Adjusted for smaller profiles */
+    color: #ffffff;
+    font-weight: 500;
 }
 
 .profile:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -202,12 +246,12 @@
 }
 
 .key-offerings .container {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .section-title {
-    font-size: clamp(28px, 5vw, 47px);
+    font-size: clamp(28px, 4vw, 2.5rem);
     font-weight: bold;
     margin-bottom: 40px;
     color: #1a2b49;
@@ -218,8 +262,8 @@
 
 .offerings-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .offering-card {
@@ -237,12 +281,12 @@
 
 .offering-image {
     width: 100%;
-    height: 300px;
+    height: 250px;
     object-fit: cover;
 }
 
 .offering-card h3 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     margin: 15px 20px 10px;
     color: #1a2b49;
@@ -250,7 +294,7 @@
 
 .offering-card p {
     color: #4b5563;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
     margin: 0 20px 20px;
 }
@@ -259,12 +303,26 @@
 /* Responsive Adjustments */
 
 @media (max-width: 768px) {
-    .offerings-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
+    .profiles-row {
+        padding: 15px 0;
     }
-    .offering-image {
-        height: 150px;
+    .profile {
+        min-width: 100px;
+        padding: 10px;
+        margin: 0 6px;
+    }
+    .profile img {
+        height: clamp(25px, 3.5vw, 40px);
+    }
+    .profile p {
+        font-size: clamp(7px, 1vw, 10px);
+    }
+    .middle-border {
+        width: 90%;
+        padding: 8px 20px;
+    }
+    .middle-border h2 {
+        font-size: clamp(18px, 4vw, 24px);
     }
     .hero-section {
         padding: 50px 0px 15px;
@@ -278,14 +336,29 @@
         flex-direction: column;
         gap: 10px;
     }
-    .middle-border h2 {
-        font-size: 32px;
-    }
 }
 
 @media (max-width: 480px) {
-    .offerings-grid {
-        grid-template-columns: 1fr;
+    .profiles-row {
+        padding: 10px 0;
+    }
+    .profile {
+        min-width: 80px;
+        padding: 8px;
+        margin: 0 4px;
+    }
+    .profile img {
+        height: clamp(20px, 3vw, 30px);
+    }
+    .profile p {
+        font-size: clamp(6px, 0.8vw, 9px);
+    }
+    .middle-border {
+        width: 95%;
+        padding: 6px 15px;
+    }
+    .middle-border h2 {
+        font-size: clamp(16px, 3.5vw, 20px);
     }
     .hero-section {
         padding: 40px 0px 10px;

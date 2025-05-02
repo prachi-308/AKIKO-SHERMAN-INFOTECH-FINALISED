@@ -2,25 +2,26 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const app = express();
+require('dotenv').config();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 // Nodemailer Setup
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'prachisachdeva.308@gmail.com', // Replace with your Gmail address
-        pass: 'uxkldiyzcwyhvekd' // Your App Password (already set up)
+        user: process.env.GMAIL_USER, // Replace with your Gmail address
+        pass: process.env.GMAIL_PASS // Your App Password (already set up)
     }
 });
 
 // Email Sending Function
 async function sendEmail(data) {
     const mailOptions = {
-        from: 'your-email@gmail.com',
-        to: 'prachisachdeva.308@gmail.com',
+        from: process.env.GMAIL_USER,
+        to: process.env.GMAIL_USER,
         subject: 'New Contact Form Submission',
         text: `
             Name: ${data.name}

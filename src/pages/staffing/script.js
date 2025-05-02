@@ -1,11 +1,10 @@
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
 import { observeElements } from '../../scripts/utils.js';
-import '../../scripts/components.js'; // Import to ensure navigation logic is available
-import '../../styles/global.css'; // Import global styles
-import '../../styles/components.css'; // Import components styles
-import './style.css'; // Import page-specific styles
-
+import '../../scripts/components.js';
+import '../../styles/global.css';
+import '../../styles/components.css';
+import './style.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     if (!gsap || !ScrollTrigger) {
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.to('.parallax', { y: '10%', scale: 1.15, ease: 'none', scrollTrigger: { trigger: '.hero-section', start: 'top top', end: 'bottom top', scrub: true } });
 
     // Quote Section Animation
-    gsap.fromTo('.quote p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.quote', start: 'top 80%' } });
+    gsap.fromTo('.quote p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.quote', start: 'top 100%' } });
     gsap.fromTo('.quote hr', { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.8, delay: 0.3, ease: 'power3.out', scrollTrigger: { trigger: '.quote', start: 'top 80%' } });
 
     // Technical Profiles Section Animations
@@ -48,12 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
             opacity: 1,
             y: 0,
             duration: 0.8,
-            delay: index * 0.1,
+            delay: index * 0.05,
             ease: 'power3.out',
-            scrollTrigger: { trigger: '.container2', start: 'top 80%' }
+            scrollTrigger: { trigger: '.profiles-row', start: 'top 80%' }
         });
     });
     gsap.fromTo('.middle-section', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.middle-section', start: 'top 80%' } });
+
+    // Pause Scrolling on Hover
+    const profilesRow = document.querySelector('.profiles-row');
+    if (profilesRow) {
+        profilesRow.addEventListener('mouseenter', () => profilesRow.classList.add('paused'));
+        profilesRow.addEventListener('mouseleave', () => profilesRow.classList.remove('paused'));
+    }
 
     // Key Offerings Section Animations
     gsap.fromTo('.section-title', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.key-offerings', start: 'top 80%' } });

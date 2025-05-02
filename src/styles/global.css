@@ -43,13 +43,13 @@ body {
 
 .orange-container .heading .big-e {
     position: relative;
-    bottom: -15px;
-    left: 20px;
-    font-size: 250px;
+    bottom: -5px;
+    left: 5px;
+    font-size: 200px;
     color: rgba(255, 255, 255, 0.45);
     font-weight: 400;
     line-height: 1;
-    margin-right: -10px;
+    margin-right: -5px;
     transform: translateZ(40px);
     transition: transform 0.5s ease;
 }
@@ -62,7 +62,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     text-align: left;
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
     opacity: 0;
     transform: translateY(50px) rotateX(30deg);
     box-sizing: border-box;
@@ -84,6 +84,7 @@ body {
     background: transparent;
     color: white;
     cursor: pointer;
+    font-size: 16px;
     border-radius: 5px;
     transition: transform 0.3s ease, background 0.3s ease;
     transform-style: preserve-3d;
@@ -104,7 +105,7 @@ body {
     color: white;
     opacity: 0;
     max-width: 550px;
-    font-weight: 400;
+    font-weight: 600;
     border-left: 8px solid white;
     padding-left: 20px;
     text-align: left;
@@ -124,7 +125,7 @@ body {
 }
 
 .services-heading {
-    font-size: 25px;
+    font-size: 20px;
     color: white;
     text-align: center;
     margin-bottom: 15px;
@@ -144,11 +145,11 @@ body {
 
 .stat-box {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     border: 2px solid white;
     border-radius: 8px;
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
     position: relative;
     opacity: 0;
     transform: translateY(20px) rotateX(-15deg);
@@ -183,7 +184,7 @@ body {
 }
 
 .stat-name {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     color: white;
     line-height: 1.1;
     font-weight: 500;

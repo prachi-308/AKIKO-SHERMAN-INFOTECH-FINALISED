@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technologies - Akiko Sherman Infotech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Preload critical images -->
+    <link rel="preload" href="/assets/technology-page-bg.png" as="image">
+    <link rel="preload" href="/assets/akiko-sherman-logo.png" as="image">
+
+    <!-- Preload bundled CSS -->
+    <link rel="preload" href="/technology.bundle.css" as="style">
+    <link rel="stylesheet" href="/technology.bundle.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script defer src="/technology.bundle.js"></script><link href="/technology.bundle.css" rel="stylesheet"></head>
+
+<body>
+    <!-- Reusable navigation -->
+    <div data-include="navigation"></div>
+
+    <!-- Technology Banner Section -->
+    <section class="technology-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-content animate-on-scroll">
+            <h1>Technologies We Work With</h1>
+            <p>We specialize in delivering innovative solutions using the latest technologies to drive your business forward.</p>
+            <a href="#" class="btn">Explore Technologies</a>
+        </div>
+    </section>
+
+    <!-- Section 2: Tech Cards -->
+    <section class="sec-2">
+        <h1>Design. Develop. Maintain. Scale.</h1>
+        <h1>Your Full-Stack Development Partner</h1>
+        <h2>1000+ Team of Experts Skilled in 40+ Cutting-Edge Technologies</h2>
+        <div class="tech-container animate-on-scroll">
+            <div class="tech-card"><img src="https://img.icons8.com/ios/50/sheets.png" alt="sheets" loading="lazy" decoding="async">Full-stack</div>
+            <div class="tech-card"><img src="https://img.icons8.com/color/48/web.png" alt="web" loading="lazy" decoding="async">Web</div>
+            <div class="tech-card"><img src="https://img.icons8.com/ios/50/cloud--v1.png" alt="cloud--v1" loading="lazy" decoding="async">Cloud</div>
+            <div class="tech-card"><img src="https://img.icons8.com/officel/40/code.png" alt="code" loading="lazy" decoding="async">Frontend</div>
+            <div class="tech-card"><img src="https://img.icons8.com/office/40/shake-phone.png" alt="shake-phone" loading="lazy" decoding="async">Mobile</div>
+            <div class="tech-card"><img src="https://img.icons8.com/color/48/wordpress.png" alt="wordpress" loading="lazy" decoding="async">WordPress</div>
+            <div class="tech-card"><img src="https://img.icons8.com/nolan/64/backend-development.png" alt="backend-development" loading="lazy" decoding="async">Backend</div>
+            <div class="tech-card"><img src="https://img.icons8.com/dusk/64/power-bi.png" alt="power-bi" loading="lazy" decoding="async">BI</div>
+            <div class="tech-card"><img src="https://img.icons8.com/color/48/java-coffee-cup-logo--v1.png" alt="java-coffee-cup-logo--v1" loading="lazy" decoding="async">Java</div>
+            <div class="tech-card"><img src="https://img.icons8.com/fluency/48/net-framework.png" alt="net-framework" loading="lazy" decoding="async">.NET</div>
+            <div class="tech-card"><img src="https://img.icons8.com/fluency/48/python.png" alt="python" loading="lazy" decoding="async">Python</div>
+            <div class="tech-card"><img src="https://img.icons8.com/pieces/64/machine-learning.png" alt="machine-learning" loading="lazy" decoding="async">AI/ML</div>
+            <div class="tech-card"><img src="https://img.icons8.com/fluency/48/chatgpt--v2.png" alt="chatgpt--v2" loading="lazy" decoding="async">Open AI</div>
+            <div class="tech-card"><img src="https://img.icons8.com/fluency/48/data-migration.png" alt="data-migration" loading="lazy" decoding="async">Data Engineering</div>
+            <div class="tech-card"><img src="https://img.icons8.com/color/48/amazon-web-services.png" alt="amazon-web-services" loading="lazy" decoding="async">AWS</div>
+            <div class="tech-card"><img src="https://img.icons8.com/color/48/flutter.png" alt="flutter" loading="lazy" decoding="async">Flutter</div>
+            <div class="tech-card"><img src="https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-hypertext-preprocessor-a-widely-used-open-source-general-purpose-scripting-language-logo-color-tal-revivo.png" alt="php" loading="lazy" decoding="async">PHP</div>
+            <div class="tech-card"><img src="https://img.icons8.com/nolan/64/virtual-reality.png" alt="virtual-reality" loading="lazy" decoding="async">AR/VR</div>
+            <div class="tech-card"><img src="https://img.icons8.com/fluency/48/blockchain.png" alt="blockchain" loading="lazy" decoding="async">Blockchain</div>
+        </div>
+    </section>
+
+    <!-- Section 3: Technology Details -->
+    <section class="sec-3">
+        <div class="main-heading">OUR TECHNOLOGIES</div>
+        <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+        <div class="container">
+            <div class="left-panel" id="leftPanel">
+                <div class="sub-heading active" onclick="toggleOptions('programming-Languages')">Programming Languages</div>
+                <ul class="options" id="programming-Languages-options">
+                    <li class="active" onclick="showContent('general-purpose')">General-purpose</li>
+                    <li onclick="showContent('data-science')">Data Science</li>
+                    <li onclick="showContent('mobile-app')">Mobile App</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('front-end')">Front-End</div>
+                <ul class="options" id="front-end-options">
+                    <li onclick="showContent('javascript')">JavaScript</li>
+                    <li onclick="showContent('ui-libraries')">UI Libraries</li>
+                    <li onclick="showContent('markup-essentials')">Markup Essentials</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('back-end')">Back-End</div>
+                <ul class="options" id="back-end-options">
+                    <li onclick="showContent('frameworks')">Frameworks</li>
+                    <li onclick="showContent('databases')">Databases</li>
+                    <li onclick="showContent('api-development')">API Development</li>
+                    <li onclick="showContent('microservices')">Microservices Architecture</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('ai')">AI, ML & GenAI</div>
+                <ul class="options" id="ai-options">
+                    <li onclick="showContent('ai-frameworks')">AI & ML Frameworks</li>
+                    <li onclick="showContent('natural-language-processing')">Natural Language Processing</li>
+                    <li onclick="showContent('genai')">Generative AI</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('cms-platform')">CMS & E-Commerce Platforms</div>
+                <ul class="options" id="cms-platform-options">
+                    <li onclick="showContent('cms')">Content Management Systems</li>
+                    <li onclick="showContent('ecom-soln')">E-Commerce Solutions</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('cloud-container')">Cloud & Containerization</div>
+                <ul class="options" id="cloud-container-options">
+                    <li onclick="showContent('public-cloud-service')">Public Cloud Services</li>
+                    <li onclick="showContent('containerization-tools')">Containerization Tools</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('web-3.0')">Web 3.0 Development</div>
+                <ul class="options" id="web-3.0-options">
+                    <li onclick="showContent('blockchain-platform')">Blockchain Platforms</li>
+                    <li onclick="showContent('smart-contract')">Smart Contract Development</li>
+                </ul>
+                <div class="sub-heading" onclick="toggleOptions('digital-marketing')">Digital Marketing</div>
+                <ul class="options" id="digital-marketing-options">
+                    <li onclick="showContent('search-engine')">Search Engine Strategies</li>
+                    <li onclick="showContent('ad-promo')">Advertising & Promotion</li>
+                    <li onclick="showContent('content-engagement')">Content & Engagement</li>
+                </ul>
+            </div>
+            <div class="right-panel" id="contentArea">
+                <h2>General-Purpose Programming</h2>
+                <p>Languages powering a wide range of applications.</p>
+                <div class="icon-container">
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                        <span>Java</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        <span>Python</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP">
+                        <span>PHP</span>
+                    </div>
+                    <div class="icon-item">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node">
+                        <span>Node</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reusable footer -->
+    <div data-include="footer"></div>
+
+    <script src="/technology.bundle.js "></script>
+</body>
+
+</html>

@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gsap.fromTo(element, { opacity: 0, y: 50 }, {
                     opacity: 1,
                     y: 0,
-                    duration: 1,
+                    duration: 0.4,
                     stagger: stagger,
                     ease: 'power3.out',
                     overwrite: 'auto',

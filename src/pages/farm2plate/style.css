@@ -1,632 +1,654 @@
- /* Scroll Animation Base Styles */
- 
- .animate-on-scroll {
-     opacity: 0;
-     transform: translateY(50px);
-     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
- }
- 
- .animate-on-scroll.visible {
-     opacity: 1;
-     transform: translateY(0);
- }
- 
- .parallax .container {
-     width: 100vw;
-     max-width: 1400px;
-     margin: 0 auto;
-     padding: 10px;
- }
- /* Header Section */
- 
- .header {
-     margin: 90px 0 30px 0;
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
- }
- 
- .header h1 {
-     font-size: 74px;
-     color: #ffffff;
-     display: flex;
-     align-items: flex-start;
-     line-height: 1;
- }
- 
- .header h1 .farm {
-     align-self: flex-start;
- }
- 
- .header h1 .two {
-     font-size: 320px;
-     line-height: 0.8;
-     margin: 0 10px;
- }
- 
- .header h1 .plate {
-     align-self: flex-end;
- }
- 
- .header p {
-     font-size: 28px;
-     font-weight: bold;
-     color: #ffffff;
-     max-width: 500px;
-     text-align: left;
-     margin: 0;
-     line-height: 1.3;
- }
- /* Blur Container */
- 
- .blur-container {
-     width: 100%;
-     background: rgba(255, 255, 255, 0.03);
-     backdrop-filter: blur(106.4px);
-     border-radius: 14px;
-     padding: 30px;
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
- }
- 
- .blur-container h2 {
-     font-size: 32px;
-     color: #ffffff;
-     margin-bottom: 20px;
-     text-align: center;
- }
- /* Box Row */
- 
- .box-row {
-     display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-     gap: 20px;
-     margin-bottom: 20px;
- }
- 
- .box {
-     width: 100%;
-     border: 2px solid white;
-     height: 150px;
-     background-color: transparent;
-     border-radius: 14px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     position: relative;
-     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-     padding: 10px;
- }
- 
- .box .tick-icon {
-     position: absolute;
-     top: 10px;
-     right: 10px;
-     width: 30px;
-     height: 30px;
-     background-color: #4CAF50;
-     border-radius: 50%;
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
- 
- .box .tick-icon::after {
-     content: "✓";
-     color: white;
-     font-size: 18px;
- }
- 
- .box p {
-     font-size: 19px;
-     color: #ffffff;
-     text-align: center;
-     margin: 0;
- }
- /* Description */
- 
- .description {
-     font-size: 18px;
-     color: #ffffff;
-     text-align: center;
-     margin-top: 40px;
-     line-height: 1.5;
- }
- /* Parallax Effect */
- 
- .parallax {
-     background-image: url('/src/assets/farm2plate-page-bg.png');
-     background-size: cover;
-     background-position: center;
-     background-attachment: fixed;
-     min-height: 100vh;
-     display: flex;
-     align-items: center;
-     justify-content: center;
- }
- /* Animations */
- 
- @keyframes fadeIn {
-     from {
-         opacity: 0;
-     }
-     to {
-         opacity: 1;
-     }
- }
- 
- @keyframes slideInFromTop {
-     from {
-         transform: translateY(-100%);
-     }
-     to {
-         transform: translateY(0);
-     }
- }
- 
- @keyframes slideInFromRight {
-     from {
-         transform: translateX(100%);
-     }
-     to {
-         transform: translateX(0);
-     }
- }
- 
- @keyframes slideInFromBottom {
-     from {
-         transform: translateY(100%);
-     }
-     to {
-         transform: translateY(0);
-     }
- }
- /* Section 2 */
- 
- .sec-2 {
-     display: flex;
-     padding: 20px;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     min-height: 100vh;
-     background-color: #f4f4f4;
-     text-align: center;
-     padding-bottom: 30px;
- }
- 
- .sec-2 .heading2 {
-     font-size: 5rem;
-     font-weight: bold;
-     margin: 40px 0;
- }
- 
- .sec-2 .container {
-     display: flex;
-     flex-wrap: nowrap;
-     align-items: center;
-     justify-content: space-between;
-     max-width: 1300px;
-     background: white;
-     border-radius: 500px;
-     padding: 40px;
-     border-left: 4px dashed rgb(182, 182, 182);
-     border-right: 4px dashed rgb(182, 182, 182);
-     width: 100%;
- }
- 
- .text-content {
-     flex: 1;
-     min-width: 500px;
-     padding: 40px;
-     border-radius: 500px;
-     text-align: left;
-     position: relative;
- }
- 
- .text-content::before {
-     content: "";
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     border-radius: 500px;
-     background: radial-gradient(circle at left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
-     z-index: -1;
- }
- 
- .text-content ul {
-     list-style: none;
-     padding-left: 0;
- }
- 
- .text-content ul li {
-     margin-bottom: 20px;
-     font-size: 1.3rem;
-     display: flex;
-     align-items: center;
-     word-wrap: break-word;
-     max-width: 90%;
-     padding-left: 20px;
- }
- 
- .text-content ul li span {
-     font-size: 1.8rem;
-     margin-right: 15px;
- }
- 
- .image-content {
-     flex: 1;
-     min-width: 300px;
-     display: flex;
-     justify-content: flex-end;
- }
- 
- .image-content img {
-     max-width: 100%;
-     height: auto;
-     border-radius: 0 500px 500px 0;
-     object-fit: cover;
- }
- /* Section 3 */
- 
- .sec-3 {
-     background: url('/src/assets/farm2plate-sec3.png') no-repeat center center/cover;
-     height: 900px;
-     text-align: center;
-     position: relative;
-     overflow: hidden;
- }
- 
- .container3 {
-     padding: 50px;
-     display: flex;
-     flex-direction: column;
-     color: white;
-     justify-content: center;
-     align-items: center;
-     position: relative;
-     z-index: 1;
- }
- 
- .container3 h1 {
-     font-size: 5rem;
-     margin-bottom: 50px;
- }
- 
- .key-benefits-section {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     gap: 30px;
- }
- 
- .benefit-card {
-     background: rgba(0, 0, 0, 0.462);
-     padding: 40px;
-     border-radius: 10px;
-     width: 300px;
-     text-align: center;
-     transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
- }
- 
- .benefit-card p {
-     font-size: 1.8rem;
- }
- 
- .benefit-card:hover {
-     transform: scale(1.1);
-     box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.5);
- }
- 
- .sec-3 .icon {
-     font-size: 60px;
-     margin-bottom: 30px;
-     color: white;
-     transition: transform 0.4s ease-in-out;
-     display: inline-block;
-     /* Ensure icons are visible on all screens */
- }
- 
- .benefit-card:hover .icon {
-     transform: rotate(360deg) scale(1.2);
- }
- /* Section 5 - Tech Stack */
- 
- .sec-5 {
-     background: url('/src/assets/farm2plate-sec5.png') center/cover fixed;
-     color: white;
-     text-align: center;
-     position: relative;
-     overflow: hidden;
- }
- 
- .sec-5::before {
-     content: '';
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background: rgba(0, 0, 0, 0.5);
-     z-index: 1;
- }
- 
- .container5 {
-     position: relative;
-     z-index: 2;
-     padding: 20px 60px;
- }
- 
- .container5 h1 {
-     font-size: 4.5rem;
-     animation: fadeIn 1s ease-in-out;
-     margin-bottom: 20px;
- }
- 
- .section {
-     margin: 4px auto 0 auto;
-     font-size: 2.7rem;
-     font-weight: bold;
-     text-transform: uppercase;
-     letter-spacing: 2px;
-     animation: slideIn 1s ease-in-out forwards;
- }
- 
- .tech-grid {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: center;
-     gap: 10px;
-     margin-top: 10px;
-     font-size: 1.6rem;
- }
- 
- .tech-card {
-     background: rgba(5, 20, 117, 0.371);
-     padding: 20px;
-     border-radius: 10px;
-     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
-     display: flex;
-     align-items: center;
-     gap: 20px;
- }
- 
- .tech-card img {
-     width: auto;
-     height: 50px;
- }
- 
- .tech-card:hover {
-     transform: scale(1.1);
-     box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
- }
- /* Container 7 */
- 
- .container7 {
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     min-height: 100vh;
-     background-color: #ffffff;
-     padding: 20px;
- }
- 
- .main-heading7 {
-     font-size: 80px;
-     color: #333;
-     text-align: center;
-     margin: 40px 0;
- }
- 
- .picture {
-     width: 100%;
-     max-width: 900px;
-     margin-top: 20px;
-     border-radius: 10px;
-     box-shadow: none;
-     /* Remove default box-shadow */
- }
- /* Hero Section Animation */
- 
- .animate-hero {
-     opacity: 0;
-     animation: heroFadeIn 1.5s ease-in-out forwards;
- }
- 
- .animate-hero:nth-child(1) {
-     animation-delay: 0.2s;
- }
- 
- .animate-hero:nth-child(2) {
-     animation-delay: 0.4s;
- }
- 
- .animate-hero:nth-child(3) {
-     animation-delay: 0.6s;
- }
- 
- @keyframes heroFadeIn {
-     0% {
-         opacity: 0;
-         transform: translateY(30px);
-     }
-     100% {
-         opacity: 1;
-         transform: translateY(0);
-     }
- }
- /* Responsive Design */
- 
- @media (max-width: 1024px) {
-     .header {
-         flex-direction: column;
-         align-items: center;
-         text-align: center;
-     }
-     .header h1 {
-         font-size: 48px;
-         flex-direction: column;
-         align-items: center;
-     }
-     .header h1 .two {
-         font-size: 150px;
-         margin: 10px 0;
-     }
-     .header p {
-         font-size: 18px;
-         margin-top: 20px;
-     }
-     .sec-2 .container {
-         flex-direction: column;
-         border-radius: 100px;
-         padding: 30px;
-     }
-     .text-content {
-         text-align: center;
-         padding: 30px;
-     }
-     .image-content img {
-         border-radius: 100px;
-     }
-     .sec-3 {
-         height: auto;
-     }
-     .container3 h1 {
-         font-size: 4.5rem;
-     }
-     .benefit-card {
-         width: 90%;
-         padding: 20px;
-     }
-     .container5 h1,
-     .section {
-         font-size: 3rem;
-     }
- }
- 
- @media (max-width: 768px) {
-     .header h1 {
-         font-size: 36px;
-     }
-     .header h1 .two {
-         font-size: 100px;
-     }
-     .header p {
-         font-size: 16px;
-     }
-     .blur-container {
-         padding: 20px;
-     }
-     .box-row {
-         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-     }
-     .box p {
-         font-size: 14px;
-     }
-     .description {
-         font-size: 14px;
-     }
-     .sec-2 .heading2 {
-         font-size: 3rem;
-     }
-     .sec-2 .container {
-         padding: 20px;
-         border-radius: 70px;
-     }
-     .text-content {
-         padding: 20px;
-     }
-     .text-content ul li {
-         justify-content: center;
-         font-size: 1rem;
-     }
-     .image-content img {
-         border-radius: 70px;
-     }
-     .container3 {
-         padding: 30px;
-     }
-     .container3 h1 {
-         font-size: 3rem;
-     }
-     .main-heading7 {
-         font-size: 50px;
-     }
-     .picture {
-         max-width: 100%;
-         /* Bigger on small screens */
-         box-shadow: none;
-         /* Remove box-shadow on smaller screens */
-     }
- }
- 
- @media (max-width: 480px) {
-     .header h1 {
-         font-size: 28px;
-     }
-     .header h1 .two {
-         font-size: 70px;
-     }
-     .header p {
-         font-size: 14px;
-     }
-     .blur-container h2 {
-         font-size: 24px;
-     }
-     .box-row {
-         grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-     }
-     .box {
-         height: 120px;
-     }
-     .box p {
-         font-size: 12px;
-     }
-     .description {
-         font-size: 12px;
-     }
-     .sec-2 .heading2 {
-         font-size: 2rem;
-     }
-     .sec-2 .container {
-         padding: 15px;
-         border-radius: 50px;
-     }
-     .text-content {
-         padding: 15px;
-     }
-     .text-content ul li {
-         font-size: 0.9rem;
-     }
-     .text-content ul li span {
-         font-size: 1.5rem;
-     }
-     .image-content img {
-         border-radius: 50px;
-     }
-     .container3 h1 {
-         font-size: 2.5rem;
-     }
-     .benefit-card p {
-         font-size: 1.2rem;
-     }
-     .icon {
-         font-size: 40px;
-     }
-     .container5 h1 {
-         font-size: 2.5rem;
-     }
-     .section {
-         font-size: 2rem;
-     }
-     .tech-card {
-         padding: 15px;
-         font-size: 1.2rem;
-     }
-     .main-heading7 {
-         font-size: 40px;
-     }
- }
+/* Scroll Animation Base Styles */
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.parallax .container {
+    width: 100vw;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+
+/* Header Section */
+
+.header {
+    margin: 90px 0 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 64px;
+    color: #ffffff;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+.header h1 .farm {
+    align-self: flex-start;
+}
+
+.header h1 .two {
+    font-size: 200px;
+    line-height: 0.8;
+    margin: 0 10px;
+}
+
+.header h1 .plate {
+    align-self: flex-end;
+}
+
+.header p {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    max-width: 500px;
+    text-align: left;
+    margin: 0;
+}
+
+
+/* Blur Container */
+
+.blur-container {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(106.4px);
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blur-container h2 {
+    font-size: 25px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+
+/* Box Row */
+
+.box-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.box {
+    width: 100%;
+    border: 2px solid white;
+    height: 120px;
+    background-color: transparent;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.box .tick-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box .tick-icon::after {
+    content: "✓";
+    color: white;
+    font-size: 18px;
+}
+
+.box p {
+    font-size: 17px;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+}
+
+
+/* Description */
+
+.description {
+    font-size: 15.5px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+/* Parallax Effect */
+
+.parallax {
+    background-image: url('/src/assets/farm2plate-page-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+/* Section 2 */
+
+.sec-2 {
+    display: flex;
+    padding: 20px 0px 30px 0px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.sec-2 .heading2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.sec-2 .container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    background: white;
+    border-radius: 500px;
+    padding: 20px;
+    border-left: 4px dashed rgb(182, 182, 182);
+    border-right: 4px dashed rgb(182, 182, 182);
+    width: 98%;
+}
+
+.text-content {
+    flex: 1;
+    min-width: 300px;
+    padding: 40px;
+    border-radius: 500px;
+    text-align: left;
+    position: relative;
+}
+
+.text-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 500px;
+    background: radial-gradient(circle at left, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    z-index: -1;
+}
+
+.text-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.text-content ul li {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    word-wrap: break-word;
+    max-width: 90%;
+    padding-left: 20px;
+}
+
+.text-content ul li span {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.image-content {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: 500px;
+    border-radius: 0 500px 500px 0;
+    object-fit: cover;
+}
+
+
+/* Section 3 */
+
+.sec-3 {
+    background: url('/src/assets/farm2plate-sec3.png') no-repeat center center/cover;
+    height: 600px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.container3 {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.container3 h1 {
+    font-size: 4rem;
+    margin-bottom: 50px;
+}
+
+.key-benefits-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.benefit-card {
+    background: rgba(0, 0, 0, 0.462);
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.benefit-card p {
+    font-size: 1.3rem;
+}
+
+.benefit-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.5);
+}
+
+.sec-3 .icon {
+    font-size: 50px;
+    margin-bottom: 30px;
+    color: white;
+    transition: transform 0.4s ease-in-out;
+    display: inline-block;
+}
+
+.benefit-card:hover .icon {
+    transform: rotate(360deg) scale(1.2);
+}
+
+
+/* Section 5 - Tech Stack */
+
+.sec-5 {
+    background: url('/src/assets/farm2plate-sec5.png') center/cover fixed;
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sec-5::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.container5 {
+    position: relative;
+    z-index: 2;
+    padding: 40px 60px;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container5 h1 {
+    font-size: 4rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.section {
+    padding-top: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: slideIn 1s ease-in-out forwards;
+}
+
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.tech-card {
+    background: rgba(5, 20, 117, 0.371);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tech-card img {
+    width: 40px;
+    height: 40px;
+}
+
+.tech-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+
+/* Container 7 */
+
+.container7 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #ffffff;
+    padding: 10px 0px 30px 0px;
+}
+
+.main-heading7 {
+    font-size: 4rem;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.picture {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+
+/* Hero Section Animation */
+
+.animate-hero {
+    opacity: 0;
+    animation: heroFadeIn 1.5s ease-in-out forwards;
+}
+
+.animate-hero:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.animate-hero:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.animate-hero:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes heroFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .header h1 {
+        font-size: 48px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .header h1 .two {
+        font-size: 150px;
+        margin: 10px 0;
+    }
+    .header p {
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    .sec-2 .container {
+        flex-direction: column;
+        border-radius: 100px;
+        padding: 30px;
+    }
+    .text-content {
+        text-align: center;
+        padding: 30px;
+    }
+    .image-content img {
+        border-radius: 100px;
+    }
+    .sec-3 {
+        height: auto;
+    }
+    .container3 h1 {
+        font-size: 4.5rem;
+    }
+    .benefit-card {
+        width: 90%;
+        padding: 20px;
+    }
+    .container5 h1,
+    .section {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 36px;
+    }
+    .header h1 .two {
+        font-size: 100px;
+    }
+    .header p {
+        font-size: 16px;
+    }
+    .blur-container {
+        padding: 20px;
+    }
+    .box-row {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    .box p {
+        font-size: 14px;
+    }
+    .description {
+        font-size: 14px;
+    }
+    .sec-2 .heading2 {
+        font-size: 3rem;
+    }
+    .sec-2 .container {
+        padding: 20px;
+        border-radius: 70px;
+    }
+    .text-content {
+        padding: 20px;
+    }
+    .text-content ul li {
+        justify-content: center;
+        font-size: 1rem;
+    }
+    .image-content img {
+        border-radius: 70px;
+    }
+    .container3 {
+        padding: 30px;
+    }
+    .container3 h1 {
+        font-size: 3rem;
+    }
+    .main-heading7 {
+        font-size: 50px;
+    }
+    .picture {
+        max-width: 100%;
+        box-shadow: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 28px;
+    }
+    .header h1 .two {
+        font-size: 70px;
+    }
+    .header p {
+        font-size: 14px;
+    }
+    .blur-container h2 {
+        font-size: 24px;
+    }
+    .box-row {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    .box {
+        height: 120px;
+    }
+    .box p {
+        font-size: 12px;
+    }
+    .description {
+        font-size: 12px;
+    }
+    .sec-2 .heading2 {
+        font-size: 2rem;
+    }
+    .sec-2 .container {
+        padding: 15px;
+        border-radius: 50px;
+    }
+    .text-content {
+        padding: 15px;
+    }
+    .text-content ul li {
+        font-size: 0.9rem;
+    }
+    .text-content ul li span {
+        font-size: 1.5rem;
+    }
+    .image-content img {
+        border-radius: 50px;
+    }
+    .container3 h1 {
+        font-size: 2.5rem;
+    }
+    .benefit-card p {
+        font-size: 1.2rem;
+    }
+    .icon {
+        font-size: 40px;
+    }
+    .container5 h1 {
+        font-size: 2.5rem;
+    }
+    .section {
+        font-size: 2rem;
+    }
+    .tech-card {
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+    .main-heading7 {
+        font-size: 40px;
+    }
+}

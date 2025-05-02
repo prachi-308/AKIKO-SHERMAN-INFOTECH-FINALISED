@@ -2,7 +2,7 @@
 
 .hero-section {
     position: relative;
-    height: 100vh;
+    height: 85vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -25,13 +25,13 @@
 
 .orange-container {
     background: rgba(7, 115, 204, 0.5);
-    padding: 60px 40px 0px 40px;
+    padding: 0px 40px 0px 40px;
     transform: translateY(-50px) rotateX(-30deg);
     align-items: last baseline;
     margin: 0 auto;
     gap: 100px;
     margin-bottom: 40px;
-    height: 200px;
+    height: 160px;
     margin-top: 50px;
     box-sizing: border-box;
 }
@@ -41,21 +41,23 @@
     white-space: nowrap;
 }
 
-.orange-container .heading .big-e {}
+.orange-container .heading .big-e {
+    bottom: -15px;
+}
 
 .orange-container:hover .big-e {
     transform: translateZ(60px) rotateY(15deg);
 }
 
 .orange-container .heading span {
-    font-size: 100px;
+    font-size: 90px;
     color: white;
     line-height: 1;
     text-transform: uppercase;
 }
 
 .orange-container .description {
-    font-size: 25px;
+    font-size: 20px;
     max-width: 600px;
     padding-left: 30px;
 }
@@ -71,13 +73,11 @@
 .tab.active {}
 
 .content-description {
-    font-size: 1.4rem;
+    font-size: 1rem;
     width: 80%;
 }
 
 .tech-wrapper {
-    margin-top: 20px;
-    padding: 20px;
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -90,7 +90,7 @@
     max-width: 400px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -101,10 +101,10 @@
 }
 
 .tech-heading {
-    font-size: 1.6rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
@@ -139,7 +139,7 @@
     padding: 8px 12px;
     border-radius: 8px;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: all 0.3s ease;
     flex: 1;
@@ -154,14 +154,14 @@
 
 .tech-item i {
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 
 /* Features Section */
 
 .features-section {
-    padding: 60px 10px;
+    padding: 30px 10px;
     text-align: center;
     max-width: 1400px;
     margin: 0 auto;
@@ -174,7 +174,7 @@
     font-size: 3rem;
     font-weight: 800;
     color: #000000;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -195,7 +195,7 @@
 }
 
 .feature-card {
-    flex: 0 0 33.333%;
+    flex: 0 0 25%;
     padding: 0 15px;
     box-sizing: border-box;
     transition: all 0.5s ease;
@@ -205,7 +205,7 @@
 .card-content {
     background: white;
     border-radius: 15px;
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     height: 100%;
     position: relative;
@@ -227,7 +227,7 @@
 
 .feature-card img {
     width: 100%;
-    height: 250px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -236,7 +236,7 @@
 }
 
 .feature-card h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 15px;
     color: #2a1a5e;
     transition: all 0.3s ease;
@@ -244,7 +244,7 @@
 
 .feature-card p {
     color: #4a3b8c;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     transition: all 0.3s ease;
 }
@@ -305,14 +305,14 @@
 }
 
 .parallax-section h1 {
-    font-size: 5em;
+    font-size: 3em;
     margin-bottom: 15px;
     color: #fff;
     text-transform: uppercase;
 }
 
 .parallax-section p {
-    font-size: 1.4em;
+    font-size: 1.1em;
     max-width: 700px;
     margin: 0 auto 40px;
     color: #ddd;
@@ -356,7 +356,7 @@
 
 .website-img:nth-child(1):hover,
 .website-img:nth-child(3):hover {
-    transform: scale(1.15) translateY(0);
+    transform: scale(1.13) translateY(0);
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
 
@@ -416,7 +416,7 @@
 /* E-Commerce Implementations Section */
 
 .ecommerce-section {
-    padding: 80px 40px;
+    padding: 50px 40px;
     text-align: center;
     position: relative;
     background: #fff;
@@ -424,7 +424,7 @@
 }
 
 .ecommerce-section h2 {
-    font-size: 3.7em;
+    font-size: 3em;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 20px;
@@ -444,20 +444,19 @@
 }
 
 .ecommerce-section p {
-    font-size: 1.4em;
+    font-size: 1.1em;
     font-weight: 300;
     color: #666;
     max-width: 800px;
     margin: 0 auto 60px;
     opacity: 0;
-    /* This might affect the section description, not the cards */
 }
 
 .ecommerce-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1.3fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 10px;
     position: relative;
@@ -490,45 +489,42 @@
 
 .ecommerce-card img {
     width: 100%;
-    height: 270px;
+    height: 230px;
     object-fit: cover;
     transition: transform 0.4s ease;
     background: #f0f7ff;
 }
 
 .ecommerce-card:hover img {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .ecommerce-card-content {
-    padding: 20px;
+    padding: 18px;
     text-align: left;
     min-height: 120px;
-    /* Ensure enough space for text */
 }
 
 .ecommerce-card h3 {
-    font-size: 1.8em;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #4a90e2;
     margin-bottom: 10px;
 }
 
 .ecommerce-card p {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 400;
     color: #777;
     margin: 0 0 15px 0;
-    /* Add bottom margin for spacing */
     visibility: visible;
     opacity: 1;
-    /* Explicitly set opacity */
 }
 
 .ecommerce-card a {
     display: inline-block;
     margin-top: 15px;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
     color: #4a90e2;
     text-decoration: none;
@@ -544,11 +540,8 @@
 
 .ecommerce-card-content p {
     display: block !important;
-    /* Override any hidden state */
     opacity: 1 !important;
-    /* Override any animation opacity */
     color: #777 !important;
-    /* Ensure text color is visible */
 }
 
 
@@ -687,6 +680,12 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .feature-card {
+        flex: 0 0 33.33%;
+    }
+}
+
 @media (max-width: 1000px) {
     .orange-container .description {
         font-size: 14px;
@@ -748,7 +747,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .hero-section {
         height: 130vh;
         padding-top: 0px;
@@ -785,7 +784,7 @@
         gap: 20px;
     }
     .feature-card {
-        flex: 0 0 100%;
+        flex: 0 0 50%;
         padding: 0 10px;
     }
     .card-content {

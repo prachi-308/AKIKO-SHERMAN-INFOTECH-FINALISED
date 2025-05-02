@@ -63,6 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createTechCards(sectionId, techArray) {
         const section = document.getElementById(sectionId);
+        // Clear existing cards to prevent duplicates
+        while (section.firstChild) {
+            section.removeChild(section.firstChild);
+        }
         techArray.forEach(tech => {
             const card = document.createElement("div");
             card.classList.add("tech-card", "animate-on-scroll");
@@ -71,9 +75,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    createTechCards("fullStack", techStack.fullStack);
-    createTechCards("cloudDevOps", techStack.cloudDevOps);
-    createTechCards("hyperAutomation", techStack.hyperAutomation);
+    // Only populate if sections are empty
+    const fullStackSection = document.getElementById("fullStack");
+    const cloudDevOpsSection = document.getElementById("cloudDevOps");
+    const hyperAutomationSection = document.getElementById("hyperAutomation");
+
+    if (fullStackSection.children.length === 0) {
+        createTechCards("fullStack", techStack.fullStack);
+    }
+    if (cloudDevOpsSection.children.length === 0) {
+        createTechCards("cloudDevOps", techStack.cloudDevOps);
+    }
+    if (hyperAutomationSection.children.length === 0) {
+        createTechCards("hyperAutomation", techStack.hyperAutomation);
+    }
 
     // Footer Animation
     gsap.fromTo('footer', { opacity: 0, y: 50 }, {

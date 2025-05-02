@@ -41,9 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 1.5,
         ease: 'power3.out'
     });
-
+    gsap.fromTo('.sec-2 h1', {
+        opacity: 0,
+        y: 50
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+            trigger: '.sec-2',
+            start: 'top 100%',
+            toggleActions: 'play none none none'
+        }
+    });
     // Section 2 Animation
-    gsap.fromTo('.sec-2 h1, .sec-2 h2, .sec-2 .tech-container', {
+    gsap.fromTo(' .sec-2 h2, .sec-2 .tech-container', {
         opacity: 0,
         y: 50
     }, {

@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 .hero-section {
     position: relative;
-    height: 100vh;
+    height: 85vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -37,12 +37,12 @@
 
 .orange-container {
     background: rgba(218, 30, 162, 0.5);
-    padding: 20px 40px;
+    padding: 10px 40px;
     justify-content: flex-start;
     margin: 0 auto;
     gap: 140px;
     margin-bottom: 40px;
-    min-height: 220px;
+    min-height: 160px;
     margin-top: 50px;
     position: relative;
     z-index: 2;
@@ -52,7 +52,7 @@
     flex-direction: column;
     align-items: flex-start;
     white-space: normal;
-    max-width: 40%;
+    max-width: 50%;
     flex-shrink: 0;
 }
 
@@ -65,8 +65,7 @@
 }
 
 .orange-container .description {
-    font-size: 26px;
-    max-width: 45%;
+    font-size: 20px;
     padding-left: 30px;
     position: relative;
     z-index: 2;
@@ -104,7 +103,7 @@
 .stat-name {}
 
 .content-description {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 @media (max-width: 1300px) {
@@ -255,17 +254,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     max-width: 1300px;
-    margin: 80px auto 120px auto;
+    margin: 50px auto 120px auto;
     padding: 0 20px;
     perspective: 2000px;
 }
 
 .card {
     position: relative;
-    width: clamp(320px, 24vw, 360px);
-    height: clamp(420px, 30vw, 450px);
+    width: clamp(320px, 24vw, 300px);
+    height: clamp(420px, 30vw, 400px);
     background: #fff;
     border-radius: 30px;
     overflow: hidden;
@@ -280,7 +279,7 @@
 }
 
 .card:hover {
-    transform: scale(1.05) translateY(-15px);
+    transform: scale(1) translateY(-15px);
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
 }
 
@@ -323,10 +322,11 @@
 
 .card-front img {
     width: 100%;
-    height: 55%;
+    height: 250px;
     object-fit: cover;
     transition: transform 0.7s ease;
     filter: brightness(0.9);
+    transform: scale(1.1);
 }
 
 .card:hover .card-front img {
@@ -443,7 +443,7 @@
     display: flex;
     align-items: flex-start;
     width: 100%;
-    padding: 50px 20px;
+    padding: 20px 20px;
     margin: 80px 0px 50px 0;
     opacity: 0;
     transform: translateY(50px);
@@ -463,17 +463,15 @@
 }
 
 .einstein-ai-section .content h2 {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 46px;
+    font-size: 3rem;
     margin-bottom: 15px;
     padding-left: 26%;
 }
 
 .einstein-ai-section .content p {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.6;
     padding-left: 26%;
 }
@@ -489,11 +487,11 @@
 
 .einstein-ai-section .image img {
     position: absolute;
-    top: -100px;
+    top: -70px;
     right: 10%;
     width: 100%;
-    max-width: 500px;
-    height: 450px;
+    max-width: 400px;
+    height: 420px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     object-fit: cover;
@@ -586,7 +584,7 @@
 
 .custom-slider {
     position: relative;
-    max-width: 1400px;
+    max-width: 1200px;
     width: 100%;
     margin: 80px auto 60px auto;
     overflow: hidden;
@@ -671,13 +669,13 @@
 }
 
 .custom-card-content h3 {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     margin: 0 0 10px;
     font-weight: 600;
 }
 
 .custom-card-content p {
-    font-size: clamp(0.7rem, 1.5vw, 1rem);
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
     margin: 0;
     line-height: 1.4;
 }

@@ -4,6 +4,16 @@ export function initNavigation() {
     const navToggle = document.querySelector('.icon');
     const navMenu = document.querySelector('nav ul');
     const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+    const nav = document.querySelector('nav');
+
+    // Scroll event listener for fixed navigation
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('fixed-nav');
+        } else {
+            nav.classList.remove('fixed-nav');
+        }
+    });
 
     if (navToggle && navMenu) {
         navToggle.addEventListener('click', (e) => {

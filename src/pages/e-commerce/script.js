@@ -128,15 +128,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchStartX = 0;
     let touchEndX = 0;
 
+    /*************  ✨ Windsurf Command ⭐  *************/
+    /**
+     * Initializes the feature carousel based on the current window width.
+     * Sets the number of cards per page and calculates the total number of pages.
+     * Clears and updates the scroll indicator with clickable dots for navigation.
+     * Calls updateCarousel to apply transformations for the current page.
+     */
+
+    /*******  a8b4836c-9a35-4f51-b2eb-9672c18ffca4  *******/
     function setupCarousel() {
         if (window.innerWidth <= 1024 && window.innerWidth > 767) {
-            cardsPerPage = 2;
+            cardsPerPage = 3;
             totalPages = Math.ceil(cards.length / cardsPerPage);
         } else if (window.innerWidth <= 767) {
-            cardsPerPage = 1;
+            cardsPerPage = 2;
             totalPages = cards.length;
         } else {
-            cardsPerPage = 3;
+            cardsPerPage = 4;
             totalPages = Math.ceil(cards.length / cardsPerPage);
         }
 

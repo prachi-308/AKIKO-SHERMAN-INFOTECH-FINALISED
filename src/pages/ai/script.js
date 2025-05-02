@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             x: 0,
             duration: 1,
             ease: 'power3.out',
-            scrollTrigger: { trigger: section, start: 'top 80%', toggleActions: 'play none none reset' }
+            scrollTrigger: { trigger: section, start: 'top 95%', toggleActions: 'play none none reset' }
         });
     });
 

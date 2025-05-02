@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 0.8,
             delay: index * 0.1,
             ease: 'power3.out',
-            scrollTrigger: { trigger: '.card-container', start: 'top 80%' }
+            scrollTrigger: { trigger: '.card-container', start: 'top 100%' }
         });
     });
 
