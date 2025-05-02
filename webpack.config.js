@@ -69,8 +69,8 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/pages/home/index.html',
-            filename: 'home.html',
-            chunks: ['home'],
+            filename: 'index.html',
+            chunks: ['index'],
             inject: true,
         }),
         new HtmlWebpackPlugin({
@@ -220,13 +220,13 @@ module.exports = {
             directory: path.resolve(__dirname, 'dist'),
         },
         port: 3000,
-        open: '/home.html',
+        open: '/index.html',
         hot: true,
         compress: true,
         historyApiFallback: {
             rewrites: [
-                { from: /^\/$/, to: '/home.html' },
-                { from: /^\/home.html$/, to: '/home.html' },
+                { from: /^\/$/, to: '/index.html' },
+                { from: /^\/home.html$/, to: '/index.html' },
                 { from: /^\/e-governance.html$/, to: '/egov.html' },
                 { from: /^\/company.html$/, to: '/company.html' },
                 { from: /^\/ai.html$/, to: '/ai.html' },
