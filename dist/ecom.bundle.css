@@ -1,10 +1,4 @@
-/*!*****************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/components.css ***!
-  \*****************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap);
-/*!*********************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/components.css (1) ***!
-  \*********************************************************************************/
 * {
     box-sizing: border-box;
     margin: 0;
@@ -22,10 +16,17 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 40px;
-    height: 70px;
+    height: 65px;
     position: absolute;
     z-index: 999;
     width: 100%;
+    transition: background 0.3s ease, position 0.3s ease;
+}
+
+nav.fixed-nav {
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
     transition: background 0.3s ease;
 }
 
@@ -58,7 +59,7 @@ nav ul li {
 nav ul li a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     padding: 8px 15px;
     display: block;
     transition: background 0.3s ease, color 0.3s ease;
@@ -151,7 +152,10 @@ nav ul li:hover .dropdown-arrow {
 @media (max-width: 1160px) {
     nav {
         padding: 0 40px;
-        background: #00000000;
+        background: transparent;
+    }
+    nav.fixed-nav {
+        background: rgba(0, 0, 0, 0.7);
     }
     nav .mainlogo img {
         height: 50px;
@@ -216,7 +220,7 @@ nav ul li:hover .dropdown-arrow {
 }
 
 
-/* Footer CSS (unchanged, included for completeness) */
+/* Footer CSS (unchanged) */
 
 .footer {
     background-color: #1a1a1a;
@@ -459,9 +463,6 @@ nav ul li:hover .dropdown-arrow {
         justify-content: center;
     }
 }
-/*!*************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/global.css ***!
-  \*************************************************************************/
 * {
     margin: 0;
     padding: 0;
@@ -482,14 +483,8 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    gap: 60px;
-    margin-bottom: 40px;
-    min-height: 220px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transform-style: preserve-3d;
-    margin-top: 50px;
-    border-radius: 10px;
 }
 
 .hero-overlay {
@@ -500,14 +495,187 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
 }
-/*!**********************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/pages/e-commerce/style.css ***!
-  \**********************************************************************************/
+
+.orange-container .heading {
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.orange-container .heading .big-e {
+    position: relative;
+    bottom: -5px;
+    left: 5px;
+    font-size: 200px;
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 400;
+    line-height: 1;
+    margin-right: -5px;
+    transform: translateZ(40px);
+    transition: transform 0.5s ease;
+}
+
+.content-container {
+    width: 95%;
+    max-width: 1400px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(6px);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    margin: 0 auto 10px;
+    opacity: 0;
+    transform: translateY(50px) rotateX(30deg);
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    color: white;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tab {
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, background 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateZ(20px) rotateX(10deg);
+}
+
+.tab.active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateZ(30px);
+}
+
+.orange-container .description {
+    font-size: clamp(14px, 2vw, 24px);
+    color: white;
+    opacity: 0;
+    max-width: 550px;
+    font-weight: 600;
+    border-left: 8px solid white;
+    padding-left: 20px;
+    text-align: left;
+    line-height: 1.4;
+}
+
+.content-description {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    margin-top: 0;
+    transform: translateY(20px) translateZ(10px);
+    line-height: 1.6;
+    color: white;
+    opacity: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-heading {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stats-container {
+    display: grid;
+    margin-bottom: 20px;
+    justify-items: center;
+    justify-content: center;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 5px;
+    border: 2px solid white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 180px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px) rotateX(-15deg);
+    transform-style: preserve-3d;
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+    overflow: visible;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-box:hover {
+    transform: translateY(0) scale(1.05);
+}
+
+.stat-box i {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: green;
+    color: white;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    transform: translateZ(10px);
+}
+
+.stat-name {
+    font-size: 0.8rem;
+    color: white;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s;
+    font-size: 1.3rem;
+}
+
+.back-button:hover {
+    background: #0056b3;
+}
 /* Hero Section Styles */
 
 .hero-section {
     position: relative;
-    height: 100vh;
+    height: 85vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -529,47 +697,25 @@ body {
 }
 
 .orange-container {
-    width: 100%;
     background: rgba(7, 115, 204, 0.5);
-    padding: 60px 40px 0px 40px;
-    text-align: center;
-    opacity: 0;
+    padding: 0px 40px 0px 40px;
     transform: translateY(-50px) rotateX(-30deg);
-    display: flex;
-    flex-direction: row;
     align-items: last baseline;
-    justify-content: center;
     margin: 0 auto;
     gap: 100px;
     margin-bottom: 40px;
-    height: 200px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transform-style: preserve-3d;
+    height: 160px;
     margin-top: 50px;
     box-sizing: border-box;
 }
 
 .orange-container .heading {
-    font-weight: bold;
-    color: white;
-    line-height: 1;
-    display: flex;
     align-items: last baseline;
-    justify-content: center;
     white-space: nowrap;
 }
 
 .orange-container .heading .big-e {
-    position: relative;
     bottom: -15px;
-    left: 20px;
-    font-size: 250px;
-    color: rgba(255, 255, 255, 0.45);
-    font-weight: 400;
-    line-height: 1;
-    margin-right: -10px;
-    transform: translateZ(40px);
-    transition: transform 0.5s ease;
 }
 
 .orange-container:hover .big-e {
@@ -577,83 +723,34 @@ body {
 }
 
 .orange-container .heading span {
-    font-size: 100px;
+    font-size: 90px;
     color: white;
     line-height: 1;
     text-transform: uppercase;
 }
 
 .orange-container .description {
-    font-size: 25px;
-    color: white;
-    opacity: 0;
+    font-size: 20px;
     max-width: 600px;
-    font-weight: 400;
-    border-left: 8px solid white;
     padding-left: 30px;
-    text-align: left;
 }
 
-.content-container {
-    width: 95%;
-    max-width: 1400px;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(6px);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-    margin: 0 auto 20px;
-    opacity: 0;
-    transform: translateY(50px) rotateX(30deg);
-    box-sizing: border-box;
-    transform-style: preserve-3d;
-}
+.content-container {}
 
-.tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-    gap: 10px;
-}
+.tabs {}
 
-.tab {
-    padding: 8px 20px;
-    border: none;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: transform 0.3s ease, background 0.3s ease;
-    transform-style: preserve-3d;
-}
+.tab {}
 
-.tab:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateZ(20px) rotateX(10deg);
-}
+.tab:hover {}
 
-.tab.active {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateZ(30px);
-}
+.tab.active {}
 
 .content-description {
-    font-size: 1.4rem;
+    font-size: 1rem;
     width: 80%;
-    color: white;
-    margin-top: 0px;
-    opacity: 0;
-    transform: translateY(20px) translateZ(10px);
-    line-height: 1.6;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .tech-wrapper {
-    margin-top: 20px;
-    padding: 20px;
     display: flex;
     justify-content: center;
     gap: 30px;
@@ -666,7 +763,7 @@ body {
     max-width: 400px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    padding: 20px;
+    padding: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -677,10 +774,10 @@ body {
 }
 
 .tech-heading {
-    font-size: 1.6rem;
+    font-size: 1.1rem;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
@@ -715,7 +812,7 @@ body {
     padding: 8px 12px;
     border-radius: 8px;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     transition: all 0.3s ease;
     flex: 1;
@@ -730,16 +827,16 @@ body {
 
 .tech-item i {
     color: #fff;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 
 /* Features Section */
 
 .features-section {
-    padding: 60px 10px;
+    padding: 30px 10px;
     text-align: center;
-    max-width: 1500px;
+    max-width: 1400px;
     margin: 0 auto;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
     overflow: hidden;
@@ -750,7 +847,7 @@ body {
     font-size: 3rem;
     font-weight: 800;
     color: #000000;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -771,7 +868,7 @@ body {
 }
 
 .feature-card {
-    flex: 0 0 33.333%;
+    flex: 0 0 25%;
     padding: 0 15px;
     box-sizing: border-box;
     transition: all 0.5s ease;
@@ -781,7 +878,7 @@ body {
 .card-content {
     background: white;
     border-radius: 15px;
-    padding: 30px;
+    padding: 25px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     height: 100%;
     position: relative;
@@ -803,7 +900,7 @@ body {
 
 .feature-card img {
     width: 100%;
-    height: 300px;
+    height: 200px;
     object-fit: cover;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -812,7 +909,7 @@ body {
 }
 
 .feature-card h2 {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     margin-bottom: 15px;
     color: #2a1a5e;
     transition: all 0.3s ease;
@@ -820,7 +917,7 @@ body {
 
 .feature-card p {
     color: #4a3b8c;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.6;
     transition: all 0.3s ease;
 }
@@ -881,14 +978,14 @@ body {
 }
 
 .parallax-section h1 {
-    font-size: 5em;
+    font-size: 3em;
     margin-bottom: 15px;
     color: #fff;
     text-transform: uppercase;
 }
 
 .parallax-section p {
-    font-size: 1.4em;
+    font-size: 1.1em;
     max-width: 700px;
     margin: 0 auto 40px;
     color: #ddd;
@@ -932,7 +1029,7 @@ body {
 
 .website-img:nth-child(1):hover,
 .website-img:nth-child(3):hover {
-    transform: scale(1.15) translateY(0);
+    transform: scale(1.13) translateY(0);
     filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
 
@@ -992,7 +1089,7 @@ body {
 /* E-Commerce Implementations Section */
 
 .ecommerce-section {
-    padding: 80px 20px;
+    padding: 50px 40px;
     text-align: center;
     position: relative;
     background: #fff;
@@ -1000,7 +1097,7 @@ body {
 }
 
 .ecommerce-section h2 {
-    font-size: 3.7em;
+    font-size: 3em;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 20px;
@@ -1020,20 +1117,19 @@ body {
 }
 
 .ecommerce-section p {
-    font-size: 1.4em;
+    font-size: 1.1em;
     font-weight: 300;
     color: #666;
     max-width: 800px;
     margin: 0 auto 60px;
     opacity: 0;
-    /* This might affect the section description, not the cards */
 }
 
 .ecommerce-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1.5fr);
-    gap: 35px;
-    max-width: 1600px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 0 10px;
     position: relative;
@@ -1066,45 +1162,42 @@ body {
 
 .ecommerce-card img {
     width: 100%;
-    height: 270px;
+    height: 230px;
     object-fit: cover;
     transition: transform 0.4s ease;
     background: #f0f7ff;
 }
 
 .ecommerce-card:hover img {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .ecommerce-card-content {
-    padding: 20px;
+    padding: 18px;
     text-align: left;
     min-height: 120px;
-    /* Ensure enough space for text */
 }
 
 .ecommerce-card h3 {
-    font-size: 1.8em;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #4a90e2;
     margin-bottom: 10px;
 }
 
 .ecommerce-card p {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 400;
     color: #777;
     margin: 0 0 15px 0;
-    /* Add bottom margin for spacing */
     visibility: visible;
     opacity: 1;
-    /* Explicitly set opacity */
 }
 
 .ecommerce-card a {
     display: inline-block;
     margin-top: 15px;
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 600;
     color: #4a90e2;
     text-decoration: none;
@@ -1120,11 +1213,8 @@ body {
 
 .ecommerce-card-content p {
     display: block !important;
-    /* Override any hidden state */
     opacity: 1 !important;
-    /* Override any animation opacity */
     color: #777 !important;
-    /* Ensure text color is visible */
 }
 
 
@@ -1263,6 +1353,12 @@ body {
     }
 }
 
+@media (max-width: 1024px) {
+    .feature-card {
+        flex: 0 0 33.33%;
+    }
+}
+
 @media (max-width: 1000px) {
     .orange-container .description {
         font-size: 14px;
@@ -1324,7 +1420,7 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .hero-section {
         height: 130vh;
         padding-top: 0px;
@@ -1361,7 +1457,7 @@ body {
         gap: 20px;
     }
     .feature-card {
-        flex: 0 0 100%;
+        flex: 0 0 50%;
         padding: 0 10px;
     }
     .card-content {
