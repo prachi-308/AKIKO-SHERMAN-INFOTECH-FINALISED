@@ -244,7 +244,7 @@ a {
 .footer .footer-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    gap: 0rem !important;
     margin-bottom: 2rem !important;
 }
 
@@ -256,8 +256,8 @@ a {
 
 .footer .footer-brand {
     text-align: center !important;
+    margin-left: 20px;
 }
-
 @media (min-width: 640px) {
     .footer .footer-brand {
         text-align: left !important;
