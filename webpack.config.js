@@ -3,8 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: {
         home: './src/pages/home/script.js',
         egov: './src/pages/e-governance/script.js',
@@ -28,6 +30,8 @@ module.exports = {
         deepseek: './src/pages/deepseek/script.js',
         twin: './src/pages/twin/script.js',
         development: './src/pages/development/script.js',
+        smartmeter: './src/pages/smart-metering/script.js',
+        web: './src/pages/web/script.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -69,137 +73,388 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/pages/home/index.html',
-            filename: 'index.html',
-            chunks: ['index'],
+            filename: 'home.html',
+            chunks: ['home'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/e-governance/index.html',
             filename: 'egov.html',
             chunks: ['egov'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/company/index.html',
             filename: 'company.html',
             chunks: ['company'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/ai/index.html',
             filename: 'ai.html',
             chunks: ['ai'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/farm2plate/index.html',
             filename: 'farm2plate.html',
             chunks: ['farm2plate'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/contact/index.html',
             filename: 'contact.html',
             chunks: ['contact'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/e-commerce/index.html',
             filename: 'ecom.html',
             chunks: ['ecom'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/staffing/index.html',
             filename: 'staffing.html',
             chunks: ['staffing'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/salesforce/index.html',
             filename: 'salesforce.html',
             chunks: ['salesforce'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/infracon/index.html',
             filename: 'infracon.html',
             chunks: ['infracon'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/land/index.html',
             filename: 'land.html',
             chunks: ['land'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/technology/index.html',
             filename: 'technology.html',
             chunks: ['technology'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/owc/index.html',
             filename: 'owc.html',
             chunks: ['owc'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/blog/index.html',
             filename: 'blog.html',
             chunks: ['blog'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/tamra/index.html',
             filename: 'tamra.html',
             chunks: ['tamra'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
-
         new HtmlWebpackPlugin({
             template: './src/pages/cloud/index.html',
             filename: 'cloud.html',
             chunks: ['cloud'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/demo/index.html',
             filename: 'demo.html',
             chunks: ['demo'],
             inject: true,
-        }), new HtmlWebpackPlugin({
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
+        }),
+        new HtmlWebpackPlugin({
             template: './src/pages/business/index.html',
             filename: 'business.html',
             chunks: ['business'],
             inject: true,
-        }), new HtmlWebpackPlugin({
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
+        }),
+        new HtmlWebpackPlugin({
             template: './src/pages/stress/index.html',
             filename: 'stress.html',
             chunks: ['stress'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/deepseek/index.html',
             filename: 'deepseek.html',
             chunks: ['deepseek'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/twin/index.html',
             filename: 'twin.html',
             chunks: ['twin'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
         new HtmlWebpackPlugin({
             template: './src/pages/development/index.html',
             filename: 'development.html',
             chunks: ['development'],
             inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
         }),
-
-
+        new HtmlWebpackPlugin({
+            template: './src/pages/smart-metering/index.html',
+            filename: 'smartmeter.html',
+            chunks: ['smartmeter'],
+            inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/pages/web/index.html',
+            filename: 'web.html',
+            chunks: ['web'],
+            inject: true,
+            minify: !isProduction && {
+                removeScriptTypeAttributes: true,
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true,
+                removeOptionalTags: true,
+                removeScript: (node) => {
+                    return node.src && node.src.includes('cdn-cgi/challenge-platform');
+                },
+            },
+        }),
         new MiniCssExtractPlugin({
             filename: '[name].bundle.css',
         }),
@@ -208,6 +463,7 @@ module.exports = {
                 { from: 'src/assets', to: 'assets' },
                 { from: 'src/components/navigation.html', to: 'components/navigation.html' },
                 { from: 'src/components/footer.html', to: 'components/footer.html' },
+                { from: 'src/components/chatbot.html', to: 'components/chatbot.html' },
             ],
         }),
     ],
@@ -220,13 +476,13 @@ module.exports = {
             directory: path.resolve(__dirname, 'dist'),
         },
         port: 3000,
-        open: '/index.html',
+        open: '/home.html',
         hot: true,
         compress: true,
         historyApiFallback: {
             rewrites: [
-                { from: /^\/$/, to: '/index.html' },
-                { from: /^\/home.html$/, to: '/index.html' },
+                { from: /^\/$/, to: '/home.html' },
+                { from: /^\/home.html$/, to: '/home.html' },
                 { from: /^\/e-governance.html$/, to: '/egov.html' },
                 { from: /^\/company.html$/, to: '/company.html' },
                 { from: /^\/ai.html$/, to: '/ai.html' },
@@ -248,6 +504,8 @@ module.exports = {
                 { from: /^\/deepseek.html$/, to: '/deepseek.html' },
                 { from: /^\/twin.html$/, to: '/twin.html' },
                 { from: /^\/development.html$/, to: '/development.html' },
+                { from: /^\/smart-metering.html$/, to: '/smartmeter.html' },
+                { from: /^\/web.html$/, to: '/web.html' },
             ],
         },
     },

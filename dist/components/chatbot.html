@@ -1,0 +1,26 @@
+<div id="chatbot-container" class="chatbot-container">
+    <!-- Floating Chatbot Icon -->
+    <button id="chatbot-icon" title="Chat with us" class="chatbot-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0034 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99664 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.9C9.87812 3.30493 11.1801 2.99664 12.5 3C15.1522 3.00159 17.6988 4.05693 19.6296 6.01221C21.5604 7.9675 22.9984 10.6447 21 11.5Z" fill="currentColor"/>
+      </svg>
+  </button>
+
+    <!-- Chat Window -->
+    <div id="chatbot-window" class="chatbot-window hidden">
+        <div id="chatbot-header" class="chatbot-header">
+            <span>Chatbot Assistant</span>
+            <button id="chatbot-close" class="chatbot-close">✕</button>
+        </div>
+
+        <!-- Messages -->
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+
+        <!-- Input + Send + Voice -->
+        <div id="chatbot-input-container" class="chatbot-input-container">
+            <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Type your message..." autocomplete="off" />
+            <button id="chatbot-send" class="chatbot-send">➤</button>
+            <!-- Mic button gets added via JS -->
+        </div>
+    </div>
+</div>

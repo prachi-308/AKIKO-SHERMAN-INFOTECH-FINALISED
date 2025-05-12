@@ -1,3 +1,5 @@
+/* Section 5 (Leadership) */
+
 .sec-5 {
     width: 100%;
     margin-top: 20px;
@@ -17,6 +19,8 @@ main {
     height: 350px;
     overflow: hidden;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sec-5 #carousel div {
@@ -26,6 +30,8 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .sec-5 #carousel div img {
@@ -133,7 +139,7 @@ main {
 .title-description.active {
     display: block;
     background-color: rgb(254, 254, 254);
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
     padding: 0px;
     opacity: 0;
@@ -770,7 +776,8 @@ body {
     transform: scale(1.05);
 }
 
-.grid-item .overlay {
+
+/*.grid-item .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -781,7 +788,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: opacity var(--transition-speed) ease;
-}
+}*/
 
 .grid-item .real-image {
     width: 100%;
@@ -790,9 +797,11 @@ body {
     opacity: 1;
 }
 
-.grid-item:hover .overlay {
+
+/*.grid-item:hover .overlay {
     opacity: 0;
 }
+    */
 
 .grid-item.mission {
     transform: translateY(-20px);

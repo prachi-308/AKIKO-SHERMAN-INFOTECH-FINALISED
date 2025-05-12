@@ -96,7 +96,7 @@
 
 .quote p {
     color: #1a2b49;
-    font-size: clamp(1em, 2.5vw, 1.3em);
+    font-size: clamp(1em, 2.5vw, 1.1em);
     font-weight: 500;
     width: 80%;
     margin: 0 auto 20px;

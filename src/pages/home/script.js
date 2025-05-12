@@ -27,6 +27,15 @@ function throttle(func, limit) {
     };
 }
 
+// Utility: Debounce function to prevent rapid clicks
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
 // Lazy Load Images
 document.addEventListener("DOMContentLoaded", () => {
     const lazyImages = document.querySelectorAll(".lazy-img");
@@ -128,19 +137,28 @@ const sliderItems = document.querySelectorAll('.slider-item');
 const progressBars = document.querySelectorAll('.progress-bar');
 const portfolioContent = document.querySelector('.portfolio-content');
 const portfolioSlider = document.querySelector('.portfolio-slider');
+const portfolioSection = document.querySelector('.portfolio-section');
 
 // Cache itemWidth to avoid recalculating offsetWidth
 let itemWidth = sliderItems[0] ? sliderItems[0].offsetWidth + 20 : 0;
 
 function updateSlider() {
-    if (sliderContainer) {
+    if (sliderContainer && sliderItems.length > 0) {
+        sliderContainer.style.transition = 'transform 0.5s ease-in-out';
         sliderContainer.style.transform = `translateX(-${currentIndex1 * itemWidth}px)`;
         resetProgress();
+        console.log(`Slider updated to index ${currentIndex1}, translateX: -${currentIndex1 * itemWidth}px`);
+    } else {
+        console.error("Slider container or items not found:", { sliderContainer, sliderItems });
     }
 }
 
 function nextSlide() {
     const totalSlides = sliderItems.length;
+    if (totalSlides === 0) {
+        console.error("No slider items found");
+        return;
+    }
     currentIndex1 = (currentIndex1 + 1) % totalSlides;
     updateSlider();
     console.log("Next slide triggered, currentIndex1:", currentIndex1);
@@ -148,30 +166,36 @@ function nextSlide() {
 
 function prevSlide() {
     const totalSlides = sliderItems.length;
-    currentIndex1 = (currentIndex1 - 1 + totalSlides) % totalSlides;
+    if (totalSlides === 0) {
+        console.error("No slider items found");
+        return;
+    }
+    currentIndex1 = currentIndex1 === 0 ? totalSlides - 1 : currentIndex1 - 1;
     updateSlider();
     console.log("Prev slide triggered, currentIndex1:", currentIndex1);
 }
 
 function resetProgress() {
-    progressBars.forEach(bar => bar.style.width = '0');
-    setTimeout(() => {
-        if (progressBars[currentIndex1]) {
-            progressBars[currentIndex1].style.width = '100%';
-        }
-    }, 50);
+    progressBars.forEach(bar => {
+        gsap.to(bar, { width: '0%', duration: 0.2, ease: 'power2.out' });
+    });
+    if (progressBars[currentIndex1]) {
+        gsap.to(progressBars[currentIndex1], { width: '100%', duration: 3, ease: 'linear' });
+        console.log(`Progress bar reset for slide ${currentIndex1}`);
+    }
 }
 
 function startAutoSlide() {
-    if (window.innerWidth <= 540 && !autoSlideInterval) {
-        autoSlideInterval = setInterval(nextSlide, 3000);
-    }
+    stopAutoSlide();
+    autoSlideInterval = setInterval(nextSlide, 1500);
+    console.log("Auto slide started");
 }
 
 function stopAutoSlide() {
     if (autoSlideInterval) {
         clearInterval(autoSlideInterval);
         autoSlideInterval = null;
+        console.log("Auto slide stopped");
     }
 }
 
@@ -179,41 +203,74 @@ function matchSliderHeight() {
     if (window.innerWidth > 540 && portfolioContent && portfolioSlider) {
         const contentHeight = portfolioContent.offsetHeight;
         portfolioSlider.style.height = `${contentHeight}px`;
+        console.log(`Slider height matched to content: ${contentHeight}px`);
     } else if (portfolioSlider) {
         portfolioSlider.style.height = 'auto';
+        console.log("Slider height set to auto");
     }
 }
 
 // Expose nextSlide and prevSlide to the global scope for onclick
-window.nextSlide = nextSlide;
-window.prevSlide = prevSlide;
+window.nextSlide = debounce(() => {
+    stopAutoSlide();
+    nextSlide();
+    startAutoSlide();
+    console.log("Next slide clicked");
+}, 300);
+
+window.prevSlide = debounce(() => {
+    stopAutoSlide();
+    prevSlide();
+    startAutoSlide();
+    console.log("Prev slide clicked");
+}, 300);
 
 // Throttle the updateSlider and matchSliderHeight for resize events
 const throttledUpdateSlider = throttle(() => {
     if (sliderItems[0]) {
         itemWidth = sliderItems[0].offsetWidth + 20;
         updateSlider();
+        console.log("Slider updated on resize, itemWidth:", itemWidth);
     }
 }, 100);
 
 const throttledMatchSliderHeight = throttle(matchSliderHeight, 100);
 
 if (sliderItems.length > 0) {
+    // Initialize slider
     resetProgress();
     matchSliderHeight();
+    startAutoSlide();
+
+    // Pause and resume auto-slide on hover
+    portfolioSection.addEventListener('mouseenter', () => {
+        stopAutoSlide();
+        console.log("Mouse entered portfolio section, auto-slide paused");
+    });
+    portfolioSection.addEventListener('mouseleave', () => {
+        startAutoSlide();
+        console.log("Mouse left portfolio section, auto-slide resumed");
+    });
+
+    // Handle manual navigation clicks
+    const leftArrow = document.querySelector('.arrow.left');
+    const rightArrow = document.querySelector('.arrow.right');
+    if (leftArrow) {
+        leftArrow.addEventListener('click', window.prevSlide);
+    }
+    if (rightArrow) {
+        rightArrow.addEventListener('click', window.nextSlide);
+    }
+
     window.addEventListener('resize', () => {
         throttledUpdateSlider();
         throttledMatchSliderHeight();
-        if (window.innerWidth <= 540) {
-            startAutoSlide();
-        } else {
-            stopAutoSlide();
-        }
     });
 
-    if (window.innerWidth <= 540) {
-        startAutoSlide();
-    }
+    // Log initial slider setup
+    console.log(`Portfolio slider initialized with ${sliderItems.length} slides, itemWidth: ${itemWidth}`);
+} else {
+    console.error("No slider items found, skipping portfolio slider setup");
 }
 
 // Blog Functionality
@@ -509,8 +566,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-
-
     // Portfolio Section Animations
     gsap.to(".portfolio-section", {
         opacity: 1,
@@ -601,7 +656,6 @@ function initializeFooterAnimation() {
 }
 
 document.addEventListener('DOMContentLoaded', initializeFooterAnimation);
-
 
 // Fallback to ensure visibility
 document.addEventListener("DOMContentLoaded", () => {

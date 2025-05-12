@@ -7,42 +7,47 @@
 
 .hero-section {
     width: 100%;
-    height: clamp(40vh, 60vh, 60vh);
+    height: clamp(30vh, 50vh, 55vh);
+    /* Reduced height for better mobile fit */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background: linear-gradient(rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.9)), url('/src/assets/contact-page-bg.avif');
     background-size: cover;
     background-position: center;
     padding: 20px;
 }
 
 .hero-content {
-    max-width: 90%;
-    padding: 20px;
+    max-width: 95%;
+    /* Slightly increased for smaller screens */
+    padding: 15px;
 }
 
 .hero-content h1 {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+    /* Adjusted for better scaling */
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #ffffff;
 }
 
 .hero-content p {
-    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+    /* Slightly smaller for mobile */
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .cta-button {
     background: linear-gradient(135deg, #64a5ff, #0050bf);
     color: #ffffff;
-    padding: 12px 25px;
+    padding: 10px 20px;
+    /* Reduced padding for smaller screens */
     border: none;
     border-radius: 50px;
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -54,74 +59,84 @@
 
 .contact-container {
     max-width: 1200px;
-    width: 95%;
+    width: 90%;
+    /* Reduced width for better mobile fit */
     background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: clamp(20px, 5vw, 30px);
-    margin: 40px auto;
+    border-radius: 15px;
+    /* Slightly smaller radius */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    /* Reduced shadow for mobile */
+    padding: clamp(15px, 4vw, 25px);
+    margin: 30px auto;
+    /* Reduced margin */
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .contact-header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .contact-header h1 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    /* Adjusted for smaller screens */
     font-weight: 700;
     color: #001812;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .contact-header p {
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
     color: rgba(0, 0, 0, 0.8);
 }
 
 .contact-content {
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
+    flex-direction: column;
+    /* Stack elements on smaller screens */
+    gap: 20px;
 }
 
 .contact-form,
 .contact-content .contact-info {
     flex: 1;
-    min-width: clamp(250px, 45%, 300px);
+    min-width: 100%;
+    /* Full width on mobile */
 }
 
 .contact-form h2,
 .contact-info h2 {
-    font-size: clamp(1.3rem, 3vw, 1.5rem);
+    font-size: clamp(1.2rem, 2.8vw, 1.4rem);
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #001812;
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
+    padding: 10px;
+    /* Reduced padding */
+    margin-bottom: 12px;
     border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    border-radius: 6px;
+    /* Smaller radius */
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
 }
 
 .contact-form textarea {
-    min-height: 120px;
+    min-height: 100px;
+    /* Reduced height for mobile */
     resize: vertical;
 }
 
 .contact-content .contact-btn {
     background: linear-gradient(135deg, #6492ff, #0050bf);
     color: #ffffff;
-    padding: 12px 25px;
+    padding: 10px 20px;
     border: none;
     border-radius: 50px;
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -133,15 +148,16 @@
 
 .contact-content .contact-info {
     background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 15px;
+    padding: 15px;
+    /* Reduced padding */
+    border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .contact-content .contact-info p {
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
     color: rgba(0, 0, 0, 0.8);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .contact-content .contact-info ul {
@@ -150,16 +166,17 @@
 }
 
 .contact-content .contact-info ul li {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
 
 .contact-content .contact-info ul li i {
-    font-size: 1rem;
-    margin-right: 10px;
+    font-size: 0.9rem;
+    /* Slightly smaller icons */
+    margin-right: 8px;
     color: #6498ff;
-    min-width: 20px;
+    min-width: 18px;
 }
 
 .contact-content .contact-info ul li span {
@@ -169,25 +186,21 @@
 .contact-content .contact-info ul li a {
     color: #001812;
     text-decoration: none;
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
 }
 
 .map-container {
-    margin-top: 30px;
-    border-radius: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .map-container iframe {
     width: 100%;
-    height: clamp(200px, 50vw, 300px);
+    height: clamp(180px, 45vw, 250px);
+    /* Adjusted height for mobile */
     border: none;
-}
-
-.contact-content .contact-info {
-    font-size: clamp(0.8rem, 2vw, 0.9rem);
-    color: rgba(255, 255, 255, 0.7);
 }
 
 .dialog-box {
@@ -197,12 +210,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    padding: clamp(15px, 3vw, 20px);
-    border-radius: 10px;
+    padding: clamp(12px, 2.5vw, 15px);
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     z-index: 1000;
-    width: clamp(250px, 80%, 400px);
+    width: clamp(220px, 85%, 350px);
+    /* Adjusted width for mobile */
 }
 
 .dialog-box.show {
@@ -210,19 +224,84 @@
 }
 
 .dialog-box p {
-    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .dialog-box button {
     background-color: #000dbf;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 7px 12px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        height: clamp(40vh, 60vh, 60vh);
+        /* Restore original height for larger screens */
+    }
+    .hero-content {
+        max-width: 90%;
+        padding: 20px;
+    }
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+    .hero-content p {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    .contact-container {
+        width: 95%;
+        padding: clamp(20px, 5vw, 30px);
+        margin: 40px auto;
+    }
+    .contact-content {
+        flex-direction: row;
+        /* Restore flex row for larger screens */
+        gap: 30px;
+    }
+    .contact-form,
+    .contact-content .contact-info {
+        min-width: clamp(250px, 45%, 300px);
+        /* Restore original min-width */
+    }
+    .contact-form input,
+    .contact-form textarea {
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+    .contact-form textarea {
+        min-height: 120px;
+    }
+    .contact-content .contact-btn {
+        padding: 12px 25px;
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    .contact-content .contact-info {
+        padding: 20px;
+        border-radius: 15px;
+    }
+    .contact-content .contact-info ul li i {
+        font-size: 1rem;
+        margin-right: 10px;
+        min-width: 20px;
+    }
+    .map-container iframe {
+        height: clamp(200px, 50vw, 300px);
+    }
+    .dialog-box {
+        width: clamp(250px, 80%, 400px);
+        padding: clamp(15px, 3vw, 20px);
+    }
 }
 
 @media (max-width: 968px) {
@@ -237,10 +316,56 @@
         padding: 0 15px;
     }
     .contact-content {
-        gap: 20px;
+        gap: 15px;
     }
-    .contact-form,
+    .hero-content h1 {
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+    }
+    .hero-content p {
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+    }
+    .cta-button {
+        padding: 8px 18px;
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    }
+    .contact-container {
+        padding: clamp(12px, 3vw, 20px);
+        margin: 20px auto;
+    }
+    .contact-header h1 {
+        font-size: clamp(1.3rem, 3vw, 1.6rem);
+    }
+    .contact-form h2,
+    .contact-info h2 {
+        font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+    }
+    .contact-form input,
+    .contact-form textarea {
+        padding: 8px;
+        font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+    }
+    .contact-content .contact-btn {
+        padding: 8px 18px;
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    }
     .contact-content .contact-info {
-        min-width: 100%;
+        padding: 12px;
     }
+    .map-container iframe {
+        height: clamp(150px, 40vw, 200px);
+    }
+    .dialog-box {
+        width: clamp(200px, 90%, 300px);
+        padding: clamp(10px, 2vw, 12px);
+    }
+}
+
+.footer .social-links {
+    justify-content: flex-start !important;
+    margin-left: 0px !important;
+}
+
+.footer .contact-item {
+    justify-content: center !important;
+    margin-left: 0px !important;
 }

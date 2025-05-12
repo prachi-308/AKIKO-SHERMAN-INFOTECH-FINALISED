@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let carouselInstance = new bootstrap.Carousel(carouselElement, {
         interval: 5000,
         ride: 'carousel',
-        pause: false // Ensure carousel doesn't pause on hover
+        pause: false
     });
     let currentSlideIndex = 0;
 
@@ -61,53 +61,56 @@ document.addEventListener('DOMContentLoaded', () => {
         carouselInner.style.opacity = '1';
 
         const rebuildCarousel = () => {
+            carouselInner.innerHTML = '';
+            carouselIndicators.innerHTML = '';
+
             if (window.innerWidth >= 768) {
-                carouselInner.innerHTML = '';
-                carouselIndicators.innerHTML = `
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" ${currentSlideIndex < 3 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1" ${currentSlideIndex >= 3 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 2"></button>
-                `;
+                const cardsPerSlide = 3;
+                const numSlides = Math.ceil(items.length / cardsPerSlide);
 
-                const slide1 = document.createElement('div');
-                slide1.classList.add('carousel-item');
-                if (currentSlideIndex < 3) slide1.classList.add('active');
-                slide1.innerHTML = `
-                    <div class="cards-wrapper">
-                        ${items[0].querySelector('.cards-wrapper').innerHTML}
-                        ${items[1].querySelector('.cards-wrapper').innerHTML}
-                        ${items[2].querySelector('.cards-wrapper').innerHTML}
-                    </div>
-                `;
+                for (let i = 0; i < numSlides; i++) {
+                    const slide = document.createElement('div');
+                    slide.classList.add('carousel-item');
+                    if (i === Math.floor(currentSlideIndex / cardsPerSlide)) slide.classList.add('active');
 
-                const slide2 = document.createElement('div');
-                slide2.classList.add('carousel-item');
-                if (currentSlideIndex >= 3) slide2.classList.add('active');
-                slide2.innerHTML = `
-                    <div class="cards-wrapper">
-                        ${items[3].querySelector('.cards-wrapper').innerHTML}
-                        ${items[4].querySelector('.cards-wrapper').innerHTML}
-                        ${items[5].querySelector('.cards-wrapper').innerHTML}
-                    </div>
-                `;
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('cards-wrapper');
 
-                carouselInner.appendChild(slide1);
-                carouselInner.appendChild(slide2);
+                    for (let j = i * cardsPerSlide; j < (i + 1) * cardsPerSlide && j < items.length; j++) {
+                        wrapper.innerHTML += items[j].querySelector('.cards-wrapper').innerHTML;
+                    }
+
+                    slide.appendChild(wrapper);
+                    carouselInner.appendChild(slide);
+
+                    const indicator = document.createElement('button');
+                    indicator.type = 'button';
+                    indicator.setAttribute('data-bs-target', '#carouselExampleControls');
+                    indicator.setAttribute('data-bs-slide-to', i);
+                    if (i === Math.floor(currentSlideIndex / cardsPerSlide)) {
+                        indicator.classList.add('active');
+                        indicator.setAttribute('aria-current', 'true');
+                    }
+                    indicator.setAttribute('aria-label', `Slide ${i + 1}`);
+                    carouselIndicators.appendChild(indicator);
+                }
             } else {
-                carouselInner.innerHTML = '';
-                carouselIndicators.innerHTML = `
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="0" ${currentSlideIndex === 0 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="1" ${currentSlideIndex === 1 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="2" ${currentSlideIndex === 2 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="3" ${currentSlideIndex === 3 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 4"></button>
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="4" ${currentSlideIndex === 4 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 5"></button>
-                    <button type="button" data-bs-target="#carouselExampleControls" data-bs-slide-to="5" ${currentSlideIndex === 5 ? 'class="active" aria-current="true"' : ''} aria-label="Slide 6"></button>
-                `;
-
                 items.forEach((item, index) => {
                     const clonedItem = item.cloneNode(true);
                     clonedItem.classList.remove('active');
                     if (index === currentSlideIndex) clonedItem.classList.add('active');
                     carouselInner.appendChild(clonedItem);
+
+                    const indicator = document.createElement('button');
+                    indicator.type = 'button';
+                    indicator.setAttribute('data-bs-target', '#carouselExampleControls');
+                    indicator.setAttribute('data-bs-slide-to', index);
+                    if (index === currentSlideIndex) {
+                        indicator.classList.add('active');
+                        indicator.setAttribute('aria-current', 'true');
+                    }
+                    indicator.setAttribute('aria-label', `Slide ${index + 1}`);
+                    carouselIndicators.appendChild(indicator);
                 });
             }
 
@@ -115,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 carouselInstance = new bootstrap.Carousel(carouselElement, {
                     interval: 5000,
                     ride: 'carousel',
-                    pause: false // Reinitialize with same options
+                    pause: false
                 });
                 ScrollTrigger.refresh();
                 animateCards();
@@ -143,14 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTrigger: { trigger: '.carousel-section', start: 'top 80%', end: 'top 20%', scrub: 0.5 }
     });
 
-    // Key Projects Heading Animation
     const carouselHeading = document.querySelector('.carousel-heading');
     const isInViewport = () => {
         const rect = carouselHeading.getBoundingClientRect();
         return rect.top >= -rect.height && rect.bottom <= window.innerHeight + rect.height;
     };
 
-    // Ensure animation runs only once
     let hasAnimated = false;
     const animateHeading = () => {
         if (!hasAnimated) {
@@ -159,11 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Check if heading is in viewport on load
     if (isInViewport()) {
         animateHeading();
     } else {
-        // Animate when it enters viewport, only once
         gsap.fromTo(carouselHeading, { opacity: 0, y: 20, rotateX: -20, scale: 0.9 }, {
             opacity: 1,
             y: 0,
@@ -202,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animateCards();
 
-    // Third Section and Footer
     gsap.fromTo('.third-section', { opacity: 0, y: 100, rotateX: 45 }, {
         opacity: 1,
         y: 0,
@@ -212,10 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTrigger: { trigger: '.carousel-section', start: 'bottom 80%', end: 'bottom 50%', scrub: 0.5 }
     });
 
-    // Store the observer instance and use it in the callback
     const observer = observeElements('.title, .offering', (target) => {
         target.classList.add('show');
-        observer.unobserve(target); // Use the stored observer
+        observer.unobserve(target);
     });
 
     gsap.fromTo('footer', { opacity: 0, y: 50 }, {
@@ -226,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollTrigger: { trigger: '.third-section', start: 'bottom 80%', toggleActions: 'play none none none' }
     });
 
-    // Tab Switch Function
     window.switchTab = (tabNumber) => {
         const tabs = document.querySelectorAll('.tab');
         tabs.forEach((tab, index) => {

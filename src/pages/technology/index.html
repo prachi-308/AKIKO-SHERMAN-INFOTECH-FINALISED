@@ -30,7 +30,7 @@
         <div class="banner-content animate-on-scroll">
             <h1>Technologies We Work With</h1>
             <p>We specialize in delivering innovative solutions using the latest technologies to drive your business forward.</p>
-            <a href="#" class="btn">Explore Technologies</a>
+            <a href="#our-technologies" class="btn">Explore Technologies</a>
         </div>
     </section>
 
@@ -63,7 +63,7 @@
     </section>
 
     <!-- Section 3: Technology Details -->
-    <section class="sec-3">
+    <section class="sec-3" id="our-technologies">
         <div class="main-heading">OUR TECHNOLOGIES</div>
         <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
         <div class="container">
@@ -96,13 +96,9 @@
                 <div class="sub-heading" onclick="toggleOptions('cms-platform')">CMS & E-Commerce Platforms</div>
                 <ul class="options" id="cms-platform-options">
                     <li onclick="showContent('cms')">Content Management Systems</li>
-                    <li onclick="showContent('ecom-soln')">E-Commerce Solutions</li>
+
                 </ul>
-                <div class="sub-heading" onclick="toggleOptions('cloud-container')">Cloud & Containerization</div>
-                <ul class="options" id="cloud-container-options">
-                    <li onclick="showContent('public-cloud-service')">Public Cloud Services</li>
-                    <li onclick="showContent('containerization-tools')">Containerization Tools</li>
-                </ul>
+
                 <div class="sub-heading" onclick="toggleOptions('web-3.0')">Web 3.0 Development</div>
                 <ul class="options" id="web-3.0-options">
                     <li onclick="showContent('blockchain-platform')">Blockchain Platforms</li>
@@ -143,7 +139,39 @@
     <!-- Reusable footer -->
     <div data-include="footer"></div>
 
-    <script src="/technology.bundle.js "></script>
+    <script src="/technology.bundle.js"></script>
+    <script>
+        (function() {
+            function c() {
+                var b = a.contentDocument || a.contentWindow.document;
+                if (b) {
+                    var d = b.createElement('script');
+                    d.innerHTML = "window.__CF$cv$params={r:'93e6a4d7c956ad88',t:'MTc0NzAxODU5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                    b.getElementsByTagName('head')[0].appendChild(d)
+                }
+            }
+            if (document.body) {
+                var a = document.createElement('iframe');
+                a.height = 1;
+                a.width = 1;
+                a.style.position = 'absolute';
+                a.style.top = 0;
+                a.style.left = 0;
+                a.style.border = 'none';
+                a.style.visibility = 'hidden';
+                document.body.appendChild(a);
+                if ('loading' !== document.readyState) c();
+                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
+                else {
+                    var e = document.onreadystatechange || function() {};
+                    document.onreadystatechange = function(b) {
+                        e(b);
+                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+                    }
+                }
+            }
+        })();
+    </script>
 </body>
 
 </html>

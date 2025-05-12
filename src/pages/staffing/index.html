@@ -49,11 +49,11 @@
         </div>
         <div class="content-container">
             <div class="tabs">
-                <button class="tab" onclick="switchTab(2)">Salesforce Implementation</button>
-                <button class="tab" onclick="switchTab(2)">Business Intelligence</button>
-                <button class="tab active" onclick="switchTab(1)">Staffing & Support</button>
-                <button class="tab" onclick="switchTab(2)">AI & ML</button>
-                <button class="tab" onclick="switchTab(3)">Web & Mobility</button>
+                <button class="tab" onclick="window.location.href='web.html'">Web & Mobility</button>
+                <button class="tab" onclick="window.location.href='salesforce.html'">Salesforce Implementation</button>
+                <button class="tab active" onclick="window.location.href='staffing.html'">Staffing & Support</button>
+                <button class="tab" onclick="window.location.href='ai.html'">AI & ML</button>
+                <button class="tab" onclick="window.location.href='ecom.html'">E-commerce</button>
             </div>
             <div class="content-description" id="tab-content">
                 <p>Over 1000 IT Professionals have been deployed at various Government Organizations and Corporates successfully catering to their needs and contributing to the country’s E-governance initiatives.</p>
@@ -190,6 +190,11 @@
                     <p>Scalable, innovative applications tailored to your business needs.</p>
                 </div>
                 <div class="offering-card">
+                    <img src="/assets/staffing-sec3-08.webp" alt="Voice-Enabled Service Bots" class="offering-image" loading="lazy">
+                    <h3>Voice-Enabled Service Bots</h3>
+                    <p>Multilingual voice assistants for accessible government services.</p>
+                </div>
+                <div class="offering-card">
                     <img src="/assets/staffing-sec3-02.svg" alt="GIGW Compliant Websites" class="offering-image" loading="lazy">
                     <h3>GIGW Compliant Websites</h3>
                     <p>Accessible, standards-compliant websites for all users.</p>
@@ -200,16 +205,24 @@
                     <p>Expert IT professionals to drive your projects forward.</p>
                 </div>
                 <div class="offering-card">
+                    <img src="/assets/staffing-sec3-09.jpeg" alt="Smart Digital Twin Solutions" class="offering-image" loading="lazy ">
+                    <h3>Smart Digital Twin Solutions</h3>
+                    <p>AI-powered virtual models for real-time infrastructure management.</p>
+                </div>
+                <div class="offering-card">
                     <img src="/assets/staffing-sec3-04.svg" alt="Citizen Centric Solutions" class="offering-image" loading="lazy">
                     <h3>Citizen-Centric Solutions</h3>
                     <p>User-focused services enhancing public engagement.</p>
                 </div>
                 <div class="offering-card">
-                    <img src="/assets/staffing-sec3-05.svg" alt="MIS, Dashboards, Analytics" class="offering-image" loading="lazy">
-                    <h3>MIS, Dashboards & Analytics</h3>
-                    <p>Data-driven insights for informed decision-making.</p>
+                    <img src="/assets/staffing-sec3-07.webp" alt="LLM-Powered Governance Tools" class="offering-image" loading="lazy">
+                    <h3>LLM-Powered Governance Tools</h3>
+                    <p>Advanced AI models like OpenAI and Gemini for policy drafting, summarization, and citizen services.</p>
                 </div>
-                <div class="offering-card">
+
+
+
+                <div class="offering-card ">
                     <img src="/assets/staffing-sec3-06.svg" alt="Multilingual CMS" class="offering-image" loading="lazy">
                     <h3>Multilingual CMS</h3>
                     <p>Flexible content management in multiple languages.</p>
@@ -217,7 +230,7 @@
             </div>
         </div>
     </section>
-
+    <div data-include="chatbot"></div>
     <!-- Footer Component -->
     <div data-include="footer"></div>
 

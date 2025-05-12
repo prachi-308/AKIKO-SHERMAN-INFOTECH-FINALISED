@@ -90,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
     // Toggle Options for Section 3
     window.toggleOptions = function(section) {
         const options = document.getElementById(`${section}-options`);
@@ -115,6 +114,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Show Content for Section 3
     window.showContent = function(section) {
+        // Remove active class from all options
+        document.querySelectorAll('.options li').forEach(li => li.classList.remove('active'));
+        // Add active class to the clicked option
+        const clickedOption = document.querySelector(`.options li[onclick="showContent('${section}')"]`);
+        if (clickedOption) {
+            clickedOption.classList.add('active');
+        }
+
         const contentArea = document.getElementById('contentArea');
         let content = '';
         switch (section) {
@@ -164,29 +171,23 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <span>PyTorch</span>
                             </div>
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rapidminer/rapidminer-original.svg" alt="RapidMiner">
+                                <img src="/assets/rapidminer.webp" alt="RapidMiner">
                                 <span>RapidMiner</span>
                             </div>
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg" alt="Tableau">
+                                <img src="/assets/tableau.svg" alt="Tableau">
                                 <span>Tableau</span>
                             </div>
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg" alt="Power BI">
+                                <img src="/assets/power-bi.png" alt="Power BI">
                                 <span>Power BI</span>
                             </div>
+                           
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spark/spark-original.svg" alt="Apache Spark">
-                                <span>Apache Spark</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qlik/qlik-original.svg" alt="QlikView">
+                                <img src="/assets/qlikveiw.webp" alt="QlikView">
                                 <span>QlikView</span>
                             </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/talend/talend-original.svg" alt="Talend">
-                                <span>Talend</span>
-                            </div>
+                           
                         </div>
                     `;
                 break;
@@ -259,18 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native">
                                 <span>React Native</span>
                             </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/silverlight/silverlight-original.svg" alt="Silver Light">
-                                <span>Silver Light</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuforia/vuforia-original.svg" alt="Vuforia">
-                                <span>Vuforia</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wikitude/wikitude-original.svg" alt="Wikitude">
-                                <span>Wikitude</span>
-                            </div>
+                          
+                           
                             <div class="icon-item">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google ARCore">
                                 <span>Google ARCore</span>
@@ -368,21 +359,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Tools for modular and scalable architecture.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pega/pega-original.svg" alt="Pega">
+                                <img src="/assets/pega2.png" alt="Pega">
                                 <span>Pega</span>
                             </div>
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blueprism/blueprism-original.svg" alt="Blueprism">
+                                <img src="/assets/blueprism.png" alt="Blueprism">
                                 <span>Blueprism</span>
                             </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/uipath/uipath-original.svg" alt="UIPath">
-                                <span>UIPath</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/automationanywhere/automationanywhere-original.svg" alt="Automation Anywhere">
-                                <span>Automation Anywhere</span>
-                            </div>
+                           
                         </div>
                     `;
                 break;
@@ -412,11 +396,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Technologies for language understanding.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/speechrecognition/speechrecognition-original.svg" alt="Speech Recognition">
+                                <img src="/assets/speech-recognition.png" alt="Speech Recognition">
                                 <span>Speech Recognition</span>
                             </div>
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/virtualagents/virtualagents-original.svg" alt="Virtual Agents">
+                                <img src="/assets/virtual-agents.webp" alt="Virtual Agents">
                                 <span>Virtual Agents</span>
                             </div>
                         </div>
@@ -428,8 +412,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Innovative AI solutions.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/virtualagents/virtualagents-original.svg" alt="Virtual Agents">
-                                <span>Virtual Agents</span>
+                                <img src="/assets/openai.png" alt="Virtual Agents">
+                                <span>OpenAI GPT</span>
+                            </div>
+                            <div class="icon-item">
+                                <img src="/assets/gemini.png" alt="Virtual Agents">
+                                <span>Google Gemini</span>
+                            </div>
+                            <div class="icon-item">
+                                <img src="/assets/meta.png" alt="Virtual Agents">
+                                <span>Meta LLaMA</span>
+                            </div>
+                            <div class="icon-item">
+                                <img src="/assets/claude.png" alt="Virtual Agents">
+                                <span>Claude</span>
+                            </div>
+                            <div class="icon-item">
+                                <img src="/assets/langchain.png" alt="Virtual Agents">
+                                <span>LangChain</span>
                             </div>
                         </div>
                     `;
@@ -447,57 +447,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/drupal/drupal-original.svg" alt="Drupal">
                                 <span>Drupal</span>
                             </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sharepoint/sharepoint-original.svg" alt="Share Point">
-                                <span>Share Point</span>
-                            </div>
+                            
                         </div>
                     `;
                 break;
-            case 'ecom-soln':
-                content = `
-                        <h2>E-Commerce Solutions</h2>
-                        <p>Platforms for online commerce.</p>
-                        <div class="icon-container">
-                            <div class="icon-item">
-                                <img src="assets" alt="Drupal">
-                                <span>Drupal</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="assets" alt="Wordpress">
-                                <span>Wordpress</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="assets/Dynamics-365-Emblem.png" alt="Dynamics CRM">
-                                <span>Dynamics CRM</span>
-                            </div>
-                        </div>
-                    `;
-                break;
-            case 'public-cloud-service':
-                content = `
-                        <h2>Public Cloud Services</h2>
-                        <p>Scalable cloud solutions for IoT and more.</p>
-                        <div class="icon-container">
-                            <div class="icon-item">
-                                <img src="assets/blue-particle-technology-line-globalization-background_1899368.jpg!bw340" alt="Particle">
-                                <span>Particle</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspbian/raspbian-original.svg" alt="Raspbian">
-                                <span>Raspbian</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blynkiot/blynkiot-original.svg" alt="BlynkIoT">
-                                <span>BlynkIoT</span>
-                            </div>
-                            <div class="icon-item">
-                                <img src="assets" alt="Zetta">
-                                <span>Zetta</span>
-                            </div>
-                        </div>
-                    `;
-                break;
+
+
 
             case 'blockchain-platform':
                 content = `
@@ -505,23 +460,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Decentralized solutions.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ethereum/ethereum-original.svg" alt="Ethereum">
+                                <img src="/assets/ethereum.png" alt="Ethereum">
                                 <span>Ethereum</span>
                             </div>
                             <div class="icon-item">
-                                <img src="assets/HL_ImageLibrary_Icons_Green_hyperledger.png" alt="Hyperledger Fabric">
+                                <img src="/assets/hyperledger.jpeg" alt="Hyperledger Fabric">
                                 <span>Hyperledger Fabric</span>
                             </div>
                             <div class="icon-item">
-                                <img src="assets/ripple.webp" alt="Ripple">
+                                <img src="/assets/ripple.png" alt="Ripple">
                                 <span>Ripple</span>
                             </div>
                             <div class="icon-item">
-                                <img src="assets/Quorum_Icon_3D_112x112.png" alt="Quorum">
+                                <img src="/assets/quorum.png" alt="Quorum">
                                 <span>Quorum</span>
                             </div>
                             <div class="icon-item">
-                                <img src="assets/corda.png" alt="Corda">
+                                <img src="/assets/corda.png" alt="Corda">
                                 <span>Corda</span>
                             </div>
                             
@@ -534,11 +489,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Secure contract solutions.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="assets" alt="Ethereum">
+                                <img src="/assets/ethereum.png" alt="Ethereum">
                                 <span>Ethereum</span>
                             </div>
                             <div class="icon-item">
-                                <img src="assets/corda.png" alt="Corda">
+                                <img src="/assets/corda.png" alt="Corda">
                                 <span>Corda</span>
                             </div>
                         </div>
@@ -550,11 +505,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Enhance visibility.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="assets/seo.png" alt="SEO">
+                                <img src="/assets/seo.png" alt="SEO">
                                 <span>SEO</span>
                             </div>
                             <div class="icon-item">
-                                <img src="assets/sem-logo.png" alt="SEM">
+                                <img src="/assets/sem.png" alt="SEM">
                                 <span>SEM</span>
                             </div>
                         </div>
@@ -566,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Boost reach.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ppc/ppc-original.svg" alt="PPC">
+                                <img src="/assets/ppc.png" alt="PPC">
                                 <span>PPC</span>
                             </div>
                         </div>
@@ -578,15 +533,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>Engage audiences.</p>
                         <div class="icon-container">
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/smm/smm-original.svg" alt="SMM">
+                                <img src="/assets/smm.png" alt="SMM">
                                 <span>SMM</span>
                             </div>
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/contentmarketing/contentmarketing-original.svg" alt="Content Marketing">
+                                <img src="/assets/content-market.png" alt="Content Marketing">
                                 <span>Content Marketing</span>
                             </div>
                             <div class="icon-item">
-                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/emailmarketing/emailmarketing-original.svg" alt="Email Marketing">
+                                <img src="/assets/email-market.png" alt="Email Marketing">
                                 <span>Email Marketing</span>
                             </div>
                         </div>

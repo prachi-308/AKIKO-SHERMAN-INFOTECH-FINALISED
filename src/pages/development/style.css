@@ -171,3 +171,13 @@
 .back-button {}
 
 .back-button:hover {}
+
+.footer .social-links {
+    justify-content: flex-start !important;
+    margin-left: 0px !important;
+}
+
+.footer .contact-item {
+    justify-content: center !important;
+    margin-left: 0px !important;
+}

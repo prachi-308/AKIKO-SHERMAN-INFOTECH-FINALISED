@@ -92,6 +92,7 @@
     flex-shrink: 0;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
 }
 
 .carousel-item:nth-child(1) {
@@ -115,21 +116,29 @@
     width: 100%;
     box-sizing: border-box;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
 }
 
 .carousel-content h1 {
     font-size: clamp(1.5rem, 4vw, 3rem);
     margin: 0 0 15px;
+    line-height: 1.2;
 }
 
 .carousel-content h2 {
     font-size: clamp(1rem, 2.5vw, 1.5rem);
     margin: 0 0 10px;
+    line-height: 1.3;
 }
 
 .carousel-content p {
     font-size: clamp(0.9rem, 1.8vw, 1.1rem);
     margin: 0 0 15px;
+    max-width: 90%;
+    line-height: 1.4;
 }
 
 .carousel-content button {
@@ -346,7 +355,7 @@
 }
 
 .sidebar-section ul li a {
-    color: #007BFF;
+    colorTERM: #007BFF;
     text-decoration: none;
 }
 
@@ -354,13 +363,11 @@
     text-decoration: underline;
 }
 
-.newsletter input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
+.newsletter p {
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    color: #333;
+    margin: 0 0 15px;
+    line-height: 1.5;
 }
 
 .newsletter button {
@@ -440,17 +447,17 @@
         padding: 15px;
     }
     .carousel-content h1 {
-        font-size: clamp(1.2rem, 3vw, 2.5rem);
+        font-size: clamp(1.2rem, 3vw, 2.2rem);
     }
     .carousel-content h2 {
-        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        font-size: clamp(0.9rem, 2vw, 1.3rem);
     }
     .carousel-content p {
         font-size: clamp(0.8rem, 1.5vw, 1rem);
     }
     .carousel-content button {
-        padding: 6px 12px;
-        font-size: clamp(0.7rem, 1vw, 0.8rem);
+        padding: 8px 16px;
+        font-size: clamp(0.7rem, 1vw, 0.9rem);
     }
     .carousel-controls {
         bottom: 15px;
@@ -473,31 +480,49 @@
 
 @media (max-width: 768px) {
     .banner {
-        height: 60vh;
+        height: 40vh;
+    }
+    .carousel {
+        height: 100%;
+    }
+    .carousel-item {
+        background-size: cover;
+        background-position: center;
     }
     .carousel-content {
         padding: 10px;
+        max-width: 90%;
+        max-height: 80%;
+        overflow: hidden;
     }
     .carousel-content h1 {
-        font-size: clamp(1rem, 2.5vw, 2rem);
+        font-size: clamp(0.9rem, 2.2vw, 1.4rem);
+        margin: 0 0 8px;
     }
     .carousel-content h2 {
-        font-size: clamp(0.8rem, 1.8vw, 1rem);
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+        margin: 0 0 6px;
     }
     .carousel-content p {
-        font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+        font-size: clamp(0.6rem, 1.3vw, 0.75rem);
+        margin: 0 0 8px;
+        max-width: 100%;
     }
     .carousel-content button {
         padding: 5px 10px;
-        font-size: clamp(0.6rem, 0.9vw, 0.7rem);
+        font-size: clamp(0.5rem, 0.9vw, 0.65rem);
     }
     .carousel-controls {
-        bottom: 10px;
-        gap: 8px;
+        bottom: 8px;
+        gap: 6px;
     }
     .carousel-controls button {
         width: 8px;
         height: 8px;
+        background: rgba(255, 255, 255, 0.7);
+    }
+    .carousel-controls button.active {
+        background: #ffffff;
     }
     .category-section ul {
         flex-direction: row;
@@ -514,27 +539,37 @@
 
 @media (max-width: 480px) {
     .banner {
-        height: 60vh;
+        height: 30vh;
+    }
+    .carousel-item {
+        background-size: cover;
+        background-position: center;
     }
     .carousel-content {
         padding: 8px;
+        max-width: 95%;
+        max-height: 70%;
+        overflow: hidden;
     }
     .carousel-content h1 {
-        font-size: clamp(0.9rem, 2vw, 1.5rem);
+        font-size: clamp(0.8rem, 2vw, 1.2rem);
+        margin: 0 0 6px;
     }
     .carousel-content h2 {
-        font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+        font-size: clamp(0.6rem, 1.6vw, 0.8rem);
+        margin: 0 0 5px;
     }
     .carousel-content p {
-        font-size: clamp(0.6rem, 1vw, 0.8rem);
+        font-size: clamp(0.55rem, 1.1vw, 0.7rem);
+        margin: 0 0 6px;
     }
     .carousel-content button {
         padding: 4px 8px;
-        font-size: clamp(0.5rem, 0.8vw, 0.6rem);
+        font-size: clamp(0.45rem, 0.8vw, 0.6rem);
     }
     .carousel-controls {
-        bottom: 8px;
-        gap: 6px;
+        bottom: 6px;
+        gap: 5px;
     }
     .carousel-controls button {
         width: 6px;
@@ -560,4 +595,14 @@
     .blog-card p {
         font-size: 0.7rem;
     }
+}
+
+.footer .social-links {
+    justify-content: flex-start !important;
+    margin-left: 0px !important;
+}
+
+.footer .contact-item {
+    justify-content: center !important;
+    margin-left: 0px !important;
 }

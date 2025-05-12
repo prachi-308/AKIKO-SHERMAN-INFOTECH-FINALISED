@@ -813,3 +813,25 @@
         font-size: 30px;
     }
 }
+
+.footer .social-links {
+    justify-content: flex-start !important;
+    margin-left: 0px !important;
+}
+
+.footer .contact-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    margin-bottom: 0.75rem !important;
+    padding: 0 !important;
+    margin-left: 0px !important;
+    font-size: 0.875rem !important;
+}
+
+.accordion-item:nth-child(5) {
+    background: linear-gradient(135deg, #042c69 0%, #0c5dea 100%);
+}
