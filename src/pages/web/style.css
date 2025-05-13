@@ -268,24 +268,55 @@
 }
 
 .offerings-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Use auto-fill instead of auto-fit */
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     margin-left: auto;
     margin-right: auto;
-    justify-content: center; /* Center the grid items */
-    max-width: 1300px; /* Ensure the grid doesn't stretch too wide */
+    justify-content: center;
+    /* Center all cards */
+    max-width: 1300px;
 }
 
 .offering-card {
-    width: 100%;
-    max-width: 300px; /* Optional: Limit the card width for better centering */
+    flex: 0 0 calc(25% - 20px);
+    /* 4 cards per row: 25% width minus gap */
+    max-width: 300px;
+    /* Limit card width */
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 1024px) {
+    .offering-card {
+        flex: 0 0 calc(33.33% - 20px);
+        /* 3 cards per row */
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .offering-card {
+        flex: 0 0 calc(50% - 20px);
+        /* 2 cards per row */
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .offering-card {
+        flex: 0 0 calc(100% - 20px);
+        /* 1 card per row */
+        max-width: 300px;
+    }
+}
+
 .offering-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -471,14 +502,12 @@
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     margin: 0 0 10px;
     font-weight: 600;
-text-align:center;
 }
 
 .custom-card-content p {
     font-size: clamp(0.7rem, 1.5vw, 0.8rem);
     margin: 0;
     line-height: 1.4;
-    text-align:justify;
 }
 
 .custom-prev,
