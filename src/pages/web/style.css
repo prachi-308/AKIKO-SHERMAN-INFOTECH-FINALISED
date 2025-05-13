@@ -472,6 +472,7 @@
     font-size: clamp(0.7rem, 1.5vw, 0.8rem);
     margin: 0;
     line-height: 1.4;
+    text-align:justify;
 }
 
 .custom-prev,
