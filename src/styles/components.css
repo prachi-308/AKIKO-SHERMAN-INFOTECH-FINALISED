@@ -258,6 +258,7 @@ a {
     text-align: center !important;
     margin-left: 20px;
 }
+
 @media (min-width: 640px) {
     .footer .footer-brand {
         text-align: left !important;
@@ -273,7 +274,7 @@ a {
 .footer .footer-logo img {
     height: 1.8rem !important;
     width: auto !important;
-    margin-right: 0.5rem !important;
+    margin-right: 0.3rem !important;
 }
 
 .footer .footer-brand-name {
@@ -344,8 +345,8 @@ a {
 
 .footer .footer-columns {
     display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    grid-template-columns: 2fr !important;
+    gap: 1.4rem !important;
     align-items: start !important;
 }
 
@@ -447,7 +448,7 @@ a {
     height: 1rem !important;
     stroke: #fff !important;
     flex-shrink: 0 !important;
-    margin-right: 0.5rem !important;
+    margin-right: 0.2rem !important;
     display: block !important;
 }
 
