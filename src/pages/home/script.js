@@ -128,6 +128,7 @@ btns.forEach((btn, i) => {
 });
 
 // Portfolio Slider Functionality
+// Portfolio Slider Functionality
 let currentIndex1 = 0;
 let autoSlideInterval;
 let isTransitioning = false;
@@ -145,11 +146,12 @@ let itemWidth = 0;
 let totalSlides1 = sliderItems.length;
 
 // Clone slides for infinite loop
+let isSliderInitialized = false;
 function initInfiniteSlider() {
-    if (!sliderContainer || totalSlides1 === 0) {
-        console.error("Slider container or items not found, skipping initialization");
+    if (isSliderInitialized || !sliderContainer || totalSlides1 === 0) {
         return;
     }
+    isSliderInitialized = true;
     // Remove existing clones to prevent duplication
     const existingClones = sliderContainer.querySelectorAll('.slider-item.clone');
     existingClones.forEach(clone => clone.remove());
@@ -159,51 +161,38 @@ function initInfiniteSlider() {
     sliderItems.forEach((item, index) => {
         const clone = item.cloneNode(true);
         clone.classList.add('clone');
-        clone.dataset.index = index; // For debugging
+        clone.dataset.index = index;
         sliderContainer.appendChild(clone);
     });
     // Update the slider container width
     sliderContainer.style.width = `${(totalSlides1 * 2) * itemWidth}px`;
-    console.log(`Cloned ${totalSlides1} slides, itemWidth: ${itemWidth}, total width: ${(totalSlides1 * 2) * itemWidth}px`);
 }
 
 // Update slider position
 function updateSlider(transition = true) {
     if (!sliderContainer || totalSlides1 === 0) {
-        console.error("Slider container or items not found");
         return;
     }
-
     sliderContainer.style.transition = transition ? 'transform 0.5s ease-in-out' : 'none';
     sliderContainer.style.transform = `translateX(-${currentIndex1 * itemWidth}px)`;
-
     // Reset progress bars
     resetProgress();
-    const currentSlide = sliderItems[currentIndex1 % totalSlides1];
-    console.log(`Slider updated to index ${currentIndex1}, slide: ${currentSlide?.querySelector('h3')?.textContent || 'unknown'}, translateX: -${currentIndex1 * itemWidth}px, transition: ${transition}`);
 }
 
 // Move to next slide
 function nextSlide() {
     if (isTransitioning || totalSlides1 === 0) {
-        console.log("Transition in progress or no slides, skipping nextSlide");
         return;
     }
     isTransitioning = true;
     currentIndex1++;
-    const currentSlide = sliderItems[currentIndex1 % totalSlides1];
-    console.log(`nextSlide called, currentIndex1: ${currentIndex1}, showing slide: ${currentSlide?.querySelector('h3')?.textContent || 'unknown'}`);
-
     updateSlider(true);
-
-    // If at or beyond the cloned slides, reset to the first slide
     if (currentIndex1 >= totalSlides1) {
         setTimeout(() => {
             currentIndex1 = 0;
             updateSlider(false);
             isTransitioning = false;
-            console.log("Reached end, instantly reset to first slide (INFRACON)");
-        }, 500); // Match the CSS transition duration
+        }, 500);
     } else {
         setTimeout(() => {
             isTransitioning = false;
@@ -214,19 +203,16 @@ function nextSlide() {
 // Move to previous slide
 function prevSlide() {
     if (isTransitioning || totalSlides1 === 0) {
-        console.log("Transition in progress or no slides, skipping prevSlide");
         return;
     }
     isTransitioning = true;
     currentIndex1--;
-
     if (currentIndex1 < 0) {
         currentIndex1 = totalSlides1 - 1;
         updateSlider(false);
         setTimeout(() => {
             updateSlider(true);
             isTransitioning = false;
-            console.log(`Moved to last slide (VAHAN), currentIndex1: ${currentIndex1}`);
         }, 0);
     } else {
         updateSlider(true);
@@ -234,8 +220,6 @@ function prevSlide() {
             isTransitioning = false;
         }, 500);
     }
-    const currentSlide = sliderItems[currentIndex1 % totalSlides1];
-    console.log(`prevSlide called, currentIndex1: ${currentIndex1}, showing slide: ${currentSlide?.querySelector('h3')?.textContent || 'unknown'}`);
 }
 
 // Reset progress bars
@@ -246,33 +230,30 @@ function resetProgress() {
     const progressIndex = currentIndex1 % totalSlides1;
     if (progressBars[progressIndex]) {
         gsap.to(progressBars[progressIndex], { width: '100%', duration: 3, ease: 'linear' });
-        console.log(`Progress bar reset for slide ${progressIndex}, slide: ${sliderItems[progressIndex]?.querySelector('h3')?.textContent || 'unknown'}`);
     }
 }
 
 function startAutoSlide() {
     stopAutoSlide();
-    autoSlideInterval = setInterval(nextSlide, 1500);
-    console.log("Auto slide started");
+    autoSlideInterval = setInterval(nextSlide, 2000); // Changed from 1500ms to 2000ms
 }
 
 function stopAutoSlide() {
     if (autoSlideInterval) {
         clearInterval(autoSlideInterval);
         autoSlideInterval = null;
-        console.log("Auto slide stopped");
     }
 }
 
 function matchSliderHeight() {
-    if (window.innerWidth > 540 && portfolioContent && portfolioSlider) {
-        const contentHeight = portfolioContent.offsetHeight;
-        portfolioSlider.style.height = `${contentHeight}px`;
-        console.log(`Slider height matched to content: ${contentHeight}px`);
-    } else if (portfolioSlider) {
-        portfolioSlider.style.height = 'auto';
-        console.log("Slider height set to auto");
-    }
+    requestAnimationFrame(() => {
+        if (window.innerWidth > 540 && portfolioContent && portfolioSlider) {
+            const contentHeight = portfolioContent.offsetHeight;
+            portfolioSlider.style.height = `${contentHeight}px`;
+        } else if (portfolioSlider) {
+            portfolioSlider.style.height = 'auto';
+        }
+    });
 }
 
 // Expose nextSlide and prevSlide to the global scope for onclick
@@ -280,65 +261,52 @@ window.nextSlide = debounce(() => {
     stopAutoSlide();
     nextSlide();
     startAutoSlide();
-    console.log("Next slide clicked");
 }, 300);
 
 window.prevSlide = debounce(() => {
     stopAutoSlide();
     prevSlide();
     startAutoSlide();
-    console.log("Prev slide clicked");
 }, 300);
 
 // Throttle the updateSlider and matchSliderHeight for resize events
 const throttledUpdateSlider = throttle(() => {
     if (sliderItems.length > 0) {
-        initInfiniteSlider();
+        itemWidth = sliderItems[0] ? sliderItems[0].offsetWidth + 20 : 0;
+        sliderContainer.style.width = `${(totalSlides1 * 2) * itemWidth}px`;
         updateSlider(false);
-        console.log("Slider updated on resize, itemWidth:", itemWidth);
     }
 }, 100);
 
 const throttledMatchSliderHeight = throttle(matchSliderHeight, 100);
 
-if (sliderItems.length > 0) {
-    // Initialize slider
-    initInfiniteSlider();
-    resetProgress();
-    matchSliderHeight();
-    startAutoSlide();
-
-    // Pause and resume auto-slide on hover
-    portfolioSection.addEventListener('mouseenter', () => {
-        stopAutoSlide();
-        console.log("Mouse entered portfolio section, auto-slide paused");
-    });
-    portfolioSection.addEventListener('mouseleave', () => {
+// Initialize slider on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.time('SliderInitialization');
+    if (sliderItems.length > 0) {
+        initInfiniteSlider();
+        resetProgress();
+        matchSliderHeight();
         startAutoSlide();
-        console.log("Mouse left portfolio section, auto-slide resumed");
-    });
-
-    // Handle manual navigation clicks
-    const leftArrow = document.querySelector('.arrow.left');
-    const rightArrow = document.querySelector('.arrow.right');
-    if (leftArrow) {
-        leftArrow.addEventListener('click', window.prevSlide);
+        // Pause and resume auto-slide on hover
+        portfolioSection.addEventListener('mouseenter', stopAutoSlide);
+        portfolioSection.addEventListener('mouseleave', startAutoSlide);
+        // Handle manual navigation clicks
+        const leftArrow = document.querySelector('.arrow.left');
+        const rightArrow = document.querySelector('.arrow.right');
+        if (leftArrow) {
+            leftArrow.addEventListener('click', window.prevSlide);
+        }
+        if (rightArrow) {
+            rightArrow.addEventListener('click', window.nextSlide);
+        }
+        window.addEventListener('resize', () => {
+            throttledUpdateSlider();
+            throttledMatchSliderHeight();
+        });
     }
-    if (rightArrow) {
-        rightArrow.addEventListener('click', window.nextSlide);
-    }
-
-    window.addEventListener('resize', () => {
-        throttledUpdateSlider();
-        throttledMatchSliderHeight();
-    });
-
-    // Log initial slider setup
-    console.log(`Portfolio slider initialized with ${sliderItems.length} slides, itemWidth: ${itemWidth}`);
-} else {
-    console.error("No slider items found, skipping portfolio slider setup");
-}
-
+    console.timeEnd('SliderInitialization');
+});
 // Blog Functionality
 function changeBlog(image, title, description, url) {
     const mainImage = document.querySelector('#main-image-custom');
