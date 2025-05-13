@@ -130,6 +130,7 @@ btns.forEach((btn, i) => {
 // Portfolio Slider Functionality
 let currentIndex1 = 0;
 let autoSlideInterval;
+let isTransitioning = false;
 
 // Cache DOM elements for portfolio slider
 const sliderContainer = document.querySelector('.slider-container');
@@ -139,49 +140,113 @@ const portfolioContent = document.querySelector('.portfolio-content');
 const portfolioSlider = document.querySelector('.portfolio-slider');
 const portfolioSection = document.querySelector('.portfolio-section');
 
-// Cache itemWidth to avoid recalculating offsetWidth
-let itemWidth = sliderItems[0] ? sliderItems[0].offsetWidth + 20 : 0;
+// Cache itemWidth and totalSlides1
+let itemWidth = 0;
+let totalSlides1 = sliderItems.length;
 
-function updateSlider() {
-    if (sliderContainer && sliderItems.length > 0) {
-        sliderContainer.style.transition = 'transform 0.5s ease-in-out';
-        sliderContainer.style.transform = `translateX(-${currentIndex1 * itemWidth}px)`;
-        resetProgress();
-        console.log(`Slider updated to index ${currentIndex1}, translateX: -${currentIndex1 * itemWidth}px`);
-    } else {
-        console.error("Slider container or items not found:", { sliderContainer, sliderItems });
+// Clone slides for infinite loop
+function initInfiniteSlider() {
+    if (!sliderContainer || totalSlides1 === 0) {
+        console.error("Slider container or items not found, skipping initialization");
+        return;
     }
+    // Remove existing clones to prevent duplication
+    const existingClones = sliderContainer.querySelectorAll('.slider-item.clone');
+    existingClones.forEach(clone => clone.remove());
+    // Update itemWidth
+    itemWidth = sliderItems[0] ? sliderItems[0].offsetWidth + 20 : 0;
+    // Clone all slides and append them
+    sliderItems.forEach((item, index) => {
+        const clone = item.cloneNode(true);
+        clone.classList.add('clone');
+        clone.dataset.index = index; // For debugging
+        sliderContainer.appendChild(clone);
+    });
+    // Update the slider container width
+    sliderContainer.style.width = `${(totalSlides1 * 2) * itemWidth}px`;
+    console.log(`Cloned ${totalSlides1} slides, itemWidth: ${itemWidth}, total width: ${(totalSlides1 * 2) * itemWidth}px`);
 }
 
+// Update slider position
+function updateSlider(transition = true) {
+    if (!sliderContainer || totalSlides1 === 0) {
+        console.error("Slider container or items not found");
+        return;
+    }
+
+    sliderContainer.style.transition = transition ? 'transform 0.5s ease-in-out' : 'none';
+    sliderContainer.style.transform = `translateX(-${currentIndex1 * itemWidth}px)`;
+
+    // Reset progress bars
+    resetProgress();
+    const currentSlide = sliderItems[currentIndex1 % totalSlides1];
+    console.log(`Slider updated to index ${currentIndex1}, slide: ${currentSlide?.querySelector('h3')?.textContent || 'unknown'}, translateX: -${currentIndex1 * itemWidth}px, transition: ${transition}`);
+}
+
+// Move to next slide
 function nextSlide() {
-    const totalSlides = sliderItems.length;
-    if (totalSlides === 0) {
-        console.error("No slider items found");
+    if (isTransitioning || totalSlides1 === 0) {
+        console.log("Transition in progress or no slides, skipping nextSlide");
         return;
     }
-    currentIndex1 = (currentIndex1 + 1) % totalSlides;
-    updateSlider();
-    console.log("Next slide triggered, currentIndex1:", currentIndex1);
+    isTransitioning = true;
+    currentIndex1++;
+    const currentSlide = sliderItems[currentIndex1 % totalSlides1];
+    console.log(`nextSlide called, currentIndex1: ${currentIndex1}, showing slide: ${currentSlide?.querySelector('h3')?.textContent || 'unknown'}`);
+
+    updateSlider(true);
+
+    // If at or beyond the cloned slides, reset to the first slide
+    if (currentIndex1 >= totalSlides1) {
+        setTimeout(() => {
+            currentIndex1 = 0;
+            updateSlider(false);
+            isTransitioning = false;
+            console.log("Reached end, instantly reset to first slide (INFRACON)");
+        }, 500); // Match the CSS transition duration
+    } else {
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    }
 }
 
+// Move to previous slide
 function prevSlide() {
-    const totalSlides = sliderItems.length;
-    if (totalSlides === 0) {
-        console.error("No slider items found");
+    if (isTransitioning || totalSlides1 === 0) {
+        console.log("Transition in progress or no slides, skipping prevSlide");
         return;
     }
-    currentIndex1 = currentIndex1 === 0 ? totalSlides - 1 : currentIndex1 - 1;
-    updateSlider();
-    console.log("Prev slide triggered, currentIndex1:", currentIndex1);
+    isTransitioning = true;
+    currentIndex1--;
+
+    if (currentIndex1 < 0) {
+        currentIndex1 = totalSlides1 - 1;
+        updateSlider(false);
+        setTimeout(() => {
+            updateSlider(true);
+            isTransitioning = false;
+            console.log(`Moved to last slide (VAHAN), currentIndex1: ${currentIndex1}`);
+        }, 0);
+    } else {
+        updateSlider(true);
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 500);
+    }
+    const currentSlide = sliderItems[currentIndex1 % totalSlides1];
+    console.log(`prevSlide called, currentIndex1: ${currentIndex1}, showing slide: ${currentSlide?.querySelector('h3')?.textContent || 'unknown'}`);
 }
 
+// Reset progress bars
 function resetProgress() {
     progressBars.forEach(bar => {
         gsap.to(bar, { width: '0%', duration: 0.2, ease: 'power2.out' });
     });
-    if (progressBars[currentIndex1]) {
-        gsap.to(progressBars[currentIndex1], { width: '100%', duration: 3, ease: 'linear' });
-        console.log(`Progress bar reset for slide ${currentIndex1}`);
+    const progressIndex = currentIndex1 % totalSlides1;
+    if (progressBars[progressIndex]) {
+        gsap.to(progressBars[progressIndex], { width: '100%', duration: 3, ease: 'linear' });
+        console.log(`Progress bar reset for slide ${progressIndex}, slide: ${sliderItems[progressIndex]?.querySelector('h3')?.textContent || 'unknown'}`);
     }
 }
 
@@ -227,9 +292,9 @@ window.prevSlide = debounce(() => {
 
 // Throttle the updateSlider and matchSliderHeight for resize events
 const throttledUpdateSlider = throttle(() => {
-    if (sliderItems[0]) {
-        itemWidth = sliderItems[0].offsetWidth + 20;
-        updateSlider();
+    if (sliderItems.length > 0) {
+        initInfiniteSlider();
+        updateSlider(false);
         console.log("Slider updated on resize, itemWidth:", itemWidth);
     }
 }, 100);
@@ -238,6 +303,7 @@ const throttledMatchSliderHeight = throttle(matchSliderHeight, 100);
 
 if (sliderItems.length > 0) {
     // Initialize slider
+    initInfiniteSlider();
     resetProgress();
     matchSliderHeight();
     startAutoSlide();
