@@ -829,20 +829,26 @@
     transform: translateY(-50%);
     color: rgb(4, 4, 4);
     border: none;
-    padding: 5px 20px;
     cursor: pointer;
-    border-radius: 50%;
     z-index: 10;
     background: transparent;
-    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .arrow.left {
     left: 88%;
+    padding: 0px 20px;
+    font-size: 2.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .arrow.right {
     right: 2%;
+    padding: 0px 20px;
+    font-size: 2.2rem;
 }
 
 .arrow:hover {
@@ -1481,4 +1487,14 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: 30px;
+}
+
+
+/* Existing styles remain unchanged, only adding to .slider-container */
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 100%;
 }
