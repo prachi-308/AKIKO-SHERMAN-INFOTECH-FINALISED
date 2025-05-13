@@ -235,7 +235,7 @@ function resetProgress() {
 
 function startAutoSlide() {
     stopAutoSlide();
-    autoSlideInterval = setInterval(nextSlide, 2000); // Changed from 1500ms to 2000ms
+    autoSlideInterval = setInterval(nextSlide, 1000); // Changed from 1500ms to 2000ms
 }
 
 function stopAutoSlide() {
