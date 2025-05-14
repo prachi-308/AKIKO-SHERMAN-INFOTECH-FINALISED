@@ -387,10 +387,18 @@
         text-align: center;
         max-width: 100%;
     }
+    .content-description {
+        font-size: 0.9rem;
+    }
+    .content-container {
+        width: 95%;
+        padding: 10px;
+    }
     .orange-container .heading {
         flex-direction: column;
         gap: 10px;
     }
+    
 }
 
 @media (max-width: 480px) {
