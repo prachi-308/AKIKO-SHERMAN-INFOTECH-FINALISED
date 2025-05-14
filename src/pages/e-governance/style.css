@@ -551,7 +551,12 @@
         padding-top: 20px;
     }
 }
-
+@media(max-width:340px) {
+    .hero-section {
+        height: 100vh;
+        padding-top: 10px;
+    }
+}
 .third-section .first-container {
     max-width: 1300px;
     margin: 50px auto;
