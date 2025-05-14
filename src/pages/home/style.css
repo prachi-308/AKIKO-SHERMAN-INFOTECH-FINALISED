@@ -1142,6 +1142,14 @@
 }
 
 @media (max-width: 576px) {
+     .home {
+        position: relative;
+        width: 100vw;
+        min-height: 80vh;
+        overflow: hidden;
+        contain: layout;
+        scroll-behavior: smooth;
+    }
     .home .content {
         width: 95%;
     }
