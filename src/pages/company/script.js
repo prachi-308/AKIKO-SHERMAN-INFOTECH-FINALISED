@@ -1,8 +1,14 @@
-import './style.css';
+
+import { throttle } from '../../scripts/utils.js';
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
-import { throttle } from '../../scripts/utils.js';
+gsap.registerPlugin(ScrollTrigger);
+import { observeElements } from '../../scripts/utils.js';
 import '../../scripts/components.js';
+import '../../styles/global.css';
+import '../../styles/components.css';
+import './style.css';
+
 
 class ImageOptimizer {
     constructor() {
