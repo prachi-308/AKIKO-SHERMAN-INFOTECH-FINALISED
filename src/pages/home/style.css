@@ -1269,11 +1269,20 @@
     .home .content p {
         font-size: 0.9rem;
     }
-    .solution h2 {
-        font-size: 24px;
+    .sec-2 {
+        background-color: #ffffff;
+        padding: 15px;
+        position: relative;
+        min-height: 600px;
+        contain: layout;
+        scroll-behavior: smooth;
     }
+    .solution h2 {
+        font-size: 32px;
+    }
+   
     .solution p {
-        font-size: 16px;
+        font-size: 17.5px;
         width: 90%;
     }
     .slider-item {
@@ -1466,11 +1475,22 @@
     .home .content p {
         font-size: 0.85rem;
     }
+    .sec-2 {
+        background-color: #ffffff;
+        padding: 15px;
+        position: relative;
+        min-height: 600px;
+        contain: layout;
+        scroll-behavior: smooth;
+    }
     .solution h2 {
-        font-size: 20px;
+        font-size: 32px;
+    }
+    .solution h2 {
+        font-size: 22px;
     }
     .solution p {
-        font-size: 12px;
+        font-size: 14px;
         width: 95%;
     }
 }
