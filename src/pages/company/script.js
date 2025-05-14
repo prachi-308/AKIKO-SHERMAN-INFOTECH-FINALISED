@@ -1,30 +1,14 @@
+import './style.css';
 const gsap = window.gsap;
 const ScrollTrigger = window.ScrollTrigger;
-gsap.registerPlugin(ScrollTrigger);
-import { observeElements } from '../../scripts/utils.js';
+import { throttle } from '../../scripts/utils.js';
 import '../../scripts/components.js';
-import '../../styles/global.css';
-import '../../styles/components.css';
-import './style.css';
 
-function throttle(func, limit) {
-    let lastFunc;
-    let lastRan;
-    return function(...args) {
-        if (!lastRan) {
-            func.apply(this, args);
-            lastRan = Date.now();
-        } else {
-            clearTimeout(lastFunc);
-            lastFunc = setTimeout(() => {
-                if ((Date.now() - lastRan) >= limit) {
-                    func.apply(this, args);
-                    lastRan = Date.now();
-                }
-            }, limit - (Date.now() - lastRan));
-        }
-    };
-}
+import '../../styles/components.css';
+
+
+
+
 class ImageOptimizer {
     constructor() {
         this.optimizeImages();
