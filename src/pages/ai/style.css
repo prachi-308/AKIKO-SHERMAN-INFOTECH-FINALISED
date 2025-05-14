@@ -604,6 +604,32 @@
         font-size: 0.6rem;
     }
 }
+@media (max-width: 350px) {
+    .hero-section {
+        height: 120vh;
+        padding-top: 20px;
+    }
+    .orange-container .heading .big-e {
+        font-size: 90px;
+    }
+    .orange-container .heading span {
+        font-size: 32px;
+    }
+    .services-heading {
+        font-size: 16px;
+    }
+    .stats-container {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        gap: 5px;
+    }
+    .stat-box {
+        max-width: 100px;
+        padding: 5px;
+    }
+    .stat-name {
+        font-size: 0.6rem;
+    }
+}
 
 .sec-4 {
     padding: 4rem 1rem;
