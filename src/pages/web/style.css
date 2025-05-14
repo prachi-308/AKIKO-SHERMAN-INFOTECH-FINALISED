@@ -502,12 +502,14 @@
     font-size: clamp(0.9rem, 2vw, 1.1rem);
     margin: 0 0 10px;
     font-weight: 600;
+    text-align:center;
 }
 
 .custom-card-content p {
     font-size: clamp(0.7rem, 1.5vw, 0.8rem);
     margin: 0;
     line-height: 1.4;
+    text-align:justify;
 }
 
 .custom-prev,
