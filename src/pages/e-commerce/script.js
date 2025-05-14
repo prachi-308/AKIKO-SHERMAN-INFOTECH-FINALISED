@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollIndicator = document.getElementById('scrollIndicator');
     const cards = document.querySelectorAll('.feature-card');
     let currentPage = 0;
-    let cardsPerPage = 3;
+    let cardsPerPage = 4;
     let totalPages = Math.ceil(cards.length / cardsPerPage);
     let autoScrollInterval;
     let isHovering = false;
@@ -135,17 +135,15 @@ document.addEventListener('DOMContentLoaded', () => {
      * Clears and updates the scroll indicator with clickable dots for navigation.
      * Calls updateCarousel to apply transformations for the current page.
      */
-
-    /*******  a8b4836c-9a35-4f51-b2eb-9672c18ffca4  *******/
     function setupCarousel() {
-        if (window.innerWidth <= 1024 && window.innerWidth > 767) {
-            cardsPerPage = 3;
-            totalPages = Math.ceil(cards.length / cardsPerPage);
-        } else if (window.innerWidth <= 767) {
-            cardsPerPage = 2;
+        if (window.innerWidth <= 767) {
+            cardsPerPage = 1; // 1 card on small screens
             totalPages = cards.length;
+        } else if (window.innerWidth <= 1024) {
+            cardsPerPage = 2; // 2 cards on medium screens
+            totalPages = Math.ceil(cards.length / cardsPerPage);
         } else {
-            cardsPerPage = 4;
+            cardsPerPage = 4; // 4 cards on large screens
             totalPages = Math.ceil(cards.length / cardsPerPage);
         }
 
@@ -161,12 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function goToPage(page) {
-        currentPage = page;
+        currentPage = Math.max(0, Math.min(page, totalPages - 1));
         updateCarousel();
     }
 
     function updateCarousel() {
-        const translateX = -(currentPage * 100 / cardsPerPage);
+        const translateX = -(currentPage * (100 / cardsPerPage));
         wrapper.style.transform = `translateX(${translateX}%)`;
         document.querySelectorAll('.dot').forEach((dot, index) => {
             dot.classList.toggle('active', index === currentPage);
