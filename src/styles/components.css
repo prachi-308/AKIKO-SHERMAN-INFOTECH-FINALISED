@@ -220,6 +220,14 @@ nav ul li:hover .dropdown-arrow {
     nav ul {
         width: 80%;
     }
+    .logo {
+        font-size: 1em;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #fff;
+        margin-left: 5px;
+    }
 }
 
 
