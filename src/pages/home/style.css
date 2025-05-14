@@ -638,79 +638,67 @@
 
 /* Portfolio Section Styles */
 
+
+/* Portfolio Section Styles */
+
 .section-4 {
     display: flex;
     justify-content: center;
-    align-items: center;
     width: 100%;
 }
 
 .portfolio-section {
     display: grid;
     grid-template-columns: 0.5fr 1fr;
-    gap: 0;
     width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    padding-bottom: 90px;
-    position: relative;
-    height: auto;
-    padding-top: 60px;
-    opacity: 0;
-    transform: translateY(50px);
-    contain: layout;
+    max-width: 1300px;
+    padding: 40px 0;
+    background: #fff;
 }
 
 .portfolio-content {
-    padding: 10px 30px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #ffffff;
-    opacity: 0;
-    transform: translateY(30px);
-    will-change: opacity, transform;
+    background: #fff;
 }
 
 .portfolio-content h1 {
-    font-size: 48px;
+    font-size: 40px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .portfolio-content h2 {
-    font-size: 27px;
+    font-size: 24px;
     font-weight: 600;
-    color: rgba(62, 62, 62, 1);
-    margin-bottom: 20px;
+    color: #3e3e3e;
+    margin-bottom: 15px;
 }
 
 .portfolio-content p {
-    font-size: 20px;
-    line-height: 1.3;
-    margin-bottom: 10px;
-    color: rgba(83, 83, 83, 1);
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    color: #535353;
 }
 
 .explore-btn {
-    background-color: black;
-    color: white;
-    padding: 12px 30px;
+    background: #000;
+    color: #fff;
+    padding: 10px 25px;
     border: none;
     font-size: 1rem;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
     border-radius: 5px;
-    max-width: fit-content;
-    opacity: 0;
-    transform: scale(0.9);
-    will-change: opacity, transform;
+    width: fit-content;
 }
 
 .explore-btn:hover {
-    background-color: #333;
+    background: #333;
 }
 
 .portfolio-slider {
@@ -718,10 +706,7 @@
     display: flex;
     overflow: hidden;
     width: 100%;
-    height: 450px;
-    opacity: 0;
-    transform: translateX(50px);
-    will-change: opacity, transform;
+    height: 400px;
 }
 
 .slider-container {
@@ -735,11 +720,8 @@
     flex: 0 0 calc(100% / 2);
     position: relative;
     overflow: hidden;
-    margin: 10px;
+    margin: 5px;
     height: 100%;
-    opacity: 0;
-    transform: scale(0.95);
-    will-change: opacity, transform;
 }
 
 .slider-item img {
@@ -747,7 +729,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 500ms ease;
+    object-position: center;
 }
 
 .slider-item::before {
@@ -759,110 +741,99 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
     z-index: 1;
-    pointer-events: none;
 }
 
 .slider-item-content {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    color: white;
-    padding: 10px;
+    top: 5px;
+    left: 5px;
+    color: #fff;
+    padding: 5px;
     z-index: 2;
-    border-radius: 5px;
-    transition: all 0.3s ease;
 }
 
 .slider-item-content h3 {
-    font-size: 48px;
+    font-size: 32px;
     font-weight: 600;
     margin: 5px 0;
 }
 
 .slider-item-content p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     margin: 0;
 }
 
 .slider-item-content a {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
-    color: rgba(255, 199, 0, 1);
+    color: #ffc107;
     text-decoration: none;
 }
 
 .view-btn {
-    margin-top: 80px;
-    padding: 8px 20px;
-    border: 1px solid white;
+    margin-top: 50px;
+    padding: 6px 15px;
+    border: 1px solid #fff;
     background: transparent;
-    color: white;
+    color: #fff;
     border-radius: 5px;
     cursor: pointer;
     display: none;
     position: absolute;
-    font-size: 20px;
+    font-size: 16px;
     left: 50%;
-    top: 65%;
+    top: 60%;
     transform: translate(-50%, -50%);
 }
 
 .view-btn:hover {
-    background: white;
-    color: black;
+    background: #fff;
+    color: #000;
 }
 
 .progress-bar {
-    height: 5px;
+    height: 4px;
     background: #007bff;
     width: 0;
     position: absolute;
     bottom: 0;
     left: 0;
-    transition: width 5s linear;
+    transition: width 3s linear;
 }
 
 .arrow {
     position: absolute;
-    top: 92.5%;
-    transform: translateY(-50%);
-    color: rgb(4, 4, 4);
+    top: 90%;
+    color: #000;
     border: none;
     cursor: pointer;
     z-index: 10;
     background: transparent;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.8rem;
 }
 
 .arrow.left {
-    left: 88%;
-    padding: 0px 20px;
-    font-size: 2.2rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    left: 85%;
+    padding: 0 15px;
 }
 
 .arrow.right {
-    right: 2%;
-    padding: 0px 20px;
-    font-size: 2.2rem;
+    right: 5%;
+    padding: 0 15px;
 }
 
 .arrow:hover {
-    background: black;
-    color: white;
+    background: #000;
+    color: #fff;
 }
 
 .slider-item:hover .slider-item-content {
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
+    width: 90%;
 }
 
 .slider-item:hover .view-btn {
@@ -872,6 +843,129 @@
 .slider-item:hover .slider-item-content p,
 .slider-item:hover .slider-item-content a {
     display: none;
+}
+
+
+/* Responsive Adjustments for Portfolio Section */
+
+@media (max-width: 768px) {
+    .portfolio-section {
+        grid-template-columns: 1fr;
+        padding: 30px 0;
+        max-width: 100%;
+    }
+    .portfolio-content {
+        padding: 15px;
+        text-align: center;
+    }
+    .portfolio-content h1 {
+        font-size: 32px;
+    }
+    .portfolio-content h2 {
+        font-size: 20px;
+    }
+    .portfolio-content p {
+        font-size: 14px;
+    }
+    .explore-btn {
+        margin: 10px auto;
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+    .portfolio-slider {
+        height: 300px;
+    }
+    .slider-container {
+        width: 100%;
+        overflow: hidden;
+    }
+    .slider-item {
+        flex: 0 0 500px;
+        /* Two cards, ~500px each */
+        margin: 5px;
+        height: 300px;
+        max-width: 100%;
+    }
+    .slider-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .slider-item-content h3 {
+        font-size: 20px;
+    }
+    .slider-item-content p {
+        font-size: 12px;
+    }
+    .slider-item-content a {
+        font-size: 12px;
+    }
+    .view-btn {
+        margin-top: 30px;
+        font-size: 12px;
+        padding: 5px 12px;
+        top: 65%;
+    }
+    .arrow {
+        top: 92%;
+    }
+    .arrow.left {
+        left: 5%;
+    }
+    .arrow.right {
+        right: 5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-section {
+        padding: 20px 0;
+    }
+    .portfolio-content h1 {
+        font-size: 28px;
+    }
+    .portfolio-content h2 {
+        font-size: 18px;
+    }
+    .portfolio-content p {
+        font-size: 13px;
+    }
+    .explore-btn {
+        padding: 7px 15px;
+        font-size: 0.85rem;
+    }
+    .portfolio-slider {
+        height: 300px;
+    }
+    .slider-item {
+        flex: 0 0 calc(100% - 10px);
+        /* One card, full-width minus margins */
+        margin: 5px;
+        height: 300px;
+    }
+    .slider-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .slider-item-content h3 {
+        font-size: 18px;
+    }
+    .slider-item-content p {
+        font-size: 11px;
+    }
+    .slider-item-content a {
+        font-size: 11px;
+    }
+    .view-btn {
+        font-size: 11px;
+        padding: 4px 10px;
+        margin-top: 25px;
+    }
+    .arrow {
+        font-size: 1.5rem;
+        padding: 0 10px;
+    }
 }
 
 
@@ -1142,7 +1236,7 @@
 }
 
 @media (max-width: 576px) {
-     .home {
+    .home {
         position: relative;
         width: 100vw;
         min-height: 80vh;
@@ -1279,9 +1373,8 @@
     }
     .solution h2 {
         font-size: 32px;
-         width: 90%;
+        width: 90%;
     }
-   
     .solution p {
         font-size: 17.5px;
         width: 90%;
@@ -1486,7 +1579,7 @@
     }
     .solution h2 {
         font-size: 32px;
-         width: 90%;
+        width: 90%;
     }
     .solution h2 {
         font-size: 22px;
