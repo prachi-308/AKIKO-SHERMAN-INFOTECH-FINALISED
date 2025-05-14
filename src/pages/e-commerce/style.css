@@ -172,7 +172,7 @@
 
 .section-title {
     font-size: 3rem;
-    font-weight: 800;
+    font-weight: 600;
     color: #000000;
     margin-bottom: 30px;
     text-transform: uppercase;
@@ -193,11 +193,12 @@
 }
 
 .feature-card {
-    flex: 0 0 20%;
+    flex: 0 0 25%;
     padding: 0 15px;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .card-content {
@@ -212,6 +213,9 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 1;
     transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-content.animate-on-scroll {
@@ -230,12 +234,14 @@
 }
 
 .feature-card img {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     height: 190px;
     border-radius: 40px 0 40px 0;
-    margin: 0 0 15px 0;
+    margin: 0 auto 15px;
     display: block;
     transition: transform 0.3s ease;
+    object-fit: cover;
 }
 
 .card-content:hover img {
@@ -247,6 +253,7 @@
     font-weight: 700;
     color: #2d3748;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .feature-card p {
@@ -254,6 +261,7 @@
     color: #718096;
     line-height: 1.5;
     margin: 0;
+    text-align: center;
 }
 
 .scroll-indicator {
@@ -449,7 +457,7 @@
 .ecommerce-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 10px;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 10px;
@@ -501,7 +509,7 @@
 
 .ecommerce-card h3 {
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 400;
     color: #4a90e2;
     margin-bottom: 10px;
 }
@@ -670,20 +678,21 @@
         grid-template-columns: repeat(2, 1fr);
     }
     .ecommerce-card {
-        max-width: 350px;
+        max-width: 400px;
     }
 }
 
 @media (max-width: 1024px) {
     .feature-card {
-        flex: 0 0 33.33%;
+        flex: 0 0 50%;
     }
     .card-content {
-        max-width: 250px;
+        max-width: 320px;
         padding: 15px;
     }
     .feature-card img {
-        width: 150px;
+        max-width: 150px;
+        height: 140px;
     }
 }
 
@@ -763,15 +772,16 @@
         gap: 20px;
     }
     .feature-card {
-        flex: 0 0 50%;
+        flex: 0 0 100%;
         padding: 0 10px;
     }
     .card-content {
-        max-width: 280px;
+        max-width: 360px;
         padding: 15px;
     }
     .feature-card img {
-        width: 140px;
+        max-width: 180px;
+        height: 170px;
     }
     .ecommerce-grid {
         grid-template-columns: 1fr;
@@ -877,10 +887,11 @@
         font-size: 0.9em;
     }
     .feature-card img {
-        width: 120px;
+        max-width: 170px;
+        height: 160px;
     }
     .card-content {
-        max-width: 260px;
+        max-width: 300px;
     }
 }
 
