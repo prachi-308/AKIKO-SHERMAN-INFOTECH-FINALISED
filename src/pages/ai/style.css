@@ -607,7 +607,7 @@
 @media (max-width: 350px) {
     .hero-section {
         height: 120vh;
-        padding-top: 20px;
+        padding-top: 10px;
     }
     .orange-container .heading .big-e {
         font-size: 90px;
