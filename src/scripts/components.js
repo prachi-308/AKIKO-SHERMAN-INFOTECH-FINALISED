@@ -1,3 +1,120 @@
+import '../styles/components.css';
+
+export async function initNavigation() {
+    const nav = document.querySelector('nav');
+    if (!nav) {
+        console.error('Navigation failed: nav element not found. Check navigation.html inclusion.');
+        return;
+    }
+
+    const hamburgerIcon = document.querySelector('nav .icon');
+    const navMenu = document.querySelector('nav ul');
+    const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+
+    if (!hamburgerIcon || !navMenu) {
+        console.error('Navigation failed: .icon or nav ul not found. Check navigation.html structure.');
+        return;
+    }
+
+    console.log('Navigation elements found. Initializing...');
+
+    // Fixed navigation on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('fixed-nav');
+        } else {
+            nav.classList.remove('fixed-nav');
+        }
+    });
+
+    // Hamburger menu toggle with click and touch support
+    const toggleMenu = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        navMenu.classList.toggle('show');
+        console.log('Hamburger menu toggled:', navMenu.classList.contains('show') ? 'opened' : 'closed');
+        console.log('Menu display style:', window.getComputedStyle(navMenu).display);
+    };
+
+    // Remove existing listeners to avoid conflicts
+    const newHamburgerIcon = hamburgerIcon.cloneNode(true);
+    hamburgerIcon.parentNode.replaceChild(newHamburgerIcon, hamburgerIcon);
+
+    // Add both click and touchstart events for better mobile support
+    newHamburgerIcon.addEventListener('click', toggleMenu);
+    newHamburgerIcon.addEventListener('touchstart', toggleMenu);
+
+    // Close menu on outside click, but exclude clicks inside navMenu
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 1160 && navMenu.classList.contains('show')) {
+            // Only close if the click is outside both the navMenu and the hamburger icon
+            if (!navMenu.contains(e.target) && !newHamburgerIcon.contains(e.target)) {
+                navMenu.classList.remove('show');
+                console.log('Hamburger menu closed due to outside click');
+
+                // Close any open dropdowns
+                dropdownArrows.forEach(arrow => {
+                    const dropdown = arrow.parentElement.nextElementSibling;
+                    if (dropdown) {
+                        dropdown.style.display = 'none';
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
+        }
+    });
+
+    // Close menu when selecting an option (mobile), but exclude dropdown toggles
+    navMenu.querySelectorAll('ul li a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1160) {
+                // Check if this link is a dropdown toggle (has a dropdown-arrow)
+                const isDropdownToggle = link.querySelector('.dropdown-arrow');
+                if (!isDropdownToggle) {
+                    // Only close the menu if it's not a dropdown toggle
+                    navMenu.classList.remove('show');
+                    console.log('Hamburger menu closed after selecting an option');
+                }
+            }
+        });
+    });
+
+    // Dropdown menu handling for mobile and desktop
+    dropdownArrows.forEach(arrow => {
+        const parentLink = arrow.parentElement;
+        const dropdown = parentLink.nextElementSibling;
+
+        if (!dropdown) {
+            console.error(`Dropdown not found for ${parentLink.textContent}. Check navigation.html structure.`);
+            return;
+        }
+
+        parentLink.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1160) {
+                e.preventDefault();
+
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+                arrow.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
+                console.log(`Dropdown toggled for ${parentLink.textContent}`);
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1160 && !parentLink.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+                console.log(`Dropdown closed for ${parentLink.textContent}`);
+            }
+        });
+    });
+
+    console.log('Navigation initialized successfully');
+}
+
+export function initFooter() {
+    console.log('Footer initialized');
+}
+
 function initializeChatbot(attempt = 1, maxAttempts = 5) {
     const chatbotIcon = document.getElementById('chatbot-icon');
     const chatbotWindow = document.getElementById('chatbot-window');
@@ -149,7 +266,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
             instruction.appendChild(instructionText);
             chatbotMessages.appendChild(instruction);
 
-
             hasShownButtonInstruction = true; // Set the flag to true after showing the message
         }
 
@@ -178,7 +294,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
         });
 
         chatbotMessages.appendChild(menuContainer);
-        // Removed the instruction message from here to avoid repetition
         saveChatHistory();
     }
 
@@ -204,7 +319,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
         });
 
         chatbotMessages.appendChild(menuContainer);
-        // Removed the instruction message from here to avoid repetition
         saveChatHistory();
     }
 
@@ -429,74 +543,11 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
     }
 }
 
-// Rest of components.js (unchanged)
-import '../styles/components.css';
-
-export function initNavigation() {
-    const navToggle = document.querySelector('.icon');
-    const navMenu = document.querySelector('nav ul');
-    const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
-    const nav = document.querySelector('nav');
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('fixed-nav');
-        } else {
-            nav.classList.remove('fixed-nav');
-        }
-    });
-
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('show');
-            console.log('Mobile menu toggled');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !navToggle.contains(e.target) && navMenu.classList.contains('show')) {
-                navMenu.classList.remove('show');
-                dropdownArrows.forEach(arrow => {
-                    const dropdown = arrow.parentElement.nextElementSibling;
-                    dropdown.style.display = 'none';
-                    arrow.style.transform = 'rotate(0deg)';
-                });
-                console.log('Mobile menu closed');
-            }
-        });
-    }
-
-    dropdownArrows.forEach(arrow => {
-        const parentLink = arrow.parentElement;
-        const dropdown = parentLink.nextElementSibling;
-
-        parentLink.addEventListener('click', (e) => {
-            if (window.innerWidth <= 968) {
-                e.preventDefault();
-                e.stopPropagation();
-                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                arrow.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
-                console.log(`Dropdown toggled for ${parentLink.textContent}`);
-            }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 968 && !parentLink.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.style.display = 'none';
-                arrow.style.transform = 'rotate(0deg)';
-                console.log(`Dropdown closed for ${parentLink.textContent}`);
-            }
-        });
-    });
-}
-
-export function initFooter() {
-    console.log('Footer initialized');
-}
-
-function includeHTML() {
+async function includeHTML() {
     console.log('includeHTML started');
-    document.querySelectorAll('[data-include]').forEach(async(element) => {
+    const elements = document.querySelectorAll('[data-include]');
+
+    for (const element of elements) {
         let includePath = element.getAttribute('data-include');
         console.log(`Attempting to load component: ${includePath}`);
 
@@ -518,20 +569,18 @@ function includeHTML() {
             console.log(`Successfully loaded ${file}`);
             element.innerHTML = html;
 
-            setTimeout(() => {
-                console.log(`Initializing component: ${includePath}`);
-                if (includePath === 'navigation') {
-                    initNavigation();
-                } else if (includePath === 'footer') {
-                    initFooter();
-                } else if (includePath === 'chatbot') {
-                    initializeChatbot();
-                }
-            }, 100);
+            // Initialize components after loading
+            if (includePath === 'navigation') {
+                await initNavigation();
+            } else if (includePath === 'footer') {
+                initFooter();
+            } else if (includePath === 'chatbot') {
+                initializeChatbot();
+            }
         } catch (error) {
             console.error(`Failed to load ${file}:`, error);
         }
-    });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
