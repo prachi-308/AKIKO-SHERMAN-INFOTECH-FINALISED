@@ -167,7 +167,8 @@ nav ul li:hover .dropdown-arrow {
         display: block;
     }
     nav ul {
-        display: none;
+        display: none !important;
+        /* Ensure default hidden state */
         position: fixed;
         top: 70px;
         right: 0;
@@ -179,7 +180,8 @@ nav ul li:hover .dropdown-arrow {
         z-index: 1000;
     }
     nav ul.show {
-        display: flex;
+        display: flex !important;
+        /* Increase specificity */
     }
     nav ul li {
         width: 100%;
@@ -199,7 +201,6 @@ nav ul li:hover .dropdown-arrow {
     }
     nav ul li:hover>ul {
         display: block;
-        /* Enable JS toggle for mobile dropdowns */
     }
     nav ul ul li {
         border-bottom: none;
@@ -229,6 +230,9 @@ nav ul li:hover .dropdown-arrow {
         margin-left: 5px;
     }
 }
+
+
+/* Footer Styles and Chatbot Styles remain unchanged */
 
 
 /* Footer Styles */
