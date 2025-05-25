@@ -697,7 +697,7 @@
     margin-left: 00px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
     .footer-description {
         color: #a0a0a0 !important;
         max-width: 18rem !important;
