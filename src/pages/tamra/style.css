@@ -38,7 +38,7 @@
 }
 
 .hero-content h1 {
-    font-size: clamp(2rem, 7vw, 4.2rem);
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
     font-weight: 700;
     background: linear-gradient(90deg, #93c5fd, #34d399);
     -webkit-background-clip: text;
@@ -51,14 +51,14 @@
 }
 
 .hero-content h3 {
-    font-size: clamp(1rem, 3vw, 1.2rem);
-    font-weight: 500;
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    font-weight: 600;
     color: #e0f2fe;
     padding-bottom: 10px;
 }
 
 .hero-text {
-    font-size: clamp(0.9rem, 2.5vw, 0.85rem);
+    font-size: clamp(0.75rem, 2.5vw, 0.85rem);
     line-height: 1.6;
     color: #dbeafe;
     margin-bottom: 25px;
@@ -817,21 +817,45 @@
 }
 
 .footer .social-links {
-    justify-content: flex-start !important;
-    margin-left: 0px !important;
+    justify-content: flex-start;
+    margin-left: 0px;
+    padding-bottom: 20px;
 }
 
-.footer .contact-item {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 0.5rem !important;
-    color: #fff !important;
-    text-decoration: none !important;
-    margin-bottom: 0.75rem !important;
-    padding: 0 !important;
-    margin-left: 0px !important;
-    font-size: 0.875rem !important;
+.footer .footer-brand {
+    text-align: center !important;
+    margin-left: 20px;
+}
+
+@media (min-width: 640px) {
+    .footer .footer-brand {
+        text-align: left !important;
+        margin-left: 0px;
+    }
+    .footer .social-links {
+        justify-content: flex-start !important;
+        margin-left: 0px !important;
+    }
+    .footer .contact-item {
+        margin-left: 0px !important;
+    }
+}
+
+@media (max-width: 632px) {
+    .footer .footer-brand {
+        text-align: left !important;
+        margin-left: 0px;
+    }
+    .footer .social-links {
+        justify-content: flex-start !important;
+        margin-left: 0px !important;
+    }
+    .footer .contact-item {
+        margin-left: 0px !important;
+    }
+    .footer-description {
+        margin: 0 0 1.5rem !important;
+    }
 }
 
 .accordion-item:nth-child(5) {
