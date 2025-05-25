@@ -168,7 +168,7 @@
 
 @media (max-width: 1000px) {
     .hero-section {
-        height: 100vh;
+        height: 110vh;
         padding-top: 0px;
     }
     .orange-container .heading span {
@@ -183,7 +183,7 @@
 
 @media (max-width: 768px) {
     .hero-section {
-        height: 100vh;
+        height: 110vh;
         padding-top: 0px;
     }
     .orange-container {
