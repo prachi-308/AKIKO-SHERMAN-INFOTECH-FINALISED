@@ -47,16 +47,15 @@ export async function initNavigation() {
     // Close menu on outside click, but exclude clicks inside navMenu
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 1160 && navMenu.classList.contains('show')) {
-            // Only close if the click is outside both the navMenu and the hamburger icon
             if (!navMenu.contains(e.target) && !newHamburgerIcon.contains(e.target)) {
                 navMenu.classList.remove('show');
                 console.log('Hamburger menu closed due to outside click');
 
-                // Close any open dropdowns
+                // Close all dropdowns
                 dropdownArrows.forEach(arrow => {
                     const dropdown = arrow.parentElement.nextElementSibling;
                     if (dropdown) {
-                        dropdown.style.display = 'none';
+                        dropdown.classList.remove('show');
                         arrow.style.transform = 'rotate(0deg)';
                     }
                 });
@@ -68,10 +67,8 @@ export async function initNavigation() {
     navMenu.querySelectorAll('ul li a').forEach(link => {
         link.addEventListener('click', (e) => {
             if (window.innerWidth <= 1160) {
-                // Check if this link is a dropdown toggle (has a dropdown-arrow)
                 const isDropdownToggle = link.querySelector('.dropdown-arrow');
                 if (!isDropdownToggle) {
-                    // Only close the menu if it's not a dropdown toggle
                     navMenu.classList.remove('show');
                     console.log('Hamburger menu closed after selecting an option');
                 }
@@ -89,19 +86,23 @@ export async function initNavigation() {
             return;
         }
 
-        parentLink.addEventListener('click', (e) => {
+        const toggleDropdown = (e) => {
             if (window.innerWidth <= 1160) {
                 e.preventDefault();
-
-                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-                arrow.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0deg)';
-                console.log(`Dropdown toggled for ${parentLink.textContent}`);
+                e.stopPropagation();
+                dropdown.classList.toggle('show');
+                arrow.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                console.log(`Dropdown toggled for ${parentLink.textContent}: ${dropdown.classList.contains('show') ? 'visible' : 'hidden'}`);
             }
-        });
+        };
 
+        parentLink.addEventListener('click', toggleDropdown);
+        parentLink.addEventListener('touchstart', toggleDropdown);
+
+        // Close dropdowns on outside click
         document.addEventListener('click', (e) => {
             if (window.innerWidth <= 1160 && !parentLink.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.style.display = 'none';
+                dropdown.classList.remove('show');
                 arrow.style.transform = 'rotate(0deg)';
                 console.log(`Dropdown closed for ${parentLink.textContent}`);
             }
@@ -206,7 +207,7 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
     let chatHistory = JSON.parse(sessionStorage.getItem('chatHistory')) || [];
     let awaitingContactResponse = false;
     let awaitingDoubtResponse = false;
-    let hasShownButtonInstruction = false; // Flag to track if the instruction has been shown
+    let hasShownButtonInstruction = false;
 
     function saveChatHistory() {
         sessionStorage.setItem('chatHistory', JSON.stringify(chatHistory));
@@ -214,7 +215,7 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
 
     function loadChatHistory() {
         chatbotMessages.innerHTML = '';
-        hasShownButtonInstruction = false; // Reset the flag when loading history
+        hasShownButtonInstruction = false;
         chatHistory.forEach(msg => {
             addMessage(msg.text, msg.sender, false);
         });
@@ -254,7 +255,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
 
         chatbotMessages.appendChild(menuContainer);
 
-        // Display the instruction message only if it hasn't been shown yet
         if (!hasShownButtonInstruction) {
             const instruction = document.createElement('div');
             instruction.className = 'message bot';
@@ -266,7 +266,7 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
             instruction.appendChild(instructionText);
             chatbotMessages.appendChild(instruction);
 
-            hasShownButtonInstruction = true; // Set the flag to true after showing the message
+            hasShownButtonInstruction = true;
         }
 
         saveChatHistory();
@@ -338,12 +338,10 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
         messageContainer.appendChild(text);
         chatbotMessages.appendChild(messageContainer);
 
-        // Display main menu buttons after initial messages
         if (["hi", "hello", "how are you", "about company", "company"].some(key => responses[key] === message)) {
             displayMainMenu();
         }
 
-        // Add Yes/No buttons for default response
         if (message === responses["default"]) {
             const buttonMenu = document.createElement('div');
             buttonMenu.className = 'message bot button-menu';
@@ -370,7 +368,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
             awaitingContactResponse = true;
         }
 
-        // Add buttons for "No" response
         if (message === responses["no"]) {
             const buttonMenu = document.createElement('div');
             buttonMenu.className = 'message bot button-menu';
@@ -433,7 +430,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
 
         const lower = userMessage.toLowerCase();
 
-        // Handle Yes/No responses for default question
         if (awaitingContactResponse && (lower === "yes" || lower === "no")) {
             const response = responses[lower];
             const typing = showTypingIndicator();
@@ -449,7 +445,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
             return;
         }
 
-        // Handle user query after "Yes, I have doubts"
         if (awaitingDoubtResponse) {
             const response = responses["default"];
             const typing = showTypingIndicator();
@@ -462,7 +457,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
             return;
         }
 
-        // Check for company-related queries
         if (lower.includes("company") || lower.includes("about company")) {
             const response = responses["company"];
             const typing = showTypingIndicator();
@@ -475,7 +469,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
             return;
         }
 
-        // Check for redirects based on keywords
         for (const key in redirectMap) {
             if (lower.includes(key)) {
                 const response = `Taking you to our ${key} page...`;
@@ -499,7 +492,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
         }, 500);
     }
 
-    // Updated mic button creation to match CSS
     if (!document.getElementById('chatbot-mic')) {
         const micButton = document.createElement('button');
         micButton.innerHTML = '🎤';
@@ -535,7 +527,6 @@ function initializeChatbot(attempt = 1, maxAttempts = 5) {
     chatbotSend.onclick = () => sendMessage();
     chatbotInput.onkeypress = (e) => { if (e.key === 'Enter') sendMessage(); };
 
-    // Welcome message on first load
     if (!chatHistory.length) {
         setTimeout(() => addMessage("Welcome to Akiko Sherman Infotech Pvt Ltd! We’re a CMMI Level-3 certified IT leader with 25+ years of innovation, delivering 500+ projects. Choose a page:", 'bot'), 500);
     } else {
@@ -569,7 +560,6 @@ async function includeHTML() {
             console.log(`Successfully loaded ${file}`);
             element.innerHTML = html;
 
-            // Initialize components after loading
             if (includePath === 'navigation') {
                 await initNavigation();
             } else if (includePath === 'footer') {
