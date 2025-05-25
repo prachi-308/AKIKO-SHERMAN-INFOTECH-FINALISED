@@ -147,7 +147,7 @@ nav ul li:hover .dropdown-arrow {
         padding: 0 6px;
     }
     nav ul li a {
-        font-size: 18px;
+        font-size: 17px;
         padding: 8px 9px;
     }
 }
@@ -168,7 +168,6 @@ nav ul li:hover .dropdown-arrow {
     }
     nav ul {
         display: none !important;
-        /* Ensure default hidden state */
         position: fixed;
         top: 70px;
         right: 0;
@@ -181,7 +180,6 @@ nav ul li:hover .dropdown-arrow {
     }
     nav ul.show {
         display: flex !important;
-        /* Increase specificity */
     }
     nav ul li {
         width: 100%;
@@ -195,18 +193,34 @@ nav ul li:hover .dropdown-arrow {
         width: 100%;
         opacity: 1;
         visibility: visible;
-        display: none;
+        display: none !important;
         background: #000000e6;
         box-shadow: none;
+        padding: 0;
+        height: auto;
+        /* Ensure the container shrinks to fit content */
+        min-height: 0;
+        /* Prevent any minimum height from adding space */
+    }
+    nav ul ul.show {
+        display: block !important;
     }
     nav ul li:hover>ul {
         display: block;
     }
     nav ul ul li {
         border-bottom: none;
+        margin: 0;
+    }
+    nav ul ul li:last-child {
+        margin-bottom: 0;
+        /* Ensure no extra margin on the last item */
     }
     nav ul ul li a {
-        padding: 15px 40px;
+        padding: 12px 40px;
+        line-height: normal;
+        margin: 0;
+        /* Ensure no margins on the link itself */
     }
     nav ul li a:hover {
         background: #011021;
@@ -230,9 +244,6 @@ nav ul li:hover .dropdown-arrow {
         margin-left: 5px;
     }
 }
-
-
-/* Footer Styles and Chatbot Styles remain unchanged */
 
 
 /* Footer Styles */
