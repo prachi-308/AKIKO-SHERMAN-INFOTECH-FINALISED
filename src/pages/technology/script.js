@@ -110,7 +110,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const leftPanel = document.getElementById('leftPanel');
         leftPanel.classList.toggle('expanded');
         leftPanel.classList.toggle('collapsed');
+
+        // Force reflow to ensure smooth transition
+        leftPanel.style.display = 'none';
+        void leftPanel.offsetWidth; // Trigger reflow
+        leftPanel.style.display = leftPanel.classList.contains('expanded') ? 'block' : 'none';
     };
+
+    // Collapse menu on outside click
+    document.addEventListener('click', (event) => {
+        const leftPanel = document.getElementById('leftPanel');
+        const toggleBtn = document.querySelector('.toggle-btn');
+
+        // Check if the click is outside the left panel and toggle button
+        if (!leftPanel.contains(event.target) && !toggleBtn.contains(event.target)) {
+            if (leftPanel.classList.contains('expanded')) {
+                leftPanel.classList.remove('expanded');
+                leftPanel.classList.add('collapsed');
+                leftPanel.style.display = 'none'; // Ensure it's hidden
+            }
+        }
+    });
 
     // Show Content for Section 3
     window.showContent = function(section) {
@@ -182,12 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="/assets/power-bi.png" alt="Power BI">
                                 <span>Power BI</span>
                             </div>
-                           
                             <div class="icon-item">
                                 <img src="/assets/qlikveiw.webp" alt="QlikView">
                                 <span>QlikView</span>
                             </div>
-                           
                         </div>
                     `;
                 break;
@@ -260,8 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native">
                                 <span>React Native</span>
                             </div>
-                          
-                           
                             <div class="icon-item">
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google ARCore">
                                 <span>Google ARCore</span>
@@ -366,7 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="/assets/blueprism.png" alt="Blueprism">
                                 <span>Blueprism</span>
                             </div>
-                           
                         </div>
                     `;
                 break;
@@ -447,13 +462,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/drupal/drupal-original.svg" alt="Drupal">
                                 <span>Drupal</span>
                             </div>
-                            
                         </div>
                     `;
                 break;
-
-
-
             case 'blockchain-platform':
                 content = `
                         <h2>Blockchain Platforms</h2>
@@ -479,7 +490,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="/assets/corda.png" alt="Corda">
                                 <span>Corda</span>
                             </div>
-                            
                         </div>
                     `;
                 break;
@@ -563,6 +573,16 @@ document.addEventListener('DOMContentLoaded', () => {
             stagger: 0.1,
             ease: 'power3.out'
         });
+
+        // Collapse the menu after selecting an option (on mobile)
+        if (window.innerWidth <= 768) {
+            const leftPanel = document.getElementById('leftPanel');
+            if (leftPanel.classList.contains('expanded')) {
+                leftPanel.classList.remove('expanded');
+                leftPanel.classList.add('collapsed');
+                leftPanel.style.display = 'none';
+            }
+        }
     };
 
     // Initialize Section 3
