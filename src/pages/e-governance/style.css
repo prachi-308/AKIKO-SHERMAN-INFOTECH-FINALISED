@@ -297,7 +297,7 @@
 
 @media (max-width: 1200px) {
     .hero-section {
-        height: 110vh;
+        height: 100vh;
         padding-top: 30px;
     }
     .orange-container {
@@ -364,7 +364,7 @@
 
 @media (max-width: 768px) {
     .hero-section {
-        height: 120vh;
+        height: 100vh;
         padding-top: 0px;
     }
     .orange-container {
