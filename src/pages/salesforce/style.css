@@ -3,16 +3,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 .hero-section {
     position: relative;
-    min-height: 85vh;
+    height: 85vh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 70px 0px 20px;
+    padding-top: 70px;
     perspective: 1000px;
-    z-index: 2;
+    z-index: 1;
 }
+
 .parallax {
     position: absolute;
     top: 0;
@@ -178,8 +178,9 @@
 }
 
 @media (max-width: 768px) {
-  .hero-section {
-        padding: 50px 0px 15px;
+    .hero-section {
+        height: 120vh;
+        padding-top: 0px;
     }
     .orange-container {
         flex-direction: column;
@@ -234,9 +235,6 @@
 }
 
 @media (max-width: 480px) {
-     .hero-section {
-        padding: 40px 0px 10px;
-    }
     .orange-container {
         padding: 10px;
         gap: 10px;
