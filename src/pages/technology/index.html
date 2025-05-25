@@ -135,42 +135,108 @@
             </div>
         </div>
     </section>
-  <div data-include="chatbot"></div>
+
     <!-- Reusable footer -->
     <div data-include="footer"></div>
-
+    <div data-include="chatbot"></div>
     <script src="/technology.bundle.js"></script>
+    <!-- At the bottom of company.html -->
     <script>
-        (function() {
-            function c() {
-                var b = a.contentDocument || a.contentWindow.document;
-                if (b) {
-                    var d = b.createElement('script');
-                    d.innerHTML = "window.__CF$cv$params={r:'93e6a4d7c956ad88',t:'MTc0NzAxODU5Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-                    b.getElementsByTagName('head')[0].appendChild(d)
+        // Page-specific hamburger menu override for technology.html with MutationObserver
+        function initHamburgerMenu() {
+            const targetNode = document.querySelector('[data-include="navigation"]') || document.body;
+            let hamburgerIcon = document.querySelector('nav .icon');
+            let navMenu = document.querySelector('nav ul');
+            let dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+
+            // Function to initialize the menu toggle
+            function setupMenu() {
+                hamburgerIcon = document.querySelector('nav .icon');
+                navMenu = document.querySelector('nav ul');
+                dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+
+                if (!hamburgerIcon || !navMenu) {
+                    console.error('Hamburger menu elements still not found after DOM update on technology.html');
+                    return;
                 }
-            }
-            if (document.body) {
-                var a = document.createElement('iframe');
-                a.height = 1;
-                a.width = 1;
-                a.style.position = 'absolute';
-                a.style.top = 0;
-                a.style.left = 0;
-                a.style.border = 'none';
-                a.style.visibility = 'hidden';
-                document.body.appendChild(a);
-                if ('loading' !== document.readyState) c();
-                else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c);
-                else {
-                    var e = document.onreadystatechange || function() {};
-                    document.onreadystatechange = function(b) {
-                        e(b);
-                        'loading' !== document.readyState && (document.onreadystatechange = e, c())
+
+                console.log('Hamburger menu elements found. Initializing...');
+
+                // Remove any existing click listeners to avoid conflicts
+                const newHamburgerIcon = hamburgerIcon.cloneNode(true);
+                hamburgerIcon.parentNode.replaceChild(newHamburgerIcon, hamburgerIcon);
+
+                // Toggle the menu on hamburger icon click
+                newHamburgerIcon.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    navMenu.classList.toggle('show');
+                    console.log('Hamburger menu toggled:', navMenu.classList.contains('show') ? 'opened' : 'closed');
+                });
+
+                // Close the menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1160 && navMenu.classList.contains('show')) {
+                        if (!navMenu.contains(e.target) && !newHamburgerIcon.contains(e.target)) {
+                            navMenu.classList.remove('show');
+                            console.log('Hamburger menu closed due to outside click');
+
+                            // Close any open dropdowns
+                            dropdownArrows.forEach(arrow => {
+                                const dropdown = arrow.parentElement.nextElementSibling;
+                                if (dropdown) {
+                                    dropdown.style.display = 'none';
+                                    arrow.style.transform = 'rotate(0deg)';
+                                }
+                            });
+                        }
                     }
-                }
+                });
+
+                // Close menu when selecting an option (mobile)
+                navMenu.querySelectorAll('ul li a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth <= 1160) {
+                            navMenu.classList.remove('show');
+                            console.log('Hamburger menu closed after selecting an option');
+                        }
+                    });
+                });
+
+                console.log('Hamburger menu initialized successfully on technology.html');
             }
-        })();
+
+            // If elements are already present, initialize immediately
+            if (hamburgerIcon && navMenu) {
+                setupMenu();
+            } else {
+                // Use MutationObserver to detect when navigation is added to the DOM
+                const observer = new MutationObserver((mutations, obs) => {
+                    hamburgerIcon = document.querySelector('nav .icon');
+                    navMenu = document.querySelector('nav ul');
+                    if (hamburgerIcon && navMenu) {
+                        setupMenu();
+                        obs.disconnect(); // Stop observing once elements are found
+                    }
+                });
+
+                observer.observe(targetNode, {
+                    childList: true,
+                    subtree: true
+                });
+
+                // Fallback: Retry after a timeout if MutationObserver doesn't catch the elements
+                setTimeout(() => {
+                    if (!hamburgerIcon || !navMenu) {
+                        console.log('MutationObserver fallback: Retrying to find hamburger menu elements...');
+                        setupMenu();
+                    }
+                }, 5000); // Wait up to 5 seconds
+            }
+        }
+
+        // Run the initialization
+        initHamburgerMenu();
     </script>
 </body>
 
