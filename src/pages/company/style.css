@@ -406,7 +406,7 @@ body {
 }
 
 .stat.visible {
-    opacity: 1;
+    opacity: 1 ! important;
     transform: translateY(0) rotateX(0deg);
 }
 
@@ -463,6 +463,10 @@ body {
 }
 
 @media (max-width: 1300px) {
+    .hero-section {
+        min-height: 100vh;
+        padding: 0px 0px;
+    }
     .orange-container .heading span:first-child {
         font-size: 80px;
     }
@@ -489,6 +493,10 @@ body {
 }
 
 @media (max-width: 1100px) {
+    .hero-section {
+        min-height: 100vh;
+        padding: 0px 0px;
+    }
     .orange-container .heading span:first-child {
         font-size: 70px;
     }
@@ -515,6 +523,10 @@ body {
 }
 
 @media (max-width: 900px) {
+    .hero-section {
+        min-height: 100vh;
+        padding: 0px 0px;
+    }
     .orange-container .heading span:first-child {
         font-size: 60px;
     }
@@ -541,9 +553,9 @@ body {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .hero-section {
-        min-height: 100vh;
+        min-height: 120vh;
         padding: 0px 0px;
     }
     .parallax {
@@ -601,9 +613,69 @@ body {
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 768px) {
     .hero-section {
-        min-height: 100vh;
+        min-height: 120vh;
+        padding: 0px 0px;
+    }
+    .parallax {
+        height: 100%;
+        background-size: cover;
+        background-attachment: scroll;
+    }
+    .orange-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        width: 100%;
+        min-height: auto;
+        margin: 0px;
+    }
+    .orange-container .heading {
+        align-items: center;
+        text-align: center;
+    }
+    .orange-container .heading span:first-child {
+        font-size: 60px;
+    }
+    .orange-container .heading span:last-child {
+        font-size: 60px;
+    }
+    .orange-container .description {
+        font-size: 18px;
+        border-left: none;
+        border-top: 4px solid #ffffff;
+        padding-left: 0;
+        padding-top: 15px;
+        text-align: center;
+        max-width: 100%;
+    }
+    .content-container {
+        padding: 30px 10px;
+    }
+    .stats-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+        padding: 0 5px;
+    }
+    .stat {
+        padding: 15px;
+        max-width: 180px;
+    }
+    .stat .count {
+        font-size: 2.2rem;
+    }
+    .stat p {
+        font-size: 1rem;
+    }
+    .stat i {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 620px) {
+    .hero-section {
+        min-height: 120vh;
         padding: 90px 0px;
     }
     .parallax {
