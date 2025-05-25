@@ -168,7 +168,7 @@
 
 @media (max-width: 1000px) {
     .hero-section {
-        height: 90vh;
+        height: 100vh;
         padding-top: 0px;
     }
     .orange-container .heading span {
@@ -183,7 +183,7 @@
 
 @media (max-width: 768px) {
     .hero-section {
-        height: 90vh;
+        height: 100vh;
         padding-top: 0px;
     }
     .orange-container {
@@ -1497,5 +1497,28 @@
         width: 30px;
         height: 30px;
         font-size: 0.8rem;
+    }
+}
+.footer .footer-brand {
+    text-align: left !important;
+    margin-left: 00px;
+}
+
+@media (max-width: 640px) {
+    .footer-description {
+        color: #a0a0a0 !important;
+        max-width: 18rem !important;
+        margin: 0px 0px 1.5rem !important;
+        line-height: 1.5 !important;
+        font-size: 0.875rem !important;
+        text-align: justify !important;
+    }
+    .footer .social-links {
+        display: flex !important;
+        gap: 1rem !important;
+        list-style: none !important;
+        align-items: center !important;
+        margin-left: -30px !important;
+        justify-content: flex-start !important;
     }
 }
