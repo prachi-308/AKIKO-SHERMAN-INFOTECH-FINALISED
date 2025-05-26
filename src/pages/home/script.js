@@ -129,6 +129,8 @@ btns.forEach((btn, i) => {
 
 // Portfolio Slider Functionality
 // Portfolio Slider Functionality
+// Portfolio Slider Functionality
+// Portfolio Slider Functionality
 let currentIndex1 = 0;
 let autoSlideInterval;
 let isTransitioning = false;
@@ -147,6 +149,7 @@ let totalSlides1 = sliderItems.length;
 
 // Clone slides for infinite loop
 let isSliderInitialized = false;
+
 function initInfiniteSlider() {
     if (isSliderInitialized || !sliderContainer || totalSlides1 === 0) {
         return;
@@ -155,8 +158,12 @@ function initInfiniteSlider() {
     // Remove existing clones to prevent duplication
     const existingClones = sliderContainer.querySelectorAll('.slider-item.clone');
     existingClones.forEach(clone => clone.remove());
-    // Update itemWidth
-    itemWidth = sliderItems[0] ? sliderItems[0].offsetWidth + 20 : 0;
+    // Update itemWidth based on screen size
+    const isMobile = window.innerWidth <= 1000;
+    const isSmallScreen = window.innerWidth <= 360;
+    itemWidth = isSmallScreen ? sliderContainer.offsetWidth : // One card per frame at ≤ 360px
+        isMobile ? sliderContainer.offsetWidth / 2 : // Two cards per frame at ≤ 1000px
+        (sliderItems[0].offsetWidth + 20); // Desktop
     // Clone all slides and append them
     sliderItems.forEach((item, index) => {
         const clone = item.cloneNode(true);
@@ -235,7 +242,7 @@ function resetProgress() {
 
 function startAutoSlide() {
     stopAutoSlide();
-    autoSlideInterval = setInterval(nextSlide, 1500); // Changed from 1500ms to 2000ms
+    autoSlideInterval = setInterval(nextSlide, 2000);
 }
 
 function stopAutoSlide() {
@@ -272,7 +279,11 @@ window.prevSlide = debounce(() => {
 // Throttle the updateSlider and matchSliderHeight for resize events
 const throttledUpdateSlider = throttle(() => {
     if (sliderItems.length > 0) {
-        itemWidth = sliderItems[0] ? sliderItems[0].offsetWidth + 20 : 0;
+        const isMobile = window.innerWidth <= 1000;
+        const isSmallScreen = window.innerWidth <= 360;
+        itemWidth = isSmallScreen ? sliderContainer.offsetWidth : // One card per frame at ≤ 360px
+            isMobile ? sliderContainer.offsetWidth / 2 : // Two cards per frame at ≤ 1000px
+            (sliderItems[0].offsetWidth + 20); // Desktop
         sliderContainer.style.width = `${(totalSlides1 * 2) * itemWidth}px`;
         updateSlider(false);
     }
