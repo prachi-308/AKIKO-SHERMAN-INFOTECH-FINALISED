@@ -67,11 +67,8 @@
 .banner {
     position: relative;
     width: 100%;
-    height: 80vh;
+    min-height: 70vh;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .carousel {
@@ -82,13 +79,13 @@
 }
 
 .carousel-item {
+    width: 100%;
     min-width: 100%;
-    height: 100%;
+    height: 70vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     flex-shrink: 0;
     background-size: cover;
     background-position: center;
@@ -100,7 +97,7 @@
 }
 
 .carousel-item:nth-child(2) {
-    background-image: linear-gradient(to right, rgba(1, 12, 23, 0.7), rgba(2, 24, 31, 0.7)), url('/src/assets/blog-sec3-02.png');
+    background-image: linear-gradient(to right, rgba(1, 12, 23, 0.7), rgba(2, 24, 31, 0.7)), url('/src/assets/blog-sec1-02.png');
 }
 
 .carousel-item:nth-child(3) {
@@ -109,35 +106,31 @@
 
 .carousel-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     color: white;
-    max-width: 1200px;
+    max-width: 80%;
     padding: 20px;
-    width: 100%;
-    box-sizing: border-box;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
 }
 
 .carousel-content h1 {
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    margin: 0 0 15px;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin: 0 0 10px;
     line-height: 1.2;
 }
 
 .carousel-content h2 {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1rem, 2vw, 1.5rem);
     margin: 0 0 10px;
     line-height: 1.3;
 }
 
 .carousel-content p {
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
     margin: 0 0 15px;
-    max-width: 90%;
     line-height: 1.4;
 }
 
@@ -146,7 +139,7 @@
     color: white;
     border: 2px solid white;
     padding: 8px 16px;
-    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem);
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -165,7 +158,7 @@
     display: flex;
     gap: 10px;
     padding: 10px;
-    z-index: 2;
+    z-index: 3;
 }
 
 .carousel-controls button {
@@ -257,7 +250,7 @@
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 15px;
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s ease-out;
@@ -276,7 +269,7 @@
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s ease-out;
-    max-width: 300px;
+    width: 100%;
 }
 
 .blog-card.visible {
@@ -355,7 +348,7 @@
 }
 
 .sidebar-section ul li a {
-    colorTERM: #007BFF;
+    color: #007BFF;
     text-decoration: none;
 }
 
@@ -441,13 +434,17 @@
 
 @media (max-width: 1024px) {
     .banner {
-        height: 60vh;
+        min-height: 70vh;
+    }
+    .carousel-item {
+        height: 70vh;
     }
     .carousel-content {
-        padding: 15px;
+        padding: 20px;
+        max-width: 90%;
     }
     .carousel-content h1 {
-        font-size: clamp(1.2rem, 3vw, 2.2rem);
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
     }
     .carousel-content h2 {
         font-size: clamp(0.9rem, 2vw, 1.3rem);
@@ -457,10 +454,7 @@
     }
     .carousel-content button {
         padding: 8px 16px;
-        font-size: clamp(0.7rem, 1vw, 0.9rem);
-    }
-    .carousel-controls {
-        bottom: 15px;
+        font-size: clamp(0.7rem, 1.2vw, 0.9rem);
     }
     .container {
         flex-direction: column;
@@ -470,6 +464,12 @@
     }
     .right-posts {
         grid-template-columns: 1fr;
+        gap: 20px;
+        justify-items: center;
+    }
+    .blog-card {
+        width: 100%;
+        max-width: 400px;
     }
     .sidebar {
         width: 100%;
@@ -480,49 +480,37 @@
 
 @media (max-width: 768px) {
     .banner {
-        height: 40vh;
-    }
-    .carousel {
-        height: 100%;
+        min-height: 70vh;
     }
     .carousel-item {
-        background-size: cover;
-        background-position: center;
+        height: 70vh;
     }
     .carousel-content {
-        padding: 10px;
-        max-width: 90%;
-        max-height: 80%;
-        overflow: hidden;
+        padding: 15px;
     }
     .carousel-content h1 {
-        font-size: clamp(0.9rem, 2.2vw, 1.4rem);
+        font-size: clamp(1rem, 4vw, 1.5rem);
         margin: 0 0 8px;
     }
     .carousel-content h2 {
-        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
-        margin: 0 0 6px;
+        font-size: clamp(0.8rem, 3vw, 1.2rem);
+        margin: 0 0 8px;
     }
     .carousel-content p {
-        font-size: clamp(0.6rem, 1.3vw, 0.75rem);
-        margin: 0 0 8px;
-        max-width: 100%;
+        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+        margin: 0 0 10px;
     }
     .carousel-content button {
-        padding: 5px 10px;
-        font-size: clamp(0.5rem, 0.9vw, 0.65rem);
+        padding: 6px 12px;
+        font-size: clamp(0.6rem, 2vw, 0.8rem);
     }
     .carousel-controls {
-        bottom: 8px;
-        gap: 6px;
+        bottom: 15px;
+        gap: 8px;
     }
     .carousel-controls button {
         width: 8px;
         height: 8px;
-        background: rgba(255, 255, 255, 0.7);
-    }
-    .carousel-controls button.active {
-        background: #ffffff;
     }
     .category-section ul {
         flex-direction: row;
@@ -535,41 +523,41 @@
     .left-image {
         height: 300px;
     }
+    .right-posts {
+        gap: 15px;
+    }
+    .blog-card {
+        max-width: 350px;
+    }
 }
 
 @media (max-width: 480px) {
     .banner {
-        height: 30vh;
+        min-height: 70vh;
     }
     .carousel-item {
-        background-size: cover;
-        background-position: center;
+        height: 70vh;
     }
     .carousel-content {
-        padding: 8px;
+        padding: 10px;
         max-width: 95%;
-        max-height: 70%;
-        overflow: hidden;
     }
     .carousel-content h1 {
-        font-size: clamp(0.8rem, 2vw, 1.2rem);
-        margin: 0 0 6px;
+        font-size: clamp(0.9rem, 5vw, 1.3rem);
     }
     .carousel-content h2 {
-        font-size: clamp(0.6rem, 1.6vw, 0.8rem);
-        margin: 0 0 5px;
+        font-size: clamp(0.7rem, 4vw, 1rem);
     }
     .carousel-content p {
-        font-size: clamp(0.55rem, 1.1vw, 0.7rem);
-        margin: 0 0 6px;
+        font-size: clamp(0.6rem, 3vw, 0.8rem);
     }
     .carousel-content button {
-        padding: 4px 8px;
-        font-size: clamp(0.45rem, 0.8vw, 0.6rem);
+        padding: 5px 10px;
+        font-size: clamp(0.6rem, 2.5vw, 0.7rem);
     }
     .carousel-controls {
-        bottom: 6px;
-        gap: 5px;
+        bottom: 10px;
+        gap: 6px;
     }
     .carousel-controls button {
         width: 6px;
@@ -579,11 +567,12 @@
         padding: 10px;
     }
     .category-section ul {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: 5px;
     }
     .category-section ul li {
-        padding: 8px 16px;
+        padding: 6px 12px;
         font-size: 0.8rem;
     }
     .left-image .overlay h2 {
@@ -595,14 +584,56 @@
     .blog-card p {
         font-size: 0.7rem;
     }
+    .right-posts {
+        gap: 10px;
+    }
+    .blog-card {
+        max-width: 100%;
+    }
 }
 
 .footer .social-links {
-    justify-content: flex-start !important;
-    margin-left: 0px !important;
+    justify-content: flex-start;
+    margin-left: 0px;
+    padding-bottom: 20px;
 }
 
-.footer .contact-item {
-    justify-content: center !important;
-    margin-left: 0px !important;
+.footer .footer-brand {
+    text-align: center !important;
+    margin-left: 20px;
+}
+
+@media (min-width: 640px) {
+    .footer .footer-brand {
+        text-align: left !important;
+        margin-left: 0px;
+    }
+    .footer .social-links {
+        justify-content: flex-start !important;
+        margin-left: 0px !important;
+    }
+    .footer .contact-item {
+        margin-left: 0px !important;
+    }
+}
+
+@media (max-width: 632px) {
+    .footer .footer-brand {
+        text-align: left !important;
+        margin-left: 0px;
+    }
+    .footer .social-links {
+        justify-content: flex-start !important;
+        margin-left: 0px !important;
+    }
+    .footer .contact-item {
+        margin-left: 0px !important;
+    }
+    .footer-description {
+        margin: 0 0 1.5rem !important;
+    }
+}
+
+.accordion-item:nth-child(5) {
+    background: linear-gradient(135deg, #042c69 0%, #0c5dea 100%);
 }
