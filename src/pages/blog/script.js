@@ -15,8 +15,13 @@ let touchEndX = 0;
 function goToSlide(index) {
     const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.carousel-item');
+    if (!carousel || !slides.length) {
+        console.error('Carousel elements not found');
+        return;
+    }
+
     if (index < 0 || index >= slides.length) return;
-    console.log(`Navigating to slide ${index}`);
+
     currentSlide = index;
     carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
     updateControls();
@@ -47,18 +52,15 @@ window.filterPosts = category => {
     const categoryItems = document.querySelectorAll('.category-section ul li');
     const categoryTitle = document.querySelector('.category-section h3');
 
-    // Normalize category for comparison
     const normalizedCategory = category.toLowerCase();
     const isAll = normalizedCategory === 'all';
 
-    // Update active states
     categoryItems.forEach(item => {
         const itemCategory = item.textContent.trim().toLowerCase();
         item.classList.toggle('active-category', itemCategory === normalizedCategory);
     });
     categoryTitle.classList.toggle('active-category', isAll);
 
-    // Filter blog cards
     blogCards.forEach(card => {
         const cardCategory = card.getAttribute('data-category').toLowerCase();
         const shouldShow = isAll || cardCategory === normalizedCategory;
@@ -125,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         initializeGSAP();
     }
-
 
     // Initialize Carousel
     const carousel = document.querySelector('.carousel');
