@@ -702,7 +702,7 @@
     }
     .orange-container {
         gap: 30px;
-        height: 160px;
+        height: 270px;
         padding: 0px 5px 0px 0px;
     }
     .orange-container .heading .big-e {
@@ -737,15 +737,17 @@
 
 @media (max-width: 767px) {
     .hero-section {
-        height: 130vh;
+        height: 150vh;
         padding-top: 0px;
     }
     .orange-container {
         flex-direction: column;
         gap: 10px;
         height: auto;
-        min-height: 200px;
+        min-height: 240px;
         padding: 20px;
+        justify-content: center;
+        align-items: center;
     }
     .orange-container .heading .big-e {
         font-size: 120px;
@@ -897,7 +899,29 @@
 
 @media (max-width: 400px) {
     .hero-section {
-        height: 150vh;
+        height: 184vh;
         padding-top: 20px;
+    }
+}.footer .footer-brand {
+    text-align: left !important;
+    margin-left: 00px;
+}
+
+@media (max-width: 640px) {
+    .footer-description {
+        color: #a0a0a0 !important;
+        max-width: 18rem !important;
+        margin: 0px 0px 1.5rem !important;
+        line-height: 1.5 !important;
+        font-size: 0.875rem !important;
+        text-align: justify !important;
+    }
+    .footer .social-links {
+        display: flex !important;
+        gap: 1rem !important;
+        list-style: none !important;
+        align-items: center !important;
+        margin-left: -30px !important;
+        justify-content: flex-start !important;
     }
 }
