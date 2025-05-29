@@ -547,7 +547,7 @@
 
 @media(max-width:400px) {
     .hero-section {
-        height: 150vh;
+        height: 120vh;
         padding-top: 20px;
     }
 }
