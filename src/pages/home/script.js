@@ -364,6 +364,23 @@ function changeBlog(image, title, description, url) {
     });
 }
 
+// Add event listeners for blog items using data attributes
+document.addEventListener('DOMContentLoaded', () => {
+    const blogItems = document.querySelectorAll('.blog-item-custom');
+    blogItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const image = item.dataset.image;
+            const title = item.dataset.title;
+            const description = item.dataset.description;
+            const url = item.dataset.url;
+            if (image && title && description && url) {
+                changeBlog(image, title, description, url);
+            } else {
+                console.error('Missing data attributes for blog item', item);
+            }
+        });
+    });
+});
 // GSAP Scroll Animations
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded, initializing GSAP animations");
