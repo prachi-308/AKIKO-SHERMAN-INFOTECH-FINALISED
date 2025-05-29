@@ -10,10 +10,10 @@
 }
 
 .parallax .container {
-    width: 100vw;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 
@@ -122,6 +122,9 @@
     color: #ffffff;
     text-align: center;
     margin-top: 30px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -136,6 +139,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 
@@ -189,6 +193,7 @@
     max-width: 1500px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .section-title {
@@ -199,7 +204,7 @@
 .section-title h2 {
     font-size: 3rem;
     font-weight: 700;
-    color: #000000!important;
+    color: #000000 !important;
     line-height: 1.2;
 }
 
@@ -208,7 +213,7 @@
     grid-template-columns: 1fr 1.2fr;
     gap: 80px;
     align-items: center;
-    max-width: 1600px;
+    max-width: 1500px;
     margin: 0 auto;
 }
 
@@ -456,6 +461,7 @@
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 28px;
+    max-width: 90%;
 }
 
 .features-grid {
@@ -510,7 +516,7 @@
 }
 
 .features-section h2 {
-    color: white!important;
+    color: white !important;
 }
 
 .section-title .section-subtitle {
@@ -774,26 +780,35 @@
 }
 
 
+/* Body */
+
+body {
+    overflow-x: hidden;
+}
+
+
 /* Responsive Design */
 
 @media (max-width: 1300px) {
     .hero-section {
-        height: 112vh;
+        min-height: 100vh;
     }
     .parallax .description {
         font-size: 13px;
+        max-width: 90%;
     }
     .parallax .header h1 {
         font-size: 48px;
     }
     .parallax .header p {
         font-size: 18px;
+        max-width: 90%;
     }
 }
 
 @media (max-width: 1200px) {
     .hero-section {
-        height: 110vh;
+        min-height: 100vh;
         padding-top: 30px;
     }
     .parallax .header {
@@ -805,10 +820,11 @@
     }
     .parallax .header p {
         font-size: 16px;
-        max-width: 100%;
+        max-width: 90%;
     }
     .parallax .description {
         font-size: 12px;
+        max-width: 90%;
     }
 }
 
@@ -818,35 +834,41 @@
     }
     .parallax .header p {
         font-size: 15px;
+        max-width: 90%;
     }
     .parallax .description {
         font-size: 11px;
+        max-width: 90%;
     }
 }
 
 @media (max-width: 768px) {
     .hero-section {
-        height: 130vh;
-        padding-top: 0px;
+        min-height: 100vh;
+        padding-top: 20px;
     }
     .parallax {
         min-height: 100vh;
+        overflow-x: hidden;
     }
     .parallax .header {
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: 0 10px;
     }
     .parallax .header h1 {
         font-size: 34px;
     }
     .parallax .header p {
         font-size: 14px;
-        max-width: 100%;
+        max-width: 90%;
     }
     .parallax .description {
         font-size: 11px;
-        text-align: center;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
     .section-title h2 {
         font-size: 36px;
@@ -859,6 +881,7 @@
     }
     .description {
         font-size: 18px;
+        max-width: 90%;
     }
 }
 
@@ -868,9 +891,11 @@
     }
     .parallax .header p {
         font-size: 13px;
+        max-width: 90%;
     }
     .parallax .description {
         font-size: 10px;
+        max-width: 90%;
     }
     .section-title h2 {
         font-size: 30px;
@@ -883,6 +908,7 @@
     }
     .description {
         font-size: 16px;
+        max-width: 90%;
     }
     .feature-card .feature-title {
         font-size: 20px;
@@ -893,11 +919,11 @@
 }
 
 .footer .footer-brand {
-    text-align: left!important;
+    text-align: left !important;
     margin-left: 0px !important;
 }
 
-@media (max-width:640px) {
+@media (max-width: 640px) {
     .footer .footer-brand {
         text-align: left !important;
         margin-left: 0px !important;
