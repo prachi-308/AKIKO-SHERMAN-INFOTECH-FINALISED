@@ -465,35 +465,37 @@
     <!-- Blog Section -->
     <h2 class="blog-title-custom scroll-animation">READ MORE FROM OUR BLOGS</h2>
     <section class="blog-section-custom">
-        <div class="scroll-animation blog-container-custom">
+
+        <div class="blog-container-custom">
             <div class="blog-main-custom">
-                <img src="/assets/home-sec5-01.png" alt="Social Media Success" class="blog-image-custom" id="main-image-custom" loading="lazy">
+                <img id="main-image-custom" class="blog-image-custom" src="/assets/home-sec5-01.png" alt="Blog Image">
                 <div class="blog-info-custom">
                     <h3 id="main-title-custom">The Hidden Secret to Social Media Success: It's Not About Selling</h3>
                     <p id="main-description-custom">Ever felt bombarded by sales pitches on social media? You're scrolling through your feed, looking for inspiration, a good laugh, or maybe some insightful tips, but so...</p>
-                    <button class="read-more-btn-custom" onclick="window.location.href='business.html'">READ MORE</button>
+                    <button class="read-more-btn-custom" onclick="event.stopPropagation(); window.location.href='blog.html';">READ MORE</button>
                 </div>
             </div>
-            <div class="scroll-animation blog-list-custom">
-                <div class="blog-item-custom" onclick="changeBlog('/assets/home-sec5-02.jpg', 'Is Your Business Really Ready for the Cloud?', 'Cloud computing is often hailed as the ultimate digital enabler, promising agility, cost savings, and scalability. Yet, the question remains: is your business truly ready to unlock the full potential of the cloud? While many companies...', 'cloud.html')">
-                    <img src="/assets/home-sec5-02.jpg" alt="Cloud Computing" loading="lazy">
-                    <p class="blog-text-head">Is Your Business Really Ready for the Cloud?</p>
+            <div class="blog-list-custom">
+                <div class="blog-item-custom" data-image="/assets/home-sec5-02.jpg" data-title="Is Your Business Really Ready for the Cloud?" data-description="Discover key considerations for a successful cloud migration." data-url="#">
+                    <img src="/assets/home-sec5-02.jpg" alt="Blog Image">
+                    <h3 class="blog-text-head">Is Your Business Really Ready for the Cloud?</h3>
                 </div>
-                <div class="blog-item-custom" onclick="changeBlog('/assets/home-sec5-03.jpg', 'Is the Future of Software Development Already Here?', 'The tech world is buzzing with a question that seems to be on everyone...', 'development.html')">
-                    <img src="/assets/home-sec5-03.jpg" alt="Software Development" loading="lazy">
-                    <p class="blog-text-head">Is the Future of Software Development Already Here?</p>
+                <div class="blog-item-custom" data-image="/assets/home-sec5-03.jpg" data-title="Is the Future of Software Development Already Here?" data-description="Exploring the latest trends shaping software development." data-url="#">
+                    <img src="/assets/home-sec5-03.jpg" alt="Blog Image">
+                    <h3 class="blog-text-head">Is the Future of Software Development Already Here?</h3>
                 </div>
-                <div class="blog-item-custom" onclick="changeBlog('/assets/home-sec5-04.webp', 'Democratizing Intelligence: The True Power of AI Unleashed', 'In a recent interview, Elon Musk posed a thought-provoking question...', 'demo.html')">
-                    <img src="/assets/home-sec5-04.webp" alt="AI Democratization" loading="lazy">
-                    <p class="blog-text-head">Democratizing Intelligence: The True Power of AI Unleashed</p>
+                <div class="blog-item-custom" data-image="/assets/home-sec5-04.webp" data-title="Democratizing Intelligence: The True Power of AI Unleashed" data-description="How AI is transforming industries with accessible intelligence." data-url="#">
+                    <img src="/assets/home-sec5-04.webp" alt="Blog Image">
+                    <h3 class="blog-text-head">Democratizing Intelligence: The True Power of AI Unleashed</h3>
                 </div>
-                <div class="blog-item-custom" onclick="changeBlog('/assets/home-sec5-05.jpg', 'Is AI Finally Learning to Think? Meet DeepSeek R1', 'Have you ever wished AI could actually explain how it arrived at an answer instead of just giving you a response? Imagine an AI that...', 'deepseek.html')">
-                    <img src="/assets/home-sec5-05.jpg" alt="DeepSeek R1" loading="lazy">
-                    <p class="blog-text-head">Is AI Finally Learning to Think? Meet DeepSeek R1</p>
+                <div class="blog-item-custom" data-image="/assets/home-sec5-05.jpg" data-title="Is AI Finally Learning to Think? Meet DeepSeek R1" data-description="A look at the advancements in AI reasoning capabilities." data-url="#">
+                    <img src="/assets/home-sec5-05.jpg" alt="Blog Image">
+                    <h3 class="blog-text-head">Is AI Finally Learning to Think? Meet DeepSeek R1</h3>
                 </div>
-                <div class="blog-item-custom" onclick="changeBlog('/assets/home-sec5-01.png', 'The Hidden Secret to Social Media Success: It\'s Not About Selling', 'Ever felt bombarded by sales pitches on social media? You...', 'business.html')">
-                    <img src="/assets/home-sec5-01.png" alt="Social Media Success" loading="lazy">
-                    <p class="blog-text-head">The Hidden Secret to Social Media Success: It's Not About Selling</p>
+                <div class="blog-item-custom" data-image="/assets/home-sec5-01.png" data-title="The Hidden Secret to Social Media Success: It's Not About Selling" data-description="Ever felt bombarded by sales pitches on social media? You're scrolling through your feed, looking for inspiration..."
+                    data-url="#">
+                    <img src="/assets/home-sec5-01.png" alt="Blog Image">
+                    <h3 class="blog-text-head">The Hidden Secret to Social Media Success: It's Not About Selling</h3>
                 </div>
             </div>
         </div>
