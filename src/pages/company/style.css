@@ -1332,11 +1332,15 @@ body {
     opacity: 1;
     transform: translateY(0);
 }.footer .footer-brand {
-    text-align: left !important;
-    margin-left: 00px;
+    text-align: left!important;
+    margin-left: 0px !important;
 }
 
-@media (max-width: 640px) {
+@media (max-width:640px) {
+    .footer .footer-brand {
+        text-align: left !important;
+        margin-left: 0px !important;
+    }
     .footer-description {
         color: #a0a0a0 !important;
         max-width: 18rem !important;
