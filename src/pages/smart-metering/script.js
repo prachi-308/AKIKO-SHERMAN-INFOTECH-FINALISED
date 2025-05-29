@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.fromTo('.parallax .description', { opacity: 0, y: 50, rotateX: -20 }, { opacity: 1, y: 0, rotateX: 0, duration: 1, delay: 1.8, ease: 'power3.out' });
 
     // Parallax Effect
-    gsap.to('.parallax', { y: '10%', scale: 1.15, ease: 'none', scrollTrigger: { trigger: '.hero-section', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.parallax', { y: '5%', scale: 1.1, ease: 'none', scrollTrigger: { trigger: '.hero-section', start: 'top top', end: 'bottom top', scrub: true } });
 
     // Scroll Animations for Sections
     const animateElements = document.querySelectorAll('.scroll-animate');
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'power3.out',
             scrollTrigger: {
                 trigger: element,
-                start: 'top 85%',
+                start: 'top 90%',
                 toggleActions: 'play none none none'
             },
             delay: index * 0.15
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'back.out(1.4)',
             scrollTrigger: {
                 trigger: card,
-                start: 'top 80%',
+                start: 'top 90%',
                 toggleActions: 'play none none none'
             },
             delay: index * 0.2
@@ -105,7 +105,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const footer = document.querySelector('footer');
     if (footer) {
         document.addEventListener('footerLoaded', () => {
-            gsap.fromTo('footer', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1.2, ease: 'power4.out', scrollTrigger: { trigger: 'footer', start: 'top 80%' } });
+            gsap.fromTo('footer', { opacity: 0, y: 80 }, {
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: 'power4.out',
+                scrollTrigger: { trigger: 'footer', start: 'top 90%' }
+            });
         });
     }
 
@@ -140,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     '<div class="feature-item"><div class="feature-icon"><svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg></div><div><h4 class="feature-title">Water Quality Surveillance</h4></div></div>' +
                     '<div class="feature-item"><div class="feature-icon"><svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg></div><div><h4 class="feature-title">Asset Management</h4></div></div>' +
                     '<div class="feature-item"><div class="feature-icon"><svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg></div><div><h4 class="feature-title">Smart Monitoring Dashboards</h4></div></div>' +
-                    '<div class="feature-item"><div class="feature-icon"><svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5ICROSOFT VISUAL STUDIO CODE 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg></div><div><h4 class="feature-title">Integration with Water Bodies</h4></div></div>' +
+                    '<div class="feature-item"><div class="feature-icon"><svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg></div><div><h4 class="feature-title">Integration with Water Bodies</h4></div></div>' +
                     '<div class="feature-item"><div class="feature-icon"><svg class="icon-svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg></div><div><h4 class="feature-title">Complaint Handling</h4></div></div>' +
                     '</div>' +
                     '<p>A specialized application designed to monitor water quality and facilitate the collection of water bills from customers. It plays a vital role in supporting the "Har Ghar Jal" mission by ensuring efficient water management.</p>';
