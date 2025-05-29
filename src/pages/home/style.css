@@ -1525,6 +1525,9 @@
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         display: flex;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
     }
     .slider-container {
         display: flex;
