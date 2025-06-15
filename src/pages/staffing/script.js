@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.fromTo('.quote p', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.quote', start: 'top 100%' } });
     gsap.fromTo('.quote hr', { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.8, delay: 0.3, ease: 'power3.out', scrollTrigger: { trigger: '.quote', start: 'top 80%' } });
 
-    // Technical Profiles Section Animations
+    // Technical Profiles Section Animations and Scroll Control
     gsap.utils.toArray('.profile').forEach((profile, index) => {
         gsap.fromTo(profile, { opacity: 0, y: 50 }, {
             opacity: 1,
@@ -54,11 +54,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     gsap.fromTo('.middle-section', { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.middle-section', start: 'top 80%' } });
 
-    // Pause Scrolling on Hover
+    // Pause Scrolling on Hover and Arrow Controls
     const profilesRow = document.querySelector('.profiles-row');
-    if (profilesRow) {
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
+    const profiles = document.querySelectorAll('.profile');
+    let currentIndex = 0;
+
+    // Debug logs to verify element selection
+    console.log('Profiles Row:', profilesRow);
+    console.log('Left Arrow:', leftArrow);
+    console.log('Right Arrow:', rightArrow);
+    console.log('Profiles Count:', profiles.length);
+
+    if (profilesRow && leftArrow && rightArrow && profiles.length) {
+        // Hover pause/resume
         profilesRow.addEventListener('mouseenter', () => profilesRow.classList.add('paused'));
         profilesRow.addEventListener('mouseleave', () => profilesRow.classList.remove('paused'));
+
+        const scrollToProfile = (index) => {
+            if (index < 0 || index >= profiles.length / 2) return; // Limit to original 16 profiles
+            profilesRow.classList.add('paused');
+            // Reset CSS animation to avoid conflicts
+            profilesRow.style.animation = 'none';
+            profilesRow.offsetHeight; // Force reflow
+            const profileWidth = profiles[0] ? profiles[0].offsetWidth + 16 : 136; // Fallback width (120px + 16px margin)
+            console.log('Profile Width:', profileWidth, 'Index:', index); // Debug width
+            const scrollPosition = -profileWidth * index;
+            gsap.to(profilesRow, {
+                x: scrollPosition,
+                duration: 0.5,
+                ease: 'power2.out',
+                overwrite: 'auto', // Overwrite any conflicting animations
+                onComplete: () => {
+                    setTimeout(() => {
+                        profilesRow.classList.remove('paused');
+                        profilesRow.style.animation = ''; // Restore CSS animation
+                    }, 3000); // Resume auto-scroll after 3s
+                }
+            });
+            currentIndex = index;
+        };
+
+        leftArrow.addEventListener('click', (e) => {
+            console.log('Left Arrow Clicked'); // Debug click
+            scrollToProfile(currentIndex - 1);
+        });
+
+        rightArrow.addEventListener('click', (e) => {
+            console.log('Right Arrow Clicked'); // Debug click
+            scrollToProfile(currentIndex + 1);
+        });
+
+        // Accessibility: Allow keyboard navigation
+        leftArrow.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                console.log('Left Arrow Keydown'); // Debug keydown
+                leftArrow.click();
+            }
+        });
+        rightArrow.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                console.log('Right Arrow Keydown'); // Debug keydown
+                rightArrow.click();
+            }
+        });
+    } else {
+        console.error('Missing elements: Profiles Row, Arrows, or Profiles not found.');
     }
 
     // Key Offerings Section Animations
