@@ -164,6 +164,14 @@
     }
 }
 
+.arrows-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 25px;
+    padding: 10px 0;
+}
+
 .middle-section {
     width: 100%;
     background: linear-gradient(135deg, rgba(29, 118, 43, 0.8), rgba(0, 91, 14, 0.6));
@@ -204,12 +212,10 @@
     text-align: center;
     padding: 15px;
     min-width: 120px;
-    /* Reduced to fit more profiles */
     background: rgba(0, 0, 0, 0.288);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     margin: 0 8px;
-    /* Reduced for spacing */
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
@@ -219,14 +225,12 @@
 .profile img {
     width: auto;
     height: clamp(30px, 4vw, 50px);
-    /* Adjusted for smaller profiles */
     margin-bottom: 8px;
 }
 
 .profile p {
     margin: 0;
     font-size: clamp(8px, 1.2vw, 12px);
-    /* Adjusted for smaller profiles */
     color: #ffffff;
     font-weight: 500;
 }
@@ -280,9 +284,14 @@
 }
 
 .offering-image {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
+    height: 140px;
+    /* or 100px, or whatever suits you */
+    width: auto;
+    /* keeps the aspect ratio correct */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .offering-card h3 {
@@ -290,6 +299,7 @@
     font-weight: 700;
     margin: 15px 20px 10px;
     color: #1a2b49;
+    text-align: center;
 }
 
 .offering-card p {
@@ -297,6 +307,39 @@
     font-size: 16px;
     line-height: 1.5;
     margin: 0 20px 20px;
+    text-align: center;
+}
+
+
+/* Scroll Arrows */
+
+.scroll-arrow {
+    background: linear-gradient(135deg, rgba(0, 91, 14, 0.9), rgba(29, 118, 43, 0.9));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+.scroll-arrow:hover {
+    background: linear-gradient(135deg, rgba(0, 91, 14, 1), rgba(29, 118, 43, 1));
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-arrow:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
 }
 
 
@@ -335,7 +378,7 @@
         align-items: center;
         justify-content: center;
     }
-     .orange-container .description {
+    .orange-container .description {
         font-size: 16px;
         border-left: none;
         border-top: 4px solid white;
@@ -354,6 +397,17 @@
     .orange-container .heading {
         flex-direction: column;
         gap: 10px;
+    }
+    .scroll-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    }
+    .arrows-container {
+        gap: 20px;
+        margin-top: 20px;
+        padding: 8px 0;
     }
 }
 
@@ -386,10 +440,22 @@
         padding: 15px;
         margin-top: 50px;
     }
+    .scroll-arrow {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .arrows-container {
+        gap: 15px;
+        margin-top: 15px;
+        padding: 6px 0;
+    }
 }
+
 .footer .footer-brand {
     text-align: left !important;
-    margin-left: 00px;
+    margin-left: 0px;
 }
 
 @media (max-width: 640px) {
