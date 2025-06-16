@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Preload assets -->
     <link rel="preload" href="/src/assets/contact-page-bg.avif" as="image">
+    <!-- Add Montserrat font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,12 +26,11 @@
         <div class="hero-content">
             <h1>Innovate with Akiko Sherman Infotech</h1>
             <p>With over 25 years of experience, delivering 800+ IT projects for government and enterprises.</p>
-           <button class="cta-button" onclick="document.getElementById('con-form').scrollIntoView({ behavior: 'smooth' })">Get Started</button>
+            <button class="cta-button" onclick="document.getElementById('con-form').scrollIntoView({ behavior: 'smooth' })">Get Started</button>
         </div>
     </section>
 
     <div class="contact-container">
-        <!-- Rest of your contact content remains unchanged -->
         <div class="contact-header">
             <h1>Contact Us</h1>
             <p>We'd love to hear from you! Reach out for inquiries or collaborations.</p>
@@ -36,18 +39,19 @@
         <div class="contact-content" id="con-form">
             <div class="contact-form">
                 <h2>Submit Query</h2>
+                <p>Fill the form below and we’ll get back to you within 24 hours</p>
                 <form id="contactForm" onsubmit="submitForm(event); return false;" aria-labelledby="form-heading" data-netlify="true">
-                    <label for="name">Your Name</label>
+                    <label for="name"><i class="fas fa-user"></i> Your Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter Name" required autocomplete="name">
-                    <label for="email">Email Address</label>
+                    <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
                     <input type="email" id="email" name="email" placeholder="Enter Email Id" required autocomplete="email">
-                    <label for="phone">Phone Number</label>
+                    <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
                     <input type="tel" id="phone" name="phone" placeholder="Enter Mobile No." required autocomplete="tel">
-                    <label for="company">Company/Organization Name</label>
+                    <label for="company"><i class="fas fa-building"></i> Company/Organization Name</label>
                     <input type="text" id="company" name="company" placeholder="Enter Company" required autocomplete="organization">
                     <label for="message">Your Message</label>
                     <textarea id="message" name="message" placeholder="Enter Query" required></textarea>
-                    <button type="submit" class="contact-btn" aria-label="Submit Query">Send Query</button>
+                    <button type="submit" class="contact-btn" aria-label="Submit Query"><i class="fas fa-paper-plane"></i> Send Query</button>
                 </form>
             </div>
 
@@ -55,11 +59,35 @@
                 <h2>Get in Touch</h2>
                 <p>Akiko Sherman Infotech Pvt. Ltd. is an independent division under Sherman group of companies.</p>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i><span>DCM Building, 3rd Floor, 3L & 3M, Barakhamba Road, New Delhi - 110001</span></li>
-                    <li><i class="fas fa-phone"></i><a href="tel:+918851599751">+91-11-41416847, 49849707</a></li>
-                    <li><i class="fas fa-phone"></i><a href="tel:+919990623323">+91-9319008129 (For Other Queries)</a></li>
-                    <li><i class="fas fa-envelope"></i><a href="mailto:info@shermanindia.com">info@shermanindia.com , suvidit[@]shermanindia.com , manu[@]shermanindia.com</a></li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>DCM Building, 3rd Floor, 3L & 3M, Barakhamba Road, New Delhi - 110001</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>
+                            <a href="tel:+911141416847">+91-11-41416847, 49849707</a><br>
+                            <a href="tel:+919319008129">+91-9319008129 (For Other Queries)</a>
+                        </span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>
+                            <a href="mailto:info@shermanindia.com">info@shermanindia.com</a><br>
+                            <a href="mailto:suvidt@shermanindia.com">suvidt@shermanindia.com</a><br>
+                            <a href="mailto:manul@shermanindia.com">manul@shermanindia.com</a>
+                        </span>
+                    </li>
                 </ul>
+
+                <div class="business-hours">
+                    <h2>Business Hours</h2>
+                    <ul>
+                        <li><span>Monday - Friday</span><span>9:00 AM - 6:00 PM</span></li>
+                        <li><span>Saturday</span><span>9:00 AM - 2:00 PM</span></li>
+                        <li><span>Sunday</span><span>Closed</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -115,7 +143,6 @@
             if (dialog) {
                 dialog.classList.add('show');
                 dialog.setAttribute('aria-hidden', 'false');
-                // Focus the close button
                 const closeButton = dialog.querySelector('button');
                 if (closeButton) closeButton.focus();
             }
@@ -126,13 +153,11 @@
             if (dialog) {
                 dialog.classList.remove('show');
                 dialog.setAttribute('aria-hidden', 'true');
-                // Return focus to the form
                 const form = document.getElementById('contactForm');
                 if (form) form.querySelector('button').focus();
             }
         }
 
-        // Add Esc key support
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 closeDialog();
