@@ -6,8 +6,6 @@ import '../../styles/global.css';
 import '../../styles/components.css';
 import './style.css';
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     if (!gsap || !ScrollTrigger) {
         console.error('GSAP or ScrollTrigger not loaded. Check script order in HTML.');
@@ -42,13 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Card Section Animations
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, index) => {
-        gsap.fromTo(card, { opacity: 0, y: 50 }, {
+        gsap.fromTo(card, { opacity: 0, y: 50, scale: 0.95 }, {
             opacity: 1,
             y: 0,
+            scale: 1,
             duration: 0.8,
-            delay: index * 0.1,
+            delay: index * 0.15,
             ease: 'power3.out',
-            scrollTrigger: { trigger: '.card-container', start: 'top 100%' }
+            scrollTrigger: { trigger: '.card-container', start: 'top 80%' }
         });
     });
 
@@ -111,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Card Hover Effects
     cards.forEach(card => {
-        const inner = card.querySelector('.card-inner');
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
@@ -122,13 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const rotateX = (y - centerY) / 35;
             const rotateY = (centerX - x) / 35;
 
-            inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            card.style.transform = `translateY(-15px) scale(1.05)`;
+            card.style.transform = `translateY(-15px) scale(1.05) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
         card.addEventListener('mouseleave', () => {
-            inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
-
+            card.style.transform = 'translateY(0) scale(1) rotateX(0deg) rotateY(0deg)';
         });
     });
 
