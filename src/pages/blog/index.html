@@ -17,31 +17,31 @@
 </head>
 
 <body>
-    <div data-include="navigation"></div>
+    <div data-include="navigation">
+
+    </div>
+
     <section class="banner">
         <div class="carousel">
             <div class="carousel-item">
                 <div class="carousel-content">
-                    <h1>DIVE INTO AKIKO BLOGS</h1>
-                    <h2>Unlocking the Future: The Bricolage of Digital Twins and Generative AI</h2>
-                    <p>Imagine a world where you can predict a machine's failure before it happens or simulate ecosystems to save species.</p>
-                    <button>Read More</button>
+                    <h2 class="carousel-title">Revolutionizing Tech: Digital Twins & Generative AI</h2>
+                    <p class="carousel-text">Step into a future where machine failures are predicted and ecosystems are saved through cutting-edge AI.</p>
+                    <button class="carousel-button" onclick=" window.location.href= 'twin.html'">Read More</button>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="carousel-content">
-                    <h1>DIVE INTO AKIKO BLOGS</h1>
-                    <h2>Finding Calm Amidst the Chaos: Why Meditation Heals</h2>
-                    <p>Discover how meditation reveals hidden stress and promotes healing in modern life.</p>
-                    <button>Read More</button>
+                    <h2 class="carousel-title">Tech for Tranquility: Meditation in the Digital Age</h2>
+                    <p class="carousel-text">Explore how technology and mindfulness intersect to heal stress in a connected world.</p>
+                    <button class="carousel-button" onclick=" window.location.href= 'stress.html'">Read More</button>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="carousel-content">
-                    <h1>DIVE INTO AKIKO BLOGS</h1>
-                    <h2>Is AI Finally Learning to Think? Meet DeepSeek R1</h2>
-                    <p>Explore how DeepSeek R1 revolutionizes AI with logical reasoning.</p>
-                    <button>Read More</button>
+                    <h2 class="carousel-title">AI Evolution Unveiled: DeepSeek R1’s Breakthrough</h2>
+                    <p class="carousel-text">Witness AI’s leap toward logical reasoning with DeepSeek R1’s groundbreaking advancements.</p>
+                    <button class="carousel-button" onclick=" window.location.href= 'deepseek.html'">Read More</button>
                 </div>
             </div>
         </div>
@@ -51,118 +51,189 @@
             <button></button>
         </div>
     </section>
+
     <div class="category-section">
-        <h3 onclick="filterPosts('all')" class="animate-on-scroll">Explore Categories</h3>
+        <h3 onclick="filterPosts( 'all')" class="animate-on-scroll">Explore Categories</h3>
         <ul>
-            <li onclick="filterPosts('Technology')" class="animate-on-scroll">Technology</li>
-            <li onclick="filterPosts('AI')" class="animate-on-scroll">AI</li>
-            <li onclick="filterPosts('Cloud Computing')" class="animate-on-scroll">Cloud Computing</li>
-            <li onclick="filterPosts('Cybersecurity')" class="animate-on-scroll">Cybersecurity</li>
-            <li onclick="filterPosts('Software Development')" class="animate-on-scroll">Software Development</li>
-            <li onclick="filterPosts('LifeStyle')" class="animate-on-scroll">LifeStyle</li>
+            <li onclick="filterPosts( 'AI')" class="animate-on-scroll">AI & ML</li>
+            <li onclick="filterPosts( 'LifeStyle') " class="animate-on-scroll">Lifestyle</li>
+            <li onclick="filterPosts( 'Social Media') " class="animate-on-scroll">Social Media</li>
+            <li onclick="filterPosts( 'Software Development') " class="animate-on-scroll">Software Development</li>
+            <li onclick="filterPosts( 'Cloud Computing') " class="animate-on-scroll">Cloud Computing</li>
+            <!-- <li onclick="filterPosts( 'AI Agents') " class="animate-on-scroll ">AI Agents</li>
+            <li onclick="filterPosts( 'Quantum Computing') " class="animate-on-scroll ">Quantum Computing</li>
+            <li onclick="filterPosts( 'Edge AI') " class="animate-on-scroll ">Edge AI</li> -->
         </ul>
     </div>
 
-    <div class="container">
-        <div class="left-container">
-            <div class="left-image animate-on-scroll">
-                <img src="/assets/home-sec5-01.png" alt="Social Media Success" loading="lazy">
-                <div class="overlay" onclick="window.location.href='../business.html'">
-                    <h2>The Hidden Secret to Social Media Success</h2>
-                    <button onclick="window.location.href='/business.html'">Read</button>
-                </div>
-            </div>
-            <div class="right-posts animate-on-scroll">
-                <div class="blog-card animate-on-scroll" data-category="AI">
-                    <img src="/assets/blog-sec1-01.jpg" alt="Digital Twins" loading="lazy">
-                    <div class="blog-card-content">
-                        <h2>Unlocking the Future: Digital Twins & AI</h2>
-                        <p>Predict machine failures and simulate ecosystems with digital twins.</p>
-                        <a href="/twin.html">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card animate-on-scroll" data-category="AI">
-                    <img src="/assets/blog-sec1-03.jpg" alt="DeepSeek R1" loading="lazy">
-                    <div class="blog-card-content">
-                        <h2>Is AI Learning to Think? DeepSeek R1</h2>
-                        <p>Discover DeepSeek R1’s revolutionary AI capabilities.</p>
-                        <a href="/deepseek.html">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="sidebar animate-on-scroll">
-            <div class="sidebar-section">
-                <h3>Popular Posts</h3>
-                <ul>
-                    <li><a href="./blog-posts/softdev.html">Future of Software Development</a></li>
-                    <li><a href="./blog-posts/demo.html">Democratizing AI</a></li>
-                    <li><a href="./blog-posts/cloud.html">Ready for the Cloud?</a></li>
-                </ul>
-            </div>
-            <div class="sidebar-section">
-                <h3>Categories</h3>
-                <ul>
-                    <li><a href="#" onclick="filterPosts('AI')">Artificial Intelligence</a></li>
-                    <li><a href="#" onclick="filterPosts('Cloud Computing')">Cloud Computing</a></li>
-                    <li><a href="#" onclick="filterPosts('Cybersecurity')">Cybersecurity</a></li>
-                    <li><a href="#" onclick="filterPosts('Software Development')">Software Development</a></li>
-                    <li><a href="#" onclick="filterPosts('LifeStyle')">Lifestyle</a></li>
-                </ul>
-            </div>
-            <div class="sidebar-section newsletter">
-                <h3>Stay Updated</h3>
-                <p>Contact us to stay in touch for more updates.</p>
-                <button onclick="window.location.href='/contact.html'">Get in Touch</button>
-            </div>
-        </div>
-    </div>
-
     <div class="additional-blog-posts">
-        <h2>More Blog Posts</h2>
+        <h2>Latest Articles</h2>
         <div class="blog-grid">
-            <div class="blog-card animate-on-scroll" data-category="Software Development">
-                <img src="/assets/home-sec5-03.jpg" alt="Software Development" loading="lazy">
-                <div class="blog-card-content">
+            <div class="blog-card animate-on-scroll" data-category="AI">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/blog-sec1-01.jpg " alt="Digital Twins" loading="lazy">
+                    <span class="category-tab ">AI & ML</span>
+                </div>
+                <div class="blog-card-content ">
+                    <h2>Unlocking the Future: The Bricolage of Digital Twins and Generative AI</h2>
+                    <p>Imagine a world where you can predict a machine's failure before it happens or simulate ecosystems to save species.</p>
+                    <div class="blog-meta ">
+
+                        <span>10 min read</span>
+                    </div>
+                    <a href="/twin.html ">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card animate-on-scroll " data-category="LifeStyle ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/blog-sec3-02.png " alt="Meditation " loading="lazy ">
+                    <span class="category-tab ">Lifestyle</span>
+                </div>
+                <div class="blog-card-content ">
+                    <h2>Finding Calm Amidst the Chaos: Why Meditation Heals</h2>
+                    <p>Discover how meditation reveals hidden stress and promotes healing in modern life.</p>
+                    <div class="blog-meta ">
+
+                        <span>8 min read</span>
+                    </div>
+                    <a href="/stress.html ">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card animate-on-scroll " data-category="AI ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/blog-sec1-03.jpg " alt="DeepSeek R1 " loading="lazy ">
+                    <span class="category-tab ">AI & ML</span>
+                </div>
+                <div class="blog-card-content ">
+                    <h2>Is AI Finally Learning to Think? Meet DeepSeek R1</h2>
+                    <p>Explore how DeepSeek R1 revolutionizes AI with logical reasoning.</p>
+                    <div class="blog-meta ">
+
+                        <span>9 min read</span>
+                    </div>
+                    <a href="/deepseek.html ">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card animate-on-scroll " data-category="Social Media ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/home-sec5-01.png " alt="Social Media Success " loading="lazy ">
+                    <span class="category-tab ">Social Media</span>
+                </div>
+                <div class="blog-card-content ">
+                    <h2>The Hidden Secret to Social Media Success</h2>
+                    <p>Uncover strategies to boost engagement and grow your online presence effectively.</p>
+                    <div class="blog-meta ">
+
+                        <span>7 min read</span>
+                    </div>
+                    <a href="/business.html ">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card animate-on-scroll " data-category="Software Development ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/home-sec5-03.jpg " alt="Software Development " loading="lazy ">
+                    <span class="category-tab ">Software Development</span>
+                </div>
+                <div class="blog-card-content ">
                     <h2>Future of Software Development</h2>
                     <p>Is the future of coding already here? Explore the evolving landscape.</p>
-                    <a href="/development.html">Read More</a>
+                    <div class="blog-meta ">
+
+                        <span>11 min read</span>
+                    </div>
+                    <a href="/development.html ">Read More</a>
                 </div>
             </div>
-            <div class="blog-card animate-on-scroll" data-category="LifeStyle">
-                <img src="/assets/blog-sec3-02.png" alt="Meditation" loading="lazy">
-                <div class="blog-card-content">
-                    <h2>Meditation: Healing Hidden Stress</h2>
-                    <p>Learn how meditation uncovers and heals stress.</p>
-                    <a href="/stress.html">Read More</a>
+            <div class="blog-card animate-on-scroll " data-category="AI ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/blog-sec3-03.jpg " alt="AI Democratization " loading="lazy ">
+                    <span class="category-tab ">AI & ML</span>
                 </div>
-            </div>
-            <div class="blog-card animate-on-scroll" data-category="AI">
-                <img src="/assets/blog-sec3-03.jpg" alt="AI Democratization" loading="lazy">
-                <div class="blog-card-content">
+                <div class="blog-card-content ">
                     <h2>Democratizing Intelligence: AI Unleashed</h2>
                     <p>Has AI been truly democratized? Explore its impact.</p>
-                    <a href="/demo.html">Read More</a>
+                    <div class="blog-meta ">
+
+                        <span>12 min read</span>
+                    </div>
+                    <a href="/demo.html ">Read More</a>
                 </div>
             </div>
-            <div class="blog-card animate-on-scroll" data-category="Cloud Computing">
-                <img src="/assets/blog-sec3-04.png" alt="Cloud Computing" loading="lazy">
-                <div class="blog-card-content">
+            <div class="blog-card animate-on-scroll " data-category="Cloud Computing ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/blog-sec3-04.png " alt="Cloud Computing " loading="lazy ">
+                    <span class="category-tab ">Cloud Computing</span>
+                </div>
+                <div class="blog-card-content ">
                     <h2>Ready for the Cloud?</h2>
                     <p>Understand the benefits and challenges of cloud adoption.</p>
-                    <a href="/cloud.html">Read More</a>
+                    <div class="blog-meta ">
+
+                        <span>10 min read</span>
+                    </div>
+                    <a href="/cloud.html ">Read More</a>
                 </div>
             </div>
+
+            <!-- <div class="blog-card animate-on-scroll " data-category="AI Agents ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/ai-agents.jpg " alt="AI Agents " loading="lazy ">
+                    <span class="category-tab ">AI Agents</span>
+                </div>
+                <div class="blog-card-content ">
+                    <h2>AI Agents: The Future of Autonomous Workflows</h2>
+                    <p>Discover how AI agents are automating complex business workflows, from customer service to data analysis.</p>
+                    <div class="blog-meta ">
+
+                        <span>13 min read</span>
+                    </div>
+                    <a href="/ai-agents.html ">Read More</a>
+                </div>
+            </div> -->
+            <!-- <div class="blog-card animate-on-scroll " data-category="Quantum Computing ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/quantum-computing.jpg " alt="Quantum Computing " loading="lazy ">
+                    <span class="category-tab ">Quantum Computing</span>
+                </div>
+                <div class="blog-card-content ">
+                    <h2>Quantum Computing: The Next Frontier in Tech</h2>
+                    <p>Explore how quantum computing is set to revolutionize industries with unprecedented computational power.</p>
+                    <div class="blog-meta ">
+                        <span>John Miller</span>
+                        <span>Jun 9, 2025</span>
+                        <span>15 min read</span>
+                    </div>
+                    <a href="/quantum-computing.html ">Read More</a>
+                </div>
+            </div>
+            <div class="blog-card animate-on-scroll " data-category="Edge AI ">
+                <div class="blog-image-wrapper ">
+                    <img src="/assets/edge-ai.jpg " alt="Edge AI " loading="lazy ">
+                    <span class="category-tab ">Edge AI</span>
+                </div>
+                <div class="blog-card-content ">
+                    <h2>Edge AI: Bringing Intelligence to IoT Devices</h2>
+                    <p>Learn how Edge AI enables real-time data processing on IoT devices, transforming industries like healthcare and manufacturing.</p>
+                    <div class="blog-meta ">
+                        <span>Emily Davis</span>
+                        <span>Jun 8, 2025</span>
+                        <span>11 min read</span>
+                    </div>
+                    <a href="/edge-ai.html ">Read More</a>
+                </div>
+            </div> -->
         </div>
     </div>
-    <div data-include="chatbot"></div>
 
+
+
+    <div data-include="chatbot"></div>
+    <!-- Footer Component -->
     <div data-include="footer"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="/blog.bundle.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js " defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js " defer></script>
+    <script src="/blog.bundle.js " defer></script>
 </body>
 
 </html>
