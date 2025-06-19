@@ -12,6 +12,25 @@ let autoScrollInterval = null;
 let touchStartX = 0;
 let touchEndX = 0;
 
+function animateCarouselSlide() {
+    const activeSlide = document.querySelectorAll('.carousel-item')[currentSlide];
+    const title = activeSlide.querySelector('.carousel-title');
+    const text = activeSlide.querySelector('.carousel-text');
+    const button = activeSlide.querySelector('.carousel-button');
+
+    if (gsap) {
+        gsap.fromTo(title, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
+        gsap.fromTo(text, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.2 });
+        gsap.fromTo(button, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.4 });
+    } else {
+        console.warn('GSAP not loaded, skipping carousel animations.');
+        // Fallback: Ensure elements are visible without animation
+        title.style.opacity = 1;
+        text.style.opacity = 1;
+        button.style.opacity = 1;
+    }
+}
+
 function goToSlide(index) {
     const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.carousel-item');
@@ -25,6 +44,7 @@ function goToSlide(index) {
     currentSlide = index;
     carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
     updateControls();
+    animateCarouselSlide();
     resetAutoScroll();
 }
 
@@ -69,15 +89,26 @@ window.filterPosts = category => {
 };
 
 const initializeGSAP = () => {
-    const gsap = window.gsap;
-    const ScrollTrigger = window.ScrollTrigger;
-
     if (!gsap || !ScrollTrigger) {
-        console.error('GSAP or ScrollTrigger not loaded.');
+        console.error('GSAP or ScrollTrigger not loaded, skipping GSAP initialization.');
         return;
     }
 
     gsap.registerPlugin(ScrollTrigger);
+
+    // Parallax effect for carousel background
+    gsap.utils.toArray('.carousel-item').forEach(slide => {
+        gsap.to(slide, {
+            backgroundPosition: '50% 60%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: slide,
+                scrub: true,
+                start: 'top bottom',
+                end: 'bottom top'
+            }
+        });
+    });
 
     if (document.querySelector('footer')) {
         gsap.fromTo('footer', {
@@ -99,6 +130,7 @@ const initializeGSAP = () => {
     }
 };
 
+// Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     // Image Optimizer
     class ImageOptimizer {
@@ -120,13 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Element made visible:', el);
     });
 
-    // Wait for footer to load before initializing GSAP
-    const footerDiv = document.querySelector('[data-include="/components/footer.html"]');
-    if (footerDiv) {
-        footerDiv.addEventListener('include-loaded', initializeGSAP);
-    } else {
-        initializeGSAP();
-    }
+    // Initialize GSAP
+    initializeGSAP();
 
     // Initialize Carousel
     const carousel = document.querySelector('.carousel');
@@ -162,7 +189,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     resetAutoScroll();
+    animateCarouselSlide(); // Initial animation
 
     // Initialize with 'all' category
     filterPosts('all');
+
+    // Wait for footer to load before initializing GSAP
+    const footerDiv = document.querySelector('[data-include="/components/footer.html"]');
+    if (footerDiv) {
+        footerDiv.addEventListener('include-loaded', initializeGSAP);
+    } else {
+        initializeGSAP();
+    }
 });
