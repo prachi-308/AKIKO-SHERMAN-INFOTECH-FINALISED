@@ -177,6 +177,9 @@ main {
     display: flex;
     justify-content: center;
     margin-top: 0px;
+    position: relative;
+    width: 100%;
+    text-align: center;
 }
 
 .dot {
@@ -187,14 +190,6 @@ main {
     margin: 0 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.dot.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .dot.active {
@@ -824,7 +819,6 @@ body {
     grid-template-columns: repeat(2, 0.8fr);
     gap: var(--spacing);
     width: 35%;
-    /* Updated width from 40% to 35% */
     box-sizing: border-box;
     opacity: 0;
 }
@@ -848,32 +842,12 @@ body {
     transform: scale(1.05);
 }
 
-
-/*.grid-item .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.512);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity var(--transition-speed) ease;
-}*/
-
 .grid-item .real-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     opacity: 1;
 }
-
-
-/*.grid-item:hover .overlay {
-    opacity: 0;
-}
-    */
 
 .grid-item.mission {
     transform: translateY(-20px);
@@ -1258,9 +1232,7 @@ body {
 .clients-section {
     display: flex;
     overflow: hidden;
-    /* Hide overflow content */
     width: 100%;
-    /* Full width of the container */
     position: relative;
     margin-top: 10px;
     align-items: center;
@@ -1274,21 +1246,16 @@ body {
     align-items: center;
     justify-content: center;
     width: max-content;
-    /* Ensures the row fits its content */
     animation: scroll 80s linear infinite;
-    /* Smooth, continuous scroll */
     will-change: transform;
 }
 
 .client {
     flex: 0 0 auto;
-    /* Prevents shrinking or stretching */
     width: 150px;
     height: 200px;
-    /* Consistent width for each logo */
     text-align: center;
     margin-right: 20px;
-    /* Adjust spacing between items */
 }
 
 .client img {
@@ -1296,7 +1263,6 @@ body {
     height: 100px;
     margin: 0 auto 10px;
     object-fit: contain;
-    /* Ensures images fit properly */
 }
 
 .client p {
@@ -1314,7 +1280,6 @@ body {
     }
     100% {
         transform: translateX(-50%);
-        /* Move by half the width of the duplicated content */
     }
 }
 
@@ -1331,7 +1296,9 @@ body {
 .scroll-animation.animate {
     opacity: 1;
     transform: translateY(0);
-}.footer .footer-brand {
+}
+
+.footer .footer-brand {
     text-align: left!important;
     margin-left: 0px !important;
 }
