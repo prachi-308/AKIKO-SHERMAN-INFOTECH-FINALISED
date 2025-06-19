@@ -128,9 +128,6 @@ btns.forEach((btn, i) => {
 });
 
 // Portfolio Slider Functionality
-// Portfolio Slider Functionality
-// Portfolio Slider Functionality
-// Portfolio Slider Functionality
 let currentIndex1 = 0;
 let autoSlideInterval;
 let isTransitioning = false;
@@ -298,10 +295,29 @@ document.addEventListener('DOMContentLoaded', () => {
         initInfiniteSlider();
         resetProgress();
         matchSliderHeight();
-        startAutoSlide();
+        // Initialize auto-slide when portfolio section is in view
+        ScrollTrigger.create({
+            trigger: portfolioSection,
+            start: 'top 80%',
+            onEnter: () => {
+                startAutoSlide();
+                console.log("Portfolio section in view, auto-slide started");
+            },
+            onLeave: stopAutoSlide,
+            onEnterBack: () => {
+                startAutoSlide();
+                console.log("Portfolio section re-entered, auto-slide restarted");
+            },
+            onLeaveBack: stopAutoSlide
+        });
         // Pause and resume auto-slide on hover
         portfolioSection.addEventListener('mouseenter', stopAutoSlide);
-        portfolioSection.addEventListener('mouseleave', startAutoSlide);
+        portfolioSection.addEventListener('mouseleave', () => {
+            // Only restart auto-slide if the section is still in view
+            if (ScrollTrigger.isInViewport(portfolioSection, 0.8)) {
+                startAutoSlide();
+            }
+        });
         // Handle manual navigation clicks
         const leftArrow = document.querySelector('.arrow.left');
         const rightArrow = document.querySelector('.arrow.right');
@@ -318,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     console.timeEnd('SliderInitialization');
 });
+
 // Blog Functionality
 function changeBlog(image, title, description, url) {
     const mainImage = document.querySelector('#main-image-custom');
@@ -380,7 +397,95 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Job Application Form Functionality
+    const jobOverlay = document.querySelector('.job-overlay');
+    const jobFormContainer = document.querySelector('.job-form-container');
+    const applyJobBtn = document.querySelector('.custom-cta-button');
+    const closeBtn = document.querySelector('.close-btn');
+    const jobForm = document.querySelector('#job-application-form');
+
+    if (applyJobBtn && jobOverlay && jobFormContainer && closeBtn && jobForm) {
+        applyJobBtn.addEventListener('click', () => {
+            jobOverlay.classList.add('active');
+            gsap.to(jobOverlay, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+            gsap.to(jobFormContainer, {
+                y: 0,
+                scale: 1,
+                opacity: 1,
+                duration: 0.4,
+                ease: 'power2.out'
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            gsap.to(jobFormContainer, {
+                y: 30,
+                scale: 0.95,
+                opacity: 0,
+                duration: 0.4,
+                ease: 'power2.in',
+                onComplete: () => {
+                    jobOverlay.classList.remove('active');
+                }
+            });
+            gsap.to(jobOverlay, { opacity: 0, duration: 0.4, ease: 'power2.in' });
+        });
+
+        jobOverlay.addEventListener('click', (e) => {
+            if (e.target === jobOverlay) {
+                gsap.to(jobFormContainer, {
+                    y: 30,
+                    scale: 0.95,
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'power2.in',
+                    onComplete: () => {
+                        jobOverlay.classList.remove('active');
+                    }
+                });
+                gsap.to(jobOverlay, { opacity: 0, duration: 0.4, ease: 'power2.in' });
+            }
+        });
+
+        jobForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formMessage = jobForm.querySelector('.form-message');
+            // Simulate form submission
+            formMessage.textContent = 'Application submitted successfully!';
+            formMessage.classList.add('success');
+            formMessage.classList.remove('error');
+            gsap.fromTo(formMessage, {
+                opacity: 0,
+                y: 20
+            }, {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: 'power2.out'
+            });
+            setTimeout(() => {
+                gsap.to(jobFormContainer, {
+                    y: 30,
+                    scale: 0.95,
+                    opacity: 0,
+                    duration: 0.4,
+                    ease: 'power2.in',
+                    onComplete: () => {
+                        jobOverlay.classList.remove('active');
+                        formMessage.textContent = '';
+                        formMessage.classList.remove('success');
+                        jobForm.reset();
+                    }
+                });
+                gsap.to(jobOverlay, { opacity: 0, duration: 0.4, ease: 'power2.in' });
+            }, 2000);
+        });
+    } else {
+        console.error('Job application elements missing', { applyJobBtn, jobOverlay, jobFormContainer, closeBtn, jobForm });
+    }
 });
+
 // GSAP Scroll Animations
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM fully loaded, initializing GSAP animations");
