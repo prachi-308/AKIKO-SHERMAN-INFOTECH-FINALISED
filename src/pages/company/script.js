@@ -6,9 +6,6 @@ import '../../scripts/components.js';
 
 import '../../styles/components.css';
 
-
-
-
 class ImageOptimizer {
     constructor() {
         this.optimizeImages();
@@ -27,6 +24,7 @@ const optimizeCarousel = () => {
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 3;
     let autoSlideInterval;
+    let isAutoSlideStarted = false;
 
     if (!items.length || !titles.length || !dots.length) {
         console.warn('Carousel elements missing in DOM');
@@ -50,7 +48,6 @@ const optimizeCarousel = () => {
                 if (title.classList.contains('active')) checkScrollForElement(title);
             });
             dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex % dots.length));
-            checkScrollForDots();
         });
     };
 
@@ -61,34 +58,10 @@ const optimizeCarousel = () => {
         else element.classList.remove('visible');
     };
 
-    const checkScrollForDots = () => {
-        const windowHeight = window.innerHeight;
-        const dotsContainer = document.querySelector('.dots-container');
-        if (!dotsContainer) {
-            console.warn('No .dots-container element found in the DOM');
-            return;
-        }
-        const rect = dotsContainer.getBoundingClientRect();
-        if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
-            dots.forEach((dot, index) => setTimeout(() => dot.classList.add('visible'), index * 100));
-        } else {
-            dots.forEach(dot => dot.classList.remove('visible'));
-        }
-    };
-
     const checkScroll = throttle(() => {
         const activeTitle = document.querySelector('.title-description.active');
         if (activeTitle) checkScrollForElement(activeTitle);
-        checkScrollForDots();
     }, 100);
-
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            currentIndex = parseInt(dot.getAttribute('data-index'));
-            updateCarousel();
-            resetAutoSlide();
-        });
-    });
 
     const startAutoSlide = () => {
         autoSlideInterval = setInterval(() => {
@@ -102,11 +75,33 @@ const optimizeCarousel = () => {
         startAutoSlide();
     };
 
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            currentIndex = parseInt(dot.getAttribute('data-index'));
+            updateCarousel();
+            resetAutoSlide();
+        });
+    });
+
+    // IntersectionObserver to start auto-slide when section is in view
+    const carouselObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !isAutoSlideStarted) {
+                startAutoSlide();
+                isAutoSlideStarted = true;
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const carouselSection = document.querySelector('.sec-5');
+    if (carouselSection) carouselObserver.observe(carouselSection);
+
     window.addEventListener('scroll', checkScroll);
     window.addEventListener('load', () => {
-        setTimeout(checkScroll, 100);
-        startAutoSlide();
-        updateCarousel();
+        setTimeout(() => {
+            dots.forEach((dot, index) => setTimeout(() => dot.classList.add('visible'), index * 100));
+            updateCarousel();
+        }, 100);
     });
 
     updateCarousel();
